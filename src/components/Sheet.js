@@ -1,11 +1,7 @@
+import React, { Component } from 'react';
 
-
-class Sheet extends React.Component{
+export default class Sheet extends React.Component{
     render(){
-        return {
-            <div>
-            <h3>Sheet Title</h3>
-            </div>
-        }
+        return <h3 >T {this.props.title}</h3>;
     }
 }

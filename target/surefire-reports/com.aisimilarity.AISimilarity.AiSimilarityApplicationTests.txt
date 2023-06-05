@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.aisimilarity.AISimilarity.AiSimilarityApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.574 s - in com.aisimilarity.AISimilarity.AiSimilarityApplicationTests

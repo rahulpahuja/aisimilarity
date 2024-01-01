@@ -1,0 +1,257 @@
+.subheading-text{
+    background-color: #000000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size:2vw;
+    text-align:center;
+    padding:0;
+    margin:0;
+    height:10vh;
+    line-height:10vh;
+    font-family:sans-serif;
+}
+.dotted-line{
+       border:none;
+       border-top: 1px dashed #000;
+       margin:20px 0;
+       margin-left: 128px;
+       margin-right: 128px;
+
+}
+.search-area{
+    margin-left: 128px;
+    margin-right: 128px;  
+}
+img{
+    padding: 16px;
+}
+
+
+#title{
+    /* Layout Properties */
+/* UI Properties */
+    
+    opacity: 1;
+}
+.app{
+    margin: 16px;
+    background-color: linear;
+}
+.body{
+    margin: 16px;
+    
+}
+.header{
+    width: 100%;
+    height: 10%;
+    background-color: linear-gradient(to right, #2892D7, #42A5F5, #592E83)  ;
+}
+table{
+        margin-left: auto;
+        margin-right: auto;
+      
+}
+#head,#body{
+        margin-left: auto;
+        margin-right: auto;
+      
+}
+.table-label{
+    margin-left:48px ;
+    margin-top:12px ;
+    margin-bottom: 12px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal normal 16px/21px Roboto;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size:2vw;
+    text-align:center;
+    padding:0;
+    margin:0;
+    height:10vh;
+    line-height:10vh;
+    font-family:sans-serif;
+  }
+.table-head{
+    width: 217px;
+    height: 46px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;    
+    /* UI Properties */
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal medium 16px/21px Roboto;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+
+.table-head-component,.table-head-android,.table-head-ios,.table-head-react,.table-head-flutter{
+    width: 217px;
+    height: 46px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;    
+    /* UI Properties */
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal medium 16px/21px Roboto;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+
+.table-element{
+    top: 790px;
+left: 620px;
+width: 155px;
+height: 21px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-roboto);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+font: normal normal normal 16px/21px Roboto;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+}
+
+/* Files
+AI Similarity
+Home
+100% */
+
+:root {
+
+/* Colors: */
+--unnamed-color-2892d7: #2892D7;
+--unnamed-color-592e83: #592E83;
+--unnamed-color-000000: #000000;
+
+/* Font/text values */
+--unnamed-font-family-roboto: Roboto;
+--unnamed-font-style-normal: normal;
+--unnamed-font-weight-normal: normal;
+--unnamed-font-weight-medium: medium;
+--unnamed-font-weight-bold: bold;
+--unnamed-font-size-11: 11px;
+--unnamed-font-size-13: 13px;
+--unnamed-font-size-16: 16px;
+--unnamed-font-size-19: 19px;
+--unnamed-font-size-23: 23px;
+--unnamed-font-size-28: 28px;
+--unnamed-font-size-34: 34px;
+--unnamed-font-size-41: 41px;
+--unnamed-font-size-49: 49px;
+--unnamed-character-spacing-0: 0px;
+--unnamed-line-spacing-15: 15px;
+--unnamed-line-spacing-18: 18px;
+--unnamed-line-spacing-21: 21px;
+--unnamed-line-spacing-25: 25px;
+--unnamed-line-spacing-30: 30px;
+--unnamed-line-spacing-37: 37px;
+--unnamed-line-spacing-45: 45px;
+--unnamed-line-spacing-54: 54px;
+--unnamed-line-spacing-64: 64px;
+}
+
+/* Character Styles */
+.unnamed-character-style-1 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-medium);
+font-size: var(--unnamed-font-size-16);
+line-height: var(--unnamed-line-spacing-21);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-2 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-normal);
+font-size: var(--unnamed-font-size-11);
+line-height: var(--unnamed-line-spacing-15);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-3 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-normal);
+font-size: var(--unnamed-font-size-13);
+line-height: var(--unnamed-line-spacing-18);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-4 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-medium);
+font-size: var(--unnamed-font-size-19);
+line-height: var(--unnamed-line-spacing-25);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-5 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-23);
+line-height: var(--unnamed-line-spacing-30);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-6 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-28);
+line-height: var(--unnamed-line-spacing-37);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-7 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-34);
+line-height: var(--unnamed-line-spacing-45);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-8 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-41);
+line-height: var(--unnamed-line-spacing-54);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-9 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-49);
+line-height: var(--unnamed-line-spacing-64);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}

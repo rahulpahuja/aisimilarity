@@ -58,7 +58,7 @@
         function search() {
             console.log("Search was clicked");
             // Get the value from the search input
-            var query = document.getElementById("search-query").value;
+            var query = document.getElementById("search-query").value.toLowerCase();
             // Check if the search query is not empty
             if (query) {
                 alter(tableData + form, query)

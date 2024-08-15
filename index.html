@@ -17,7 +17,7 @@
                 document.body.classList.toggle('dark-mode', this.checked);
             });
         });
-        
+
         // Add an event listener to the toggle switch
         function checkChange() {
             // Get the toggle switch element and the body
@@ -33,10 +33,11 @@
 
             if (toggleSwitch.checked) {
                 body.classList.add('dark-mode');
-                localStorage.setItem('dark-mode', 'enabled');
+                localStorage.setItem('dark-mode', 'disabled');
+                
             } else {
                 body.classList.remove('dark-mode');
-                localStorage.setItem('dark-mode', 'disabled');
+                localStorage.setItem('dark-mode', 'enabled');
             }
             console.log("Hitting here")
         }
@@ -65,7 +66,6 @@
                 alter(tableData + net, query)
                 alter(tableData + view, query)
             } else {
-                // emptySearch()
                 location.reload(true);
             }
         }

@@ -27,14 +27,16 @@
                 alter(tableData + net, query)
                 alter(tableData + view, query)
             } else {
-                emptySearch()
+                // emptySearch()
+                location.reload(true); 
             }
         }
         function emptySearch(query = "") {
-            alter(tableData + form, query)
-            alter(tableData + ui, query)
-            alter(tableData + net, query)
-            alter(tableData + view, query)
+            // alter(tableData + form, query)
+            // alter(tableData + ui, query)
+            // alter(tableData + net, query)
+            // alter(tableData + view, query)
+            location.reload(true); 
         }
 
         function alter(id, query) {

@@ -11,6 +11,13 @@
             console.log("Form Loaded")
         };
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const switchInput = document.querySelector('.switch input');
+            switchInput.addEventListener('change', function() {
+                document.body.classList.toggle('dark-mode', this.checked);
+            });
+        });
+        
         // Add an event listener to the toggle switch
         function checkChange() {
             // Get the toggle switch element and the body

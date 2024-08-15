@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Switch</title>
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #fff;
+            color: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .switch label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            width: 34px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(14px);
+        }
+    </style>
+</head>
+<body>
+    <div class="switch">
+        <label>
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider"></span>
+            <span>Dark Mode</span>
+        </label>
+    </div>
+
+    <h1>Hello World!</h1>
+    <p>Welcome to the dark mode switch example.</p>
+
+    <script>
+        // Get the toggle switch element and the body
+        const toggleSwitch = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Load the user's preference from localStorage
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+        }
+
+        // Add an event listener to the toggle switch
+        toggleSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        });
+    </script>
+</body>
+</html>

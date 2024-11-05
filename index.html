@@ -145,55 +145,84 @@
                     <span>Dark Mode</span>
                 </label>
             </div>
-            <table id="table-data-ui">
-                <th class="table-head">Composition</th>
-                <tr>
-                    <th class="table-head">Component</th>
-                    <th><img src="assets/android.svg" />Android Native</th>
-                    <th><img src="assets/ios.svg" />iOS Native</th>
-                    <th><img src="assets/react.svg" />React Native</th>
-                    <th><img src="assets/flutter.svg" />Flutter</th>
-                </tr>
-                <tr>
-                    <td class="table-head-component">
-                        <h4 class="table-label">Horizontal Row</h4>
-                    </td>
-                    <td class="table-head-android"><a
-                            href="https://developer.android.com/reference/android/widget/EditText" target="_blank">
-                            <h4 class="table-label">Row</h4>
-                        </a></td>
-                    <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uitextfield"
-                            target="_blank">
-                            <h4 class="table-label">HStack</h4>
-                        </a></td>
-                    <td class="table-head-react"><a href="#">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </a></td>
-                    <td class="table-head-flutter"><a
-                            href="#" target="_blank">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </a></td>
-                </tr>
-                <tr>
-                    <td class="table-head-component">
-                        <h4 class="table-label">Vertical Column</h4>
-                    </td>
-                    <td class="table-head-android"><a
-                            href="https://developer.android.com/reference/android/widget/EditText" target="_blank">
-                            <h4 class="table-label">Column</h4>
-                        </a></td>
-                    <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uitextfield"
-                            target="_blank">
-                            <h4 class="table-label">VStack</h4>
-                        </a></td>
-                    <td class="table-head-react"><a href="#">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </a></td>
-                    <td class="table-head-flutter"><a
-                            href="#" target="_blank">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </a></td>
-                </tr>
+                <table id="table-data-ui">
+    <th class="table-head">Composition</th>
+    <tr>
+        <th class="table-head">Component</th>
+        <th><img src="assets/android.svg" />Android Native</th>
+        <th><img src="assets/ios.svg" />iOS Native</th>
+        <th><img src="assets/react.svg" />React Native</th>
+        <th><img src="assets/flutter.svg" />Flutter</th>
+    </tr>
+    <tr>
+        <td class="table-head-component">
+            <h4 class="table-label">Horizontal Row</h4>
+        </td>
+        <td class="table-head-android"><a href="https://developer.android.com/reference/androidx/compose/foundation/layout/Row" target="_blank">
+            <h4 class="table-label">Row</h4>
+        </a></td>
+        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/hstack" target="_blank">
+            <h4 class="table-label">HStack</h4>
+        </a></td>
+        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank">
+            <h4 class="table-label">View</h4>
+        </a></td>
+        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Row-class.html" target="_blank">
+            <h4 class="table-label">Row</h4>
+        </a></td>
+    </tr>
+    <tr>
+        <td class="table-head-component">
+            <h4 class="table-label">Vertical Column</h4>
+        </td>
+        <td class="table-head-android"><a href="https://developer.android.com/reference/androidx/compose/foundation/layout/Column" target="_blank">
+            <h4 class="table-label">Column</h4>
+        </a></td>
+        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/vstack" target="_blank">
+            <h4 class="table-label">VStack</h4>
+        </a></td>
+        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank">
+            <h4 class="table-label">View</h4>
+        </a></td>
+        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Column-class.html" target="_blank">
+            <h4 class="table-label">Column</h4>
+        </a></td>
+    </tr>
+    <tr>
+        <td class="table-head-component">
+            <h4 class="table-label">Button</h4>
+        </td>
+        <td class="table-head-android"><a href="https://developer.android.com/jetpack/compose/button" target="_blank">
+            <h4 class="table-label">Button</h4>
+        </a></td>
+        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/button" target="_blank">
+            <h4 class="table-label">Button</h4>
+        </a></td>
+        <td class="table-head-react"><a href="https://reactnative.dev/docs/button" target="_blank">
+            <h4 class="table-label">Button</h4>
+        </a></td>
+        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/material/ElevatedButton-class.html" target="_blank">
+            <h4 class="table-label">ElevatedButton</h4>
+        </a></td>
+    </tr>
+    <tr>
+        <td class="table-head-component">
+            <h4 class="table-label">Text Display</h4>
+        </td>
+        <td class="table-head-android"><a href="https://developer.android.com/jetpack/compose/text" target="_blank">
+            <h4 class="table-label">Text</h4>
+        </a></td>
+        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/text" target="_blank">
+            <h4 class="table-label">Text</h4>
+        </a></td>
+        <td class="table-head-react"><a href="https://reactnative.dev/docs/text" target="_blank">
+            <h4 class="table-label">Text</h4>
+        </a></td>
+        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Text-class.html" target="_blank">
+            <h4 class="table-label">Text</h4>
+        </a></td>
+    </tr>
+</table>
 
 
                 

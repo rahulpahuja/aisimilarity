@@ -23,6 +23,11 @@
             var link = 'https://forms.gle/wjcHvYAdYxPHodTN8'
             window.location.href = link
         }
+        function  (){
+            //const button = document.getElementById('myButton');
+            var link = '/index2.html'
+            window.location.href = link
+        }
         
         // Add an event listener to the toggle switch
         function checkChange() {
@@ -136,6 +141,9 @@
             </div>
            
             <div class="switch">
+                <div class="join-contributors-list">
+                    <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onContributorListJoinClick()">Interview Questions</button>
+                </div>
                  <div class="join-contributors-list">
                     <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onContributorListJoinClick()">Join Contributors List</button>
                 </div>
@@ -145,6 +153,7 @@
                     <span>Dark Mode</span>
                 </label>
             </div>
+            
                 <table id="table-data-ui">
     <th class="table-head">Composition</th>
     <tr>

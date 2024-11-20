@@ -6,12 +6,12 @@
     <title>Dark Mode Switch</title>
     <script>
     var i = 0;
-    var txt = 'Lorem ipsum dummy text blabla.';
-    var speed = 50;
+    var txt = 'AI Similarity';
+    var speed = 30;
 
 function typeWriter() {
   if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
+    document.getElementById("title").innerHTML += txt.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
   }
@@ -87,7 +87,7 @@ function typeWriter() {
         </label>
     </div>
 
-    <h1 onload="typeWriter()">Hello World!</h1>
+    <h1 id="title" onload="typeWriter()">Hello World!</h1>
     <p>Welcome to the dark mode switch example.</p>
 
     <script>

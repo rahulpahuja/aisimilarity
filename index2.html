@@ -6,6 +6,17 @@
     <title>Dark Mode Switch</title>
     
     <style>
+        .gradient-text {
+            background-image: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size:2vw;
+            padding: 0;
+            margin:16px;
+            height:6vh;
+            line-height:6vh;
+            font-family:sans-serif;
+          }
         body {
             transition: background-color 0.3s, color 0.3s;
             background-color: #fff;
@@ -75,7 +86,8 @@
         </label>
     </div>
 
-    <h1 id="title" onload="typeWriter()">Hello World!</h1>
+    <h1 id="title" onpageshow="typeWriter()" class="gradient-text"></h1>
+    <h1 id="title1" class="gradient-text"></h1>
     <p>Welcome to the dark mode switch example.</p>
 
     <script>
@@ -102,16 +114,29 @@
 
 
 
+        // Typing animation
+        document.addEventListener('DOMContentLoaded', function () {
+            typeWriter();
+        });
+
+
           var i = 0;
-          var txt = 'AI Similarity';
-          var speed = 30;
+          var j = 0;
+          var title = 'AI Similarity';
+          var title1 = 'Interview Questions List';
+          var speed = 100;
 
             function typeWriter() {
-              if (i < txt.length) {
-                document.getElementById("title").innerHTML += txt.charAt(i);
+              if (i < title.length) {
+                document.getElementById("title").innerHTML += title.charAt(i);
                 i++;
-                setTimeout(typeWriter, speed);
               }
+              if (j < title1.length) {
+                document.getElementById("title1").innerHTML += title1.charAt(j);
+                j++;
+                
+              }
+              setTimeout(typeWriter, speed);
             }
     </script>
 </body>

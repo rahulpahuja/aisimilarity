@@ -1,6 +1,3 @@
-Here’s a concise and engaging GitHub project description for your app:
-
----
 
 # AI Similarity - Cross-Platform Component Dictionary 🌐
 
@@ -15,6 +12,3 @@ Here’s a concise and engaging GitHub project description for your app:
 - **Feedback**: Share your thoughts and help us improve by filling out [this Google Form https://forms.gle/qMAD5hX2VPjahmLAA](#).  
 - **Contribute**: Join the effort! Become a contributor by filling out [this Google Form https://forms.gle/wjcHvYAdYxPHodTN8](#).  
 
----
-
-Feel free to replace `#` with the actual links to your forms. Let me know if you’d like further refinements! 🚀

@@ -88,6 +88,9 @@ h4, a {
     line-height:30vh;
     font-family:sans-serif;
   }
+  .join-contributors-list, .share-feedback, .qa-contributors-list{
+    margin:2px;
+  }
   /* color: #000000; */
   /* background: #FFFFFF 0% 0% no-repeat padding-box; */
   /* color: var(--unnamed-color-000000); */

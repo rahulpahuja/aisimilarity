@@ -83,6 +83,11 @@
 
 
 
+        function onShareFeedbackClick(){
+            var link = 'https://forms.gle/qMAD5hX2VPjahmLAA'
+            window.location.href = link
+        }
+
         function search() {
             console.log("Search was clicked");
             // Get the value from the search input
@@ -161,7 +166,10 @@
                 <div class="qa-contributors-list">
                     <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onInterviewQuestionsListClick()">Interview Questions</button>
                 </div>
-                 <div class="join-contributors-list">
+                <div class="share-feedback">
+                    <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onShareFeedbackClick()">Share Feedback</button>
+                </div>
+                <div class="join-contributors-list">
                     <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onContributorListJoinClick()">Join Contributors List</button>
                 </div>
                 <label>

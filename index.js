@@ -18,7 +18,7 @@ function onContributorListJoinClick() {
 }
 function onInterviewQuestionsListClick() {
     //const button = document.getElementById('myButton');
-    var link = '/index2.html'
+    var link = '/iqlist.html'
     window.location.href = link
 }
 

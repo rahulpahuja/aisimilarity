@@ -9,6 +9,6 @@
 - **Developer-Friendly**: Simplifies cross-platform development by providing clear and actionable mappings.  
 
 ## How You Can Help  
-- **Feedback**: Share your thoughts and help us improve by filling out [this Google Form]([#](https://forms.gle/qMAD5hX2VPjahmLAA)).  
-- **Contribute**: Join the effort! Become a contributor by filling out [this Google Form]([#](https://forms.gle/wjcHvYAdYxPHodTN8)).  
+- **Feedback**: Share your thoughts and help us improve by filling out [this Google Form]([#] (https://forms.gle/qMAD5hX2VPjahmLAA)).  
+- **Contribute**: Join the effort! Become a contributor by filling out [this Google Form]([#] (https://forms.gle/wjcHvYAdYxPHodTN8)).  
 

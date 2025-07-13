@@ -360,28 +360,40 @@ input:checked+.slider:before {
     transform: translateX(14px);
 }
 
- .marquee-wrapper {
+.marquee-wrapper {
+  width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
-  background-color: transparent; /* Changed from #f9f9f9 to transparent */
-  padding: 0;            /* ⬅ Ensure no extra padding */
-  margin: 10px 0;        /* ⬅ Add minimal spacing if needed */
+  padding: 8px 0;
+  background: transparent;
+  z-index: 1;
+  position: relative;
 }
 
 .marquee-text {
   display: inline-block;
   animation: scroll-left 15s linear infinite;
-  font-size: 3vw;               /* Reduced text size */
-  line-height: normal;             /* Optional: adjust vertical alignment */
-  padding-left: 100%;
-    height:auto;/* Ensure it starts off-screen */
+  font-size: 18px;
+  background-image: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-  
+
 @keyframes scroll-left {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
+
+/* Ensure nav bar is above marquee */
+.navbar {
+  position: relative;
+  z-index: 10;
+}
+
 
 /*
 Coming soon

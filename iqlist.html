@@ -3,71 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Mode Switch</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="iqlist.css">
-    <script src="iqlist.js"></script>
-    <script>
-        // Get the toggle switch element and the body
-        const toggleSwitch = document.getElementById('dark-mode-toggle');
-        const body = document.body;
-        
-        // Load the user's preference from localStorage
-        if (localStorage.getItem('dark-mode') === 'enabled') {
-            body.classList.add('dark-mode');
-            toggleSwitch.checked = true;
+    <title>Mobile Interview Topics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
         }
-        
-        // Add an event listener to the toggle switch
-        toggleSwitch.addEventListener('change', function() {
-            if (this.checked) {
-                body.classList.add('dark-mode');
-                localStorage.setItem('dark-mode', 'enabled');
-            } else {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('dark-mode', 'disabled');
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #fafafa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: left;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            font-weight: 600;
+            text-align: center;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .platform-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .desc {
+            font-size: 13px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 8px 10px;
+                font-size: 12px;
             }
-        });
-        
-        
-        
-        // Typing animation
-        document.addEventListener('DOMContentLoaded', function () {
-            typeWriter();
-        });
-        
-        
-          var i = 0;
-          var j = 0;
-          var title = 'AI Similarity';
-          var title1 = 'Interview Questions List';
-          var speed = 100;
-        
-            function typeWriter() {
-              if (i < title.length) {
-                document.getElementById("title").innerHTML += title.charAt(i);
-                i++;
-              }
-              if (j < title1.length) {
-                document.getElementById("title1").innerHTML += title1.charAt(j);
-                j++;
-                
-              }
-              setTimeout(typeWriter, speed);
+
+            .desc {
+                font-size: 11px;
             }
-        </script>
+        }
+    </style>
 </head>
 <body>
-    <div class="switch">
-        <label>
-            <input type="checkbox" id="dark-mode-toggle">
-            <span class="slider"></span>
-            <span>Dark Mode</span>
-        </label>
-    </div>
-    <h1 id="title" onpageshow="typeWriter()" class="gradient-text"></h1>
-    <h1 id="title1" class="gradient-text"></h1>
-    <p>The Design of the Interview Questions List is being Developed , Please Come back Again for more.</p>
+<div id="root"></div>
+
+<!-- React Dependencies -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const topicsData = {
+  android: [
+    { title: "Activity Lifecycle", description: "`onCreate()`, `onStart()`, `onResume()`, `onPause()`, `onStop()`, `onDestroy()`.", link: "https://developer.android.com/guide/components/activities/activity-lifecycle" },
+    { title: "Fragments", description: "Lifecycle, communication between Fragments and Activities.", link: "https://developer.android.com/guide/fragments" },
+    { title: "Services", description: "Started, Bound, IntentService, Foreground Service, lifecycle.", link: "https://developer.android.com/guide/components/services" },
+    { title: "Intents", description: "Explicit and Implicit Intents, Intent Filters, data passing.", link: "https://developer.android.com/guide/components/intents-filters" },
+    { title: "Layouts & Views", description: "`LinearLayout`, `RelativeLayout`, `ConstraintLayout`, custom views.", link: "https://developer.android.com/guide/topics/ui/declaring-layout" },
+    { title: "Data Storage", description: "`Shared Preferences`, Internal/External Storage, Room Persistence Library, SQLite.", link: "https://developer.android.com/training/data-storage" },
+    { title: "Networking", description: "Retrofit, Volley, OkHttp, API calls, JSON parsing.", link: "https://developer.android.com/training/volley" },
+    { title: "Asynchronous Programming", description: "Kotlin Coroutines, Handlers, `RxJava`.", link: "https://developer.android.com/kotlin/coroutines" },
+    { title: "Permissions", description: "Runtime permissions, dangerous permissions.", link: "https://developer.android.com/training/permissions/requesting" },
+    { title: "Notifications", description: "Types of notifications, Notification Channels.", link: "https://developer.android.com/develop/ui/views/notifications" },
+    { title: "Background Processing", description: "WorkManager, JobScheduler, AlarmManager.", link: "https://developer.android.com/topic/performance/background-optimization" },
+    { title: "Dependency Injection", description: "Dagger Hilt, Koin.", link: "https://developer.android.com/training/dependency-injection/hilt-android" },
+    { title: "Testing", description: "Unit testing (JUnit, Mockito), Instrumentation testing (Espresso).", link: "https://developer.android.com/training/testing" },
+    { title: "Memory Management", description: "Avoiding memory leaks, ANRs.", link: "https://developer.android.com/topic/performance/memory-overview" },
+    { title: "Gradle", description: "Build system, `build.gradle`, dependencies.", link: "https://developer.android.com/build" },
+    { title: "Material Design", description: "Implementing Material Design, custom themes.", link: "https://m3.material.io/develop/android" },
+    { title: "Debugging & Profiling", description: "Android Studio debugger, Profilers.", link: "https://developer.android.com/studio/debug" },
+    { title: "Kotlin Specifics", description: "Coroutines, Flow, Extension Functions, Null Safety.", link: "https://kotlinlang.org/docs/home.html" },
+    { title: "Android Architecture Components", description: "ViewModel, LiveData, Navigation Component.", link: "https://developer.android.com/topic/libraries/architecture" },
+    { title: "Security", description: "ProGuard/R8, secure data storage, network security.", link: "https://developer.android.com/topic/security/best-practices" },
+  ],
+
+  ios: [
+    { title: "Swift Fundamentals", description: "Struct vs. Class, Optionals, Closures, Error Handling, Protocols, Extensions.", link: "https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html" },
+    { title: "Memory Management (ARC)", description: "Strong Reference Cycles, `weak` vs. `unowned` references.", link: "https://developer.apple.com/documentation/swift/arc" },
+    { title: "Grand Central Dispatch & Concurrency", description: "`DispatchQueue`, `async/await`.", link: "https://developer.apple.com/documentation/dispatch" },
+    { title: "UIKit & SwiftUI", description: "Differences, `UIViewController` lifecycle, View hierarchy.", link: "https://developer.apple.com/documentation/swiftui" },
+    { title: "App Lifecycle", description: "`AppDelegate` and `SceneDelegate` methods.", link: "https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_launch_events" },
+    { title: "Core Data / Realm", description: "Persistence frameworks.", link: "https://developer.apple.com/documentation/coredata" },
+    { title: "Networking", description: "`URLSession`, `Codable` for JSON parsing.", link: "https://developer.apple.com/documentation/foundation/urlsession" },
+    { title: "User Interface (UI)", description: "Auto Layout, Stack Views, Size Classes, Safe Area.", link: "https://developer.apple.com/documentation/uikit/uiview" },
+    { title: "Table & Collection Views", description: "`DataSource`, `Delegate`, cell reuse.", link: "https://developer.apple.com/documentation/uikit/uitableview" },
+    { title: "Navigation", description: "`UINavigationController`, `UITabBarController`, programmatic navigation.", link: "https://developer.apple.com/documentation/uikit/uinavigationcontroller" },
+    { title: "Design Patterns", description: "MVC, MVVM, Delegation, Singleton.", link: "https://developer.apple.com/design/tips/standard-patterns" },
+    { title: "Notifications", description: "`UNUserNotificationCenter` (local and push).", link: "https://developer.apple.com/documentation/usernotifications" },
+    { title: "Error Handling", description: "`do-catch`, `try?`, `try!`.", link: "https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html" },
+    { title: "Testing", description: "Unit tests (XCTest), UI tests (XCUITest).", link: "https://developer.apple.com/documentation/xctest" },
+    { title: "Performance Optimization", description: "Memory leaks, launch time, image optimization.", link: "https://developer.apple.com/documentation/xcode/performance" },
+    { title: "Concurrency", description: "`DispatchGroup`, `DispatchSemaphore`.", link: "https://developer.apple.com/documentation/dispatch/dispatchgroup" },
+    { title: "Core Animation", description: "Layers, implicit/explicit animations.", link: "https://developer.apple.com/documentation/quartzcore" },
+    { title: "Accessibility", description: "VoiceOver, Dynamic Type.", link: "https://developer.apple.com/accessibility/ios/" },
+    { title: "App Store Submission", description: "Certificates, Provisioning Profiles.", link: "https://developer.apple.com/app-store/submissions" },
+    { title: "Security", description: "Keychain services, data protection, HTTPS.", link: "https://developer.apple.com/documentation/security" },
+  ],
+
+  flutter: [
+    { title: "Flutter Fundamentals", description: "Architecture, Hot Reload vs. Hot Restart.", link: "https://docs.flutter.dev" },
+    { title: "Dart Language", description: "`async/await`, Futures, Streams, Null Safety.", link: "https://dart.dev/guides/language/language-tour" },
+    { title: "Widgets", description: "`StatelessWidget` vs. `StatefulWidget`, Widget Tree, `BuildContext`.", link: "https://docs.flutter.dev/development/ui/widgets" },
+    { title: "State Management", description: "`setState()`, Provider, BLoC/Cubit, GetX, Riverpod.", link: "https://docs.flutter.dev/development/data-and-backend/state-mgmt" },
+    { title: "Layouts & UI", description: "`Column`, `Row`, `Stack`, `Container`, `Expanded`, `Flexible`.", link: "https://docs.flutter.dev/development/ui/layout" },
+    { title: "Navigation & Routing", description: "`Navigator 1.0` vs. `Navigator 2.0`, named routes.", link: "https://docs.flutter.dev/development/ui/navigation" },
+    { title: "Asynchronous Programming", description: "Futures, Streams, `FutureBuilder`, `StreamBuilder`.", link: "https://dart.dev/codelabs/async-await" },
+    { title: "API Integration", description: "`http` package, `Dio`, JSON serialization.", link: "https://pub.dev/packages/http" },
+    { title: "Persistent Storage", description: "`shared_preferences`, `sqflite`, Hive.", link: "https://docs.flutter.dev/development/data-and-backend/sqlite" },
+    { title: "Platform Channels", description: "Communicating with native code.", link: "https://docs.flutter.dev/development/platform-integration/platform-channels" },
+    { title: "Animations", description: "Implicit and explicit animations, Hero animations.", link: "https://docs.flutter.dev/development/ui/animations" },
+    { title: "Gestures & Event Handling", description: "`GestureDetector`, `InkWell`.", link: "https://docs.flutter.dev/development/ui/advanced/gestures" },
+    { title: "Error Handling & Debugging", description: "DevTools, exception handling.", link: "https://docs.flutter.dev/testing/errors" },
+    { title: "Testing", description: "Widget tests, unit tests, integration tests.", link: "https://docs.flutter.dev/testing" },
+    { title: "Performance Optimization", description: "Widget rebuilds, image caching, `const` widgets.", link: "https://docs.flutter.dev/perf/rendering/best-practices" },
+    { title: "Dependency Management", description: "`pubspec.yaml`, packages, plugins.", link: "https://docs.flutter.dev/development/packages-and-plugins/" },
+    { title: "Theming & Styling", description: "`ThemeData`, `TextStyle`, custom fonts.", link: "https://docs.flutter.dev/cookbook/design/themes" },
+    { title: "Internationalization & Localization", description: "Supporting multiple languages.", link: "https://docs.flutter.dev/development/accessibility-and-localization/internationalization" },
+    { title: "Firebase Integration", description: "Authentication, Firestore.", link: "https://firebase.flutter.dev" },
+    { title: "Accessibility", description: "Semantic widgets, text scaling.", link: "https://docs.flutter.dev/development/accessibility" },
+  ],
+
+  reactNative: [
+    { title: "React Native Fundamentals", description: "Differences from React (web), The Bridge.", link: "https://reactnative.dev/docs/getting-started" },
+    { title: "React Concepts", description: "Components, Props, State, JSX, Hooks.", link: "https://reactjs.org/docs/getting-started.html" },
+    { title: "Styling", description: "`StyleSheet.create`, Flexbox for layout, responsive styling.", link: "https://reactnative.dev/docs/style" },
+    { title: "Core Components", description: "`View`, `Text`, `Image`, `ScrollView`, `FlatList`.", link: "https://reactnative.dev/docs/components-and-apis" },
+    { title: "State Management", description: "Local state, Context API, Redux, Zustand.", link: "https://reactnative.dev/docs/state" },
+    { title: "Navigation", description: "React Navigation (Stack, Tab, Drawer).", link: "https://reactnavigation.org/docs/getting-started" },
+    { title: "Asynchronous Operations & API Calls", description: "`fetch` API, Axios, `async/await`.", link: "https://reactnative.dev/docs/network" },
+    { title: "Native Modules", description: "Bridging JavaScript with native code.", link: "https://reactnative.dev/docs/native-modules-intro" },
+    { title: "AsyncStorage", description: "Persistent data storage.", link: "https://react-native-async-storage.github.io/async-storage" },
+    { title: "Performance Optimization", description: "`PureComponent`/`memo`, `FlatList` vs `ScrollView`, Hermes.", link: "https://reactnative.dev/docs/performance" },
+    { title: "Debugging", description: "React Native Debugger, Flipper.", link: "https://reactnative.dev/docs/debugging" },
+    { title: "Gestures & Animations", description: "`PanResponder`, `Animated` API, `react-native-reanimated`.", link: "https://reactnative.dev/docs/animations" },
+    { title: "Platform‑Specific Code", description: "`Platform` module, `.ios.js` / `.android.js`.", link: "https://reactnative.dev/docs/platform-specific-code" },
+    { title: "Push Notifications", description: "FCM, APNs integration.", link: "https://reactnative.dev/docs/pushnotificationios" },
+    { title: "Permissions", description: "Handling device permissions.", link: "https://reactnative.dev/docs/permissionsandroid" },
+    { title: "Offline Capabilities", description: "Caching, `redux-persist`.", link: "https://github.com/rt2zz/redux-persist" },
+    { title: "Form Handling", description: "Controlled vs. uncontrolled components, validation.", link: "https://react-hook-form.com/" },
+    { title: "Testing", description: "Jest, React Testing Library.", link: "https://jestjs.io/" },
+    { title: "Build Process", description: "Metro bundler, `android/ios` project structure.", link: "https://reactnative.dev/docs/running-on-device" },
+    { title: "Community Libraries", description: "Awareness of popular third-party libraries.", link: "https://reactnative.directory/" },
+  ],
+
+  ionic: [
+    { title: "Ionic Framework Fundamentals", description: "Hybrid app concept, Ionic CLI, advantages.", link: "https://ionicframework.com/docs" },
+    { title: "Web Technologies", description: "HTML, CSS, JavaScript/TypeScript proficiency.", link: "https://developer.mozilla.org/docs/Web" },
+    { title: "Framework Integration", description: "How Ionic leverages Angular/React/Vue.", link: "https://ionicframework.com/docs/developer-resources/frameworks" },
+    { title: "Ionic Components", description: "`ion-header`, `ion-content`, `ion-button`, `ion-list`, `ion-tabs`.", link: "https://ionicframework.com/docs/components" },
+    { title: "Theming & Styling", description: "Sass variables, customizing components, dark mode.", link: "https://ionicframework.com/docs/theming" },
+    { title: "Navigation", description: "`ion-router-outlet`, `routerLink`, stack-based navigation.", link: "https://ionicframework.com/docs/angular/navigation" },
+    { title: "State Management", description: "Framework-specific (NgRx, Redux), Services.", link: "https://ionicframework.com/docs/angular/state-management" },
+    { title: "Ionic Native & Capacitor", description: "Accessing native device features, Cordova vs. Capacitor.", link: "https://capacitorjs.com/docs" },
+    { title: "Storage", description: "`Ionic Storage`, `LocalStorage`, `IndexedDB`.", link: "https://ionicframework.com/docs/angular/storage" },
+    { title: "API Integration", description: "`HttpClient` (Angular), Fetch API, Axios.", link: "https://ionicframework.com/docs/http" },
+    { title: "Lifecycle Events", description: "Ionic page lifecycle (`ionViewWillEnter`, `ionViewDidEnter`).", link: "https://ionicframework.com/docs/angular/lifecycle" },
+    { title: "PWA Support", description: "Service Workers, Web App Manifest.", link: "https://ionicframework.com/docs/pwa" },
+    { title: "Forms & Validation", description: "Template-driven vs. Reactive forms.", link: "https://ionicframework.com/docs/angular/forms" },
+    { title: "Performance Optimization", description: "Lazy loading, image optimization, AOT/JIT.", link: "https://ionicframework.com/docs/performance" },
+    { title: "Debugging", description: "Browser DevTools, Ionic DevApp.", link: "https://ionicframework.com/docs/troubleshooting/debugging" },
+    { title: "Security", description: "XSS, CSRF, secure API calls.", link: "https://ionicframework.com/docs/security" },
+    { title: "Theming & Customization", description: "CSS Variables, `global.scss`.", link: "https://ionicframework.com/docs/theming/customization" },
+    { title: "Deployment", description: "Building for iOS/Android, PWA deployment.", link: "https://ionicframework.com/docs/deploy" },
+    { title: "Unit & E2E Testing", description: "Karma/Jasmine, Jest/RTL, Cypress.", link: "https://ionicframework.com/docs/testing" },
+    { title: "Cross-Platform Considerations", description: "Handling device-specific UI/UX.", link: "https://ionicframework.com/docs/cli/commands/deploy" },
+  ],
+
+  xamarin: [
+    { title: "Xamarin Fundamentals", description: "Xamarin.Forms vs. Xamarin Native.", link: "https://docs.microsoft.com/xamarin/get-started" },
+    { title: ".NET & C#", description: "C#, LINQ, `async`/`await`.", link: "https://docs.microsoft.com/dotnet/csharp/" },
+    { title: "Xamarin.Forms UI", description: "XAML vs. C# UI, Views, Pages, Layouts.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/" },
+    { title: "Layouts", description: "`StackLayout`, `GridLayout`, `FlexLayout`.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/layouts/" },
+    { title: "Data Binding", description: "One-way, two-way, `BindingContext`, `INotifyPropertyChanged`.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/" },
+    { title: "MVVM Pattern", description: "Model-View-ViewModel, `ICommand`.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" },
+    { title: "Navigation", description: "`NavigationPage`, modal pages, `Shell` navigation.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/navigation/" },
+    { title: "Xamarin.Essentials", description: "Accessing common native features (GPS, camera).", link: "https://docs.microsoft.com/xamarin/essentials/" },
+    { title: "Custom Renderers & Effects", description: "Customizing native controls.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/custom-renderer/" },
+    { title: "Dependency Service", description: "Injecting platform-specific implementations.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/dependency-service/" },
+    { title: "Data Storage", description: "SQLite-net, `Application.Current.Properties`.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/data-cloud/data/" },
+    { title: "Networking", description: "`HttpClient`, consuming RESTful APIs.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/data-cloud/http" },
+    { title: "Asynchronous Programming", description: "`async`/`await`, TPL.", link: "https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/" },
+    { title: "Performance Optimization", description: "UI rendering, image caching, list view optimization.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/performance/" },
+    { title: "Debugging & Profiling", description: "Visual Studio debugger, Xamarin Profiler.", link: "https://docs.microsoft.com/xamarin/tools/profiler/" },
+    { title: "Platform-Specific APIs", description: "Directly using native APIs in shared code.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/dependency-service/intro" },
+    { title: "Testing", description: "Unit testing (NUnit, xUnit), UI testing (Xamarin.UITest).", link: "https://docs.microsoft.com/xamarin/tools/test-cloud/uitest/" },
+    { title: "Localization", description: "Supporting multiple languages.", link: "https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/localization" },
+    { title: "Deployment", description: "Building and deploying to app stores.", link: "https://docs.microsoft.com/xamarin/deploy-test/" },
+    { title: "Security", description: "Secure data storage, code obfuscation.", link: "https://docs.microsoft.com/xamarin/security/" },
+  ]
+};
+
+
+const icons = {
+    android: "https://simpleicons.org/icons/android.svg",
+    ios: "https://simpleicons.org/icons/apple.svg",
+    reactNative: "https://simpleicons.org/icons/react.svg",
+    flutter: "https://simpleicons.org/icons/flutter.svg",
+    xamarin: "https://simpleicons.org/icons/xamarin.svg",
+    ionic: "https://simpleicons.org/icons/ionic.svg",
+};
+
+const platforms = ["android", "ios", "reactNative", "flutter", "xamarin", "ionic"];
+
+function App() {
+    const topicCount = topicsData.android.length; 
+
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    {platforms.map(platform => (
+                        <th key={platform}>
+                            <div className="platform-header">
+                                <img src={icons[platform]} className="platform-icon" alt={platform}/>
+                                {platform.charAt(0).toUpperCase() + platform.slice(1).replace(/([A-Z])/g, ' $1')}
+                            </div>
+                        </th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {Array.from({ length: topicCount }).map((_, idx) => (
+                    <tr key={idx}>
+                        <td><strong>{topicsData.android[idx].title.split('. ')[1]}</strong></td>
+                        {platforms.map(platform => (
+                            <td key={platform}>
+                                {topicsData[platform][idx] ? 
+                                    <div>
+                                        <strong>{topicsData[platform][idx].title}</strong>
+                                        <div className="desc">{topicsData[platform][idx].description}</div>
+                                    </div> : <em style={{color:"#aaa"}}>Coming Soon</em>}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
 </body>
 </html>

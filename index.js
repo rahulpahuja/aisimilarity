@@ -127,3 +127,13 @@ function alter(id, query) {
         }
     }
 }
+
+function toggleDrawer() {
+  const drawer = document.getElementById('drawer');
+  drawer.classList.toggle('hidden');
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+

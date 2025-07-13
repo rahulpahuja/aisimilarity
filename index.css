@@ -10,6 +10,17 @@
     line-height: 10vh;
     font-family: sans-serif;
 }
+/* Light Mode */
+.menu-icon {
+  color: black;
+  background-color: white;
+}
+
+/* Dark Mode */
+body.dark-mode .menu-icon {
+  color: white;
+  background-color: black;
+}
 
 .dotted-line {
     border: none;

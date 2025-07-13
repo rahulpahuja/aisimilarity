@@ -1,27 +1,26 @@
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
+// Apply saved dark mode preference on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const toggleSwitch = document.getElementById('dark-mode-toggle');
+  const darkMode = localStorage.getItem('dark-mode');
+
+  if (darkMode === 'enabled') {
+    document.body.classList.add('dark-mode');
+    if (toggleSwitch) toggleSwitch.checked = true;
+  }
+});
+
+// Toggle dark mode on checkbox change
+function checkChange() {
+  const toggleSwitch = document.getElementById('dark-mode-toggle');
+  const isChecked = toggleSwitch.checked;
+
+  if (isChecked) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('dark-mode', 'enabled');
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('dark-mode', 'disabled');
   }
 
-// Add an event listener to the toggle switch
-function checkChange() {
-    // Get the toggle switch element and the body
-    const toggleSwitch = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    // Load the user's preference from localStorage
-    if (localStorage.getItem('dark-mode') === 'enabled') {
-        body.classList.add('dark-mode');
-        toggleSwitch.checked = true;
-    }
-    // Get the toggle switch element and the body
-
-    if (toggleSwitch.checked) {
-        body.classList.add('dark-mode');
-        localStorage.setItem('dark-mode', 'disabled');
-
-    } else {
-        body.classList.remove('dark-mode');
-        localStorage.setItem('dark-mode', 'enabled');
-    }
-    console.log("Hitting here")
+  console.log("Dark mode toggled:", isChecked);
 }

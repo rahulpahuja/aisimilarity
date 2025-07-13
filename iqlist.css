@@ -67,3 +67,73 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(14px);
 }
+
+/* Dark Mode Toggle Switch */
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.switch label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  width: 34px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode table {
+  background-color: #1e1e1e;
+}
+
+.dark-mode th,
+.dark-mode td {
+  color: #ddd;
+  border-color: #333;
+}
+
+.dark-mode thead {
+  background-color: #2a2a2a;
+}
+

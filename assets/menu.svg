@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
   <g id="Menu" transform="translate(-139)">
-    <rect id="Rectangle_6" data-name="Rectangle 6" width="56" height="56" transform="translate(139)" />
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="56" height="56" transform="translate(139)" fill="none"/>
     <g id="Icon_feather-menu" data-name="Icon feather-menu" transform="translate(155.667 14.111)">
-      <path id="Path_5" data-name="Path 5" d="M4.5,18H19.166" transform="translate(0 -4.111)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Path_6" data-name="Path 6" d="M4.5,9H19.166" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Path_7" data-name="Path 7" d="M4.5,27H19.166" transform="translate(0 -8.223)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_5" d="M4.5,18H19.166" transform="translate(0 -4.111)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_6" d="M4.5,9H19.166" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_7" d="M4.5,27H19.166" transform="translate(0 -8.223)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
     </g>
   </g>
 </svg>

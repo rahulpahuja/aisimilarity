@@ -260,8 +260,23 @@ function App() {
                             <td key={platform}>
                                 {topicsData[platform][idx] ? 
                                     <div>
-                                        <strong>{topicsData[platform][idx].title}</strong>
-                                        <div className="desc">{topicsData[platform][idx].description}</div>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+  <strong>{topicsData[platform][idx].title}</strong>
+  {topicsData[platform][idx].link && (
+    <a 
+      href={topicsData[platform][idx].link} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      style={{ textDecoration: 'none' }}
+    >
+      <span 
+        title="View More" 
+        style={{ cursor: 'pointer', fontSize: '14px', color: '#2892D7' }}
+      >ℹ️</span>
+    </a>
+  )}
+</div>
+<div className="desc">{topicsData[platform][idx].description}</div>
                                     </div> : <em style={{color:"#aaa"}}>Coming Soon</em>}
                             </td>
                         ))}

@@ -18,7 +18,35 @@
 
     <div class="app">
         <div class="header">
-            <img src="assets/menu.svg"></img>
+<!--             <img src="assets/menu.svg"></img> -->
+            <!-- Hamburger Button -->
+<div class="menu-button" onclick="toggleDrawer()">
+  <!-- SVG Hamburger Icon (using currentColor) -->
+  <svg width="30" height="30" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="hamburger-icon">
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="10" y1="14" x2="46" y2="14" />
+      <line x1="10" y1="28" x2="46" y2="28" />
+      <line x1="10" y1="42" x2="46" y2="42" />
+    </g>
+  </svg>
+</div>
+
+<!-- Drawer Menu -->
+<div id="drawer" class="drawer hidden">
+  <ul>
+    <li><button disabled class="coming-soon">Blogs <span class="tag">Coming Soon</span></button></li>
+    <li><a href="#questions">Interview Questions</a></li>
+    <li><a href="#feedback">Share Feedback</a></li>
+    <li><a href="#contributors">Join Contributors List</a></li>
+    <li>
+      <label class="dark-mode-toggle">
+        <input type="checkbox" onchange="toggleDarkMode()" />
+        <span class="slider"></span> Dark Mode
+      </label>
+    </li>
+  </ul>
+</div>
+
         </div>
         <div id="body">
              <!-- Marquee Section -->

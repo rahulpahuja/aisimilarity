@@ -18,43 +18,45 @@
 
     <div class="app">
         <div class="header">
-<!--             <img src="assets/menu.svg"></img> -->
+            <!--             <img src="assets/menu.svg"></img> -->
             <!-- Hamburger Button -->
-<div class="menu-button" onclick="toggleDrawer()">
-  <!-- SVG Hamburger Icon (using currentColor) -->
-  <svg width="30" height="30" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="hamburger-icon">
-    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <line x1="10" y1="14" x2="46" y2="14" />
-      <line x1="10" y1="28" x2="46" y2="28" />
-      <line x1="10" y1="42" x2="46" y2="42" />
-    </g>
-  </svg>
-</div>
-            
-<!-- Drawer Menu -->
-<div id="drawer" class="drawer hidden">
-  <ul>
-    <li><button disabled class="coming-soon">Blogs <span class="tag">Coming Soon</span></button></li>
-    <li><a onclick="onInterviewQuestionsListClick()">Interview Questions</a></li>
-    <li><a onclick="onShareFeedbackClick()">Share Feedback</a></li>
-    <li><a onclick="onContributorListJoinClick()>Join Contributors List</a></li>
+            <div class="menu-button" onclick="toggleDrawer()">
+                <!-- SVG Hamburger Icon (using currentColor) -->
+                <svg width="30" height="30" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"
+                    class="hamburger-icon">
+                    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="10" y1="14" x2="46" y2="14" />
+                        <line x1="10" y1="28" x2="46" y2="28" />
+                        <line x1="10" y1="42" x2="46" y2="42" />
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Drawer Menu -->
+            <div id="drawer" class="drawer hidden">
+                <div class="gradient-nav-title">AI Similarity</div>
+                <ul>
+                    <li><button disabled class="coming-soon">Blogs <span class="tag">Coming Soon</span></button></li>
+                    <li><a onclick="onInterviewQuestionsListClick()">Interview Questions</a></li>
+                    <li><a onclick="onShareFeedbackClick()">Share Feedback</a></li>
+                    <li><a onclick="onContributorListJoinClick()>Join Contributors List</a></li>
     <li>
-      <label class="dark-mode-toggle">
-        <input type="checkbox" onchange="toggleDarkMode()" />
-        <span class="slider"></span> Dark Mode
-      </label>
-    </li>
-  </ul>
-</div>
+      <label class=" dark-mode-toggle">
+                            <input type="checkbox" onchange="toggleDarkMode()" />
+                            <span class="slider"></span> Dark Mode
+                            </label>
+                    </li>
+                </ul>
+            </div>
 
         </div>
         <div id="body">
-             <!-- Marquee Section -->
-              <div class="marquee-wrapper">
+            <!-- Marquee Section -->
+            <div class="marquee-wrapper">
                 <div class="marquee-text gradient-text">
-                  🚀 Interview questions newly updated — please have a look!
+                    🚀 Interview questions newly updated — please have a look!
                 </div>
-              </div>
+            </div>
             <h1 class="gradient-text" id="title">Welcome to AI Similarity</h1>
             <h3 class="subheading-text">Your ultimate guide to bridging the gap between Android and iOS Platforms</h3>
             <div class="search-area">
@@ -68,7 +70,8 @@
 
             <div class="switch">
                 <div class="blogs" style="position: relative; display: inline-block;">
-                    <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="" onclick="onBlogsClick()">Blogs</button>
+                    <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init=""
+                        onclick="onBlogsClick()">Blogs</button>
                     <span class="coming-soon-badge">Coming Soon</span>
                 </div>
                 <div class="qa-contributors-list">

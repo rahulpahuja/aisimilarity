@@ -375,19 +375,20 @@ input:checked+.slider:before {
 /*
 Coming soon
 */
-  .coming-soon-badge {
-    position: absolute;
-    top: -8px;
-    right: -20px;
-    background: #ff5252;
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 12px;
-    white-space: nowrap;
-    animation: pulse 2s infinite;
-  }
+.coming-soon-badge {
+  position: absolute;
+  top: -8px;
+  right: -20px;
+  background-image: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 12px;
+  white-space: nowrap;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
 
   @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }

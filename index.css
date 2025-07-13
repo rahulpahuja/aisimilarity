@@ -350,21 +350,24 @@ input:checked+.slider:before {
 }
 
  .marquee-wrapper {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 100%;
-      background-color: #f9f9f9;
-    }
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  background-color: transparent; /* Changed from #f9f9f9 to transparent */
+}
 
-    .marquee-text {
-      display: inline-block;
-      animation: scroll-left 15s linear infinite;
-    }
-
-    @keyframes scroll-left {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+.marquee-text {
+  display: inline-block;
+  animation: scroll-left 15s linear infinite;
+  font-size: 3vw;               /* Reduced text size */
+  line-height: 5vh;             /* Optional: adjust vertical alignment */
+  padding-left: 100%;           /* Ensure it starts off-screen */
+}
+  
+@keyframes scroll-left {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
 
 /*
 Coming soon

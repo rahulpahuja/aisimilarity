@@ -406,3 +406,113 @@ Coming soon
     50% { transform: scale(1.1); opacity: 0.7; }
     100% { transform: scale(1); opacity: 1; }
   }
+
+
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+  color: black;
+}
+
+body.dark-mode .menu-button {
+  color: white;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: white;
+  border-right: 1px solid #ccc;
+  padding: 60px 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  z-index: 998;
+}
+
+.drawer.hidden {
+  transform: translateX(-100%);
+}
+
+body.dark-mode .drawer {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.drawer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer li {
+  margin: 20px 0;
+}
+
+.drawer a,
+.drawer button {
+  text-decoration: none;
+  color: #2892D7;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.drawer button:disabled {
+  color: #aaa;
+}
+
+.coming-soon .tag {
+  background: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+/* Dark Mode Switch Styling */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dark-mode-toggle input {
+  display: none;
+}
+
+.dark-mode-toggle .slider {
+  width: 34px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle .slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.dark-mode-toggle input:checked + .slider {
+  background-color: #4caf50;
+}
+
+.dark-mode-toggle input:checked + .slider::before {
+  transform: translateX(14px);
+}
+

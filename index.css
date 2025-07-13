@@ -528,3 +528,13 @@ body.dark-mode .drawer {
   transform: translateX(14px);
 }
 
+.gradient-nav-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px;
+  background: linear-gradient(to right, #2892D7, #42A5F5, #592E83);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+

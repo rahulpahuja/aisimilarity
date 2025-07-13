@@ -255,7 +255,7 @@ function App() {
             <tbody>
                 {Array.from({ length: topicCount }).map((_, idx) => (
                     <tr key={idx}>
-                        <td><strong>{topicsData.android[idx].title.split('. ')[1]}</strong></td>
+                        <td><strong>{topicsData.android[idx].title}</strong></td>
                         {platforms.map(platform => (
                             <td key={platform}>
                                 {topicsData[platform][idx] ? 

@@ -1,203 +1,278 @@
 /**
- * Configuration: List of all category JSON filenames (without .json extension)
- * Matches the files generated in the previous steps.
+ * compose.js — FINAL FIXED VERSION
+ * - Loads one JSON per category
+ * - Global search index
+ * - Animated tab indicator
+ * - Swipe navigation
+ * - Debounced search
+ * - Fully fixed light/dark mode button (no duplicates)
  */
-const CATEGORIES = [
-    'layouts', 'inputs', 'buttons', 'selectors', 'navigation', 
-    'display', 'accessibility', 'state', 'storage', 'networking',
-    'permissions', 'sensors', 'notifications', 'security', 'devtools',
-    'utilities', 'platform', 'animations', 'dragdrop', 'text',
-    'gestures', 'overlays'
-];
 
-// Global cache to store loaded data
+/* ------------------ Config ------------------ */
+const CATEGORIES = [
+  "layouts", "inputs", "buttons", "selectors", "navigation",
+  "display", "accessibility", "state", "storage", "networking",
+  "permissions", "sensors", "notifications", "security", "devtools",
+  "utilities", "platform", "animations", "dragdrop", "text",
+  "gestures", "overlays"
+];
 const DATA_CACHE = {};
-// Global index for search (flattens all items)
 let SEARCH_INDEX = [];
 
-const tabContainer = document.getElementById('tabs');
-const resultsContainer = document.getElementById('results');
-const searchInput = document.getElementById('search');
+/* DOM refs */
+const tabContainer = document.getElementById("tabs");
+const resultsContainer = document.getElementById("results");
+const searchInput = document.getElementById("search");
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
 
-/**
- * 1. Initialize Application
- */
-async function init() {
-    renderTabs();
-    
-    // Load the first category immediately
-    activateTab(CATEGORIES[0]);
+let indicatorEl = null;
+let activeCategory = null;
 
-    // Background: Load all other categories to build the search index
-    await loadAllDataInBackground();
+/* ------------------ Utilities ------------------ */
+const cap = str => str.charAt(0).toUpperCase() + str.slice(1);
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+/* ------------------ THEME SYSTEM (FINAL WORKING) ------------------ */
+
+function applyTheme(theme) {
+  const isLight = theme === "light";
+
+  if (isLight) {
+    document.body.classList.add("theme-light");
+    themeIcon.textContent = "🌙";
+  } else {
+    document.body.classList.remove("theme-light");
+    themeIcon.textContent = "☀️";
+  }
+
+  localStorage.setItem("compose_theme", theme);
 }
 
-/**
- * 2. Render Tab Navigation
- */
-function renderTabs() {
-    tabContainer.innerHTML = '';
-    
-    CATEGORIES.forEach(cat => {
-        const btn = document.createElement('div');
-        btn.className = 'tab';
-        btn.textContent = capitalize(cat);
-        btn.dataset.category = cat;
-        btn.onclick = () => activateTab(cat);
-        tabContainer.appendChild(btn);
-    });
-}
+(function initializeTheme() {
+  const saved = localStorage.getItem("compose_theme");
 
-/**
- * 3. Handle Tab Switching
- */
-async function activateTab(category) {
-    // UI Updates
-    document.querySelectorAll('.tab').forEach(t => {
-        t.classList.toggle('active', t.dataset.category === category);
-    });
-    
-    // Reset search
-    searchInput.value = '';
+  if (saved) {
+    applyTheme(saved);
+  } else {
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    applyTheme(prefersLight ? "light" : "dark");
+  }
+})();
 
-    // Show Loading
-    resultsContainer.innerHTML = '<div class="loading">Loading components...</div>';
-
-    // Fetch Data
-    const data = await fetchCategory(category);
-    
-    if (data && data.items) {
-        renderGrid(data.items);
-    } else {
-        resultsContainer.innerHTML = '<div class="empty-state">No components found in this category.</div>';
-    }
-}
-
-/**
- * 4. Fetching Data (with Cache)
- */
-async function fetchCategory(category) {
-    if (DATA_CACHE[category]) {
-        return DATA_CACHE[category];
-    }
-
-    try {
-        const resp = await fetch(`${category}.json`);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const json = await resp.json();
-        
-        // Store in cache
-        DATA_CACHE[category] = json;
-        
-        // Add to search index if not already there (deduplication check usually not needed here but good practice)
-        return json;
-    } catch (err) {
-        console.error(`Failed to load ${category}.json`, err);
-        return null;
-    }
-}
-
-/**
- * 5. Background Loading for Search
- */
-async function loadAllDataInBackground() {
-    const promises = CATEGORIES.map(async (cat) => {
-        const data = await fetchCategory(cat);
-        if (data && data.items) {
-            // Tag items with their category for search results
-            const taggedItems = data.items.map(item => ({ ...item, category: cat }));
-            SEARCH_INDEX.push(...taggedItems);
-        }
-    });
-    
-    await Promise.all(promises);
-    console.log(`Search Index Ready: ${SEARCH_INDEX.length} components loaded.`);
-    searchInput.placeholder = `Search ${SEARCH_INDEX.length} components...`;
-}
-
-/**
- * 6. Rendering Logic
- */
-function renderGrid(items) {
-    resultsContainer.innerHTML = '';
-    
-    if (!items || items.length === 0) {
-        resultsContainer.innerHTML = '<div class="empty-state">No matches found.</div>';
-        return;
-    }
-
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-
-    items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        // Platform Comparison Grid
-        const platformsHtml = `
-            <div class="platform-grid">
-                <span class="label">Compose</span> <span class="value"><b>${item.compose}</b></span>
-                <span class="label">SwiftUI</span> <span class="value">${item.swiftui}</span>
-                <span class="label">React Native</span> <span class="value">${item.react_native}</span>
-                <span class="label">Flutter</span> <span class="value">${item.flutter}</span>
-            </div>
-        `;
-
-        // Links Generator
-        let linksHtml = '<div class="links-container">';
-        if (item.links) {
-            Object.entries(item.links).forEach(([platform, url]) => {
-                linksHtml += `<a href="${url}" target="_blank" class="link-pill ${platform}">${platform}</a>`;
-            });
-        }
-        linksHtml += '</div>';
-
-        card.innerHTML = `
-            <h3>${item.component}</h3>
-            ${platformsHtml}
-            <div class="divider"></div>
-            ${linksHtml}
-        `;
-        
-        grid.appendChild(card);
-    });
-
-    resultsContainer.appendChild(grid);
-}
-
-/**
- * 7. Search Functionality
- */
-searchInput.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase().trim();
-    
-    // If empty, show the currently active tab's data
-    if (!term) {
-        const activeTab = document.querySelector('.tab.active');
-        if (activeTab) activateTab(activeTab.dataset.category);
-        return;
-    }
-
-    // Filter global search index
-    const matches = SEARCH_INDEX.filter(item => {
-        return (
-            item.component.toLowerCase().includes(term) ||
-            item.compose.toLowerCase().includes(term) ||
-            item.swiftui.toLowerCase().includes(term) ||
-            item.react_native.toLowerCase().includes(term)
-        );
-    });
-
-    // Deselect tabs visually to indicate search mode
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    
-    renderGrid(matches);
+themeToggle.addEventListener("click", () => {
+  const isLight = document.body.classList.contains("theme-light");
+  applyTheme(isLight ? "dark" : "light");
 });
 
-// Helper
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+/* ------------------ Data Fetching ------------------ */
+async function fetchCategory(category) {
+  if (DATA_CACHE[category]) return DATA_CACHE[category];
+
+  try {
+    const resp = await fetch(`${category}.json`, { cache: "no-store" });
+    if (!resp.ok) throw new Error(resp.status);
+    const json = await resp.json();
+    const items = json.items || json;
+
+    DATA_CACHE[category] = { items };
+    return DATA_CACHE[category];
+  } catch (e) {
+    console.error("Error loading category:", category, e);
+    return null;
+  }
 }
 
-// Start
+async function loadAllDataInBackground() {
+  SEARCH_INDEX = [];
+
+  for (let cat of CATEGORIES) {
+    const data = await fetchCategory(cat);
+    if (data && data.items) {
+      SEARCH_INDEX.push(
+        ...data.items.map(item => ({ ...item, __category: cat }))
+      );
+    }
+    await sleep(60);
+  }
+
+  console.log("Search index ready:", SEARCH_INDEX.length);
+  searchInput.placeholder = `Search ${SEARCH_INDEX.length} components...`;
+}
+
+/* ------------------ Tabs + Indicator ------------------ */
+function renderTabs() {
+  tabContainer.innerHTML = "";
+
+  indicatorEl = document.createElement("div");
+  indicatorEl.className = "tab-indicator";
+  tabContainer.appendChild(indicatorEl);
+
+  CATEGORIES.forEach((cat, i) => {
+    const tab = document.createElement("button");
+    tab.className = "tab";
+    tab.dataset.category = cat;
+    tab.dataset.index = i;
+    tab.textContent = cap(cat);
+
+    tab.onclick = () => activateTab(cat, true);
+
+    tabContainer.appendChild(tab);
+  });
+}
+
+function moveIndicatorToTab(tabEl) {
+  if (!tabEl || !indicatorEl) return;
+
+  const rect = tabEl.getBoundingClientRect();
+  const parentRect = tabContainer.getBoundingClientRect();
+
+  const left = rect.left - parentRect.left + tabContainer.scrollLeft;
+  const width = rect.width;
+
+  indicatorEl.style.left = `${left}px`;
+  indicatorEl.style.width = `${width}px`;
+
+  // auto-scroll into view
+  const padding = 40;
+  const visibleLeft = tabContainer.scrollLeft;
+  const visibleRight = visibleLeft + tabContainer.clientWidth;
+
+  if (left < visibleLeft + padding) {
+    tabContainer.scrollTo({ left: left - padding, behavior: "smooth" });
+  } else if (left + width > visibleRight - padding) {
+    tabContainer.scrollTo({ left: left + width - tabContainer.clientWidth + padding, behavior: "smooth" });
+  }
+}
+
+async function activateTab(category, userTriggered = false) {
+  activeCategory = category;
+
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.toggle("active", t.dataset.category === category);
+  });
+
+  const activeTabEl = tabContainer.querySelector(`[data-category="${category}"]`);
+  moveIndicatorToTab(activeTabEl);
+
+  if (userTriggered) searchInput.value = "";
+
+  resultsContainer.innerHTML = `<div class="loading">Loading...</div>`;
+
+  const data = await fetchCategory(category);
+
+  if (!data || !data.items?.length) {
+    resultsContainer.innerHTML = `<div class="empty-state">No components found.</div>`;
+    return;
+  }
+
+  renderGrid(data.items);
+}
+
+/* ------------------ Rendering Components ------------------ */
+function makeCard(item) {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <h3>${item.component || "Unnamed"}</h3>
+    <div class="platform-grid">
+      <div class="label">Compose</div><div class="value">${item.compose || "—"}</div>
+      <div class="label">SwiftUI</div><div class="value">${item.swiftui || "—"}</div>
+      <div class="label">React Native</div><div class="value">${item.react_native || "—"}</div>
+      <div class="label">Flutter</div><div class="value">${item.flutter || "—"}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="links-container"></div>
+  `;
+
+  const linksWrap = card.querySelector(".links-container");
+  if (item.links) {
+    for (let [platform, url] of Object.entries(item.links)) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.className = `link-pill ${platform}`;
+      a.textContent = platform.toUpperCase();
+      linksWrap.appendChild(a);
+    }
+  }
+
+  return card;
+}
+
+function renderGrid(items) {
+  resultsContainer.innerHTML = "";
+  const grid = document.createElement("div");
+  grid.className = "grid";
+
+  items.forEach(item => grid.appendChild(makeCard(item)));
+  resultsContainer.appendChild(grid);
+}
+
+/* ------------------ Search (Debounced) ------------------ */
+let searchTimer = null;
+
+function onSearch(e) {
+  const q = e.target.value.toLowerCase().trim();
+
+  if (searchTimer) clearTimeout(searchTimer);
+
+  searchTimer = setTimeout(() => {
+    if (!q) return activateTab(activeCategory, false);
+
+    const results = SEARCH_INDEX.filter(
+      item =>
+        item.component?.toLowerCase().includes(q) ||
+        item.compose?.toLowerCase().includes(q) ||
+        item.swiftui?.toLowerCase().includes(q) ||
+        item.react_native?.toLowerCase().includes(q)
+    );
+
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+    if (!results.length) {
+      resultsContainer.innerHTML = `<div class="empty-state">No results for "${q}".</div>`;
+      return;
+    }
+
+    renderGrid(results);
+  }, 200);
+}
+
+/* ------------------ Swipe Navigation ------------------ */
+let swipe = { startX: 0, startY: 0, active: false };
+
+resultsContainer.addEventListener("touchstart", e => {
+  const t = e.touches[0];
+  swipe = { startX: t.clientX, startY: t.clientY, active: true };
+});
+
+resultsContainer.addEventListener("touchend", e => {
+  if (!swipe.active) return;
+
+  const t = e.changedTouches[0];
+  const dx = t.clientX - swipe.startX;
+  const dy = t.clientY - swipe.startY;
+
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+    const index = CATEGORIES.indexOf(activeCategory);
+    const next = dx < 0 ? index + 1 : index - 1;
+
+    if (next >= 0 && next < CATEGORIES.length) {
+      activateTab(CATEGORIES[next], true);
+    }
+  }
+
+  swipe.active = false;
+});
+
+/* ------------------ Init ------------------ */
+async function init() {
+  renderTabs();
+  await activateTab(CATEGORIES[0], false);
+  loadAllDataInBackground();
+  searchInput.addEventListener("input", onSearch);
+}
+
 init();

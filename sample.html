@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Similarity — Expandable UI Demos (All Features)</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --g1:#2892D7; --g2:#42A5F5; --g3:#592E83;
+    --bg:#ffffff; --fg:#111;
+    --card-bg:#ffffff;
+  }
+  [data-theme="dark"]{
+    --bg:#0f0f10; --fg:#e6e6e6; --card-bg:#101217;
+  }
+
+  html,body{height:100%;margin:0;font-family:Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+  .page { max-width:1100px; margin:28px auto; padding:18px; }
+
+  .header-row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand .logo { width:48px; height:48px; border-radius:8px; background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3)); box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+  .brand h1 { font-size:18px; margin:0; font-weight:600; }
+  .controls { display:flex; gap:10px; align-items:center; }
+
+  .view-toggle { display:flex; gap:8px; background:transparent; border-radius:8px; padding:6px; }
+  .view-toggle button { background:transparent; border:1px solid rgba(0,0,0,0.08); padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:500; }
+  [data-theme="dark"] .view-toggle button{ border:1px solid rgba(255,255,255,0.06); }
+  .view-toggle button.active { background:linear-gradient(90deg,var(--g1),var(--g2)); color:#fff; border:none; box-shadow:0 6px 18px rgba(41,146,215,0.12); }
+
+  .dark-toggle { display:flex; align-items:center; gap:8px; padding:6px; border-radius:8px; }
+  .dark-toggle input{ display:none; }
+  .toggle-track { width:46px; height:24px; border-radius:24px; background:#ddd; position:relative; cursor:pointer; }
+  .toggle-knob { position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:all .2s; }
+  .dark-toggle input:checked + .toggle-track { background:linear-gradient(90deg,var(--g1),var(--g2)); }
+  .dark-toggle input:checked + .toggle-track .toggle-knob { transform:translateX(22px); }
+
+  .demos { margin-top:18px; display:block; }
+  .hidden { display:none; }
+
+  .demo-block { margin:18px 0; padding:18px; border-radius:12px; background:var(--card-bg); box-shadow:0 6px 18px rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.04); }
+  [data-theme="dark"] .demo-block{ box-shadow:0 6px 18px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.03); }
+
+  .demo-title { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+  .demo-title h2{ margin:0; font-size:16px; }
+  .desc{ font-size:13px; color:rgba(0,0,0,0.6); margin:0; }
+  [data-theme="dark"] .desc{ color:rgba(255,255,255,0.65); }
+
+  .expander { border-radius:10px; overflow:hidden; }
+  .exp-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; cursor:pointer; background:linear-gradient(90deg, rgba(40,146,215,0.06), rgba(66,165,245,0.04)); border-radius:10px; }
+  .exp-title { display:flex; align-items:center; gap:12px; }
+  .exp-gradient-title { background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
+  .exp-actions { display:flex; align-items:center; gap:8px; }
+
+  .btn-icon { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:transparent; cursor:pointer; padding:0; }
+  [data-theme="dark"] .btn-icon { border:1px solid rgba(255,255,255,0.06); }
+  .btn-icon.pinned { box-shadow:0 6px 18px rgba(89,46,131,0.12); border:1px solid rgba(89,46,131,0.22); background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3)); color:#fff; }
+
+  .svg-chev { width:18px; height:18px; transform-origin:center; transition:transform .28s ease; display:inline-block; }
+
+  .exp-body { max-height:0; overflow:hidden; transition:max-height .36s ease; padding:0 14px; }
+  .exp-body.open { padding:14px; }
+  .content { font-size:14px; line-height:1.5; color:var(--fg); }
+
+  /* Demo specific */
+  .demo-a .card::before{ content:""; position:absolute; inset:-2px; border-radius:14px; background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3)); z-index:-1; filter:blur(8px); opacity:.14; }
+  .demo-b .exp-header{ background:transparent; border-bottom:1px solid rgba(0,0,0,0.06); }
+  [data-theme="dark"] .demo-b .exp-header{ border-bottom:1px solid rgba(255,255,255,0.04); }
+
+  .demo-c table{ width:100%; border-collapse:collapse; font-size:14px; }
+  .demo-c th, .demo-c td{ padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.06); text-align:left; }
+  [data-theme="dark"] .demo-c th, [data-theme="dark"] .demo-c td{ border-bottom:1px solid rgba(255,255,255,0.04); }
+  .demo-c .expand-row{ max-height:0; overflow:hidden; transition:max-height .36s ease; background:var(--card-bg); padding:0 12px; border-radius:8px; margin-top:6px; }
+  .demo-c .expand-row.open{ padding:12px; }
+
+  /* responsive */
+  @media (max-width:720px){
+    .page{ padding:12px; }
+    .demo-block{ padding:12px; }
+  }
+</style>
+</head>
+<body data-theme="light">
+<div class="page">
+
+  <div class="header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>AI Similarity — Expandable UI Demos</h1>
+        <div class="desc">Gradient theme • auto-height animation • pin to lock open • persisted state</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="view-toggle" role="tablist" aria-label="View toggle">
+        <button id="viewStackBtn" class="active" onclick="switchView('stack')">Stacked View</button>
+        <button id="viewTabsBtn" onclick="switchView('tabs')">Tabbed View</button>
+      </div>
+
+      <div class="dark-toggle" title="Toggle dark mode">
+        <label style="display:flex;align-items:center;gap:8px">
+          <input id="darkModeInput" type="checkbox" aria-label="Toggle dark mode" />
+          <div class="toggle-track"><div class="toggle-knob"></div></div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="demos">
+
+    <!-- STACKED VIEW -->
+    <div id="stackView">
+
+      <!-- Demo A -->
+      <section class="demo-block demo-a">
+        <div class="demo-title"><h2>Demo A — Gradient Card</h2><div class="desc">Card with gradient accent. Pin is persisted.</div></div>
+
+        <div class="card expander" data-exp-id="demoA_card">
+          <div class="exp-header" onclick="toggleExpander(this)">
+            <div class="exp-title">
+              <div style="width:8px;height:36px;border-radius:6px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));margin-right:10px"></div>
+              <div>
+                <div class="exp-gradient-title">Expandable Card — Adaptive Height</div>
+                <div style="font-size:12px;color:rgba(0,0,0,0.55)">Click header to toggle; pin to keep open</div>
+              </div>
+            </div>
+
+            <div class="exp-actions">
+              <button class="btn-icon" aria-label="Pin demo A" data-pin-id="demoA_card" onclick="pinExpander(event,this)"><!-- pin icon -->📌</button>
+              <button class="btn-icon" aria-label="Toggle demo A chevron"><svg class="svg-chev" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="exp-body">
+            <div class="content">
+              <p>This is the gradient card example. The expansion animates to the content height. Add longer content and the auto height animation adapts. Pin state for this card is saved to localStorage.</p>
+              <p>Examples: code snippets, long descriptions, or variable-length content. The "pin" button will lock the panel open until unpinned (and that pin choice persists across reloads).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo B -->
+      <section class="demo-block demo-b">
+        <div class="demo-title"><h2>Demo B — Minimal Transparent</h2><div class="desc">Thin dividers, subtle gradient header; pin persisted.</div></div>
+
+        <div class="expander" data-exp-id="demoB_min">
+          <div class="exp-header" onclick="toggleExpander(this)">
+            <div class="exp-title">
+              <div class="exp-gradient-title">Minimal Expander</div>
+              <div style="font-size:12px;color:rgba(0,0,0,0.55)">Clean minimal appearance</div>
+            </div>
+
+            <div class="exp-actions">
+              <button class="btn-icon" aria-label="Pin demo B" data-pin-id="demoB_min" onclick="pinExpander(event,this)">📌</button>
+              <button class="btn-icon" aria-label="Toggle demo B chevron"><svg class="svg-chev" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="exp-body">
+            <div class="content">
+              <p>Minimal transparent style keeps the UI light. Useful for documentation panels and small notes. The expansion uses the same smooth animation technique. Pin is persistent.</p>
+              <ul>
+                <li>Auto height</li>
+                <li>Pin/unpin (persisted)</li>
+                <li>Chevron rotation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo C -->
+      <section class="demo-block demo-c">
+        <div class="demo-title"><h2>Demo C — Table-style Expansion</h2><div class="desc">Row expands beneath the item; ideal for tables. Pin persisted.</div></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="text-align:left">Component</th><th style="width:120px">Pin</th><th style="width:90px">Action</th></tr>
+            </thead>
+            <tbody>
+              <tr class="row-head" data-row-id="row_compose" onclick="toggleTableRow(this)">
+                <td>Jetpack Compose</td>
+                <td class="pin-td"><button class="btn-icon" aria-label="Pin row Jetpack Compose" data-pin-id="row_compose" onclick="pinRow(event,this)">📌</button></td>
+                <td style="text-align:center"><svg class="svg-chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></td>
+              </tr>
+              <tr class="row-body"><td colspan="3"><div class="expand-row">Jetpack Compose is Android’s modern declarative UI toolkit. It supports recomposition and declarative layouts, enabling compact, testable code.</div></td></tr>
+
+              <tr class="row-head" data-row-id="row_swiftui" onclick="toggleTableRow(this)">
+                <td>SwiftUI</td>
+                <td class="pin-td"><button class="btn-icon" aria-label="Pin row SwiftUI" data-pin-id="row_swiftui" onclick="pinRow(event,this)">📌</button></td>
+                <td style="text-align:center"><svg class="svg-chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></td>
+              </tr>
+              <tr class="row-body"><td colspan="3"><div class="expand-row">SwiftUI provides a declarative syntax for building UIs on Apple platforms. It works well with Combine and supports live previews.</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div> <!-- end stackView -->
+
+    <!-- TABS VIEW -->
+    <div id="tabsView" class="hidden">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <nav style="min-width:220px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="tab-btn active" data-tab="a" onclick="openTab('a')">Demo A — Gradient Card</button>
+            <button class="tab-btn" data-tab="b" onclick="openTab('b')">Demo B — Minimal</button>
+            <button class="tab-btn" data-tab="c" onclick="openTab('c')">Demo C — Table</button>
+          </div>
+        </nav>
+
+        <div style="flex:1">
+          <div id="tab-a" class="tab-panel">
+            <section class="demo-block demo-a">
+              <div class="demo-title"><h2>Demo A — Gradient Card (Tab)</h2><div class="desc">Card mode (tab)</div></div>
+              <div class="card expander" data-exp-id="demoA_card_tab">
+                <div class="exp-header" onclick="toggleExpander(this)">
+                  <div class="exp-title">
+                    <div style="width:8px;height:36px;border-radius:6px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));margin-right:10px"></div>
+                    <div>
+                      <div class="exp-gradient-title">Expandable Card — Tab</div>
+                      <div style="font-size:12px;color:rgba(0,0,0,0.55)">Click header; pin to lock (persisted)</div>
+                    </div>
+                  </div>
+                  <div class="exp-actions">
+                    <button class="btn-icon" aria-label="Pin demo A tab" data-pin-id="demoA_card_tab" onclick="pinExpander(event,this)">📌</button>
+                    <button class="btn-icon" aria-label="Toggle demo A tab chevron"><svg class="svg-chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+                  </div>
+                </div>
+                <div class="exp-body"><div class="content"><p>Same animation and pin behaviour inside tab.</p></div></div>
+              </div>
+            </section>
+          </div>
+
+          <div id="tab-b" class="tab-panel hidden">
+            <section class="demo-block demo-b">
+              <div class="demo-title"><h2>Demo B — Minimal (Tab)</h2><div class="desc">Minimal (tab)</div></div>
+              <div class="expander" data-exp-id="demoB_min_tab">
+                <div class="exp-header" onclick="toggleExpander(this)">
+                  <div class="exp-title">
+                    <div class="exp-gradient-title">Minimal Expander — Tab</div>
+                    <div style="font-size:12px;color:rgba(0,0,0,0.55)">Light and clean</div>
+                  </div>
+                  <div class="exp-actions">
+                    <button class="btn-icon" aria-label="Pin demo B tab" data-pin-id="demoB_min_tab" onclick="pinExpander(event,this)">📌</button>
+                    <button class="btn-icon" aria-label="Toggle demo B tab chevron"><svg class="svg-chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+                  </div>
+                </div>
+                <div class="exp-body"><div class="content"><p>Minimal tab content.</p></div></div>
+              </div>
+            </section>
+          </div>
+
+          <div id="tab-c" class="tab-panel hidden">
+            <section class="demo-block demo-c">
+              <div class="demo-title"><h2>Demo C — Table (Tab)</h2><div class="desc">Table expansion (tab)</div></div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th style="text-align:left">Component</th><th style="width:120px">Pin</th><th style="width:90px">Action</th></tr></thead>
+                  <tbody>
+                    <tr class="row-head" data-row-id="row_react" onclick="toggleTableRow(this)"><td>React Native</td><td class="pin-td"><button class="btn-icon" data-pin-id="row_react" onclick="pinRow(event,this)">📌</button></td><td style="text-align:center"><svg class="svg-chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></td></tr>
+                    <tr class="row-body"><td colspan="3"><div class="expand-row">React Native uses native components, bridges JS to native platform APIs, and supports a wide ecosystem.</div></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ---------- Persistence utilities ---------- */
+const STORAGE_KEYS = {
+  DARK: 'ai_demo_dark',
+  VIEW: 'ai_demo_view',
+  PIN_PREFIX: 'ai_demo_pin_' // + id
+};
+
+function setLocalPin(id, value){
+  try { localStorage.setItem(STORAGE_KEYS.PIN_PREFIX + id, value ? '1' : '0'); } catch(e){}
+}
+function getLocalPin(id){
+  try { return localStorage.getItem(STORAGE_KEYS.PIN_PREFIX + id) === '1'; } catch(e){ return false; }
+}
+
+/* ---------- Theme (dark) ---------- */
+function setTheme(dark){
+  document.body.setAttribute('data-theme', dark ? 'dark' : 'light');
+  const darkInput = document.getElementById('darkModeInput');
+  if(darkInput) darkInput.checked = !!dark;
+  try { localStorage.setItem(STORAGE_KEYS.DARK, dark ? '1' : '0'); } catch(e){}
+}
+document.getElementById('darkModeInput').addEventListener('change', function(e){
+  setTheme(e.target.checked);
+});
+(function(){
+  const saved = localStorage.getItem(STORAGE_KEYS.DARK) === '1';
+  setTheme(saved);
+})();
+
+/* ---------- View mode persistence ---------- */
+function switchView(mode){
+  const stack = document.getElementById('stackView'), tabs = document.getElementById('tabsView');
+  const sb = document.getElementById('viewStackBtn'), tb = document.getElementById('viewTabsBtn');
+  if(mode === 'stack'){
+    stack.classList.remove('hidden'); tabs.classList.add('hidden');
+    sb.classList.add('active'); tb.classList.remove('active');
+  } else {
+    stack.classList.add('hidden'); tabs.classList.remove('hidden');
+    sb.classList.remove('active'); tb.classList.add('active');
+  }
+  try { localStorage.setItem(STORAGE_KEYS.VIEW, mode); } catch(e){}
+}
+(function(){
+  const savedView = localStorage.getItem(STORAGE_KEYS.VIEW) || 'stack';
+  switchView(savedView);
+})();
+
+/* ---------- Tabs ---------- */
+function openTab(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.add('hidden'));
+  const btn = document.querySelector('.tab-btn[data-tab="'+id+'"]');
+  if(btn) btn.classList.add('active');
+  const panel = document.getElementById('tab-'+id);
+  if(panel) panel.classList.remove('hidden');
+}
+
+/* ---------- Generic expander logic (cards / minimal) ---------- */
+function toggleExpander(header){
+  const exp = header.closest('.expander');
+  if(!exp) return;
+  const body = exp.querySelector('.exp-body');
+  const pinBtn = header.querySelector('.btn-icon[data-pin-id]'); // first btn-icon with data-pin-id
+  const chev = header.querySelector('.svg-chev');
+
+  // If pinned, do nothing
+  if(pinBtn && pinBtn.classList.contains('pinned')) return;
+
+  if(body.style.maxHeight && body.style.maxHeight !== '0px'){
+    body.style.maxHeight = '0px';
+    body.classList.remove('open');
+    if(chev) chev.style.transform = '';
+  } else {
+    body.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    if(chev) chev.style.transform = 'rotate(180deg)';
+  }
+}
+
+function pinExpander(event, btn){
+  event.stopPropagation();
+  const id = btn.getAttribute('data-pin-id') || btn.closest('[data-exp-id]')?.getAttribute('data-exp-id');
+  if(!id) {
+    // simple toggle fallback
+    btn.classList.toggle('pinned');
+    return;
+  }
+  const exp = btn.closest('.expander');
+  const body = exp.querySelector('.exp-body');
+  const chev = exp.querySelector('.svg-chev');
+  const nowPinned = !btn.classList.contains('pinned');
+
+  if(nowPinned){
+    btn.classList.add('pinned');
+    if(body){
+      body.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    if(chev) chev.style.transform = 'rotate(180deg)';
+    setLocalPin(id, true);
+  } else {
+    btn.classList.remove('pinned');
+    if(body){
+      body.style.maxHeight = '0px';
+      body.classList.remove('open');
+    }
+    if(chev) chev.style.transform = '';
+    setLocalPin(id, false);
+  }
+}
+
+/* ---------- Table row expanders ---------- */
+function toggleTableRow(row){
+  // ignore toggle when click originates in pin button
+  if(event && event.target && (event.target.closest('.pin-td') || event.target.closest('.btn-icon'))) return;
+  const next = row.nextElementSibling;
+  if(!next || !next.classList.contains('row-body')) return;
+  const content = next.querySelector('.expand-row');
+  const pinBtn = row.querySelector('.btn-icon[data-pin-id]');
+
+  if(pinBtn && pinBtn.classList.contains('pinned')) return;
+
+  const chev = row.querySelector('.svg-chev');
+  if(content.style.maxHeight && content.style.maxHeight !== '0px'){
+    content.style.maxHeight = '0px';
+    content.classList.remove('open');
+    if(chev) chev.style.transform = '';
+  } else {
+    content.classList.add('open');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    if(chev) chev.style.transform = 'rotate(180deg)';
+  }
+}
+
+function pinRow(e, btn){
+  e.stopPropagation();
+  const id = btn.getAttribute('data-pin-id') || btn.closest('tr')?.getAttribute('data-row-id');
+  if(!id) { btn.classList.toggle('pinned'); return; }
+  const row = btn.closest('tr');
+  const content = row.nextElementSibling.querySelector('.expand-row');
+  const chev = row.querySelector('.svg-chev');
+  const nowPinned = !btn.classList.contains('pinned');
+
+  if(nowPinned){
+    btn.classList.add('pinned');
+    content.classList.add('open');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    if(chev) chev.style.transform = 'rotate(180deg)';
+    setLocalPin(id, true);
+  } else {
+    btn.classList.remove('pinned');
+    content.style.maxHeight = '0px';
+    content.classList.remove('open');
+    if(chev) chev.style.transform = '';
+    setLocalPin(id, false);
+  }
+}
+
+/* ---------- Restore pinned states and initialize heights ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  // restore expander pin states
+  document.querySelectorAll('[data-pin-id]').forEach(btn => {
+    const id = btn.getAttribute('data-pin-id');
+    if(!id) return;
+    if(getLocalPin(id)){
+      btn.classList.add('pinned');
+      // open corresponding body if present
+      const exp = btn.closest('.expander') || btn.closest('tr')?.nextElementSibling;
+      if(exp){
+        // if expander
+        const body = btn.closest('.expander')?.querySelector('.exp-body');
+        if(body){
+          body.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          const chev = btn.closest('.expander')?.querySelector('.svg-chev');
+          if(chev) chev.style.transform = 'rotate(180deg)';
+        }
+        // if table row pin
+        const nextRow = btn.closest('tr')?.nextElementSibling;
+        if(nextRow && nextRow.classList.contains('row-body')){
+          const content = nextRow.querySelector('.expand-row');
+          if(content){
+            content.classList.add('open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            const chev = btn.closest('tr')?.querySelector('.svg-chev'); if(chev) chev.style.transform = 'rotate(180deg)';
+          }
+        }
+      }
+    }
+  });
+
+  // ensure collapsed sections have proper zero height
+  document.querySelectorAll('.exp-body').forEach(el=>{
+    if(!el.classList.contains('open')) el.style.maxHeight = '0px';
+  });
+  document.querySelectorAll('.expand-row').forEach(el=>{
+    if(!el.classList.contains('open')) el.style.maxHeight = '0px';
+  });
+
+  // restore view mode
+  const savedView = localStorage.getItem(STORAGE_KEYS.VIEW) || 'stack';
+  switchView(savedView);
+});
+</script>
+</body>
+</html>

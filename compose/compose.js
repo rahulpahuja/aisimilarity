@@ -181,6 +181,8 @@ function makeCard(item) {
       <div class="label">SwiftUI</div><div class="value">${item.swiftui || "—"}</div>
       <div class="label">React Native</div><div class="value">${item.react_native || "—"}</div>
       <div class="label">Flutter</div><div class="value">${item.flutter || "—"}</div>
+      <div class="label">Xamarin</div><div class="value">${item.xamarin || "—"}</div>
+      <div class="label">Ionic</div><div class="value">${item.ionic || "—"}</div>
     </div>
     <div class="divider"></div>
     <div class="links-container"></div>
@@ -226,7 +228,9 @@ function onSearch(e) {
         item.component?.toLowerCase().includes(q) ||
         item.compose?.toLowerCase().includes(q) ||
         item.swiftui?.toLowerCase().includes(q) ||
-        item.react_native?.toLowerCase().includes(q)
+        item.react_native?.toLowerCase().includes(q)||
+        item.xamarin?.toLowerCase().includes(q)||
+        item.ionic?.toLowerCase().includes(q)
     );
 
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));

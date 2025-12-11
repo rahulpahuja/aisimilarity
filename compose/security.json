@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "security",
+    "description": "App hardening, encryption, and integrity checks",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Root Detection",
+      "compose": "RootBeer (Lib)",
+      "swiftui": "Jailbreak Detection",
+      "react_native": "JailMonkey",
+      "flutter": "flutter_jailbreak_detection",
+      "xamarin": "RootCheck",
+      "ionic": "Root Detection",
+      "links": {
+        "compose": "https://github.com/scottyab/rootbeer",
+        "swiftui": "https://github.com/thii/DTTJailbreakDetection",
+        "react_native": "https://github.com/GantMan/jail-monkey",
+        "flutter": "https://pub.dev/packages/flutter_jailbreak_detection",
+        "xamarin": "https://github.com/sgmunn/RootCheck",
+        "ionic": "https://github.com/robingenz/capacitor-jailbreak-root-detection"
+      }
+    },
+    {
+      "component": "Screen Protection",
+      "compose": "FLAG_SECURE",
+      "swiftui": "UIScreen.isCaptured",
+      "react_native": "react-native-prevent-screenshot",
+      "flutter": "flutter_windowmanager",
+      "xamarin": "Window.SetFlags",
+      "ionic": "Privacy Screen",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uiscreen/2921651-iscaptured",
+        "react_native": "https://github.com/yuricramos/react-native-prevent-screenshot",
+        "flutter": "https://pub.dev/packages/flutter_windowmanager",
+        "xamarin": "https://learn.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=windows#preventing-screenshots",
+        "ionic": "https://github.com/capacitor-community/privacy-screen"
+      }
+    },
+    {
+      "component": "App Integrity",
+      "compose": "Play Integrity API",
+      "swiftui": "DeviceCheck",
+      "react_native": "App Attest",
+      "flutter": "play_integrity",
+      "xamarin": "SafetyNet (Legacy)",
+      "ionic": "App Check",
+      "links": {
+        "compose": "https://developer.android.com/google/play/integrity",
+        "swiftui": "https://developer.apple.com/documentation/devicecheck",
+        "react_native": "https://github.com/google/play-integrity-api",
+        "flutter": "https://pub.dev/packages/play_integrity",
+        "xamarin": "https://learn.microsoft.com/en-us/android/platform/maps-and-location/location/safetynet",
+        "ionic": "https://firebase.google.com/docs/app-check"
+      }
+    },
+    {
+      "component": "Encryption",
+      "compose": "Jetpack Security (Tink)",
+      "swiftui": "CryptoKit",
+      "react_native": "react-native-aes-crypto",
+      "flutter": "encrypt",
+      "xamarin": "System.Security.Cryptography",
+      "ionic": "Web Crypto API",
+      "links": {
+        "compose": "https://developer.android.com/topic/security/data",
+        "swiftui": "https://developer.apple.com/documentation/cryptokit",
+        "react_native": "https://github.com/tectiv3/react-native-aes-crypto",
+        "flutter": "https://pub.dev/packages/encrypt",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API"
+      }
+    },
+    {
+      "component": "Key Management",
+      "compose": "Android Keystore",
+      "swiftui": "Keychain Services",
+      "react_native": "Keychain",
+      "flutter": "flutter_secure_storage",
+      "xamarin": "SecureStorage",
+      "ionic": "Secure Storage",
+      "links": {
+        "compose": "https://developer.android.com/training/articles/keystore",
+        "swiftui": "https://developer.apple.com/documentation/security/keychain_services",
+        "react_native": "https://github.com/oblador/react-native-keychain",
+        "flutter": "https://pub.dev/packages/flutter_secure_storage",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage",
+        "ionic": "https://ionic.io/docs/secure-storage"
+      }
+    },
+    {
+      "component": "SSL Pinning",
+      "compose": "Network Security Config",
+      "swiftui": "Info.plist / TrustKit",
+      "react_native": "react-native-ssl-pinning",
+      "flutter": "SecurityContext",
+      "xamarin": "ServerCertificateValidationCallback",
+      "ionic": "HTTP Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/articles/security-config#CertificatePinning",
+        "swiftui": "https://github.com/datatheorem/TrustKit",
+        "react_native": "https://github.com/frangsierra/react-native-ssl-pinning",
+        "flutter": "https://api.flutter.dev/flutter/dart-io/SecurityContext-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.servicepointmanager.servercertificatevalidationcallback",
+        "ionic": "https://capacitorjs.com/docs/apis/http#ssl-pinning"
+      }
+    },
+    {
+      "component": "Data Masking",
+      "compose": "Transformation (Visual)",
+      "swiftui": "secureTextEntry",
+      "react_native": "secureTextEntry",
+      "flutter": "obscureText",
+      "xamarin": "IsPassword",
+      "ionic": "type='password'",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/input/VisualTransformation",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/securefield",
+        "react_native": "https://reactnative.dev/docs/textinput#securetextentry",
+        "flutter": "https://api.flutter.dev/flutter/widgets/EditableText/obscureText.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.entry.ispassword",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password"
+      }
+    },
+    {
+      "component": "Emulator Detection",
+      "compose": "Build.FINGERPRINT",
+      "swiftui": "TARGET_OS_SIMULATOR",
+      "react_native": "DeviceInfo.isEmulator",
+      "flutter": "device_info_plus",
+      "xamarin": "DeviceInfo.DeviceType",
+      "ionic": "Device Plugin",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/os/Build",
+        "swiftui": "https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device",
+        "react_native": "https://github.com/react-native-device-info/react-native-device-info#isemulator",
+        "flutter": "https://pub.dev/packages/device_info_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/information",
+        "ionic": "https://capacitorjs.com/docs/apis/device#getinfo"
+      }
+    },
+    {
+      "component": "Obfuscation",
+      "compose": "R8 / ProGuard",
+      "swiftui": "Symbols Stripping",
+      "react_native": "Hermes / ProGuard",
+      "flutter": "Obfuscate flag",
+      "xamarin": "Dotfuscator",
+      "ionic": "UglifyJS / Terser",
+      "links": {
+        "compose": "https://developer.android.com/build/shrink-code",
+        "swiftui": "https://developer.apple.com/documentation/xcode/building-your-app-to-include-debugging-information",
+        "react_native": "https://reactnative.dev/docs/hermes",
+        "flutter": "https://docs.flutter.dev/deployment/obfuscate",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/ide/dotfuscator/?view=vs-2022",
+        "ionic": "https://ionicframework.com/docs/cli/commands/build"
+      }
+    },
+    {
+      "component": "Secure Screen Lock",
+      "compose": "KeyguardManager",
+      "swiftui": "LocalAuthentication",
+      "react_native": "DeviceSecurity",
+      "flutter": "local_auth",
+      "xamarin": "KeyguardManager",
+      "ionic": "Identity Vault",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/app/KeyguardManager",
+        "swiftui": "https://developer.apple.com/documentation/localauthentication",
+        "react_native": "https://github.com/learnium/react-native-device-security",
+        "flutter": "https://pub.dev/packages/local_auth",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/android.app.keyguardmanager",
+        "ionic": "https://ionic.io/docs/identity-vault"
+      }
+    }
+  ]
+}

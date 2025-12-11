@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "accessibility",
+    "description": "Tools for making apps usable by everyone",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Semantics",
+      "compose": "semantics modifier",
+      "swiftui": ".accessibilityElement",
+      "react_native": "accessibilityRole",
+      "flutter": "Semantics",
+      "xamarin": "SemanticProperties",
+      "ionic": "aria-label",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/package-summary#(androidx.compose.ui.Modifier).semantics(kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilityelement(children:)",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilityrole",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/accessibility",
+        "ionic": "https://ionicframework.com/docs/layout/structure#accessibility"
+      }
+    },
+    {
+      "component": "Content Description",
+      "compose": "contentDescription",
+      "swiftui": ".accessibilityLabel",
+      "react_native": "accessibilityLabel",
+      "flutter": "Semantics(label)",
+      "xamarin": "SemanticProperties.Description",
+      "ionic": "aria-label",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/accessibility#describe-visual",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilitylabel(_:)-15h6a",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilitylabel",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics/label.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.semanticproperties.description",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label"
+      }
+    },
+    {
+      "component": "Focus Order",
+      "compose": "isTraversalGroup",
+      "swiftui": ".accessibilitySortPriority",
+      "react_native": "accessibilityOrder",
+      "flutter": "Semantics(sortKey)",
+      "xamarin": "SemanticProperties.Hint",
+      "ionic": "tabindex",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/package-summary#(androidx.compose.ui.Modifier).isTraversalGroup()",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilitysortpriority(_:)",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilityviewismodal",
+        "flutter": "https://api.flutter.dev/flutter/semantics/OrdinalSortKey-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/accessibility",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"
+      }
+    },
+    {
+      "component": "Click Action Label",
+      "compose": "onClickLabel",
+      "swiftui": ".accessibilityAction",
+      "react_native": "accessibilityActions",
+      "flutter": "Semantics(onTapHint)",
+      "xamarin": "SemanticProperties.Hint",
+      "ionic": "aria-description",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#(androidx.compose.ui.Modifier).clickable(kotlin.String,androidx.compose.ui.semantics.Role,kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilityaction(_:_:)",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilityactions",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics/onTapHint.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.semanticproperties.hint",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-description"
+      }
+    },
+    {
+      "component": "State Description",
+      "compose": "stateDescription",
+      "swiftui": ".accessibilityValue",
+      "react_native": "accessibilityState",
+      "flutter": "Semantics(value)",
+      "xamarin": "SemanticProperties.Description",
+      "ionic": "aria-checked / aria-expanded",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/SemanticsProperties#stateDescription()",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilityvalue(_:)-2200m",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilitystate",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics/value.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/accessibility",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked"
+      }
+    },
+    {
+      "component": "Live Region",
+      "compose": "liveRegion",
+      "swiftui": "UIAccessibility.post",
+      "react_native": "accessibilityLiveRegion",
+      "flutter": "Semantics(liveRegion)",
+      "xamarin": "Announce (SemanticScreenReader)",
+      "ionic": "aria-live",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/SemanticsProperties#liveRegion()",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uiaccessibility/1615194-post",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilityliveregion-android",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics/liveRegion.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.accessibility.isemanticscreenreader.announce",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"
+      }
+    },
+    {
+      "component": "Heading Traversal",
+      "compose": "heading()",
+      "swiftui": ".accessibilityAddTraits(.isHeader)",
+      "react_native": "accessibilityRole='header'",
+      "flutter": "Semantics(header)",
+      "xamarin": "SemanticProperties.HeadingLevel",
+      "ionic": "h1-h6 tags",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/SemanticsProperties#heading()",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/accessibilitytraits/isheader",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessibilityrole",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Semantics/header.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.semanticproperties.headinglevel",
+        "ionic": "https://ionicframework.com/docs/layout/structure"
+      }
+    },
+    {
+      "component": "Merge Descendants",
+      "compose": "mergeDescendants = true",
+      "swiftui": ".accessibilityElement(children: .combine)",
+      "react_native": "accessible={true}",
+      "flutter": "MergeSemantics",
+      "xamarin": "AutomationProperties.IsInAccessibleTree",
+      "ionic": "role='group'",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/package-summary#(androidx.compose.ui.Modifier).semantics(kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilityelement(children:)",
+        "react_native": "https://reactnative.dev/docs/accessibility#accessible",
+        "flutter": "https://api.flutter.dev/flutter/widgets/MergeSemantics-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.automationproperties.isinaccessibletree",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role"
+      }
+    },
+    {
+      "component": "Test Tag",
+      "compose": "testTag",
+      "swiftui": ".accessibilityIdentifier",
+      "react_native": "testID",
+      "flutter": "Key",
+      "xamarin": "AutomationId",
+      "ionic": "data-testid",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/package-summary#(androidx.compose.ui.Modifier).testTag(kotlin.String)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/accessibilityidentifier(_:)",
+        "react_native": "https://reactnative.dev/docs/view#testid",
+        "flutter": "https://api.flutter.dev/flutter/foundation/Key-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/accessibility#automation-properties",
+        "ionic": "https://testing-library.com/docs/queries/bytestid/"
+      }
+    },
+    {
+      "component": "Font Scaling",
+      "compose": "TextUnit.Sp",
+      "swiftui": "Font.body",
+      "react_native": "allowFontScaling",
+      "flutter": "MediaQuery.textScaleFactor",
+      "xamarin": "FontAutoScalingEnabled",
+      "ionic": "--ion-dynamic-font",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/font",
+        "react_native": "https://reactnative.dev/docs/text#allowfontscaling",
+        "flutter": "https://api.flutter.dev/flutter/widgets/MediaQueryData/textScaleFactor.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.fontautoscalingenabled",
+        "ionic": "https://ionicframework.com/docs/layout/dynamic-font-scaling"
+      }
+    }
+  ]
+}

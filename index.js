@@ -88,7 +88,7 @@ function onShareFeedbackClick() {
     window.location.href = 'https://forms.gle/qMAD5hX2VPjahmLAA';
 }
 function onComposeClick() {
-    window.location.href = '/compose.html';
+    window.location.href = '/compose/compose.html';
 }
 function onBlogsClick() {
     // currently coming soon

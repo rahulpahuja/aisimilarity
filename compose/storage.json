@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "storage",
+    "description": "APIs for saving data, files, and assets",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Key-Value Store",
+      "compose": "DataStore (Preferences)",
+      "swiftui": "UserDefaults / @AppStorage",
+      "react_native": "AsyncStorage",
+      "flutter": "SharedPreferences",
+      "xamarin": "Preferences",
+      "ionic": "Capacitor Preferences",
+      "links": {
+        "compose": "https://developer.android.com/topic/libraries/architecture/datastore",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/appstorage",
+        "react_native": "https://react-native-async-storage.github.io/async-storage/",
+        "flutter": "https://pub.dev/packages/shared_preferences",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/preferences",
+        "ionic": "https://capacitorjs.com/docs/apis/preferences"
+      }
+    },
+    {
+      "component": "Local Database",
+      "compose": "Room (SQLite)",
+      "swiftui": "CoreData / SwiftData",
+      "react_native": "SQLite / Realm",
+      "flutter": "Sqflite / Drift",
+      "xamarin": "SQLite-net",
+      "ionic": "SQLite Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/data-storage/room",
+        "swiftui": "https://developer.apple.com/documentation/swiftdata",
+        "react_native": "https://github.com/andpor/react-native-sqlite-storage",
+        "flutter": "https://pub.dev/packages/sqflite",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/data-cloud/database-sqlite",
+        "ionic": "https://capacitorjs.com/docs/apis/sqlite"
+      }
+    },
+    {
+      "component": "Secure Storage",
+      "compose": "EncryptedSharedPreferences",
+      "swiftui": "Keychain",
+      "react_native": "SecureStore / Keychain",
+      "flutter": "flutter_secure_storage",
+      "xamarin": "SecureStorage",
+      "ionic": "Identity Vault / Secure Storage",
+      "links": {
+        "compose": "https://developer.android.com/reference/androidx/security/crypto/EncryptedSharedPreferences",
+        "swiftui": "https://developer.apple.com/documentation/security/keychain_services",
+        "react_native": "https://docs.expo.dev/versions/latest/sdk/securestore/",
+        "flutter": "https://pub.dev/packages/flutter_secure_storage",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage",
+        "ionic": "https://ionic.io/docs/identity-vault"
+      }
+    },
+    {
+      "component": "File System (Internal)",
+      "compose": "Context.filesDir",
+      "swiftui": "FileManager (Documents)",
+      "react_native": "fs (File System)",
+      "flutter": "path_provider (ApplicationDocuments)",
+      "xamarin": "FileSystem.AppDataDirectory",
+      "ionic": "Filesystem API",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/content/Context#getFilesDir()",
+        "swiftui": "https://developer.apple.com/documentation/foundation/filemanager",
+        "react_native": "https://github.com/itinance/react-native-fs",
+        "flutter": "https://pub.dev/packages/path_provider",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/file-system-helpers",
+        "ionic": "https://capacitorjs.com/docs/apis/filesystem"
+      }
+    },
+    {
+      "component": "File System (Cache)",
+      "compose": "Context.cacheDir",
+      "swiftui": "FileManager (Caches)",
+      "react_native": "fs.CachesDirectoryPath",
+      "flutter": "path_provider (Temporary)",
+      "xamarin": "FileSystem.CacheDirectory",
+      "ionic": "Filesystem (Cache)",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/content/Context#getCacheDir()",
+        "swiftui": "https://developer.apple.com/documentation/foundation/filemanager/searchpathdirectory/cachesdirectory",
+        "react_native": "https://github.com/itinance/react-native-fs",
+        "flutter": "https://pub.dev/packages/path_provider",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/file-system-helpers",
+        "ionic": "https://capacitorjs.com/docs/apis/filesystem"
+      }
+    },
+    {
+      "component": "Asset Bundling",
+      "compose": "assets folder",
+      "swiftui": "Asset Catalog / Bundle",
+      "react_native": "require() / assets",
+      "flutter": "pubspec.yaml assets",
+      "xamarin": "MauiAsset (Build Action)",
+      "ionic": "assets folder",
+      "links": {
+        "compose": "https://developer.android.com/studio/write/add-resources",
+        "swiftui": "https://developer.apple.com/documentation/xcode/managing-assets-with-asset-catalogs",
+        "react_native": "https://reactnative.dev/docs/images",
+        "flutter": "https://docs.flutter.dev/ui/assets/assets-and-images",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/single-project#assets",
+        "ionic": "https://ionicframework.com/docs/layout/structure"
+      }
+    },
+    {
+      "component": "Cloud Storage",
+      "compose": "Firebase Storage / AWS",
+      "swiftui": "CloudKit / Firebase",
+      "react_native": "Firebase / AWS Amplify",
+      "flutter": "Firebase Storage",
+      "xamarin": "Azure Blob / Firebase",
+      "ionic": "Firebase / AWS",
+      "links": {
+        "compose": "https://firebase.google.com/docs/storage/android/start",
+        "swiftui": "https://developer.apple.com/documentation/cloudkit",
+        "react_native": "https://rnfirebase.io/storage/usage",
+        "flutter": "https://firebase.google.com/docs/storage/flutter/start",
+        "xamarin": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet",
+        "ionic": "https://firebase.google.com/docs/storage/web/start"
+      }
+    },
+    {
+      "component": "File Picker",
+      "compose": "ActivityResultContracts.GetContent",
+      "swiftui": "fileImporter",
+      "react_native": "DocumentPicker",
+      "flutter": "file_picker",
+      "xamarin": "FilePicker",
+      "ionic": "File Picker Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/basics/intents/result#launch",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/fileimporter(ispresented:allowedcontenttypes:allowsmultipleselection:oncompletion:)",
+        "react_native": "https://github.com/rnmods/react-native-document-picker",
+        "flutter": "https://pub.dev/packages/file_picker",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/file-picker",
+        "ionic": "https://github.com/capawesome-team/capacitor-file-picker"
+      }
+    },
+    {
+      "component": "Photo Picker",
+      "compose": "PickVisualMedia",
+      "swiftui": "PhotosPicker",
+      "react_native": "ImagePicker",
+      "flutter": "image_picker",
+      "xamarin": "MediaPicker",
+      "ionic": "Camera / Gallery",
+      "links": {
+        "compose": "https://developer.android.com/training/data-storage/shared/photopicker",
+        "swiftui": "https://developer.apple.com/documentation/photokit/photospicker",
+        "react_native": "https://github.com/react-native-image-picker/react-native-image-picker",
+        "flutter": "https://pub.dev/packages/image_picker",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device-media/picker",
+        "ionic": "https://capacitorjs.com/docs/apis/camera"
+      }
+    },
+    {
+      "component": "Clipboard",
+      "compose": "ClipboardManager",
+      "swiftui": "UIPasteboard",
+      "react_native": "Clipboard",
+      "flutter": "Clipboard",
+      "xamarin": "Clipboard",
+      "ionic": "Clipboard Plugin",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/ClipboardManager",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uipasteboard",
+        "react_native": "https://reactnative.dev/docs/clipboard",
+        "flutter": "https://api.flutter.dev/flutter/services/Clipboard-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/data/clipboard",
+        "ionic": "https://capacitorjs.com/docs/apis/clipboard"
+      }
+    }
+  ]
+}

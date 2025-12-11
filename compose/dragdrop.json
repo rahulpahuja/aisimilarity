@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "dragdrop",
+    "description": "Drag and drop interactions and reordering",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Draggable Element",
+      "compose": "draggable modifier",
+      "swiftui": ".draggable",
+      "react_native": "PanResponder / Draggable",
+      "flutter": "Draggable",
+      "xamarin": "DragGestureRecognizer",
+      "ionic": "HTML Draggable",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#(androidx.compose.ui.Modifier).draggable(androidx.compose.foundation.gestures.DraggableState,androidx.compose.foundation.gestures.Orientation,kotlin.Boolean,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Boolean,kotlin.Function3,kotlin.Function3,kotlin.Boolean)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/draggable(_:)",
+        "react_native": "https://github.com/tongyy/react-native-draggable",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Draggable-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/drag-and-drop",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable"
+      }
+    },
+    {
+      "component": "Drop Target",
+      "compose": "dragAndDropTarget",
+      "swiftui": ".dropDestination",
+      "react_native": "PanResponder",
+      "flutter": "DragTarget",
+      "xamarin": "DropGestureRecognizer",
+      "ionic": "ondrop event",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/draganddrop/package-summary#(androidx.compose.ui.Modifier).dragAndDropTarget(kotlin.Function1,androidx.compose.ui.draganddrop.DragAndDropTarget)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/dropdestination(for:action:istargeted:)",
+        "react_native": "https://reactnative.dev/docs/panresponder",
+        "flutter": "https://api.flutter.dev/flutter/widgets/DragTarget-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/drag-and-drop",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event"
+      }
+    },
+    {
+      "component": "Reorderable List",
+      "compose": "LazyList + Reorderable (Experimental)",
+      "swiftui": "onMove",
+      "react_native": "DraggableFlatList",
+      "flutter": "ReorderableListView",
+      "xamarin": "CollectionView (Reorder)",
+      "ionic": "ion-reorder-group",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/foreach/onmove(perform:)",
+        "react_native": "https://github.com/computerjazz/react-native-draggable-flatlist",
+        "flutter": "https://api.flutter.dev/flutter/material/ReorderableListView-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview/layout#reorder-items",
+        "ionic": "https://ionicframework.com/docs/api/reorder-group"
+      }
+    },
+    {
+      "component": "Swipe to Dismiss",
+      "compose": "SwipeToDismissBox",
+      "swiftui": ".swipeActions",
+      "react_native": "Swipeable",
+      "flutter": "Dismissible",
+      "xamarin": "SwipeItem",
+      "ionic": "ion-item-options",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#SwipeToDismissBox(androidx.compose.material3.SwipeToDismissBoxState,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:)",
+        "react_native": "https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Dismissible-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/swipeview",
+        "ionic": "https://ionicframework.com/docs/api/item-options"
+      }
+    },
+    {
+      "component": "Drag Handle",
+      "compose": "Icon + draggable",
+      "swiftui": "Image(line.3.horizontal)",
+      "react_native": "Icon + PanResponder",
+      "flutter": "ReorderableDragStartListener",
+      "xamarin": "GestureRecognizer",
+      "ionic": "ion-reorder",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#(androidx.compose.ui.Modifier).draggable(androidx.compose.foundation.gestures.DraggableState,androidx.compose.foundation.gestures.Orientation,kotlin.Boolean,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Boolean,kotlin.Function3,kotlin.Function3,kotlin.Boolean)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/editmode",
+        "react_native": "https://reactnative.dev/docs/panresponder",
+        "flutter": "https://api.flutter.dev/flutter/widgets/ReorderableDragStartListener-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/drag-and-drop",
+        "ionic": "https://ionicframework.com/docs/api/reorder"
+      }
+    },
+    {
+      "component": "Nested Scroll",
+      "compose": "nestedScroll modifier",
+      "swiftui": "ScrollView in ScrollView",
+      "react_native": "NestedScrollView",
+      "flutter": "NestedScrollView",
+      "xamarin": "ScrollView",
+      "ionic": "ion-content (scroll events)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/input/nestedscroll/package-summary#(androidx.compose.ui.Modifier).nestedScroll(androidx.compose.ui.input.nestedscroll.NestedScrollConnection,androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scrollview",
+        "react_native": "https://github.com/react-native-webview/react-native-webview/blob/master/docs/Guide.md",
+        "flutter": "https://api.flutter.dev/flutter/widgets/NestedScrollView-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview",
+        "ionic": "https://ionicframework.com/docs/api/content"
+      }
+    },
+    {
+      "component": "Canvas Drag",
+      "compose": "Canvas + detectDragGestures",
+      "swiftui": "Canvas + Gesture",
+      "react_native": "Skia / Svg",
+      "flutter": "CustomPainter + GestureDetector",
+      "xamarin": "GraphicsView + Gesture",
+      "ionic": "Canvas API",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/Canvas",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/canvas",
+        "react_native": "https://shopify.github.io/react-native-skia/",
+        "flutter": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/graphics/graphicsview",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
+      }
+    },
+    {
+      "component": "Pull to Refresh",
+      "compose": "PullToRefreshBox",
+      "swiftui": ".refreshable",
+      "react_native": "RefreshControl",
+      "flutter": "RefreshIndicator",
+      "xamarin": "RefreshView",
+      "ionic": "ion-refresher",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/pulltorefresh/package-summary#PullToRefreshBox(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.material3.pulltorefresh.PullToRefreshState,androidx.compose.ui.Alignment,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,kotlin.Function1,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/refreshable(action:)",
+        "react_native": "https://reactnative.dev/docs/refreshcontrol",
+        "flutter": "https://api.flutter.dev/flutter/material/RefreshIndicator-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/refreshview",
+        "ionic": "https://ionicframework.com/docs/api/refresher"
+      }
+    },
+    {
+      "component": "Overscroll Effect",
+      "compose": "OverscrollEffect",
+      "swiftui": "ScrollView",
+      "react_native": "ScrollView (bounces)",
+      "flutter": "StretchingOverscrollIndicator",
+      "xamarin": "ScrollView",
+      "ionic": "ion-content",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/OverscrollEffect",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scrollview",
+        "react_native": "https://reactnative.dev/docs/scrollview#bounces",
+        "flutter": "https://api.flutter.dev/flutter/widgets/StretchingOverscrollIndicator-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview",
+        "ionic": "https://ionicframework.com/docs/api/content"
+      }
+    },
+    {
+      "component": "Scroll Position",
+      "compose": "ScrollState / LazyListState",
+      "swiftui": "ScrollViewReader",
+      "react_native": "onScroll",
+      "flutter": "ScrollController",
+      "xamarin": "Scrolled event",
+      "ionic": "ionScroll",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/ScrollState",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scrollviewreader",
+        "react_native": "https://reactnative.dev/docs/scrollview#onscroll",
+        "flutter": "https://api.flutter.dev/flutter/widgets/ScrollController-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview#detect-scroll",
+        "ionic": "https://ionicframework.com/docs/api/content#events"
+      }
+    }
+  ]
+}

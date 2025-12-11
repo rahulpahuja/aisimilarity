@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "inputs",
+    "description": "Form controls and data entry components",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "TextField",
+      "compose": "TextField",
+      "swiftui": "TextField",
+      "react_native": "TextInput",
+      "flutter": "TextField",
+      "xamarin": "Entry",
+      "ionic": "ion-input",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TextField(kotlin.String,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,kotlin.Boolean,androidx.compose.ui.text.TextStyle,androidx.compose.ui.text.input.VisualTransformation,androidx.compose.foundation.text.KeyboardOptions,androidx.compose.foundation.text.KeyboardActions,kotlin.Boolean,kotlin.Int,kotlin.Int,androidx.compose.foundation.interaction.MutableInteractionSource,androidx.compose.ui.graphics.Shape,androidx.compose.material3.TextFieldColors)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/textfield",
+        "react_native": "https://reactnative.dev/docs/textinput",
+        "flutter": "https://api.flutter.dev/flutter/material/TextField-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/entry",
+        "ionic": "https://ionicframework.com/docs/api/input"
+      }
+    },
+    {
+      "component": "Password Field",
+      "compose": "TextField (VisualTransformation)",
+      "swiftui": "SecureField",
+      "react_native": "TextInput (secureTextEntry)",
+      "flutter": "TextField (obscureText)",
+      "xamarin": "Entry (IsPassword)",
+      "ionic": "ion-input (type=password)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/input/PasswordVisualTransformation",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/securefield",
+        "react_native": "https://reactnative.dev/docs/textinput#securetextentry",
+        "flutter": "https://api.flutter.dev/flutter/widgets/EditableText/obscureText.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.entry.ispassword",
+        "ionic": "https://ionicframework.com/docs/api/input#type"
+      }
+    },
+    {
+      "component": "Search Bar",
+      "compose": "SearchBar",
+      "swiftui": ".searchable",
+      "react_native": "TextInput / SearchBar (IOS)",
+      "flutter": "SearchBar",
+      "xamarin": "SearchBar",
+      "ionic": "ion-searchbar",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#SearchBar(kotlin.String,kotlin.Function1,kotlin.Function1,kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.Dp,androidx.compose.ui.unit.Dp,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/searchable(text:placement:prompt:)-17h1",
+        "react_native": "https://reactnative.dev/docs/textinput",
+        "flutter": "https://api.flutter.dev/flutter/material/SearchBar-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/searchbar",
+        "ionic": "https://ionicframework.com/docs/api/searchbar"
+      }
+    },
+    {
+      "component": "Slider",
+      "compose": "Slider",
+      "swiftui": "Slider",
+      "react_native": "Slider (Community)",
+      "flutter": "Slider",
+      "xamarin": "Slider",
+      "ionic": "ion-range",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Slider(kotlin.Float,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,kotlin.ranges.ClosedFloatingPointRange,kotlin.Int,kotlin.Function0,androidx.compose.material3.SliderColors,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/slider",
+        "react_native": "https://github.com/callstack/react-native-slider",
+        "flutter": "https://api.flutter.dev/flutter/material/Slider-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/slider",
+        "ionic": "https://ionicframework.com/docs/api/range"
+      }
+    },
+    {
+      "component": "Switch",
+      "compose": "Switch",
+      "swiftui": "Toggle",
+      "react_native": "Switch",
+      "flutter": "Switch",
+      "xamarin": "Switch",
+      "ionic": "ion-toggle",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Switch(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Boolean,androidx.compose.material3.SwitchColors,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/toggle",
+        "react_native": "https://reactnative.dev/docs/switch",
+        "flutter": "https://api.flutter.dev/flutter/material/Switch-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/switch",
+        "ionic": "https://ionicframework.com/docs/api/toggle"
+      }
+    },
+    {
+      "component": "Checkbox",
+      "compose": "Checkbox",
+      "swiftui": "Toggle (CheckboxStyle)",
+      "react_native": "CheckBox (Community)",
+      "flutter": "Checkbox",
+      "xamarin": "CheckBox",
+      "ionic": "ion-checkbox",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Checkbox(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.CheckboxColors,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/togglestyle",
+        "react_native": "https://github.com/react-native-checkbox/react-native-checkbox",
+        "flutter": "https://api.flutter.dev/flutter/material/Checkbox-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/checkbox",
+        "ionic": "https://ionicframework.com/docs/api/checkbox"
+      }
+    },
+    {
+      "component": "Radio Button",
+      "compose": "RadioButton",
+      "swiftui": "Picker (Radio Style)",
+      "react_native": "RadioButton (Community)",
+      "flutter": "Radio",
+      "xamarin": "RadioButton",
+      "ionic": "ion-radio",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#RadioButton(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.RadioButtonColors,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/picker",
+        "react_native": "https://github.com/react-native-picker/picker",
+        "flutter": "https://api.flutter.dev/flutter/material/Radio-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/radiobutton",
+        "ionic": "https://ionicframework.com/docs/api/radio"
+      }
+    },
+    {
+      "component": "Range Slider",
+      "compose": "RangeSlider",
+      "swiftui": "Slider (Range)",
+      "react_native": "RangeSlider (Community)",
+      "flutter": "RangeSlider",
+      "xamarin": "Slider (Custom)",
+      "ionic": "ion-range (dual knobs)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#RangeSlider(kotlin.ranges.ClosedFloatingPointRange,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,kotlin.ranges.ClosedFloatingPointRange,kotlin.Int,kotlin.Function0,androidx.compose.material3.SliderColors,androidx.compose.material3.SliderElevation)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/slider",
+        "react_native": "https://github.com/ptomasroos/react-native-multi-slider",
+        "flutter": "https://api.flutter.dev/flutter/material/RangeSlider-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/slider",
+        "ionic": "https://ionicframework.com/docs/api/range#dual-knobs"
+      }
+    },
+    {
+      "component": "Rating Bar",
+      "compose": "Custom (Row of Icons)",
+      "swiftui": "HStack + Images",
+      "react_native": "react-native-ratings",
+      "flutter": "flutter_rating_bar",
+      "xamarin": "Rating (Community)",
+      "ionic": "Custom (Icons)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material/icons/Icons",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/image",
+        "react_native": "https://github.com/aurelhubert/react-native-ratings",
+        "flutter": "https://pub.dev/packages/flutter_rating_bar",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/rating-view",
+        "ionic": "https://ionicframework.com/docs/api/icon"
+      }
+    },
+    {
+      "component": "OTP / Pin Input",
+      "compose": "BasicTextField (Custom)",
+      "swiftui": "HStack + TextFields",
+      "react_native": "react-native-otp-inputs",
+      "flutter": "pinput",
+      "xamarin": "Custom Entry",
+      "ionic": "ion-input (array)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/text/BasicTextField",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/textfield",
+        "react_native": "https://github.com/dsznajder/react-native-otp-inputs",
+        "flutter": "https://pub.dev/packages/pinput",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/entry",
+        "ionic": "https://ionicframework.com/docs/api/input"
+      }
+    }
+  ]
+}

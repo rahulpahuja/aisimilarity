@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "utilities",
+    "description": "Common app functionality and helper integrations",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Share Sheet",
+      "compose": "Intent.ACTION_SEND",
+      "swiftui": "ShareLink",
+      "react_native": "Share",
+      "flutter": "Share Plus",
+      "xamarin": "Share",
+      "ionic": "Share Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/sharing/send",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/sharelink",
+        "react_native": "https://reactnative.dev/docs/share",
+        "flutter": "https://pub.dev/packages/share_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/data/share",
+        "ionic": "https://capacitorjs.com/docs/apis/share"
+      }
+    },
+    {
+      "component": "Open URL",
+      "compose": "UriHandler",
+      "swiftui": "Link / openURL",
+      "react_native": "Linking",
+      "flutter": "url_launcher",
+      "xamarin": "Launcher",
+      "ionic": "window.open / Browser",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/UriHandler",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/link",
+        "react_native": "https://reactnative.dev/docs/linking",
+        "flutter": "https://pub.dev/packages/url_launcher",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/launcher",
+        "ionic": "https://capacitorjs.com/docs/apis/browser"
+      }
+    },
+    {
+      "component": "Device Info",
+      "compose": "Build / Configuration",
+      "swiftui": "UIDevice",
+      "react_native": "react-native-device-info",
+      "flutter": "device_info_plus",
+      "xamarin": "DeviceInfo",
+      "ionic": "Device Plugin",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/os/Build",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uidevice",
+        "react_native": "https://github.com/react-native-device-info/react-native-device-info",
+        "flutter": "https://pub.dev/packages/device_info_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/information",
+        "ionic": "https://capacitorjs.com/docs/apis/device"
+      }
+    },
+    {
+      "component": "Deep Linking",
+      "compose": "NavDeepLink",
+      "swiftui": "onOpenURL",
+      "react_native": "Linking (getInitialURL)",
+      "flutter": "uni_links / GoRouter",
+      "xamarin": "AppActions",
+      "ionic": "App Plugin (Url)",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/navigation#deeplinks",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/onopenurl(perform:)",
+        "react_native": "https://reactnative.dev/docs/linking#handling-deep-links",
+        "flutter": "https://docs.flutter.dev/ui/navigation/deep-linking",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/app-actions",
+        "ionic": "https://capacitorjs.com/docs/apis/app#appurlopevent"
+      }
+    },
+    {
+      "component": "Review Request",
+      "compose": "Play Core Review",
+      "swiftui": "SKStoreReviewController",
+      "react_native": "react-native-rate",
+      "flutter": "in_app_review",
+      "xamarin": "StoreReview (Plugin)",
+      "ionic": "Rate App Plugin",
+      "links": {
+        "compose": "https://developer.android.com/guide/playcore/in-app-review",
+        "swiftui": "https://developer.apple.com/documentation/storekit/skstorereviewcontroller",
+        "react_native": "https://github.com/KjellZeal/react-native-rate",
+        "flutter": "https://pub.dev/packages/in_app_review",
+        "xamarin": "https://github.com/jamesmontemagno/StoreReviewPlugin",
+        "ionic": "https://github.com/capacitor-community/rate-app"
+      }
+    },
+    {
+      "component": "Map View",
+      "compose": "Google Maps Compose",
+      "swiftui": "Map",
+      "react_native": "react-native-maps",
+      "flutter": "google_maps_flutter",
+      "xamarin": "Map",
+      "ionic": "Google Maps Plugin",
+      "links": {
+        "compose": "https://github.com/googlemaps/android-maps-compose",
+        "swiftui": "https://developer.apple.com/documentation/mapkit/map",
+        "react_native": "https://github.com/react-native-maps/react-native-maps",
+        "flutter": "https://pub.dev/packages/google_maps_flutter",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/map",
+        "ionic": "https://capacitorjs.com/docs/apis/google-maps"
+      }
+    },
+    {
+      "component": "Web View",
+      "compose": "AndroidView (WebView)",
+      "swiftui": "WKWebView",
+      "react_native": "react-native-webview",
+      "flutter": "webview_flutter",
+      "xamarin": "WebView",
+      "ionic": "Iframe",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/webkit/WebView",
+        "swiftui": "https://developer.apple.com/documentation/webkit/wkwebview",
+        "react_native": "https://github.com/react-native-webview/react-native-webview",
+        "flutter": "https://pub.dev/packages/webview_flutter",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/webview",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"
+      }
+    },
+    {
+      "component": "Video Player",
+      "compose": "ExoPlayer (View)",
+      "swiftui": "VideoPlayer",
+      "react_native": "react-native-video",
+      "flutter": "video_player",
+      "xamarin": "MediaElement",
+      "ionic": "HTML5 Video",
+      "links": {
+        "compose": "https://developer.android.com/media/media3/exoplayer",
+        "swiftui": "https://developer.apple.com/documentation/avkit/videoplayer",
+        "react_native": "https://github.com/react-native-video/react-native-video",
+        "flutter": "https://pub.dev/packages/video_player",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/media-element",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"
+      }
+    },
+    {
+      "component": "Markdown Render",
+      "compose": "Compose Markdown",
+      "swiftui": "Text(markdown:)",
+      "react_native": "react-native-markdown-display",
+      "flutter": "flutter_markdown",
+      "xamarin": "Label (Html)",
+      "ionic": "marked / markdown-it",
+      "links": {
+        "compose": "https://github.com/mikepenz/multiplatform-markdown-renderer",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/text/init(_:)-9d1g4",
+        "react_native": "https://github.com/iamacup/react-native-markdown-display",
+        "flutter": "https://pub.dev/packages/flutter_markdown",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label#display-html",
+        "ionic": "https://github.com/markedjs/marked"
+      }
+    },
+    {
+      "component": "QR Code Scanner",
+      "compose": "CameraX + MLKit",
+      "swiftui": "AVCaptureMetadataOutput",
+      "react_native": "react-native-camera",
+      "flutter": "qr_code_scanner",
+      "xamarin": "ZXing.Net.Mobile",
+      "ionic": "Barcode Scanner",
+      "links": {
+        "compose": "https://developers.google.com/ml-kit/vision/barcode-scanning/android",
+        "swiftui": "https://developer.apple.com/documentation/avfoundation/avcapturemetadataoutput",
+        "react_native": "https://github.com/react-native-camera/react-native-camera",
+        "flutter": "https://pub.dev/packages/qr_code_scanner",
+        "xamarin": "https://github.com/Redth/ZXing.Net.Mobile",
+        "ionic": "https://github.com/capacitor-community/barcode-scanner"
+      }
+    }
+  ]
+}

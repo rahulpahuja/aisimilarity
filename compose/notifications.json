@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "notifications",
+    "description": "System alerts, pushes, and background services",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Local Notification",
+      "compose": "NotificationManager",
+      "swiftui": "UNUserNotificationCenter",
+      "react_native": "PushNotificationIOS",
+      "flutter": "flutter_local_notifications",
+      "xamarin": "LocalNotification",
+      "ionic": "Local Notifications",
+      "links": {
+        "compose": "https://developer.android.com/develop/ui/views/notifications/build-notification",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications/scheduling-a-notification-locally-from-your-app",
+        "react_native": "https://github.com/react-native-push-notification/ios",
+        "flutter": "https://pub.dev/packages/flutter_local_notifications",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/alerts/local-notifications",
+        "ionic": "https://capacitorjs.com/docs/apis/local-notifications"
+      }
+    },
+    {
+      "component": "Push Notification",
+      "compose": "FirebaseMessaging",
+      "swiftui": "UIApplication.registerForRemote...",
+      "react_native": "RNFirebase Messaging",
+      "flutter": "firebase_messaging",
+      "xamarin": "Firebase Cloud Messaging",
+      "ionic": "Push Notifications",
+      "links": {
+        "compose": "https://firebase.google.com/docs/cloud-messaging/android/client",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications/registering-your-app-with-apns",
+        "react_native": "https://rnfirebase.io/messaging/usage",
+        "flutter": "https://pub.dev/packages/firebase_messaging",
+        "xamarin": "https://learn.microsoft.com/en-us/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm",
+        "ionic": "https://capacitorjs.com/docs/apis/push-notifications"
+      }
+    },
+    {
+      "component": "Badges",
+      "compose": "ShortcutBadger (Lib)",
+      "swiftui": "applicationIconBadgeNumber",
+      "react_native": "PushNotification.setApplicationIconBadgeNumber",
+      "flutter": "flutter_app_badger",
+      "xamarin": "Badge (Plugin)",
+      "ionic": "Badge Plugin",
+      "links": {
+        "compose": "https://github.com/leolin310148/ShortcutBadger",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uiapplication/1622918-applicationiconbadgenumber",
+        "react_native": "https://github.com/react-native-push-notification/ios",
+        "flutter": "https://pub.dev/packages/flutter_app_badger",
+        "xamarin": "https://github.com/xamarin/XamarinComponents",
+        "ionic": "https://github.com/capawesome-team/capacitor-badge"
+      }
+    },
+    {
+      "component": "Foreground Service",
+      "compose": "Service (Foreground)",
+      "swiftui": "BackgroundTasks",
+      "react_native": "Headless JS",
+      "flutter": "flutter_background_service",
+      "xamarin": "Android Foreground Service",
+      "ionic": "Background Mode",
+      "links": {
+        "compose": "https://developer.android.com/guide/components/foreground-services",
+        "swiftui": "https://developer.apple.com/documentation/backgroundtasks",
+        "react_native": "https://reactnative.dev/docs/headless-js-android",
+        "flutter": "https://pub.dev/packages/flutter_background_service",
+        "xamarin": "https://learn.microsoft.com/en-us/xamarin/android/app-fundamentals/services/foreground-services",
+        "ionic": "https://github.com/katzer/cordova-plugin-background-mode"
+      }
+    },
+    {
+      "component": "Toast",
+      "compose": "Toast",
+      "swiftui": "Overlay View",
+      "react_native": "ToastAndroid",
+      "flutter": "fluttertoast",
+      "xamarin": "Toast",
+      "ionic": "ion-toast",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/ui/notifiers/toasts",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/overlay(_:alignment:)",
+        "react_native": "https://reactnative.dev/docs/toastandroid",
+        "flutter": "https://pub.dev/packages/fluttertoast",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/alerts/toast",
+        "ionic": "https://ionicframework.com/docs/api/toast"
+      }
+    },
+    {
+      "component": "Banner Notification",
+      "compose": "Snackbar (Top)",
+      "swiftui": "Notification Banner",
+      "react_native": "react-native-flash-message",
+      "flutter": "MaterialBanner",
+      "xamarin": "Snackbar",
+      "ionic": "ion-toast (top)",
+      "links": {
+        "compose": "https://developer.android.com/reference/com/google/android/material/snackbar/Snackbar",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications",
+        "react_native": "https://github.com/lucasferreira/react-native-flash-message",
+        "flutter": "https://api.flutter.dev/flutter/material/MaterialBanner-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/alerts/snackbar",
+        "ionic": "https://ionicframework.com/docs/api/toast#positioning"
+      }
+    },
+    {
+      "component": "Background Fetch",
+      "compose": "WorkManager",
+      "swiftui": "BGAppRefreshTask",
+      "react_native": "BackgroundFetch",
+      "flutter": "workmanager",
+      "xamarin": "Shiny.Jobs",
+      "ionic": "Background Fetch",
+      "links": {
+        "compose": "https://developer.android.com/topic/libraries/architecture/workmanager",
+        "swiftui": "https://developer.apple.com/documentation/backgroundtasks/bgapprefreshtask",
+        "react_native": "https://github.com/transistorsoft/react-native-background-fetch",
+        "flutter": "https://pub.dev/packages/workmanager",
+        "xamarin": "https://shinylib.net/jobs/",
+        "ionic": "https://github.com/transistorsoft/capacitor-background-fetch"
+      }
+    },
+    {
+      "component": "Scheduled Notification",
+      "compose": "AlarmManager",
+      "swiftui": "UNTimeIntervalNotificationTrigger",
+      "react_native": "PushNotification.localNotificationSchedule",
+      "flutter": "zonedSchedule",
+      "xamarin": "LocalNotification.Schedule",
+      "ionic": "LocalNotifications.schedule",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/app/AlarmManager",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications/untimeintervalnotificationtrigger",
+        "react_native": "https://github.com/zo0r/react-native-push-notification#scheduled-notifications",
+        "flutter": "https://pub.dev/documentation/flutter_local_notifications/latest/flutter_local_notifications/FlutterLocalNotificationsPlugin/zonedSchedule.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/alerts/local-notifications",
+        "ionic": "https://capacitorjs.com/docs/apis/local-notifications#schedule"
+      }
+    },
+    {
+      "component": "In-App Messaging",
+      "compose": "Custom Dialog",
+      "swiftui": "Custom View",
+      "react_native": "Firebase In-App Messaging",
+      "flutter": "firebase_in_app_messaging",
+      "xamarin": "Custom Popup",
+      "ionic": "Firebase Plugin",
+      "links": {
+        "compose": "https://firebase.google.com/docs/in-app-messaging",
+        "swiftui": "https://firebase.google.com/docs/in-app-messaging/get-started?platform=ios",
+        "react_native": "https://rnfirebase.io/in-app-messaging/usage",
+        "flutter": "https://pub.dev/packages/firebase_in_app_messaging",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pop-ups",
+        "ionic": "https://github.com/capacitor-community/firebase-inappmessaging"
+      }
+    },
+    {
+      "component": "Actionable Notification",
+      "compose": "PendingIntent (Action)",
+      "swiftui": "UNNotificationAction",
+      "react_native": "PushNotification (actions)",
+      "flutter": "AndroidNotificationAction",
+      "xamarin": "NotificationAction",
+      "ionic": "LocalNotificationAction",
+      "links": {
+        "compose": "https://developer.android.com/develop/ui/views/notifications/build-notification#Actions",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications/unnotificationaction",
+        "react_native": "https://github.com/zo0r/react-native-push-notification#notification-actions",
+        "flutter": "https://pub.dev/documentation/flutter_local_notifications/latest/flutter_local_notifications/AndroidNotificationAction-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/alerts/local-notifications#actions",
+        "ionic": "https://capacitorjs.com/docs/apis/local-notifications#action-types"
+      }
+    }
+  ]
+}

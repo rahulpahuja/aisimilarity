@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "devtools",
+    "description": "Utilities for debugging, profiling, and inspecting apps",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Layout Inspector",
+      "compose": "Android Studio Layout Inspector",
+      "swiftui": "Xcode View Hierarchy",
+      "react_native": "React DevTools",
+      "flutter": "Flutter Inspector",
+      "xamarin": "Live Visual Tree",
+      "ionic": "Chrome DevTools",
+      "links": {
+        "compose": "https://developer.android.com/studio/debug/layout-inspector",
+        "swiftui": "https://developer.apple.com/library/archive/documentation/ToolsLanguages/Conceptual/Xcode_Overview/DebugYourApp.html",
+        "react_native": "https://reactnative.dev/docs/react-devtools",
+        "flutter": "https://docs.flutter.dev/tools/devtools/inspector",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging",
+        "ionic": "https://developer.chrome.com/docs/devtools/"
+      }
+    },
+    {
+      "component": "Performance Profiler",
+      "compose": "Android Studio Profiler",
+      "swiftui": "Instruments",
+      "react_native": "Flipper / Perf Monitor",
+      "flutter": "DevTools Performance",
+      "xamarin": "Visual Studio Profiler",
+      "ionic": "Lighthouse",
+      "links": {
+        "compose": "https://developer.android.com/studio/profile/android-profiler",
+        "swiftui": "https://help.apple.com/instruments/mac/current/",
+        "react_native": "https://reactnative.dev/docs/performance",
+        "flutter": "https://docs.flutter.dev/tools/devtools/performance",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/profiling/profiling-feature-tour",
+        "ionic": "https://developer.chrome.com/docs/lighthouse/overview/"
+      }
+    },
+    {
+      "component": "Network Inspector",
+      "compose": "App Inspection (Network)",
+      "swiftui": "Instruments (Network)",
+      "react_native": "Flipper / Reactotron",
+      "flutter": "DevTools Network",
+      "xamarin": "Dev Tunnels",
+      "ionic": "Chrome Network Tab",
+      "links": {
+        "compose": "https://developer.android.com/studio/debug/network-profiler",
+        "swiftui": "https://developer.apple.com/documentation/foundation/url_loading_system/analyzing_http_traffic_with_instruments",
+        "react_native": "https://fbflipper.com/docs/features/network-plugin/",
+        "flutter": "https://docs.flutter.dev/tools/devtools/network",
+        "xamarin": "https://learn.microsoft.com/en-us/aspnet/core/test/dev-tunnels",
+        "ionic": "https://developer.chrome.com/docs/devtools/network/"
+      }
+    },
+    {
+      "component": "Database Inspector",
+      "compose": "App Inspection (Database)",
+      "swiftui": "Core Data Lab (External)",
+      "react_native": "Flipper Databases",
+      "flutter": "Drift Viewer / Isar Inspector",
+      "xamarin": "SQLite Browser",
+      "ionic": "Chrome Application Tab",
+      "links": {
+        "compose": "https://developer.android.com/studio/inspect/database",
+        "swiftui": "https://github.com/betzerra/CoreDataLab",
+        "react_native": "https://fbflipper.com/docs/features/databases-plugin/",
+        "flutter": "https://pub.dev/packages/drift_db_viewer",
+        "xamarin": "https://sqlitebrowser.org/",
+        "ionic": "https://developer.chrome.com/docs/devtools/storage/indexeddb/"
+      }
+    },
+    {
+      "component": "Log Viewer",
+      "compose": "Logcat",
+      "swiftui": "Console.app / Xcode Console",
+      "react_native": "Metro / Reactotron",
+      "flutter": "DevTools Logging",
+      "xamarin": "Output Window",
+      "ionic": "Chrome Console",
+      "links": {
+        "compose": "https://developer.android.com/studio/debug/logcat",
+        "swiftui": "https://developer.apple.com/documentation/os/logging",
+        "react_native": "https://github.com/infinitered/reactotron",
+        "flutter": "https://docs.flutter.dev/tools/devtools/logging",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/ide/reference/output-window",
+        "ionic": "https://developer.chrome.com/docs/devtools/console/"
+      }
+    },
+    {
+      "component": "UI Preview",
+      "compose": "@Preview",
+      "swiftui": "#Preview",
+      "react_native": "Fast Refresh",
+      "flutter": "Hot Reload",
+      "xamarin": "Hot Reload",
+      "ionic": "Live Reload",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/tooling/previews",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/previews",
+        "react_native": "https://reactnative.dev/docs/fast-refresh",
+        "flutter": "https://docs.flutter.dev/tools/hot-reload",
+        "xamarin": "https://learn.microsoft.com/en-us/xamarin/xamarin-forms/xaml/hot-reload",
+        "ionic": "https://ionicframework.com/docs/cli/commands/serve"
+      }
+    },
+    {
+      "component": "Crash Reporting",
+      "compose": "Firebase Crashlytics",
+      "swiftui": "XCode Organizer / Firebase",
+      "react_native": "Sentry / Crashlytics",
+      "flutter": "Sentry / Firebase",
+      "xamarin": "App Center (Retiring)",
+      "ionic": "Sentry",
+      "links": {
+        "compose": "https://firebase.google.com/docs/crashlytics",
+        "swiftui": "https://developer.apple.com/documentation/xcode/analyzing-crash-reports",
+        "react_native": "https://docs.sentry.io/platforms/react-native/",
+        "flutter": "https://docs.sentry.io/platforms/flutter/",
+        "xamarin": "https://learn.microsoft.com/en-us/appcenter/diagnostics/",
+        "ionic": "https://docs.sentry.io/platforms/javascript/guides/capacitor/"
+      }
+    },
+    {
+      "component": "Memory Leak Detection",
+      "compose": "LeakCanary",
+      "swiftui": "Instruments (Leaks)",
+      "react_native": "Perf Monitor",
+      "flutter": "DevTools Memory",
+      "xamarin": "Profiler",
+      "ionic": "Chrome Memory Tab",
+      "links": {
+        "compose": "https://square.github.io/leakcanary/",
+        "swiftui": "https://help.apple.com/instruments/mac/current/#/dev022f981b",
+        "react_native": "https://reactnative.dev/docs/performance#memory-usage",
+        "flutter": "https://docs.flutter.dev/tools/devtools/memory",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/profiling/memory-usage",
+        "ionic": "https://developer.chrome.com/docs/devtools/memory-problems/"
+      }
+    },
+    {
+      "component": "Screenshot Testing",
+      "compose": "Paparazzi / Roborazzi",
+      "swiftui": "XCTest Snapshot",
+      "react_native": "Jest Image Snapshot",
+      "flutter": "Golden Tests",
+      "xamarin": "Xamarin.UITest",
+      "ionic": "Cypress / Playwright",
+      "links": {
+        "compose": "https://github.com/cashapp/paparazzi",
+        "swiftui": "https://github.com/pointfreeco/swift-snapshot-testing",
+        "react_native": "https://github.com/americanexpress/jest-image-snapshot",
+        "flutter": "https://docs.flutter.dev/testing/integration-tests",
+        "xamarin": "https://learn.microsoft.com/en-us/appcenter/test-cloud/uitest/",
+        "ionic": "https://docs.cypress.io/guides/tooling/visual-testing"
+      }
+    },
+    {
+      "component": "State Inspector",
+      "compose": "Layout Inspector (State)",
+      "swiftui": "N/A",
+      "react_native": "Redux DevTools",
+      "flutter": "DevTools Provider",
+      "xamarin": "Live Property Explorer",
+      "ionic": "Redux DevTools",
+      "links": {
+        "compose": "https://developer.android.com/studio/debug/layout-inspector",
+        "swiftui": "https://developer.apple.com/documentation/xcode/debugging",
+        "react_native": "https://github.com/reduxjs/redux-devtools",
+        "flutter": "https://pub.dev/packages/provider#devtools",
+        "xamarin": "https://learn.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging",
+        "ionic": "https://github.com/reduxjs/redux-devtools"
+      }
+    }
+  ]
+}

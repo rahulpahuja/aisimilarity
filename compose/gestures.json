@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "gestures",
+    "description": "Touch interactions and pointer input handling",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Tap / Click",
+      "compose": "clickable",
+      "swiftui": "onTapGesture",
+      "react_native": "Pressable (onPress)",
+      "flutter": "GestureDetector (onTap)",
+      "xamarin": "TapGestureRecognizer",
+      "ionic": "(click) event",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#(androidx.compose.ui.Modifier).clickable(kotlin.Boolean,kotlin.String,androidx.compose.ui.semantics.Role,kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/ontapgesture(count:perform:)",
+        "react_native": "https://reactnative.dev/docs/pressable#onpress",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GestureDetector/onTap.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/tap",
+        "ionic": "https://ionicframework.com/docs/troubleshooting/native#click-events"
+      }
+    },
+    {
+      "component": "Double Tap",
+      "compose": "detectTapGestures",
+      "swiftui": "onTapGesture(count: 2)",
+      "react_native": "Pressable (lastPress)",
+      "flutter": "GestureDetector (onDoubleTap)",
+      "xamarin": "TapGestureRecognizer (2)",
+      "ionic": "HammerJS / Custom",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#detectTapGestures(androidx.compose.ui.input.pointer.PointerInputScope,kotlin.Function1,kotlin.Function1,kotlin.Function3,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/ontapgesture(count:perform:)",
+        "react_native": "https://reactnative.dev/docs/pressable",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GestureDetector/onDoubleTap.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/tap#handle-a-double-tap",
+        "ionic": "https://ionicframework.com/docs/utilities/gestures"
+      }
+    },
+    {
+      "component": "Long Press",
+      "compose": "combinedClickable",
+      "swiftui": "onLongPressGesture",
+      "react_native": "Pressable (onLongPress)",
+      "flutter": "GestureDetector (onLongPress)",
+      "xamarin": "TouchListener (Custom)",
+      "ionic": "long-press event",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#(androidx.compose.ui.Modifier).combinedClickable(kotlin.Boolean,kotlin.String,androidx.compose.ui.semantics.Role,kotlin.Function0,kotlin.Function0,kotlin.Function0,kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/onlongpressgesture(minimumduration:perform:onpressingchanged:)",
+        "react_native": "https://reactnative.dev/docs/pressable#onlongpress",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GestureDetector/onLongPress.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/swipe",
+        "ionic": "https://ionicframework.com/docs/utilities/gestures"
+      }
+    },
+    {
+      "component": "Scroll (Vertical)",
+      "compose": "verticalScroll",
+      "swiftui": "ScrollView",
+      "react_native": "ScrollView",
+      "flutter": "SingleChildScrollView",
+      "xamarin": "ScrollView",
+      "ionic": "ion-content",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#(androidx.compose.ui.Modifier).verticalScroll(androidx.compose.foundation.ScrollState,kotlin.Boolean,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scrollview",
+        "react_native": "https://reactnative.dev/docs/scrollview",
+        "flutter": "https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview",
+        "ionic": "https://ionicframework.com/docs/api/content"
+      }
+    },
+    {
+      "component": "Swipe",
+      "compose": "swipeable / anchors",
+      "swiftui": "DragGesture",
+      "react_native": "Swipeable (Gesture Handler)",
+      "flutter": "Dismissible",
+      "xamarin": "SwipeGestureRecognizer",
+      "ionic": "ion-item-sliding",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#(androidx.compose.ui.Modifier).draggable(androidx.compose.foundation.gestures.DraggableState,androidx.compose.foundation.gestures.Orientation,kotlin.Boolean,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Boolean,kotlin.Function3,kotlin.Function3,kotlin.Boolean)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/draggesture",
+        "react_native": "https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Dismissible-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/swipe",
+        "ionic": "https://ionicframework.com/docs/api/item-sliding"
+      }
+    },
+    {
+      "component": "Drag (Pan)",
+      "compose": "draggable / detectDragGestures",
+      "swiftui": "DragGesture",
+      "react_native": "PanResponder",
+      "flutter": "GestureDetector (onPanUpdate)",
+      "xamarin": "PanGestureRecognizer",
+      "ionic": "CreateGesture (pan)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#detectDragGestures(androidx.compose.ui.input.pointer.PointerInputScope,kotlin.Function1,kotlin.Function0,kotlin.Function0,kotlin.Function2)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/draggesture",
+        "react_native": "https://reactnative.dev/docs/panresponder",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GestureDetector/onPanUpdate.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/pan",
+        "ionic": "https://ionicframework.com/docs/utilities/gestures"
+      }
+    },
+    {
+      "component": "Zoom / Pinch",
+      "compose": "transformable / detectTransform",
+      "swiftui": "MagnificationGesture",
+      "react_native": "PinchGestureHandler",
+      "flutter": "InteractiveViewer",
+      "xamarin": "PinchGestureRecognizer",
+      "ionic": "ion-slides (zoom)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#(androidx.compose.ui.Modifier).transformable(androidx.compose.foundation.gestures.TransformableState,kotlin.Boolean,kotlin.Boolean)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/magnificationgesture",
+        "react_native": "https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/pinch-gesture",
+        "flutter": "https://api.flutter.dev/flutter/widgets/InteractiveViewer-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/pinch",
+        "ionic": "https://ionicframework.com/docs/api/slides"
+      }
+    },
+    {
+      "component": "Rotate",
+      "compose": "detectTransformGestures",
+      "swiftui": "RotationGesture",
+      "react_native": "RotationGestureHandler",
+      "flutter": "GestureDetector (onScaleUpdate)",
+      "xamarin": "Custom (Touch events)",
+      "ionic": "CreateGesture",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/package-summary#detectTransformGestures(androidx.compose.ui.input.pointer.PointerInputScope,kotlin.Boolean,kotlin.Function4)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/rotationgesture",
+        "react_native": "https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/rotation-gesture",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GestureDetector/onScaleUpdate.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/",
+        "ionic": "https://ionicframework.com/docs/utilities/gestures"
+      }
+    },
+    {
+      "component": "Hover",
+      "compose": "hoverable (PointerEventType.Enter)",
+      "swiftui": "onHover",
+      "react_native": "Pressable (hover)",
+      "flutter": "MouseRegion",
+      "xamarin": "PointerGestureRecognizer",
+      "ionic": ":hover CSS",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/input/pointer/package-summary#(androidx.compose.ui.Modifier).pointerInput(kotlin.Any,kotlin.coroutines.SuspendFunction1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/onhover(perform:)",
+        "react_native": "https://reactnative.dev/docs/pressable#hover-state-web",
+        "flutter": "https://api.flutter.dev/flutter/widgets/MouseRegion-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/gestures/pointer",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
+      }
+    },
+    {
+      "component": "Focus",
+      "compose": "onFocusChanged",
+      "swiftui": "FocusState",
+      "react_native": "onFocus",
+      "flutter": "Focus / FocusNode",
+      "xamarin": "Focused / Unfocused",
+      "ionic": "ionFocus",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/focus/package-summary#(androidx.compose.ui.Modifier).onFocusChanged(kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/focusstate",
+        "react_native": "https://reactnative.dev/docs/textinput#onfocus",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Focus-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.visualelement.focused",
+        "ionic": "https://ionicframework.com/docs/api/input#events"
+      }
+    }
+  ]
+}

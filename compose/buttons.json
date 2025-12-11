@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "buttons",
+    "description": "Interactive elements for triggering actions",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Button",
+      "compose": "Button",
+      "swiftui": "Button",
+      "react_native": "Button / Pressable",
+      "flutter": "ElevatedButton",
+      "xamarin": "Button",
+      "ionic": "ion-button",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Button(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/button",
+        "react_native": "https://reactnative.dev/docs/button",
+        "flutter": "https://api.flutter.dev/flutter/material/ElevatedButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button",
+        "ionic": "https://ionicframework.com/docs/api/button"
+      }
+    },
+    {
+      "component": "Icon Button",
+      "compose": "IconButton",
+      "swiftui": "Button(Label=Image)",
+      "react_native": "Pressable + Image",
+      "flutter": "IconButton",
+      "xamarin": "ImageButton",
+      "ionic": "ion-button (icon-only)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#IconButton(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.IconButtonColors,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/button",
+        "react_native": "https://reactnative.dev/docs/pressable",
+        "flutter": "https://api.flutter.dev/flutter/material/IconButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/imagebutton",
+        "ionic": "https://ionicframework.com/docs/api/button#icon-only"
+      }
+    },
+    {
+      "component": "FAB",
+      "compose": "FloatingActionButton",
+      "swiftui": "ZStack + Button",
+      "react_native": "Pressable (styled)",
+      "flutter": "FloatingActionButton",
+      "xamarin": "Button (styled)",
+      "ionic": "ion-fab",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#FloatingActionButton(kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.material3.FloatingActionButtonElevation,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/overlay(_:alignment:)",
+        "react_native": "https://reactnative.dev/docs/touchableopacity",
+        "flutter": "https://api.flutter.dev/flutter/material/FloatingActionButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button",
+        "ionic": "https://ionicframework.com/docs/api/fab"
+      }
+    },
+    {
+      "component": "Text Button",
+      "compose": "TextButton",
+      "swiftui": "Button(Borderless)",
+      "react_native": "Pressable + Text",
+      "flutter": "TextButton",
+      "xamarin": "Button (Transparent)",
+      "ionic": "ion-button (fill=clear)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TextButton(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/buttonstyle/borderless",
+        "react_native": "https://reactnative.dev/docs/pressable",
+        "flutter": "https://api.flutter.dev/flutter/material/TextButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button#button-appearance",
+        "ionic": "https://ionicframework.com/docs/api/button#clear-buttons"
+      }
+    },
+    {
+      "component": "Outlined Button",
+      "compose": "OutlinedButton",
+      "swiftui": "Button(Bordered)",
+      "react_native": "Pressable (Border)",
+      "flutter": "OutlinedButton",
+      "xamarin": "Button (Border)",
+      "ionic": "ion-button (fill=outline)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#OutlinedButton(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/buttonstyle/bordered",
+        "react_native": "https://reactnative.dev/docs/view-style-props#bordercolor",
+        "flutter": "https://api.flutter.dev/flutter/material/OutlinedButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button#button-appearance",
+        "ionic": "https://ionicframework.com/docs/api/button#outline-buttons"
+      }
+    },
+    {
+      "component": "Segmented Buttons",
+      "compose": "SegmentedButton",
+      "swiftui": "Picker(Segmented)",
+      "react_native": "SegmentedControlIOS",
+      "flutter": "SegmentedButton",
+      "xamarin": "Picker",
+      "ionic": "ion-segment",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#SegmentedButton(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.graphics.Shape,androidx.compose.ui.Modifier,androidx.compose.material3.SegmentedButtonColors,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/pickerstyle/segmented",
+        "react_native": "https://reactnative.dev/docs/segmentedcontrolios",
+        "flutter": "https://api.flutter.dev/flutter/material/SegmentedButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker",
+        "ionic": "https://ionicframework.com/docs/api/segment"
+      }
+    },
+    {
+      "component": "Chip",
+      "compose": "AssistChip / FilterChip",
+      "swiftui": "Text (styled)",
+      "react_native": "View (styled)",
+      "flutter": "Chip / ChoiceChip",
+      "xamarin": "Frame (styled)",
+      "ionic": "ion-chip",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#AssistChip(kotlin.Function0,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.material3.ChipColors,androidx.compose.material3.ChipElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/text",
+        "react_native": "https://reactnative.dev/docs/view",
+        "flutter": "https://api.flutter.dev/flutter/material/Chip-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/frame",
+        "ionic": "https://ionicframework.com/docs/api/chip"
+      }
+    },
+    {
+      "component": "Extended FAB",
+      "compose": "ExtendedFloatingActionButton",
+      "swiftui": "Button (Large)",
+      "react_native": "Pressable (Icon + Text)",
+      "flutter": "FloatingActionButton.extended",
+      "xamarin": "Button (Icon + Text)",
+      "ionic": "ion-fab-button",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ExtendedFloatingActionButton(kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.material3.FloatingActionButtonElevation,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/button",
+        "react_native": "https://reactnative.dev/docs/touchableopacity",
+        "flutter": "https://api.flutter.dev/flutter/material/FloatingActionButton/FloatingActionButton.extended.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button",
+        "ionic": "https://ionicframework.com/docs/api/fab-button"
+      }
+    },
+    {
+      "component": "Icon Toggle Button",
+      "compose": "IconToggleButton",
+      "swiftui": "Button (State)",
+      "react_native": "Pressable (State)",
+      "flutter": "IconButton (isSelected)",
+      "xamarin": "ImageButton (State)",
+      "ionic": "ion-button (toggle)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#IconToggleButton(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.IconToggleButtonColors,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/button",
+        "react_native": "https://reactnative.dev/docs/pressable",
+        "flutter": "https://api.flutter.dev/flutter/material/IconButton/isSelected.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/imagebutton",
+        "ionic": "https://ionicframework.com/docs/api/button"
+      }
+    },
+    {
+      "component": "Dropdown Button",
+      "compose": "Box + DropdownMenu",
+      "swiftui": "Menu",
+      "react_native": "Picker / Modal",
+      "flutter": "DropdownButton",
+      "xamarin": "Picker",
+      "ionic": "ion-select (popover)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#DropdownMenu(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.ui.unit.DpObject,androidx.compose.foundation.ScrollState,androidx.compose.ui.window.PopupProperties,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/menu",
+        "react_native": "https://github.com/react-native-picker/picker",
+        "flutter": "https://api.flutter.dev/flutter/material/DropdownButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker",
+        "ionic": "https://ionicframework.com/docs/api/select"
+      }
+    }
+  ]
+}

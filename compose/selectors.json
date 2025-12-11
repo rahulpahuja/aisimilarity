@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "selectors",
+    "description": "Components for selecting values from a range or set",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Dropdown",
+      "compose": "ExposedDropdownMenuBox",
+      "swiftui": "Menu / Picker",
+      "react_native": "Picker",
+      "flutter": "DropdownButton",
+      "xamarin": "Picker",
+      "ionic": "ion-select",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ExposedDropdownMenuBox(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/menu",
+        "react_native": "https://github.com/react-native-picker/picker",
+        "flutter": "https://api.flutter.dev/flutter/material/DropdownButton-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker",
+        "ionic": "https://ionicframework.com/docs/api/select"
+      }
+    },
+    {
+      "component": "Date Picker",
+      "compose": "DatePicker",
+      "swiftui": "DatePicker",
+      "react_native": "DateTimePicker",
+      "flutter": "showDatePicker",
+      "xamarin": "DatePicker",
+      "ionic": "ion-datetime",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#DatePicker(androidx.compose.material3.DatePickerState,androidx.compose.ui.Modifier,androidx.compose.material3.DatePickerFormatter,kotlin.Function0,kotlin.Function0,kotlin.Boolean,androidx.compose.material3.DatePickerColors)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/datepicker",
+        "react_native": "https://github.com/react-native-datetimepicker/datetimepicker",
+        "flutter": "https://api.flutter.dev/flutter/material/showDatePicker.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/datepicker",
+        "ionic": "https://ionicframework.com/docs/api/datetime"
+      }
+    },
+    {
+      "component": "Time Picker",
+      "compose": "TimePicker",
+      "swiftui": "DatePicker (hourAndMinute)",
+      "react_native": "DateTimePicker",
+      "flutter": "showTimePicker",
+      "xamarin": "TimePicker",
+      "ionic": "ion-datetime",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TimePicker(androidx.compose.material3.TimePickerState,androidx.compose.ui.Modifier,androidx.compose.material3.TimePickerColors,androidx.compose.material3.TimePickerLayoutType)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/datepickercomponents/hourandminute",
+        "react_native": "https://github.com/react-native-datetimepicker/datetimepicker",
+        "flutter": "https://api.flutter.dev/flutter/material/showTimePicker.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/timepicker",
+        "ionic": "https://ionicframework.com/docs/api/datetime"
+      }
+    },
+    {
+      "component": "Date Range Picker",
+      "compose": "DateRangePicker",
+      "swiftui": "MultiDatePicker",
+      "react_native": "react-native-calendars",
+      "flutter": "showDateRangePicker",
+      "xamarin": "DateRange (Community)",
+      "ionic": "ion-datetime (range)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#DateRangePicker(androidx.compose.material3.DateRangePickerState,androidx.compose.ui.Modifier,androidx.compose.material3.DatePickerFormatter,kotlin.Function0,kotlin.Function0,kotlin.Boolean,androidx.compose.material3.DatePickerColors)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/multidatepicker",
+        "react_native": "https://github.com/wix/react-native-calendars",
+        "flutter": "https://api.flutter.dev/flutter/material/showDateRangePicker.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/calendar-view",
+        "ionic": "https://ionicframework.com/docs/api/datetime#range"
+      }
+    },
+    {
+      "component": "Wheel Picker",
+      "compose": "VerticalPager (Custom)",
+      "swiftui": "Picker (WheelStyle)",
+      "react_native": "Picker (IOS)",
+      "flutter": "CupertinoPicker",
+      "xamarin": "Picker",
+      "ionic": "ion-picker",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/pager/package-summary#VerticalPager(androidx.compose.foundation.pager.PagerState,androidx.compose.ui.Modifier,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.pager.PageSize,kotlin.Int,androidx.compose.ui.unit.Dp,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Boolean,kotlin.Function1,kotlin.Function2)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/pickerstyle/wheel",
+        "react_native": "https://github.com/react-native-picker/picker",
+        "flutter": "https://api.flutter.dev/flutter/cupertino/CupertinoPicker-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker",
+        "ionic": "https://ionicframework.com/docs/api/picker"
+      }
+    },
+    {
+      "component": "Color Picker",
+      "compose": "Custom / Library",
+      "swiftui": "ColorPicker",
+      "react_native": "react-native-color-picker",
+      "flutter": "flutter_colorpicker",
+      "xamarin": "Custom",
+      "ionic": "input (type=color)",
+      "links": {
+        "compose": "https://github.com/godaddy/compose-color-picker",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/colorpicker",
+        "react_native": "https://github.com/instea/react-native-color-picker",
+        "flutter": "https://pub.dev/packages/flutter_colorpicker",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/graphics/",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color"
+      }
+    },
+    {
+      "component": "Time Input (Keyboard)",
+      "compose": "TimeInput",
+      "swiftui": "TextField (Time Format)",
+      "react_native": "TextInput (Mask)",
+      "flutter": "TimePickerEntryMode.input",
+      "xamarin": "TimePicker",
+      "ionic": "ion-input (type=time)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TimeInput(androidx.compose.material3.TimePickerState,androidx.compose.ui.Modifier,androidx.compose.material3.TimePickerColors)",
+        "swiftui": "https://developer.apple.com/documentation/foundation/dateformatter",
+        "react_native": "https://github.com/react-native-text-input-mask/react-native-text-input-mask",
+        "flutter": "https://api.flutter.dev/flutter/material/TimePickerEntryMode.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/timepicker",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time"
+      }
+    },
+    {
+      "component": "Autocomplete",
+      "compose": "ExposedDropdownMenu (Editable)",
+      "swiftui": "TextField + Popover",
+      "react_native": "AutocompleteDropdown",
+      "flutter": "Autocomplete",
+      "xamarin": "Entry + CollectionView",
+      "ionic": "ion-searchbar + list",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ExposedDropdownMenuBox(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/searchcompletion(_:)-7700e",
+        "react_native": "https://github.com/onurster/react-native-autocomplete-dropdown",
+        "flutter": "https://api.flutter.dev/flutter/material/Autocomplete-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/searchbar",
+        "ionic": "https://ionicframework.com/docs/api/searchbar"
+      }
+    },
+    {
+      "component": "Multi-Select",
+      "compose": "DropdownMenuItem + Checkbox",
+      "swiftui": "List (Selection)",
+      "react_native": "react-native-multiple-select",
+      "flutter": "FilterChip / Dialog",
+      "xamarin": "CollectionView (SelectionMode=Multiple)",
+      "ionic": "ion-select (multiple)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#DropdownMenuItem(kotlin.Function0,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function0,kotlin.Boolean,androidx.compose.material3.MenuItemColors,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/list",
+        "react_native": "https://github.com/pumpkin-mask/react-native-multiple-select",
+        "flutter": "https://api.flutter.dev/flutter/material/FilterChip-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview/selection#multiple-selection",
+        "ionic": "https://ionicframework.com/docs/api/select#multiple-selection"
+      }
+    },
+    {
+      "component": "File Picker (Visual)",
+      "compose": "PickVisualMedia",
+      "swiftui": "PhotosPicker",
+      "react_native": "ImagePicker",
+      "flutter": "image_picker",
+      "xamarin": "MediaPicker",
+      "ionic": "ion-img",
+      "links": {
+        "compose": "https://developer.android.com/training/data-storage/shared/photopicker",
+        "swiftui": "https://developer.apple.com/documentation/photokit/photospicker",
+        "react_native": "https://github.com/react-native-image-picker/react-native-image-picker",
+        "flutter": "https://pub.dev/packages/image_picker",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device-media/picker",
+        "ionic": "https://capacitorjs.com/docs/apis/camera"
+      }
+    }
+  ]
+}

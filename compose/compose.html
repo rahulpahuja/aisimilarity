@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compose Cross-Platform Library</title>
+  <link rel="stylesheet" href="compose.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div>
+      <h1>Compose Components</h1>
+      <p class="subtitle">Cross-framework mappings for 220+ UI elements</p>
+    </div>
+    <div class="controls">
+      <input id="search" placeholder="Search all components..." aria-label="Search components">
+    </div>
+  </header>
+
+  <div class="sticky-tabs">
+    <div id="tabs" class="tab-bar"></div>
+  </div>
+
+  <main id="results" aria-live="polite">
+    <div class="empty-state">Select a category above...</div>
+  </main>
+
+  <footer class="footer">
+    <p>Generated UI — Loading data from individual <code>.json</code> files</p>
+  </footer>
+</div>
+
+<script src="compose.js"></script>
+</body>
+</html>

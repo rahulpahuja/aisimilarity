@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "sensors",
+    "description": "Device hardware and environmental sensors",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Biometric Auth",
+      "compose": "BiometricPrompt",
+      "swiftui": "LocalAuthentication",
+      "react_native": "TouchID / FaceID",
+      "flutter": "local_auth",
+      "xamarin": "Fingerprint",
+      "ionic": "Identity Vault",
+      "links": {
+        "compose": "https://developer.android.com/training/sign-in/biometric-auth",
+        "swiftui": "https://developer.apple.com/documentation/localauthentication",
+        "react_native": "https://github.com/rn-fingerprint/react-native-touch-id",
+        "flutter": "https://pub.dev/packages/local_auth",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/fingerprint",
+        "ionic": "https://ionic.io/docs/identity-vault"
+      }
+    },
+    {
+      "component": "Camera View",
+      "compose": "CameraX / AndroidView",
+      "swiftui": "AVCaptureVideoPreviewLayer",
+      "react_native": "RNCamera",
+      "flutter": "CameraPreview",
+      "xamarin": "CameraView (Community)",
+      "ionic": "Camera Preview",
+      "links": {
+        "compose": "https://developer.android.com/training/camerax/preview",
+        "swiftui": "https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer",
+        "react_native": "https://react-native-camera.github.io/react-native-camera/docs/rncamera",
+        "flutter": "https://pub.dev/packages/camera",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/camera-view",
+        "ionic": "https://github.com/capacitor-community/camera-preview"
+      }
+    },
+    {
+      "component": "Geolocation",
+      "compose": "FusedLocationProvider",
+      "swiftui": "CLLocationManager",
+      "react_native": "Geolocation",
+      "flutter": "geolocator",
+      "xamarin": "Geolocation",
+      "ionic": "Geolocation API",
+      "links": {
+        "compose": "https://developer.android.com/training/location",
+        "swiftui": "https://developer.apple.com/documentation/corelocation/cllocationmanager",
+        "react_native": "https://github.com/Agontuk/react-native-geolocation-service",
+        "flutter": "https://pub.dev/packages/geolocator",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/geolocation",
+        "ionic": "https://capacitorjs.com/docs/apis/geolocation"
+      }
+    },
+    {
+      "component": "Accelerometer",
+      "compose": "SensorManager",
+      "swiftui": "CMMotionManager",
+      "react_native": "Sensors (Accelerometer)",
+      "flutter": "sensors_plus",
+      "xamarin": "Accelerometer",
+      "ionic": "Motion Plugin",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/sensors/sensors_motion",
+        "swiftui": "https://developer.apple.com/documentation/coremotion/cmmotionmanager",
+        "react_native": "https://react-native-sensors.github.io/docs/Usage.html#accelerometer",
+        "flutter": "https://pub.dev/packages/sensors_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/sensors#accelerometer",
+        "ionic": "https://capacitorjs.com/docs/apis/motion"
+      }
+    },
+    {
+      "component": "Gyroscope",
+      "compose": "SensorManager",
+      "swiftui": "CMMotionManager",
+      "react_native": "Sensors (Gyroscope)",
+      "flutter": "sensors_plus",
+      "xamarin": "Gyroscope",
+      "ionic": "Motion Plugin",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/sensors/sensors_motion#sensors-motion-gyro",
+        "swiftui": "https://developer.apple.com/documentation/coremotion/cmmotionmanager",
+        "react_native": "https://react-native-sensors.github.io/docs/Usage.html#gyroscope",
+        "flutter": "https://pub.dev/packages/sensors_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/sensors#gyroscope",
+        "ionic": "https://capacitorjs.com/docs/apis/motion"
+      }
+    },
+    {
+      "component": "Magnetometer",
+      "compose": "SensorManager",
+      "swiftui": "CMMotionManager",
+      "react_native": "Sensors (Magnetometer)",
+      "flutter": "sensors_plus",
+      "xamarin": "Magnetometer",
+      "ionic": "Motion",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/sensors/sensors_position#sensors-pos-mag",
+        "swiftui": "https://developer.apple.com/documentation/coremotion/cmmagnetometerdata",
+        "react_native": "https://react-native-sensors.github.io/docs/Usage.html#magnetometer",
+        "flutter": "https://pub.dev/packages/sensors_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/sensors#magnetometer",
+        "ionic": "https://capacitorjs.com/docs/apis/motion"
+      }
+    },
+    {
+      "component": "Haptics / Vibration",
+      "compose": "HapticFeedback",
+      "swiftui": "UIImpactFeedbackGenerator",
+      "react_native": "Vibration",
+      "flutter": "HapticFeedback",
+      "xamarin": "Vibration",
+      "ionic": "Haptics Plugin",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/hapticfeedback/HapticFeedback",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator",
+        "react_native": "https://reactnative.dev/docs/vibration",
+        "flutter": "https://api.flutter.dev/flutter/services/HapticFeedback-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/vibration",
+        "ionic": "https://capacitorjs.com/docs/apis/haptics"
+      }
+    },
+    {
+      "component": "Battery Status",
+      "compose": "BatteryManager",
+      "swiftui": "UIDevice.batteryLevel",
+      "react_native": "RNDeviceInfo",
+      "flutter": "battery_plus",
+      "xamarin": "Battery",
+      "ionic": "Device Plugin",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/os/BatteryManager",
+        "swiftui": "https://developer.apple.com/documentation/uikit/uidevice/1620042-batterylevel",
+        "react_native": "https://github.com/react-native-device-info/react-native-device-info#getbatterylevel",
+        "flutter": "https://pub.dev/packages/battery_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/battery",
+        "ionic": "https://capacitorjs.com/docs/apis/device#getbatteryinfo"
+      }
+    },
+    {
+      "component": "Network State",
+      "compose": "ConnectivityManager",
+      "swiftui": "NWPathMonitor",
+      "react_native": "NetInfo",
+      "flutter": "connectivity_plus",
+      "xamarin": "Connectivity",
+      "ionic": "Network Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/monitoring-device-state/connectivity-status-type",
+        "swiftui": "https://developer.apple.com/documentation/network/nwpathmonitor",
+        "react_native": "https://github.com/react-native-netinfo/react-native-netinfo",
+        "flutter": "https://pub.dev/packages/connectivity_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/communication/networking",
+        "ionic": "https://capacitorjs.com/docs/apis/network"
+      }
+    },
+    {
+      "component": "NFC",
+      "compose": "NfcAdapter",
+      "swiftui": "CoreNFC",
+      "react_native": "react-native-nfc-manager",
+      "flutter": "nfc_manager",
+      "xamarin": "NFC (Plugin)",
+      "ionic": "phonegap-nfc",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/connectivity/nfc",
+        "swiftui": "https://developer.apple.com/documentation/corenfc",
+        "react_native": "https://github.com/revtel/react-native-nfc-manager",
+        "flutter": "https://pub.dev/packages/nfc_manager",
+        "xamarin": "https://github.com/franckbour/Plugin.NFC",
+        "ionic": "https://github.com/chariotsolutions/phonegap-nfc"
+      }
+    }
+  ]
+}

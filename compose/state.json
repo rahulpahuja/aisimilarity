@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "state",
+    "description": "State management and side-effect handlers",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Remember State",
+      "compose": "remember",
+      "swiftui": "@State",
+      "react_native": "useState",
+      "flutter": "StatefulWidget",
+      "xamarin": "INotifyPropertyChanged",
+      "ionic": "useState / @State",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#remember(kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/state",
+        "react_native": "https://react.dev/reference/react/useState",
+        "flutter": "https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged",
+        "ionic": "https://react.dev/reference/react/useState"
+      }
+    },
+    {
+      "component": "Mutable State",
+      "compose": "mutableStateOf",
+      "swiftui": "@State var",
+      "react_native": "useState hook",
+      "flutter": "setState",
+      "xamarin": "ObservableProperty",
+      "ionic": "BehaviorSubject (RxJS)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/state",
+        "react_native": "https://react.dev/reference/react/useState",
+        "flutter": "https://api.flutter.dev/flutter/widgets/State/setState.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/generators/observableproperty",
+        "ionic": "https://rxjs.dev/guide/subject#behaviorsubject"
+      }
+    },
+    {
+      "component": "Derived State",
+      "compose": "derivedStateOf",
+      "swiftui": "computed var",
+      "react_native": "useMemo",
+      "flutter": "get property",
+      "xamarin": "Property (Getter)",
+      "ionic": "useMemo",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#derivedStateOf(kotlin.Function0)",
+        "swiftui": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties/#Computed-Properties",
+        "react_native": "https://react.dev/reference/react/useMemo",
+        "flutter": "https://dart.dev/guides/language/language-tour#getters-and-setters",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties",
+        "ionic": "https://react.dev/reference/react/useMemo"
+      }
+    },
+    {
+      "component": "Persist State",
+      "compose": "rememberSaveable",
+      "swiftui": "@AppStorage / @SceneStorage",
+      "react_native": "AsyncStorage / Context",
+      "flutter": "RestorableProperty",
+      "xamarin": "Preferences",
+      "ionic": "localStorage",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/saveable/package-summary#rememberSaveable(kotlin.Array,androidx.compose.runtime.saveable.Saver,kotlin.String,kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/appstorage",
+        "react_native": "https://reactnative.dev/docs/asyncstorage",
+        "flutter": "https://api.flutter.dev/flutter/widgets/RestorableProperty-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/preferences",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+      }
+    },
+    {
+      "component": "Side Effect (Launch)",
+      "compose": "LaunchedEffect",
+      "swiftui": ".task / .onAppear",
+      "react_native": "useEffect",
+      "flutter": "initState",
+      "xamarin": "OnAppearing",
+      "ionic": "useEffect / ionViewWillEnter",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#LaunchedEffect(kotlin.Any,kotlin.coroutines.SuspendFunction1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/task(priority:_:)",
+        "react_native": "https://react.dev/reference/react/useEffect",
+        "flutter": "https://api.flutter.dev/flutter/widgets/State/initState.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.page.onappearing",
+        "ionic": "https://ionicframework.com/docs/react/lifecycle"
+      }
+    },
+    {
+      "component": "Cleanup Effect",
+      "compose": "DisposableEffect",
+      "swiftui": ".onDisappear",
+      "react_native": "useEffect (cleanup)",
+      "flutter": "dispose",
+      "xamarin": "OnDisappearing",
+      "ionic": "useEffect (return)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#DisposableEffect(kotlin.Any,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/ondisappear(perform:)",
+        "react_native": "https://react.dev/reference/react/useEffect",
+        "flutter": "https://api.flutter.dev/flutter/widgets/State/dispose.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.page.ondisappearing",
+        "ionic": "https://react.dev/reference/react/useEffect"
+      }
+    },
+    {
+      "component": "Non-Compose State",
+      "compose": "SideEffect",
+      "swiftui": "N/A",
+      "react_native": "useEffect",
+      "flutter": "didUpdateWidget",
+      "xamarin": "PropertyChanged",
+      "ionic": "useEffect",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#SideEffect(kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui",
+        "react_native": "https://react.dev/reference/react/useEffect",
+        "flutter": "https://api.flutter.dev/flutter/widgets/State/didUpdateWidget.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged",
+        "ionic": "https://react.dev/reference/react/useEffect"
+      }
+    },
+    {
+      "component": "State Producer",
+      "compose": "produceState",
+      "swiftui": "ObservableObject",
+      "react_native": "Custom Hook",
+      "flutter": "StreamBuilder",
+      "xamarin": "ObservableCollection",
+      "ionic": "Custom Hook",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#produceState(kotlin.Any,kotlin.coroutines.SuspendFunction1)",
+        "swiftui": "https://developer.apple.com/documentation/combine/observableobject",
+        "react_native": "https://react.dev/learn/reusing-logic-with-custom-hooks",
+        "flutter": "https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1",
+        "ionic": "https://react.dev/learn/reusing-logic-with-custom-hooks"
+      }
+    },
+    {
+      "component": "Flow to State",
+      "compose": "collectAsState",
+      "swiftui": ".onReceive",
+      "react_native": "useEffect + setState",
+      "flutter": "StreamBuilder",
+      "xamarin": "INotifyPropertyChanged",
+      "ionic": "AsyncPipe (Angular) / Hook",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#(kotlinx.coroutines.flow.Flow).collectAsState(kotlin.Any,kotlin.coroutines.CoroutineContext)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/onreceive(_:perform:)",
+        "react_native": "https://react.dev/reference/react/useEffect",
+        "flutter": "https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/data-cloud/data-binding/binding-mode",
+        "ionic": "https://angular.io/api/common/AsyncPipe"
+      }
+    },
+    {
+      "component": "Scoped State",
+      "compose": "CompositionLocal",
+      "swiftui": "@Environment / @EnvironmentObject",
+      "react_native": "Context API",
+      "flutter": "InheritedWidget / Provider",
+      "xamarin": "DependencyService",
+      "ionic": "Context API",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/runtime/CompositionLocal",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/environment",
+        "react_native": "https://react.dev/reference/react/createContext",
+        "flutter": "https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-service",
+        "ionic": "https://react.dev/reference/react/createContext"
+      }
+    }
+  ]
+}

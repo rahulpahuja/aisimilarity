@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "networking",
+    "description": "APIs for network requests, sockets, and connectivity",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "HTTP Client",
+      "compose": "Retrofit / Ktor",
+      "swiftui": "URLSession",
+      "react_native": "fetch / Axios",
+      "flutter": "http / Dio",
+      "xamarin": "HttpClient",
+      "ionic": "fetch / Http Plugin",
+      "links": {
+        "compose": "https://square.github.io/retrofit/",
+        "swiftui": "https://developer.apple.com/documentation/foundation/urlsession",
+        "react_native": "https://reactnative.dev/docs/network",
+        "flutter": "https://pub.dev/packages/http",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient",
+        "ionic": "https://capacitorjs.com/docs/apis/http"
+      }
+    },
+    {
+      "component": "WebSocket",
+      "compose": "OkHttp / Ktor",
+      "swiftui": "URLSessionWebSocketTask",
+      "react_native": "WebSocket",
+      "flutter": "web_socket_channel",
+      "xamarin": "ClientWebSocket",
+      "ionic": "WebSocket API",
+      "links": {
+        "compose": "https://ktor.io/docs/client-websockets.html",
+        "swiftui": "https://developer.apple.com/documentation/foundation/urlsessionwebsockettask",
+        "react_native": "https://reactnative.dev/docs/network#websocket-support",
+        "flutter": "https://pub.dev/packages/web_socket_channel",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.clientwebsocket",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"
+      }
+    },
+    {
+      "component": "Connectivity Check",
+      "compose": "ConnectivityManager",
+      "swiftui": "NWPathMonitor",
+      "react_native": "NetInfo",
+      "flutter": "connectivity_plus",
+      "xamarin": "Connectivity",
+      "ionic": "Network Plugin",
+      "links": {
+        "compose": "https://developer.android.com/training/monitoring-device-state/connectivity-status-type",
+        "swiftui": "https://developer.apple.com/documentation/network/nwpathmonitor",
+        "react_native": "https://github.com/react-native-netinfo/react-native-netinfo",
+        "flutter": "https://pub.dev/packages/connectivity_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/communication/networking",
+        "ionic": "https://capacitorjs.com/docs/apis/network"
+      }
+    },
+    {
+      "component": "Image Loading",
+      "compose": "Coil / Glide",
+      "swiftui": "AsyncImage",
+      "react_native": "Image (source)",
+      "flutter": "CachedNetworkImage",
+      "xamarin": "Image (Uri)",
+      "ionic": "ion-img",
+      "links": {
+        "compose": "https://coil-kt.github.io/coil/",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/asyncimage",
+        "react_native": "https://reactnative.dev/docs/images",
+        "flutter": "https://pub.dev/packages/cached_network_image",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/image",
+        "ionic": "https://ionicframework.com/docs/api/img"
+      }
+    },
+    {
+      "component": "JSON Parsing",
+      "compose": "Kotlin Serialization / Gson",
+      "swiftui": "Codable / JSONDecoder",
+      "react_native": "JSON.parse",
+      "flutter": "dart:convert / json_serializable",
+      "xamarin": "System.Text.Json",
+      "ionic": "JSON.parse",
+      "links": {
+        "compose": "https://kotlinlang.org/docs/serialization.html",
+        "swiftui": "https://developer.apple.com/documentation/foundation/jsondecoder",
+        "react_native": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+        "flutter": "https://docs.flutter.dev/data-and-backend/serialization/json",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"
+      }
+    },
+    {
+      "component": "File Download",
+      "compose": "DownloadManager / WorkManager",
+      "swiftui": "URLSessionDownloadTask",
+      "react_native": "RN Fetch Blob / FS",
+      "flutter": "flutter_downloader",
+      "xamarin": "HttpClient",
+      "ionic": "Filesystem (Download)",
+      "links": {
+        "compose": "https://developer.android.com/reference/android/app/DownloadManager",
+        "swiftui": "https://developer.apple.com/documentation/foundation/urlsessiondownloadtask",
+        "react_native": "https://github.com/joltup/rn-fetch-blob",
+        "flutter": "https://pub.dev/packages/flutter_downloader",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient",
+        "ionic": "https://capacitorjs.com/docs/apis/filesystem"
+      }
+    },
+    {
+      "component": "File Upload",
+      "compose": "Retrofit (Multipart)",
+      "swiftui": "URLSessionUploadTask",
+      "react_native": "FormData",
+      "flutter": "MultipartRequest",
+      "xamarin": "MultipartFormDataContent",
+      "ionic": "FormData",
+      "links": {
+        "compose": "https://square.github.io/retrofit/",
+        "swiftui": "https://developer.apple.com/documentation/foundation/urlsessionuploadtask",
+        "react_native": "https://reactnative.dev/docs/network",
+        "flutter": "https://api.flutter.dev/flutter/package-http_http/MultipartRequest-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.multipartformdatacontent",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/FormData"
+      }
+    },
+    {
+      "component": "Authentication (OAuth)",
+      "compose": "AppAuth-Android",
+      "swiftui": "ASWebAuthenticationSession",
+      "react_native": "react-native-app-auth",
+      "flutter": "flutter_appauth",
+      "xamarin": "WebAuthenticator",
+      "ionic": "WebAuth Plugin",
+      "links": {
+        "compose": "https://github.com/openid/AppAuth-Android",
+        "swiftui": "https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession",
+        "react_native": "https://github.com/FormidableLabs/react-native-app-auth",
+        "flutter": "https://pub.dev/packages/flutter_appauth",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/communication/authentication",
+        "ionic": "https://ionic.io/docs/auth-connect"
+      }
+    },
+    {
+      "component": "Certificate Pinning",
+      "compose": "Network Security Config",
+      "swiftui": "Info.plist / TrustEval",
+      "react_native": "ssl-pinning lib",
+      "flutter": "SecurityContext",
+      "xamarin": "ServicePointManager",
+      "ionic": "HTTP Plugin Pinning",
+      "links": {
+        "compose": "https://developer.android.com/training/articles/security-config#CertificatePinning",
+        "swiftui": "https://developer.apple.com/news/?id=g9ejcf8y",
+        "react_native": "https://github.com/frangsierra/react-native-ssl-pinning",
+        "flutter": "https://api.flutter.dev/flutter/dart-io/SecurityContext-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/framework/network-programming/certificate-selection-and-validation",
+        "ionic": "https://capacitorjs.com/docs/apis/http"
+      }
+    },
+    {
+      "component": "GraphQL",
+      "compose": "Apollo Kotlin",
+      "swiftui": "Apollo iOS",
+      "react_native": "Apollo Client",
+      "flutter": "graphql_flutter",
+      "xamarin": "GraphQL.Client",
+      "ionic": "Apollo Client",
+      "links": {
+        "compose": "https://www.apollographql.com/docs/kotlin/",
+        "swiftui": "https://www.apollographql.com/docs/ios/",
+        "react_native": "https://www.apollographql.com/docs/react/integrations/react-native/",
+        "flutter": "https://pub.dev/packages/graphql_flutter",
+        "xamarin": "https://github.com/graphql-dotnet/graphql-client",
+        "ionic": "https://www.apollographql.com/docs/react/"
+      }
+    }
+  ]
+}

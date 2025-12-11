@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "layouts",
+    "description": "Core layout structures and container components",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Row",
+      "compose": "Row",
+      "swiftui": "HStack",
+      "react_native": "View (flexDirection: row)",
+      "flutter": "Row",
+      "xamarin": "HorizontalStackLayout",
+      "ionic": "ion-row",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Row(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Horizontal,androidx.compose.ui.Alignment.Vertical,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/hstack",
+        "react_native": "https://reactnative.dev/docs/flexbox#flex-direction",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Row-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/horizontalstacklayout",
+        "ionic": "https://ionicframework.com/docs/api/row"
+      }
+    },
+    {
+      "component": "Column",
+      "compose": "Column",
+      "swiftui": "VStack",
+      "react_native": "View (flexDirection: column)",
+      "flutter": "Column",
+      "xamarin": "VerticalStackLayout",
+      "ionic": "ion-col",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Column(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/vstack",
+        "react_native": "https://reactnative.dev/docs/flexbox#flex-direction",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Column-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/verticalstacklayout",
+        "ionic": "https://ionicframework.com/docs/api/col"
+      }
+    },
+    {
+      "component": "Box",
+      "compose": "Box",
+      "swiftui": "ZStack",
+      "react_native": "View",
+      "flutter": "Stack",
+      "xamarin": "Grid",
+      "ionic": "div",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Box(androidx.compose.ui.Modifier)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/zstack",
+        "react_native": "https://reactnative.dev/docs/view",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Stack-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/grid",
+        "ionic": "https://ionicframework.com/docs/layout/structure"
+      }
+    },
+    {
+      "component": "Spacer",
+      "compose": "Spacer",
+      "swiftui": "Spacer",
+      "react_native": "View (margin/padding)",
+      "flutter": "SizedBox",
+      "xamarin": "BoxView",
+      "ionic": "margin class",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Spacer(androidx.compose.ui.Modifier)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/spacer",
+        "react_native": "https://reactnative.dev/docs/view-style-props#margin",
+        "flutter": "https://api.flutter.dev/flutter/widgets/SizedBox-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/boxview",
+        "ionic": "https://ionicframework.com/docs/layout/css-utilities#element-spacing"
+      }
+    },
+    {
+      "component": "Divider",
+      "compose": "HorizontalDivider",
+      "swiftui": "Divider",
+      "react_native": "View (borderBottom)",
+      "flutter": "Divider",
+      "xamarin": "BoxView",
+      "ionic": "ion-item-divider",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#HorizontalDivider(androidx.compose.ui.Modifier,kotlin.Float,androidx.compose.ui.graphics.Color)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/divider",
+        "react_native": "https://reactnative.dev/docs/view-style-props#borderbottomwidth",
+        "flutter": "https://api.flutter.dev/flutter/material/Divider-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/boxview",
+        "ionic": "https://ionicframework.com/docs/api/item-divider"
+      }
+    },
+    {
+      "component": "Surface",
+      "compose": "Surface",
+      "swiftui": "View Modifier (background)",
+      "react_native": "View",
+      "flutter": "Card / Container",
+      "xamarin": "Frame",
+      "ionic": "ion-card",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Surface(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.Dp,androidx.compose.ui.unit.Dp,androidx.compose.foundation.BorderStroke,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/background(_:alignment:)",
+        "react_native": "https://reactnative.dev/docs/view",
+        "flutter": "https://api.flutter.dev/flutter/material/Card-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/frame",
+        "ionic": "https://ionicframework.com/docs/api/card"
+      }
+    },
+    {
+      "component": "Scaffold",
+      "compose": "Scaffold",
+      "swiftui": "NavigationStack",
+      "react_native": "SafeAreaView",
+      "flutter": "Scaffold",
+      "xamarin": "ContentPage",
+      "ionic": "ion-page",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Scaffold(androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function0,kotlin.Function0,kotlin.Function0,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.layout.WindowInsets,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/navigationstack",
+        "react_native": "https://reactnative.dev/docs/safeareaview",
+        "flutter": "https://api.flutter.dev/flutter/material/Scaffold-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pages/contentpage",
+        "ionic": "https://ionicframework.com/docs/api/page"
+      }
+    },
+    {
+      "component": "LazyColumn",
+      "compose": "LazyColumn",
+      "swiftui": "List",
+      "react_native": "FlatList",
+      "flutter": "ListView",
+      "xamarin": "CollectionView",
+      "ionic": "ion-list",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyColumn(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/list",
+        "react_native": "https://reactnative.dev/docs/flatlist",
+        "flutter": "https://api.flutter.dev/flutter/widgets/ListView-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview",
+        "ionic": "https://ionicframework.com/docs/api/list"
+      }
+    },
+    {
+      "component": "LazyRow",
+      "compose": "LazyRow",
+      "swiftui": "ScrollView(.horizontal)",
+      "react_native": "FlatList (horizontal)",
+      "flutter": "ListView (scrollDirection: horizontal)",
+      "xamarin": "CollectionView (ItemsLayout=Horizontal)",
+      "ionic": "ion-scroll (X)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyRow(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Horizontal,androidx.compose.ui.Alignment.Vertical,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scrollview",
+        "react_native": "https://reactnative.dev/docs/flatlist#horizontal",
+        "flutter": "https://api.flutter.dev/flutter/widgets/ListView/scrollDirection.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview/layout",
+        "ionic": "https://ionicframework.com/docs/api/content"
+      }
+    },
+    {
+      "component": "LazyVerticalGrid",
+      "compose": "LazyVerticalGrid",
+      "swiftui": "LazyVGrid",
+      "react_native": "FlatList (numColumns)",
+      "flutter": "GridView",
+      "xamarin": "Grid",
+      "ionic": "ion-grid",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/grid/package-summary#LazyVerticalGrid(androidx.compose.foundation.lazy.grid.GridCells,androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.grid.LazyGridState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.foundation.layout.Arrangement.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/lazyvgrid",
+        "react_native": "https://reactnative.dev/docs/flatlist#numcolumns",
+        "flutter": "https://api.flutter.dev/flutter/widgets/GridView-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/grid",
+        "ionic": "https://ionicframework.com/docs/api/grid"
+      }
+    }
+  ]
+}

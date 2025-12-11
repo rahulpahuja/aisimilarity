@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "text",
+    "description": "Advanced text rendering and styling",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Rich Text",
+      "compose": "AnnotatedString (withStyle)",
+      "swiftui": "Text + Text (Concatenation)",
+      "react_native": "Text (Nested)",
+      "flutter": "RichText / TextSpan",
+      "xamarin": "FormattedString / Span",
+      "ionic": "innerHTML",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/AnnotatedString",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/text",
+        "react_native": "https://reactnative.dev/docs/text#nested-text",
+        "flutter": "https://api.flutter.dev/flutter/widgets/RichText-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label#formatted-text",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML"
+      }
+    },
+    {
+      "component": "Selectable Text",
+      "compose": "SelectionContainer",
+      "swiftui": ".textSelection(.enabled)",
+      "react_native": "Text (selectable)",
+      "flutter": "SelectableText",
+      "xamarin": "Label (IsTextSelectable)",
+      "ionic": "user-select: text",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/text/selection/package-summary#SelectionContainer(androidx.compose.ui.Modifier,kotlin.Function0)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/textselection(_:)",
+        "react_native": "https://reactnative.dev/docs/text#selectable",
+        "flutter": "https://api.flutter.dev/flutter/material/SelectableText-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.istextselectable",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/user-select"
+      }
+    },
+    {
+      "component": "Clickable Text (Span)",
+      "compose": "ClickableText",
+      "swiftui": "Text + Link",
+      "react_native": "Text (onPress)",
+      "flutter": "RichText + TapGestureRecognizer",
+      "xamarin": "Span.GestureRecognizers",
+      "ionic": "a tag",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/text/package-summary#ClickableText(androidx.compose.ui.text.AnnotatedString,androidx.compose.ui.Modifier,androidx.compose.ui.text.TextStyle,kotlin.Boolean,androidx.compose.ui.text.style.TextOverflow,kotlin.Int,kotlin.Function1,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/link",
+        "react_native": "https://reactnative.dev/docs/text#onpress",
+        "flutter": "https://api.flutter.dev/flutter/gestures/TapGestureRecognizer-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label#create-a-hyperlink",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"
+      }
+    },
+    {
+      "component": "Custom Fonts",
+      "compose": "FontFamily",
+      "swiftui": "Font.custom",
+      "react_native": "fontFamily style",
+      "flutter": "TextStyle(fontFamily)",
+      "xamarin": "FontFamily",
+      "ionic": "@font-face",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/font/FontFamily",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/font/custom(_:size:)",
+        "react_native": "https://reactnative.dev/docs/text-style-props#fontfamily",
+        "flutter": "https://api.flutter.dev/flutter/painting/TextStyle/fontFamily.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/fonts",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face"
+      }
+    },
+    {
+      "component": "Line Height",
+      "compose": "TextStyle(lineHeight)",
+      "swiftui": ".lineSpacing",
+      "react_native": "lineHeight",
+      "flutter": "TextStyle(height)",
+      "xamarin": "LineHeight",
+      "ionic": "line-height",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/linespacing(_:)",
+        "react_native": "https://reactnative.dev/docs/text-style-props#lineheight",
+        "flutter": "https://api.flutter.dev/flutter/painting/TextStyle/height.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.lineheight",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"
+      }
+    },
+    {
+      "component": "Text Shadow",
+      "compose": "TextStyle(shadow)",
+      "swiftui": ".shadow",
+      "react_native": "textShadowColor",
+      "flutter": "TextStyle(shadows)",
+      "xamarin": "Shadow",
+      "ionic": "text-shadow",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Shadow",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/shadow(color:radius:x:y:)",
+        "react_native": "https://reactnative.dev/docs/text-style-props#textshadowcolor",
+        "flutter": "https://api.flutter.dev/flutter/painting/TextStyle/shadows.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/shadow",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow"
+      }
+    },
+    {
+      "component": "Text Overflow",
+      "compose": "TextOverflow.Ellipsis",
+      "swiftui": ".lineLimit",
+      "react_native": "numberOfLines",
+      "flutter": "TextOverflow.ellipsis",
+      "xamarin": "LineBreakMode",
+      "ionic": "text-overflow: ellipsis",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/style/TextOverflow",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/linelimit(_:)",
+        "react_native": "https://reactnative.dev/docs/text#numberoflines",
+        "flutter": "https://api.flutter.dev/flutter/painting/TextOverflow.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.linebreakmode",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow"
+      }
+    },
+    {
+      "component": "Hyphenation",
+      "compose": "Hyphens.Auto",
+      "swiftui": "N/A (Auto)",
+      "react_native": "N/A",
+      "flutter": "N/A (Manual)",
+      "xamarin": "N/A",
+      "ionic": "hyphens: auto",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/style/Hyphens",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/text",
+        "react_native": "https://reactnative.dev/docs/text",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Text-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens"
+      }
+    },
+    {
+      "component": "Max Lines",
+      "compose": "maxLines",
+      "swiftui": ".lineLimit",
+      "react_native": "numberOfLines",
+      "flutter": "maxLines",
+      "xamarin": "MaxLines (Android Only)",
+      "ionic": "line-clamp",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Text(kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Int,kotlin.Function1,androidx.compose.ui.text.TextStyle)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/linelimit(_:)",
+        "react_native": "https://reactnative.dev/docs/text#numberoflines",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Text/maxLines.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp"
+      }
+    },
+    {
+      "component": "Text Alignment",
+      "compose": "TextAlign",
+      "swiftui": ".multilineTextAlignment",
+      "react_native": "textAlign",
+      "flutter": "textAlign",
+      "xamarin": "HorizontalTextAlignment",
+      "ionic": "text-align",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/text/style/TextAlign",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/multilinetextalignment(_:)",
+        "react_native": "https://reactnative.dev/docs/text-style-props#textalign",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Text/textAlign.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.horizontaltextalignment",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-align"
+      }
+    }
+  ]
+}

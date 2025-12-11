@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "platform",
+    "description": "OS-specific interactions and lifecycle management",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Main Thread",
+      "compose": "LaunchedEffect / MainDispatcher",
+      "swiftui": "DispatchQueue.main",
+      "react_native": "InteractionManager",
+      "flutter": "SchedulerBinding",
+      "xamarin": "MainThread",
+      "ionic": "Main Loop (JS)",
+      "links": {
+        "compose": "https://developer.android.com/kotlin/coroutines/coroutines-best-practices#main-safety",
+        "swiftui": "https://developer.apple.com/documentation/dispatch/dispatchqueue/1781006-main",
+        "react_native": "https://reactnative.dev/docs/interactionmanager",
+        "flutter": "https://api.flutter.dev/flutter/scheduler/SchedulerBinding-mixin.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/main-thread",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop"
+      }
+    },
+    {
+      "component": "Background Thread",
+      "compose": "Dispatchers.IO",
+      "swiftui": "DispatchQueue.global",
+      "react_native": "Worker / Thread",
+      "flutter": "Isolate",
+      "xamarin": "Task.Run",
+      "ionic": "Web Worker",
+      "links": {
+        "compose": "https://developer.android.com/kotlin/coroutines/coroutines-best-practices#dispatchers",
+        "swiftui": "https://developer.apple.com/documentation/dispatch/dispatchqueue/2300077-global",
+        "react_native": "https://reactnative.dev/docs/headless-js-android",
+        "flutter": "https://api.flutter.dev/flutter/dart-isolate/Isolate-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
+      }
+    },
+    {
+      "component": "App Lifecycle",
+      "compose": "LifecycleEventObserver",
+      "swiftui": ".onChange(of: scenePhase)",
+      "react_native": "AppState",
+      "flutter": "WidgetsBindingObserver",
+      "xamarin": "App Lifecycle Events",
+      "ionic": "App Plugin (State)",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/side-effects#disposableeffect",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/scenephase",
+        "react_native": "https://reactnative.dev/docs/appstate",
+        "flutter": "https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/app-lifecycle",
+        "ionic": "https://capacitorjs.com/docs/apis/app#appstatechangearg"
+      }
+    },
+    {
+      "component": "Platform Check",
+      "compose": "LocalConfiguration",
+      "swiftui": "#if os(iOS)",
+      "react_native": "Platform.OS",
+      "flutter": "Platform.isAndroid",
+      "xamarin": "DeviceInfo.Platform",
+      "ionic": "Platform.is()",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/LocalConfiguration",
+        "swiftui": "https://developer.apple.com/documentation/swift/build_configuration_statements",
+        "react_native": "https://reactnative.dev/docs/platform-specific-code",
+        "flutter": "https://api.flutter.dev/flutter/dart-io/Platform-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/information",
+        "ionic": "https://ionicframework.com/docs/angular/platform"
+      }
+    },
+    {
+      "component": "Screen Size",
+      "compose": "LocalConfiguration",
+      "swiftui": "GeometryReader",
+      "react_native": "Dimensions / useWindowDimensions",
+      "flutter": "MediaQuery",
+      "xamarin": "DeviceDisplay.MainDisplayInfo",
+      "ionic": "window.innerWidth",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/LocalConfiguration",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/geometryreader",
+        "react_native": "https://reactnative.dev/docs/usewindowdimensions",
+        "flutter": "https://api.flutter.dev/flutter/widgets/MediaQuery-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/display",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth"
+      }
+    },
+    {
+      "component": "Status Bar Control",
+      "compose": "SystemUiController (Accompanist)",
+      "swiftui": ".statusBarHidden",
+      "react_native": "StatusBar",
+      "flutter": "SystemChrome",
+      "xamarin": "StatusBar (Community)",
+      "ionic": "StatusBar Plugin",
+      "links": {
+        "compose": "https://google.github.io/accompanist/systemuicontroller/",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/statusbarhidden(_:)",
+        "react_native": "https://reactnative.dev/docs/statusbar",
+        "flutter": "https://api.flutter.dev/flutter/services/SystemChrome-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/behaviors/statusbar-behavior",
+        "ionic": "https://capacitorjs.com/docs/apis/status-bar"
+      }
+    },
+    {
+      "component": "Keyboard Handling",
+      "compose": "WindowInsets.ime",
+      "swiftui": ".ignoresSafeArea(.keyboard)",
+      "react_native": "KeyboardAvoidingView",
+      "flutter": "resizeToAvoidBottomInset",
+      "xamarin": "KeyboardAutoManagerScroll",
+      "ionic": "Keyboard Plugin",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/layouts/insets",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/ignoressafearea(_:edges:)",
+        "react_native": "https://reactnative.dev/docs/keyboardavoidingview",
+        "flutter": "https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/entry#hide-and-show-the-soft-input-keyboard",
+        "ionic": "https://capacitorjs.com/docs/apis/keyboard"
+      }
+    },
+    {
+      "component": "Theme Detection",
+      "compose": "isSystemInDarkTheme",
+      "swiftui": "@Environment(\\.colorScheme)",
+      "react_native": "useColorScheme",
+      "flutter": "MediaQuery.platformBrightness",
+      "xamarin": "AppInfo.RequestedTheme",
+      "ionic": "matchMedia(prefers-color-scheme)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#isSystemInDarkTheme()",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/environmentvalues/colorscheme",
+        "react_native": "https://reactnative.dev/docs/usecolorscheme",
+        "flutter": "https://api.flutter.dev/flutter/widgets/MediaQueryData/platformBrightness.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/theming",
+        "ionic": "https://ionicframework.com/docs/theming/dark-mode"
+      }
+    },
+    {
+      "component": "Native Interop",
+      "compose": "AndroidView / UIKitView",
+      "swiftui": "UIViewRepresentable",
+      "react_native": "Native Modules",
+      "flutter": "Platform Channels",
+      "xamarin": "Handlers / Renderers",
+      "ionic": "Capacitor Plugins",
+      "links": {
+        "compose": "https://developer.android.com/jetpack/compose/interop/interop-apis",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/uiviewrepresentable",
+        "react_native": "https://reactnative.dev/docs/native-modules-intro",
+        "flutter": "https://docs.flutter.dev/platform-integration/platform-channels",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/handlers/",
+        "ionic": "https://capacitorjs.com/docs/plugins/creating-plugins"
+      }
+    },
+    {
+      "component": "App Version",
+      "compose": "BuildConfig.VERSION_NAME",
+      "swiftui": "Bundle.main.infoDictionary",
+      "react_native": "DeviceInfo.getVersion",
+      "flutter": "package_info_plus",
+      "xamarin": "AppInfo.Version",
+      "ionic": "App Plugin (Info)",
+      "links": {
+        "compose": "https://developer.android.com/studio/build/gradle-tips#share-properties",
+        "swiftui": "https://developer.apple.com/documentation/foundation/bundle/1407223-infodictionary",
+        "react_native": "https://github.com/react-native-device-info/react-native-device-info#getversion",
+        "flutter": "https://pub.dev/packages/package_info_plus",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/app-information",
+        "ionic": "https://capacitorjs.com/docs/apis/app#getinfo"
+      }
+    }
+  ]
+}

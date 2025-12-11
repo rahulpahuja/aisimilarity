@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "permissions",
+    "description": "Managing system permissions and privacy",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Request Permission",
+      "compose": "rememberPermissionState",
+      "swiftui": "PHPhotoLibrary.requestAuth...",
+      "react_native": "PermissionsAndroid",
+      "flutter": "permission_handler",
+      "xamarin": "Permissions.RequestAsync",
+      "ionic": "Capacitor Permissions",
+      "links": {
+        "compose": "https://google.github.io/accompanist/permissions/",
+        "swiftui": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624584-requestaccess",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/guides/security/permissions"
+      }
+    },
+    {
+      "component": "Check Status",
+      "compose": "PermissionState.status",
+      "swiftui": "authorizationStatus",
+      "react_native": "check()",
+      "flutter": "status.isGranted",
+      "xamarin": "Permissions.CheckStatusAsync",
+      "ionic": "checkPermissions()",
+      "links": {
+        "compose": "https://google.github.io/accompanist/permissions/",
+        "swiftui": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624613-authorizationstatus",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid#check",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/camera#checkpermissions"
+      }
+    },
+    {
+      "component": "Camera Permission",
+      "compose": "Manifest.permission.CAMERA",
+      "swiftui": "NSCameraUsageDescription",
+      "react_native": "PERMISSIONS.CAMERA",
+      "flutter": "Permission.camera",
+      "xamarin": "Permissions.Camera",
+      "ionic": "Camera Permission",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/media/camera#manifest",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/camera"
+      }
+    },
+    {
+      "component": "Location Permission",
+      "compose": "ACCESS_FINE_LOCATION",
+      "swiftui": "NSLocationWhenInUse...",
+      "react_native": "ACCESS_FINE_LOCATION",
+      "flutter": "Permission.location",
+      "xamarin": "Permissions.LocationWhenInUse",
+      "ionic": "Geolocation Permission",
+      "links": {
+        "compose": "https://developer.android.com/training/location/permissions",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nslocationwheninuseusagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/geolocation"
+      }
+    },
+    {
+      "component": "Microphone Permission",
+      "compose": "RECORD_AUDIO",
+      "swiftui": "NSMicrophoneUsageDescription",
+      "react_native": "RECORD_AUDIO",
+      "flutter": "Permission.microphone",
+      "xamarin": "Permissions.Microphone",
+      "ionic": "Microphone Permission",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/media/mediarecorder#manifest",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nsmicrophoneusagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/permissions"
+      }
+    },
+    {
+      "component": "Storage Permission",
+      "compose": "READ_EXTERNAL_STORAGE",
+      "swiftui": "NSPhotoLibraryUsageDescription",
+      "react_native": "READ_EXTERNAL_STORAGE",
+      "flutter": "Permission.storage",
+      "xamarin": "Permissions.StorageRead",
+      "ionic": "Filesystem Permission",
+      "links": {
+        "compose": "https://developer.android.com/training/data-storage/shared/media#permissions",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nsphotolibraryusagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/filesystem"
+      }
+    },
+    {
+      "component": "Contacts Permission",
+      "compose": "READ_CONTACTS",
+      "swiftui": "NSContactsUsageDescription",
+      "react_native": "READ_CONTACTS",
+      "flutter": "Permission.contacts",
+      "xamarin": "Permissions.ContactsRead",
+      "ionic": "Contacts Permission",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/providers/contacts-provider",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nscontactsusagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/permissions"
+      }
+    },
+    {
+      "component": "Notification Permission",
+      "compose": "POST_NOTIFICATIONS",
+      "swiftui": "UNUserNotificationCenter",
+      "react_native": "POST_NOTIFICATIONS",
+      "flutter": "Permission.notification",
+      "xamarin": "Permissions.PostNotifications",
+      "ionic": "Push Notification Permission",
+      "links": {
+        "compose": "https://developer.android.com/develop/ui/views/notifications/notification-permission",
+        "swiftui": "https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/push-notifications"
+      }
+    },
+    {
+      "component": "Bluetooth Permission",
+      "compose": "BLUETOOTH_CONNECT",
+      "swiftui": "NSBluetoothAlwaysUsage...",
+      "react_native": "BLUETOOTH_CONNECT",
+      "flutter": "Permission.bluetooth",
+      "xamarin": "Permissions.Bluetooth",
+      "ionic": "Bluetooth Permission",
+      "links": {
+        "compose": "https://developer.android.com/guide/topics/connectivity/bluetooth/permissions",
+        "swiftui": "https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions",
+        "ionic": "https://capacitorjs.com/docs/apis/permissions"
+      }
+    },
+    {
+      "component": "Rationale Dialog",
+      "compose": "shouldShowRationale",
+      "swiftui": "Custom Alert",
+      "react_native": "Rationale Object",
+      "flutter": "shouldShowRequestRationale",
+      "xamarin": "ShouldShowRationale",
+      "ionic": "Custom Alert",
+      "links": {
+        "compose": "https://google.github.io/accompanist/permissions/",
+        "swiftui": "https://developer.apple.com/design/human-interface-guidelines/privacy",
+        "react_native": "https://reactnative.dev/docs/permissionsandroid#request",
+        "flutter": "https://pub.dev/packages/permission_handler",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.applicationmodel.permissions.shouldshowrationale",
+        "ionic": "https://capacitorjs.com/docs/guides/security/permissions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "category": "animations",
+    "description": "Transition and motion APIs",
+    "count": 10
+  },
+  "items": [
+    {
+      "component": "Visibility (Fade/Expand)",
+      "compose": "AnimatedVisibility",
+      "swiftui": "if visible { View } + .transition",
+      "react_native": "LayoutAnimation",
+      "flutter": "AnimatedOpacity / Visibility",
+      "xamarin": "IsVisible",
+      "ionic": "*ngIf",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/package-summary#AnimatedVisibility(kotlin.Boolean,androidx.compose.ui.Modifier,androidx.compose.animation.EnterTransition,androidx.compose.animation.ExitTransition,kotlin.String,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/anytransition",
+        "react_native": "https://reactnative.dev/docs/layoutanimation",
+        "flutter": "https://api.flutter.dev/flutter/widgets/AnimatedOpacity-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.visualelement.isvisible",
+        "ionic": "https://angular.io/api/common/NgIf"
+      }
+    },
+    {
+      "component": "Crossfade",
+      "compose": "Crossfade",
+      "swiftui": "transition(.opacity)",
+      "react_native": "Animated.timing (opacity)",
+      "flutter": "AnimatedCrossFade",
+      "xamarin": "FadeTo",
+      "ionic": "ion-router-outlet (transition)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/package-summary#Crossfade(kotlin.Any,androidx.compose.ui.Modifier,androidx.compose.animation.core.FiniteAnimationSpec,kotlin.String,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/anytransition/opacity",
+        "react_native": "https://reactnative.dev/docs/animated",
+        "flutter": "https://api.flutter.dev/flutter/widgets/AnimatedCrossFade-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/basic#fading",
+        "ionic": "https://ionicframework.com/docs/utilities/animations"
+      }
+    },
+    {
+      "component": "Content Size Change",
+      "compose": "animateContentSize",
+      "swiftui": ".animation(.default)",
+      "react_native": "LayoutAnimation",
+      "flutter": "AnimatedSize",
+      "xamarin": "Custom Animation",
+      "ionic": "CSS transition",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/package-summary#(androidx.compose.ui.Modifier).animateContentSize(androidx.compose.animation.core.FiniteAnimationSpec,kotlin.Function2)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/animation(_:value:)",
+        "react_native": "https://reactnative.dev/docs/layoutanimation",
+        "flutter": "https://api.flutter.dev/flutter/widgets/AnimatedSize-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/basic",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/transition"
+      }
+    },
+    {
+      "component": "Value Animation (Float)",
+      "compose": "animateFloatAsState",
+      "swiftui": ".animation() binding",
+      "react_native": "Animated.Value",
+      "flutter": "AnimationController",
+      "xamarin": "Animation Class",
+      "ionic": "Web Animations API",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/core/package-summary#animateFloatAsState(kotlin.Float,androidx.compose.animation.core.AnimationSpec,kotlin.String,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/withanimation(_:_:)",
+        "react_native": "https://reactnative.dev/docs/animated#value",
+        "flutter": "https://api.flutter.dev/flutter/animation/AnimationController-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/custom",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API"
+      }
+    },
+    {
+      "component": "Infinite Transition",
+      "compose": "rememberInfiniteTransition",
+      "swiftui": "repeatForever()",
+      "react_native": "Animated.loop",
+      "flutter": "AnimationController.repeat",
+      "xamarin": "Animation (repeat)",
+      "ionic": "CSS keyframes",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/core/package-summary#rememberInfiniteTransition(kotlin.String)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/animation/repeatforever(autoreverses:)",
+        "react_native": "https://reactnative.dev/docs/animated#loop",
+        "flutter": "https://api.flutter.dev/flutter/animation/AnimationController/repeat.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/custom",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes"
+      }
+    },
+    {
+      "component": "Shared Element",
+      "compose": "SharedTransitionLayout",
+      "swiftui": ".matchedGeometryEffect",
+      "react_native": "LayoutAnimation / Reanimated",
+      "flutter": "Hero",
+      "xamarin": "SharedTransition (Nav)",
+      "ionic": "ion-nav (animation)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/SharedTransitionLayout",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/view/matchedgeometryeffect(id:in:properties:anchor:issource:)",
+        "react_native": "https://docs.swmansion.com/react-native-reanimated/docs/shared-element-transitions/overview/",
+        "flutter": "https://api.flutter.dev/flutter/widgets/Hero-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pages/navigationpage",
+        "ionic": "https://ionicframework.com/docs/utilities/animations"
+      }
+    },
+    {
+      "component": "Color Animation",
+      "compose": "animateColorAsState",
+      "swiftui": ".animation on Color",
+      "react_native": "Animated.Value (interpolate)",
+      "flutter": "ColorTween / AnimatedContainer",
+      "xamarin": "ColorAnimation (Community)",
+      "ionic": "CSS transition (color)",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/package-summary#animateColorAsState(androidx.compose.ui.graphics.Color,androidx.compose.animation.core.AnimationSpec,kotlin.String,kotlin.Function1)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/color",
+        "react_native": "https://reactnative.dev/docs/animated#interpolation",
+        "flutter": "https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/animations/color-animation",
+        "ionic": "https://developer.mozilla.org/en-US/docs/Web/CSS/transition"
+      }
+    },
+    {
+      "component": "Physics (Spring)",
+      "compose": "spring() spec",
+      "swiftui": ".spring()",
+      "react_native": "Animated.spring",
+      "flutter": "SpringSimulation",
+      "xamarin": "SpringIn / SpringOut",
+      "ionic": "Custom Easing",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/core/package-summary#spring(kotlin.Float,kotlin.Float,kotlin.Any)",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/animation/spring(response:dampingfraction:blendduration:)",
+        "react_native": "https://reactnative.dev/docs/animated#spring",
+        "flutter": "https://api.flutter.dev/flutter/physics/SpringSimulation-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/easing",
+        "ionic": "https://ionicframework.com/docs/utilities/animations"
+      }
+    },
+    {
+      "component": "Animated Vector",
+      "compose": "AnimatedImageVector",
+      "swiftui": "PhaseAnimator / Lottie",
+      "react_native": "Lottie / Animated",
+      "flutter": "AnimatedIcon",
+      "xamarin": "Lottie / SKLottie",
+      "ionic": "Lottie Web",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/graphics/vector/AnimatedImageVector",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/phaseanimator",
+        "react_native": "https://github.com/airbnb/lottie-react-native",
+        "flutter": "https://api.flutter.dev/flutter/material/AnimatedIcon-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/media-element",
+        "ionic": "https://github.com/airbnb/lottie-web"
+      }
+    },
+    {
+      "component": "Enter/Exit Transitions",
+      "compose": "EnterTransition / ExitTransition",
+      "swiftui": ".transition",
+      "react_native": "LayoutAnimation",
+      "flutter": "SlideTransition / ScaleTransition",
+      "xamarin": "TranslateTo / ScaleTo",
+      "ionic": "AnimationController",
+      "links": {
+        "compose": "https://developer.android.com/reference/kotlin/androidx/compose/animation/EnterTransition",
+        "swiftui": "https://developer.apple.com/documentation/swiftui/anytransition",
+        "react_native": "https://reactnative.dev/docs/layoutanimation",
+        "flutter": "https://api.flutter.dev/flutter/widgets/SlideTransition-class.html",
+        "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/basic",
+        "ionic": "https://ionicframework.com/docs/utilities/animations"
+      }
+    }
+  ]
+}

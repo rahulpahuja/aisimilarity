@@ -1,11 +1,10 @@
 /**
- * compose.js — FINAL FIXED VERSION
- * - Loads one JSON per category
- * - Global search index
- * - Animated tab indicator
+ * compose.js — FINAL WORKING VERSION
+ * - Neon + Glass UI
+ * - Search + category tabs
  * - Swipe navigation
- * - Debounced search
- * - Fully fixed light/dark mode button (no duplicates)
+ * - Light/dark theme toggle
+ * - Card tilt + fullscreen expansion modal
  */
 
 /* ------------------ Config ------------------ */
@@ -16,6 +15,7 @@ const CATEGORIES = [
   "utilities", "platform", "animations", "dragdrop", "text",
   "gestures", "overlays"
 ];
+
 const DATA_CACHE = {};
 let SEARCH_INDEX = [];
 
@@ -33,8 +33,7 @@ let activeCategory = null;
 const cap = str => str.charAt(0).toUpperCase() + str.slice(1);
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-/* ------------------ THEME SYSTEM (FINAL WORKING) ------------------ */
-
+/* ------------------ THEME SYSTEM ------------------ */
 function applyTheme(theme) {
   const isLight = theme === "light";
 
@@ -89,11 +88,9 @@ async function loadAllDataInBackground() {
   for (let cat of CATEGORIES) {
     const data = await fetchCategory(cat);
     if (data && data.items) {
-      SEARCH_INDEX.push(
-        ...data.items.map(item => ({ ...item, __category: cat }))
-      );
+      SEARCH_INDEX.push(...data.items.map(item => ({ ...item, __category: cat })));
     }
-    await sleep(60);
+    await sleep(50);
   }
 
   console.log("Search index ready:", SEARCH_INDEX.length);
@@ -108,11 +105,11 @@ function renderTabs() {
   indicatorEl.className = "tab-indicator";
   tabContainer.appendChild(indicatorEl);
 
-  CATEGORIES.forEach((cat, i) => {
+  CATEGORIES.forEach((cat, idx) => {
     const tab = document.createElement("button");
     tab.className = "tab";
     tab.dataset.category = cat;
-    tab.dataset.index = i;
+    tab.dataset.index = idx;
     tab.textContent = cap(cat);
 
     tab.onclick = () => activateTab(cat, true);
@@ -132,32 +129,21 @@ function moveIndicatorToTab(tabEl) {
 
   indicatorEl.style.left = `${left}px`;
   indicatorEl.style.width = `${width}px`;
-
-  // auto-scroll into view
-  const padding = 40;
-  const visibleLeft = tabContainer.scrollLeft;
-  const visibleRight = visibleLeft + tabContainer.clientWidth;
-
-  if (left < visibleLeft + padding) {
-    tabContainer.scrollTo({ left: left - padding, behavior: "smooth" });
-  } else if (left + width > visibleRight - padding) {
-    tabContainer.scrollTo({ left: left + width - tabContainer.clientWidth + padding, behavior: "smooth" });
-  }
 }
 
+/* ------------------ Activate a Tab ------------------ */
 async function activateTab(category, userTriggered = false) {
   activeCategory = category;
 
-  document.querySelectorAll(".tab").forEach(t => {
-    t.classList.toggle("active", t.dataset.category === category);
-  });
+  document.querySelectorAll(".tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.category === category)
+  );
 
-  const activeTabEl = tabContainer.querySelector(`[data-category="${category}"]`);
-  moveIndicatorToTab(activeTabEl);
+  moveIndicatorToTab(tabContainer.querySelector(`[data-category="${category}"]`));
 
   if (userTriggered) searchInput.value = "";
 
-  resultsContainer.innerHTML = `<div class="loading">Loading...</div>`;
+  resultsContainer.innerHTML = `<div class="loading">Loading…</div>`;
 
   const data = await fetchCategory(category);
 
@@ -169,21 +155,22 @@ async function activateTab(category, userTriggered = false) {
   renderGrid(data.items);
 }
 
-/* ------------------ Rendering Components ------------------ */
+/* ------------------ Render Cards ------------------ */
 function makeCard(item) {
   const card = document.createElement("div");
   card.className = "card";
+  card.dataset.expand = "true";
 
   card.innerHTML = `
     <h3>${item.component || "Unnamed"}</h3>
+
     <div class="platform-grid">
       <div class="label">Compose</div><div class="value">${item.compose || "—"}</div>
       <div class="label">SwiftUI</div><div class="value">${item.swiftui || "—"}</div>
       <div class="label">React Native</div><div class="value">${item.react_native || "—"}</div>
       <div class="label">Flutter</div><div class="value">${item.flutter || "—"}</div>
-      <div class="label">Xamarin</div><div class="value">${item.xamarin || "—"}</div>
-      <div class="label">Ionic</div><div class="value">${item.ionic || "—"}</div>
     </div>
+
     <div class="divider"></div>
     <div class="links-container"></div>
   `;
@@ -200,6 +187,9 @@ function makeCard(item) {
     }
   }
 
+  // enable modal open
+  card.addEventListener("click", () => openCardModal(card));
+
   return card;
 }
 
@@ -208,11 +198,12 @@ function renderGrid(items) {
   const grid = document.createElement("div");
   grid.className = "grid";
 
-  items.forEach(item => grid.appendChild(makeCard(item)));
+  items.forEach(it => grid.appendChild(makeCard(it)));
+
   resultsContainer.appendChild(grid);
 }
 
-/* ------------------ Search (Debounced) ------------------ */
+/* ------------------ Search ------------------ */
 let searchTimer = null;
 
 function onSearch(e) {
@@ -223,24 +214,21 @@ function onSearch(e) {
   searchTimer = setTimeout(() => {
     if (!q) return activateTab(activeCategory, false);
 
-    const results = SEARCH_INDEX.filter(
-      item =>
-        item.component?.toLowerCase().includes(q) ||
-        item.compose?.toLowerCase().includes(q) ||
-        item.swiftui?.toLowerCase().includes(q) ||
-        item.react_native?.toLowerCase().includes(q)||
-        item.xamarin?.toLowerCase().includes(q)||
-        item.ionic?.toLowerCase().includes(q)
+    const matches = SEARCH_INDEX.filter(item =>
+      (item.component || "").toLowerCase().includes(q) ||
+      (item.compose || "").toLowerCase().includes(q) ||
+      (item.swiftui || "").toLowerCase().includes(q) ||
+      (item.react_native || "").toLowerCase().includes(q)
     );
 
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
 
-    if (!results.length) {
-      resultsContainer.innerHTML = `<div class="empty-state">No results for "${q}".</div>`;
+    if (!matches.length) {
+      resultsContainer.innerHTML = `<div class="empty-state">No results.</div>`;
       return;
     }
 
-    renderGrid(results);
+    renderGrid(matches);
   }, 200);
 }
 
@@ -259,9 +247,9 @@ resultsContainer.addEventListener("touchend", e => {
   const dx = t.clientX - swipe.startX;
   const dy = t.clientY - swipe.startY;
 
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-    const index = CATEGORIES.indexOf(activeCategory);
-    const next = dx < 0 ? index + 1 : index - 1;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+    const idx = CATEGORIES.indexOf(activeCategory);
+    const next = dx < 0 ? idx + 1 : idx - 1;
 
     if (next >= 0 && next < CATEGORIES.length) {
       activateTab(CATEGORIES[next], true);
@@ -271,6 +259,20 @@ resultsContainer.addEventListener("touchend", e => {
   swipe.active = false;
 });
 
+/* ------------------ FULLSCREEN CARD MODAL ------------------ */
+const modal = document.getElementById("cardModal");
+const modalBody = document.getElementById("modalBody");
+const modalClose = document.getElementById("modalClose");
+
+function openCardModal(card) {
+  modalBody.innerHTML = card.innerHTML;
+  modal.classList.add("visible");
+}
+
+modalClose.addEventListener("click", () => {
+  modal.classList.remove("visible");
+});
+
 /* ------------------ Init ------------------ */
 async function init() {
   renderTabs();
@@ -278,78 +280,5 @@ async function init() {
   loadAllDataInBackground();
   searchInput.addEventListener("input", onSearch);
 }
-
-/* ========================
-   Card → Fullscreen Expansion
-   ======================== */
-
-const modal = document.getElementById("cardModal");
-const modalBody = document.getElementById("modalBody");
-const modalClose = document.getElementById("modalClose");
-
-function enableCardExpansion() {
-    document.querySelectorAll(".card").forEach(card => {
-        // allow tilt cards to also expand
-        card.style.cursor = "pointer";
-
-        card.addEventListener("click", () => {
-            openCardModal(card);
-        });
-    });
-}
-
-function openCardModal(card) {
-    const rect = card.getBoundingClientRect();
-    const clone = card.cloneNode(true);
-
-    clone.classList.add("expanding-card");
-    clone.style.position = "fixed";
-    clone.style.top = rect.top + "px";
-    clone.style.left = rect.left + "px";
-    clone.style.width = rect.width + "px";
-    clone.style.height = rect.height + "px";
-    clone.style.margin = "0";
-    clone.style.zIndex = 9999;
-    clone.style.transition = "all .45s cubic-bezier(.22,.9,.22,1)";
-    clone.style.transformOrigin = "center";
-
-    document.body.appendChild(clone);
-
-    // Force browser layout read
-    requestAnimationFrame(() => {
-        // animate to center of screen in large size
-        clone.style.top = "50%";
-        clone.style.left = "50%";
-        clone.style.transform = "translate(-50%, -50%) scale(1.45)";
-        clone.style.width = "650px";
-        clone.style.height = "460px";
-        clone.style.borderRadius = "22px";
-        clone.style.boxShadow = "0 24px 80px rgba(0,0,0,0.45)";
-    });
-
-    // Open modal after animation
-    setTimeout(() => {
-        modal.classList.add("visible");
-
-        // Move details into modal
-        modalBody.innerHTML = card.innerHTML;
-
-        // Remove the animated clone
-        clone.remove();
-    }, 420);
-}
-
-// Close handler
-modalClose.addEventListener("click", () => {
-    modal.classList.remove("visible");
-});
-
-/* Re-enable expansion each time grid is re-rendered */
-const originalRenderGrid = renderGrid;
-renderGrid = function(items) {
-    originalRenderGrid(items);
-    enableCardExpansion();
-};
-
 
 init();

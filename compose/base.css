@@ -1,0 +1,183 @@
+/* ===========================================================
+   base.css — Global Theme, Glass, Layout, Header
+   =========================================================== */
+
+/* -------------------- CSS VARIABLES -------------------- */
+:root {
+  --max-width: 1200px;
+
+  /* Background tones */
+  --bg-dark-1: #05040a;
+  --bg-dark-2: #071028;
+  --bg-dark-3: #0a1830;
+
+  --bg-light-1: #f7fbff;
+  --bg-light-2: #eef6ff;
+
+  /* Glass */
+  --glass-blur: 22px;
+  --glass-saturation: 160%;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  /* Neon Colors */
+  --accent: #60a5fa;
+  --accent-2: #a78bfa;
+  --accent-glow: rgba(96,165,250,0.18);
+
+  /* Text */
+  --text-light: #eef2ff;
+  --muted-light: #9aa8c3;
+  --text-dark: #0b1220;
+  --muted-dark: #556377;
+
+  /* Borders */
+  --border-dark: rgba(255,255,255,0.08);
+  --border-light: rgba(15,23,42,0.06);
+
+  --tab-height: 44px;
+}
+
+/* -------------------- GLOBAL BASE -------------------- */
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-light);
+  background:
+    radial-gradient(900px 420px at 12% 6%, rgba(103,23,119,0.12), transparent 8%),
+    radial-gradient(700px 380px at 98% 90%, rgba(8,30,66,0.32), transparent 12%),
+    linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2), var(--bg-dark-3));
+  transition: background 0.35s ease, color 0.3s ease;
+}
+
+body.theme-light {
+  color: var(--text-dark);
+  background:
+    radial-gradient(800px 400px at 10% 4%, rgba(140,160,255,0.10), transparent 14%),
+    linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* -------------------- HEADER -------------------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-radius: calc(var(--radius-md) + 6px);
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+  backdrop-filter: blur(calc(var(--glass-blur) - 8px)) saturate(var(--glass-saturation));
+}
+
+body.theme-light .topbar {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: var(--muted-light);
+}
+body.theme-light .subtitle {
+  color: var(--muted-dark);
+}
+
+/* -------------------- SEARCH -------------------- */
+.controls {
+  flex: 1;
+  max-width: 520px;
+}
+
+#search {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: inherit;
+  font-size: 14px;
+  backdrop-filter: blur(12px) saturate(140%);
+  transition: transform .12s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+#search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+body.theme-light #search {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+}
+
+/* -------------------- THEME BUTTON -------------------- */
+.icon-btn {
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+body.theme-light .icon-btn {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border-light);
+}
+
+/* -------------------- FOOTER -------------------- */
+.footer {
+  margin-top: 36px;
+  padding: 18px;
+  text-align: center;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+}
+
+body.theme-light .footer {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border-light);
+  color: var(--muted-dark);
+}
+
+/* -------------------- EMPTY + LOADING -------------------- */
+.empty-state,
+.loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--muted-light);
+}
+body.theme-light .empty-state,
+body.theme-light .loading {
+  color: var(--muted-dark);
+}

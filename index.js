@@ -1,139 +1,135 @@
-window.onload = function () {
-    console.log("Form Loaded")
-};
+/* index.js - restores behavior: dark-mode sync, search, drawer, typewriter, navigation */
 
-document.addEventListener('DOMContentLoaded', function () {
-    const switchInput = document.querySelector('.switch input');
-    switchInput.addEventListener('change', function () {
-        document.body.classList.toggle('dark-mode', this.checked);
+/* ---------- Utility: DOMContentLoaded single init ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+
+const topToggle = document.getElementById("dark-mode-toggle-top");
+if (topToggle) toggles.push(topToggle);
+
+    // Typewriter initial state
+    const titleEl = document.getElementById("title");
+    if (titleEl) titleEl.textContent = "";
+
+    // Setup toggles (header + drawer)
+    const toggles = [];
+    const headerToggle = document.getElementById("dark-mode-toggle");
+    const drawerToggle = document.getElementById("dark-mode-toggle-drawer");
+    if (headerToggle) toggles.push(headerToggle);
+    if (drawerToggle) toggles.push(drawerToggle);
+
+    // Read preference
+    const saved = localStorage.getItem("dark-mode") === "enabled";
+
+    // Apply initial state
+    document.body.classList.toggle("dark-mode", saved);
+    toggles.forEach(t => t.checked = saved);
+
+    // Hook events and keep them in sync
+    toggles.forEach(t => {
+        t.addEventListener("change", (e) => {
+            const checked = e.target.checked;
+            document.body.classList.toggle("dark-mode", checked);
+            localStorage.setItem("dark-mode", checked ? "enabled" : "disabled");
+            // sync others
+            toggles.forEach(o => { if (o !== e.target) o.checked = checked; });
+        });
     });
 
+    // Drawer close on outside click (optional)
+    document.addEventListener('click', (ev) => {
+        const drawer = document.getElementById('drawer');
+        const menuBtn = document.getElementById('menu-btn');
+        if (!drawer || !menuBtn) return;
+        if (!drawer.classList.contains('hidden')) {
+            // if click outside drawer and not on menu button, close
+            if (!drawer.contains(ev.target) && !menuBtn.contains(ev.target)) {
+                drawer.classList.add('hidden');
+                drawer.setAttribute('aria-hidden', 'true');
+            }
+        }
+    });
+
+    // Start typewriter
     typeWriter();
 });
 
+/* ---------- Typewriter ---------- */
+let i = 0;
+const titleText = "Welcome to AI Similarity";
+const speed = 60;
+
+function typeWriter() {
+    const el = document.getElementById("title");
+    if (!el) return;
+    if (i < titleText.length) {
+        el.innerHTML += titleText.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+/* ---------- Drawer ---------- */
+function toggleDrawer() {
+    const drawer = document.getElementById('drawer');
+    if (!drawer) return;
+    drawer.classList.toggle('hidden');
+    const hidden = drawer.classList.contains('hidden');
+    drawer.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+}
+
+/* ---------- Navigation handlers (preserved) ---------- */
 function onContributorListJoinClick() {
-    //const button = document.getElementById('myButton');
-    var link = 'https://forms.gle/wjcHvYAdYxPHodTN8'
-    window.location.href = link
+    window.location.href = 'https://forms.gle/wjcHvYAdYxPHodTN8';
 }
 function onInterviewQuestionsListClick() {
-    //const button = document.getElementById('myButton');
-    var link = '/iqlist.html'
-    window.location.href = link
+    window.location.href = '/iqlist.html';
 }
-
-// Add an event listener to the toggle switch
-function checkChange() {
-    // Get the toggle switch element and the body
-    const toggleSwitch = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    // Load the user's preference from localStorage
-    if (localStorage.getItem('dark-mode') === 'enabled') {
-        body.classList.add('dark-mode');
-        toggleSwitch.checked = true;
-    }
-    // Get the toggle switch element and the body
-
-    if (toggleSwitch.checked) {
-        body.classList.add('dark-mode');
-        localStorage.setItem('dark-mode', 'disabled');
-
-    } else {
-        body.classList.remove('dark-mode');
-        localStorage.setItem('dark-mode', 'enabled');
-    }
-    console.log("Hitting here")
-}
-
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-
-gtag('config', 'G-92KXYXDDWD');
-var tableData = "table-data-"
-var form = "form"
-var net = "net"
-var view = "view"
-var ui = "ui"
-
-
-//Animation
-// Typing animation
-//   var i = 0;
-//   var title = 'Welcome to AI Similarity';
-//   var speed = 200;
-
-//     function typeWriter() {
-//       if (i < title.length) {
-//         document.getElementById("title").innerHTML += title.charAt(i);
-//         i++;
-//       }
-//       setTimeout(typeWriter, speed);
-//     }
-
-
-
 function onShareFeedbackClick() {
-    var link = 'https://forms.gle/qMAD5hX2VPjahmLAA'
-    window.location.href = link
+    window.location.href = 'https://forms.gle/qMAD5hX2VPjahmLAA';
+}
+function onComposeClick() {
+    window.location.href = '/compose.html';
+}
+function onBlogsClick() {
+    // currently coming soon
+    alert('Blogs are coming soon');
 }
 
+/* ---------- Search logic (works with explicit <tbody>) ---------- */
 function search() {
-    console.log("Search was clicked");
-    // Get the value from the search input
-    var query = document.getElementById("search-query").value.toLowerCase();
-    // Check if the search query is not empty
-    if (query) {
-        alter(tableData + form, query)
-        alter(tableData + ui, query)
-        alter(tableData + net, query)
-        alter(tableData + view, query)
-    } else {
-        location.reload(true);
+    const q = document.getElementById('search-query');
+    const query = q ? q.value.trim().toLowerCase() : '';
+    if (!query) {
+        // reload to reset (keeps it simple)
+        location.reload();
+        return;
     }
-}
-function emptySearch() {
-    location.reload(true);
+
+    alter("table-data-ui", query);
+    alter("table-data-components", query);
+    alter("table-data-form", query);
+    alter("table-data-net", query);
+    alter("table-data-view", query);
 }
 
 function alter(id, query) {
-    var table = document.getElementById(id);
-
-    console.log(query);
-    // Alternatively, you can display search results on the same page
-    // For that, you would need to write logic to fetch and display the results
-    // Get the table and rows
-    let rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-
-    // Loop through each row
-    for (let i = 0; i < rows.length; i++) {
-        let cells = rows[i].getElementsByTagName('td');
-        let found = false;
-
-        // Check each cell in the row
-        for (let j = 0; j < cells.length; j++) {
-            if (cells[j].textContent.toLowerCase().includes(query)) {
-                found = true;
-                break;
-            }
-        }
-
-        // Show or hide the row based on whether a match was found
-        if (found) {
-            rows[i].style.display = '';
-        } else {
-            rows[i].style.display = 'none';
-        }
-    }
+    const table = document.getElementById(id);
+    if (!table) return;
+    // prefer explicit tbody
+    const tbody = table.querySelector('tbody') || table;
+    const rows = tbody.querySelectorAll('tr');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+    });
 }
 
-function toggleDrawer() {
-  const drawer = document.getElementById('drawer');
-  drawer.classList.toggle('hidden');
-}
-
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-}
-
+/* Expose functions to global scope (so onclick attr works) */
+window.toggleDrawer = toggleDrawer;
+window.onContributorListJoinClick = onContributorListJoinClick;
+window.onInterviewQuestionsListClick = onInterviewQuestionsListClick;
+window.onShareFeedbackClick = onShareFeedbackClick;
+window.onComposeClick = onComposeClick;
+window.onBlogsClick = onBlogsClick;
+window.search = search;
+window.alter = alter;

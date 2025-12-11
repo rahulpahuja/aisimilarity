@@ -279,4 +279,77 @@ async function init() {
   searchInput.addEventListener("input", onSearch);
 }
 
+/* ========================
+   Card → Fullscreen Expansion
+   ======================== */
+
+const modal = document.getElementById("cardModal");
+const modalBody = document.getElementById("modalBody");
+const modalClose = document.getElementById("modalClose");
+
+function enableCardExpansion() {
+    document.querySelectorAll(".card").forEach(card => {
+        // allow tilt cards to also expand
+        card.style.cursor = "pointer";
+
+        card.addEventListener("click", () => {
+            openCardModal(card);
+        });
+    });
+}
+
+function openCardModal(card) {
+    const rect = card.getBoundingClientRect();
+    const clone = card.cloneNode(true);
+
+    clone.classList.add("expanding-card");
+    clone.style.position = "fixed";
+    clone.style.top = rect.top + "px";
+    clone.style.left = rect.left + "px";
+    clone.style.width = rect.width + "px";
+    clone.style.height = rect.height + "px";
+    clone.style.margin = "0";
+    clone.style.zIndex = 9999;
+    clone.style.transition = "all .45s cubic-bezier(.22,.9,.22,1)";
+    clone.style.transformOrigin = "center";
+
+    document.body.appendChild(clone);
+
+    // Force browser layout read
+    requestAnimationFrame(() => {
+        // animate to center of screen in large size
+        clone.style.top = "50%";
+        clone.style.left = "50%";
+        clone.style.transform = "translate(-50%, -50%) scale(1.45)";
+        clone.style.width = "650px";
+        clone.style.height = "460px";
+        clone.style.borderRadius = "22px";
+        clone.style.boxShadow = "0 24px 80px rgba(0,0,0,0.45)";
+    });
+
+    // Open modal after animation
+    setTimeout(() => {
+        modal.classList.add("visible");
+
+        // Move details into modal
+        modalBody.innerHTML = card.innerHTML;
+
+        // Remove the animated clone
+        clone.remove();
+    }, 420);
+}
+
+// Close handler
+modalClose.addEventListener("click", () => {
+    modal.classList.remove("visible");
+});
+
+/* Re-enable expansion each time grid is re-rendered */
+const originalRenderGrid = renderGrid;
+renderGrid = function(items) {
+    originalRenderGrid(items);
+    enableCardExpansion();
+};
+
+
 init();

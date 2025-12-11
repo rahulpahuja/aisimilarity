@@ -387,3 +387,58 @@ body.theme-light .empty-state, body.theme-light .loading { color: var(--muted-da
 /* Keep heavy effects (backdrop-filter) to panels only. Cards are optimized for mobile. */
 
 /* -------------------- End of stylesheet -------------------- */
+.card-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    backdrop-filter: blur(30px) saturate(180%);
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+}
+
+.card-modal.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+.card-modal-content {
+    width: min(700px, 92%);
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    padding: 26px;
+    color: #fff;
+    transform-origin: center;
+    transform: scale(0.85) translateY(30px) rotateX(8deg);
+    opacity: 0;
+    transition: transform .4s cubic-bezier(.22,.8,.22,1), opacity .35s ease;
+}
+
+.card-modal.visible .card-modal-content {
+    transform: scale(1) translateY(0) rotateX(0deg);
+    opacity: 1;
+}
+.modal-close {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 12px;
+    color: white;
+    font-size: 15px;
+}
+
+.modal-close:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.05);
+}

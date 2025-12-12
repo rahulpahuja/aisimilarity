@@ -222,8 +222,8 @@ function onSearch(e) {
       (item.component || "").toLowerCase().includes(q) ||
       (item.compose || "").toLowerCase().includes(q) ||
       (item.swiftui || "").toLowerCase().includes(q) ||
-      (item.react_native || "").toLowerCase().includes(q)||
-      (item.xamarin || "").toLowerCase().includes(q)||
+      (item.react_native || "").toLowerCase().includes(q) ||
+      (item.xamarin || "").toLowerCase().includes(q) ||
       (item.ionic || "").toLowerCase().includes(q)
     );
 

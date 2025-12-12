@@ -209,8 +209,6 @@ function renderGrid(items) {
 let searchTimer = null;
 
 function onSearch(e) {
-  const q = e.target.value.toLowerCase().trim();||
-  const q = e.target.value.toLowerCase().trim();||
   const q = e.target.value.toLowerCase().trim();
 
   if (searchTimer) clearTimeout(searchTimer);

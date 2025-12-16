@@ -33,6 +33,19 @@ let activeCategory = null;
 const cap = str => str.charAt(0).toUpperCase() + str.slice(1);
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
+/* ------------------ Platform Icons ------------------ */
+const PLATFORM_ICONS = {
+  compose: '../assets/jetpack-compose.svg',
+  swiftui: '../assets/swiftui.svg',
+  android: '../assets/android.svg',
+  ios: '../assets/ios.svg',
+  react: '../assets/react.svg',
+  react_native: '../assets/react.svg',
+  flutter: '../assets/flutter.svg',
+  xamarin: '../assets/x.svg',
+  ionic: '../assets/ionic.svg'
+};
+
 /* ------------------ THEME SYSTEM ------------------ */
 function applyTheme(theme) {
   const isLight = theme === "light";
@@ -165,12 +178,12 @@ function makeCard(item) {
     <h3>${item.component || "Unnamed"}</h3>
 
     <div class="platform-grid">
-      <div class="label">Compose</div><div class="value">${item.compose || "—"}</div>
-      <div class="label">SwiftUI</div><div class="value">${item.swiftui || "—"}</div>
-      <div class="label">React Native</div><div class="value">${item.react_native || "—"}</div>
-      <div class="label">Flutter</div><div class="value">${item.flutter || "—"}</div>
-      <div class="label">Xamarin</div><div class="value">${item.xamarin || "—"}</div>
-      <div class="label">Ionic</div><div class="value">${item.ionic || "—"}</div>
+      <div class="label"><img src="../assets/jetpack-compose.svg" alt="Compose" class="platform-icon">Compose</div><div class="value">${item.compose || "—"}</div>
+      <div class="label"><img src="../assets/swiftui.svg" alt="SwiftUI" class="platform-icon">SwiftUI</div><div class="value">${item.swiftui || "—"}</div>
+      <div class="label"><img src="../assets/react.svg" alt="React" class="platform-icon">React Native</div><div class="value">${item.react_native || "—"}</div>
+      <div class="label"><img src="../assets/flutter.svg" alt="Flutter" class="platform-icon">Flutter</div><div class="value">${item.flutter || "—"}</div>
+      <div class="label"><img src="../assets/x.svg" alt="Xamarin" class="platform-icon">Xamarin</div><div class="value">${item.xamarin || "—"}</div>
+      <div class="label"><img src="../assets/ionic.svg" alt="Ionic" class="platform-icon">Ionic</div><div class="value">${item.ionic || "—"}</div>
     </div>
 
     <div class="divider"></div>
@@ -184,7 +197,13 @@ function makeCard(item) {
       a.href = url;
       a.target = "_blank";
       a.className = `link-pill ${platform}`;
-      a.textContent = platform.toUpperCase();
+      // include small icon if available
+      const icon = PLATFORM_ICONS[platform.toLowerCase()] || PLATFORM_ICONS[platform];
+      if (icon) {
+        a.innerHTML = `<img src="${icon}" alt="${platform}" class="platform-icon-btn"> ${platform.toUpperCase()}`;
+      } else {
+        a.textContent = platform.toUpperCase();
+      }
       linksWrap.appendChild(a);
     }
   }

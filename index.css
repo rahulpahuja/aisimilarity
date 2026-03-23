@@ -341,3 +341,80 @@ body.dark-mode .nav-btn {
 .small-toggle .slider {
     transform: scale(0.8);
 }
+
+/* ===== GLOWING GRADIENT FRAME ===== */
+
+.app {
+    position: relative;
+    padding: 2px; /* border thickness */
+    border-radius: 16px;
+    z-index: 1;
+}
+
+/* Animated gradient border */
+.app::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+
+    background: linear-gradient(
+        135deg,
+        #00c6ff,
+        #8e2de2,
+        #ff3cac,
+        #00c6ff
+    );
+    background-size: 300% 300%;
+    animation: glowMove 6s linear infinite;
+
+    /* Creates hollow border effect */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+    pointer-events: none;
+}
+
+/* Glow blur effect */
+.app::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        #00c6ff,
+        #8e2de2,
+        #ff3cac,
+        #00c6ff
+    );
+    background-size: 300% 300%;
+    animation: glowMove 6s linear infinite;
+
+    filter: blur(20px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* Ensure inner content sits cleanly */
+.app > * {
+    border-radius: 14px;
+}
+
+/* Animation */
+@keyframes glowMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Optional: spacing from screen edges */
+body {
+    padding: 20px;
+    background: #0f172a; /* adjust for your theme */
+}
+

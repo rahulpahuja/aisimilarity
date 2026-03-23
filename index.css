@@ -343,15 +343,18 @@ body.dark-mode .nav-btn {
 }
 
 /* ===== GLOWING GRADIENT FRAME ===== */
+/* ===== GLOWING GRADIENT FRAME (FIXED + CLEAN) ===== */
 
+/* Merge with your existing .app (DO NOT duplicate margin) */
 .app {
+    margin: 16px; /* keep your original spacing */
     position: relative;
-    padding: 2px; /* border thickness */
+    padding: 2px;
     border-radius: 16px;
     z-index: 1;
 }
 
-/* Animated gradient border */
+/* Gradient animated border */
 .app::before {
     content: "";
     position: absolute;
@@ -361,15 +364,15 @@ body.dark-mode .nav-btn {
 
     background: linear-gradient(
         135deg,
-        #00c6ff,
-        #8e2de2,
-        #ff3cac,
-        #00c6ff
+        var(--primary-1),
+        var(--primary-2),
+        var(--primary-3),
+        var(--primary-1)
     );
+
     background-size: 300% 300%;
     animation: glowMove 6s linear infinite;
 
-    /* Creates hollow border effect */
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -379,28 +382,30 @@ body.dark-mode .nav-btn {
     pointer-events: none;
 }
 
-/* Glow blur effect */
+/* Soft glow */
 .app::after {
     content: "";
     position: absolute;
     inset: -6px;
     border-radius: 20px;
+
     background: linear-gradient(
         135deg,
-        #00c6ff,
-        #8e2de2,
-        #ff3cac,
-        #00c6ff
+        var(--primary-1),
+        var(--primary-2),
+        var(--primary-3),
+        var(--primary-1)
     );
+
     background-size: 300% 300%;
     animation: glowMove 6s linear infinite;
 
     filter: blur(20px);
-    opacity: 0.4;
+    opacity: 0.35;
     z-index: -1;
 }
 
-/* Ensure inner content sits cleanly */
+/* Keep inner UI clean */
 .app > * {
     border-radius: 14px;
 }
@@ -411,10 +416,3 @@ body.dark-mode .nav-btn {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* Optional: spacing from screen edges */
-body {
-    padding: 20px;
-    background: #0f172a; /* adjust for your theme */
-}
-

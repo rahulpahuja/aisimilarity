@@ -45,7 +45,7 @@ body.dark-mode {
 }
 
 /* Title and subtitle */
-.gradient-text {
+/* .gradient-text {
     background-image: linear-gradient(to right, var(--primary-1), var(--primary-2), var(--primary-3));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -54,6 +54,32 @@ body.dark-mode {
     padding: 0;
     margin: 0;
     font-family: sans-serif;
+} */
+
+.gradient-text {
+    background-image: linear-gradient(
+        to right,
+        var(--primary-1),
+        var(--primary-2),
+        var(--primary-3)
+    );
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    font-family: 'Inter', 'Poppins', 'Montserrat', Arial, sans-serif;
+    font-weight: 800;              /* strong bold */
+    font-size: 10vw;               /* slightly larger, more dramatic */
+    letter-spacing: -0.03em;       /* tighter spacing like modern UI fonts */
+    line-height: 0.9;              /* compact vertical spacing */
+
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 .subheading-text {

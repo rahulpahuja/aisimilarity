@@ -123,105 +123,171 @@ function alter(id, query) {
 
 /* ========== QUIZ MODULE ========== */
 
+const quizPlatforms = {
+    android:     { label: 'Android',      icon: 'assets/android.svg' },
+    ios:         { label: 'iOS',          icon: 'assets/ios.svg'     },
+    flutter:     { label: 'Flutter',      icon: 'assets/flutter.svg' },
+    reactNative: { label: 'React Native', icon: 'assets/react.svg'   },
+    xamarin:     { label: 'Xamarin',      icon: 'assets/x.svg'       },
+    ionic:       { label: 'Ionic',        icon: 'assets/ionic.svg'   },
+};
+
 const quizData = {
-    easy: [
-        {
-            q: "What does \"NLP\" stand for in the context of AI?",
-            options: ["Neural Language Programming", "Natural Language Processing", "Networked Learning Protocol", "Numeric Logic Processing"],
-            correct: 1
-        },
-        {
-            q: "What is the primary goal of a similarity algorithm?",
-            options: ["To sort data alphabetically", "To encrypt messages securely", "To measure how alike two pieces of data are", "To compress files"],
-            correct: 2
-        },
-        {
-            q: "Which of the following is an example of a large language model?",
-            options: ["MySQL", "Linux", "GPT", "Excel"],
-            correct: 2
-        },
-        {
-            q: "What does \"text embedding\" produce?",
-            options: ["A formatted HTML document", "A numerical vector representing text", "A translated version of the text", "A compressed archive file"],
-            correct: 1
-        },
-        {
-            q: "Which of these fields is most closely related to AI Similarity?",
-            options: ["Network Security", "Natural Language Processing", "Database Administration", "Operating Systems"],
-            correct: 1
-        }
-    ],
-    medium: [
-        {
-            q: "Which similarity metric measures the cosine of the angle between two vectors?",
-            options: ["Euclidean distance", "Manhattan distance", "Jaccard coefficient", "Cosine similarity"],
-            correct: 3
-        },
-        {
-            q: "What does TF-IDF stand for?",
-            options: ["Text Frequency – Inverse Document Frequency", "Term Frequency – Inverse Document Frequency", "Token Frequency – Index Document Filter", "Type Factor – Integrated Data Function"],
-            correct: 1
-        },
-        {
-            q: "Which of these is a pre-trained transformer model commonly used to generate text embeddings?",
-            options: ["ResNet", "VGG16", "BERT", "AlexNet"],
-            correct: 2
-        },
-        {
-            q: "What is a vector database primarily used for?",
-            options: ["Storing relational tables", "Running SQL queries", "Compiling source code", "Storing and querying high-dimensional embeddings"],
-            correct: 3
-        },
-        {
-            q: "In NLP, what is \"tokenization\"?",
-            options: ["Encrypting a sentence", "Creating authentication tokens", "Splitting text into smaller units like words or subwords", "Converting text to images"],
-            correct: 2
-        }
-    ],
-    hard: [
-        {
-            q: "What does BERT stand for?",
-            options: ["Base Embedding Recurrent Transformer", "Bidirectional Encoder Representations from Transformers", "Binary Encoded Recurrent Training", "Batch-Evaluated Reasoning Tensor"],
-            correct: 1
-        },
-        {
-            q: "What is the Jaccard similarity between sets A = {1,2,3} and B = {2,3,4}?",
-            options: ["0.25", "0.75", "0.50", "1.00"],
-            correct: 2
-        },
-        {
-            q: "In Retrieval-Augmented Generation (RAG), what does the retrieval step do?",
-            options: ["Generates a response using only the model's weights", "Fine-tunes the model on new data", "Fetches relevant documents from a knowledge base to ground the response", "Translates queries into SQL"],
-            correct: 2
-        },
-        {
-            q: "Which approximate nearest neighbor (ANN) algorithm uses Hierarchical Navigable Small World graphs?",
-            options: ["KD-Tree", "FAISS Flat", "IVF-PQ", "HNSW"],
-            correct: 3
-        },
-        {
-            q: "What is the main limitation of cosine similarity when comparing documents of different lengths?",
-            options: ["It cannot handle negative values", "It only works with binary vectors", "It is too slow for large corpora", "It measures orientation but ignores magnitude, so very different-length documents can appear identical"],
-            correct: 3
-        }
-    ]
+    android: {
+        easy: [
+            { q: "What is the default programming language for Android development?", options: ["Swift", "Dart", "JavaScript", "Kotlin"], correct: 3 },
+            { q: "What does APK stand for?", options: ["App Process Kit", "Android Package Kit", "Application Platform Key", "Android Program Kernel"], correct: 1 },
+            { q: "Which component is the entry point of an Android app?", options: ["Fragment", "Service", "Activity", "BroadcastReceiver"], correct: 2 },
+            { q: "Which file declares app permissions and components in Android?", options: ["build.gradle", "settings.gradle", "proguard-rules.pro", "AndroidManifest.xml"], correct: 3 },
+            { q: "Which component is used to display large lists efficiently in Android?", options: ["ListView", "ScrollView", "GridView", "RecyclerView"], correct: 3 },
+        ],
+        medium: [
+            { q: "What is the purpose of a ViewModel in Android Architecture Components?", options: ["Render UI layouts", "Handle network requests", "Survive configuration changes and hold UI-related data", "Manage database queries directly"], correct: 2 },
+            { q: "Which Kotlin feature is used for asynchronous programming in modern Android?", options: ["AsyncTask", "HandlerThread", "RxJava", "Coroutines"], correct: 3 },
+            { q: "What does LiveData do in Android?", options: ["Streams live crash reports", "Handles real-time network streaming", "Manages background threads", "An observable, lifecycle-aware data holder"], correct: 3 },
+            { q: "Which Activity lifecycle method is called when the Activity becomes visible to the user?", options: ["onCreate()", "onRestart()", "onStart()", "onResume()"], correct: 2 },
+            { q: "What is Jetpack Compose?", options: ["A dependency injection framework", "A tool for building REST APIs", "A testing library", "A declarative UI toolkit for building native Android UI"], correct: 3 },
+        ],
+        hard: [
+            { q: "What is the difference between `launch` and `async` in Kotlin Coroutines?", options: ["`launch` returns a Deferred; `async` returns a Job", "`launch` is for UI thread only", "`launch` returns a Job (fire-and-forget); `async` returns a Deferred (with result)", "They are identical"], correct: 2 },
+            { q: "In WorkManager, which constraint ensures work only runs when connected to network?", options: ["NetworkType.ANY", "NetworkType.CONNECTED", "NetworkType.METERED", "NetworkType.UNMETERED"], correct: 1 },
+            { q: "What does the `@Composable` annotation mean in Jetpack Compose?", options: ["Marks a function as a coroutine", "Marks a function for dependency injection", "Marks a function as a ViewHolder", "Marks a function that describes a piece of UI"], correct: 3 },
+            { q: "Which pattern does Android's Room library use for database access?", options: ["Active Record", "Repository only", "Observer pattern", "DAO (Data Access Object)"], correct: 3 },
+            { q: "What is 'recomposition' in Jetpack Compose?", options: ["Rebuilding the entire app from scratch", "Restarting an Activity", "A method to refactor code", "Re-executing composable functions when observed state changes"], correct: 3 },
+        ],
+    },
+    ios: {
+        easy: [
+            { q: "What is the primary programming language for iOS development?", options: ["Kotlin", "Dart", "Java", "Swift"], correct: 3 },
+            { q: "What does UIKit provide?", options: ["Database management", "Networking utilities", "App Store submission tools", "UI components and infrastructure for building iOS apps"], correct: 3 },
+            { q: "Which method is called first in a UIViewController's lifecycle?", options: ["viewDidAppear()", "viewWillAppear()", "viewWillLoad()", "viewDidLoad()"], correct: 3 },
+            { q: "What is SwiftUI?", options: ["A Swift compiler plugin", "A networking library", "A testing framework", "A framework for building UI declaratively with Swift"], correct: 3 },
+            { q: "What is a Storyboard in iOS development?", options: ["A project documentation file", "A type of View Controller", "An animation library", "A visual tool to design and connect UI screens"], correct: 3 },
+        ],
+        medium: [
+            { q: "What is ARC in iOS?", options: ["App Runtime Controller", "Asynchronous Resource Cache", "App Release Cycle", "Automatic Reference Counting — manages memory by tracking object references"], correct: 3 },
+            { q: "Which SwiftUI property wrapper marks a variable as a local source of truth?", options: ["@Binding", "@ObservedObject", "@EnvironmentObject", "@State"], correct: 3 },
+            { q: "What is the Combine framework used for?", options: ["Combining multiple apps into one", "Managing Core Data relationships", "Handling push notifications", "Processing values over time using publishers and subscribers"], correct: 3 },
+            { q: "Why are `weak` references used in Swift?", options: ["To make a variable optional", "To improve performance", "To share data between threads", "To avoid strong reference cycles that cause memory leaks"], correct: 3 },
+            { q: "Which class is used to make network requests in iOS?", options: ["NSRequest", "URLConnection", "HTTPClient", "URLSession"], correct: 3 },
+        ],
+        hard: [
+            { q: "How do `struct` and `class` differ in Swift regarding memory storage?", options: ["Both are on the heap", "Both are on the stack", "Classes are value types; structs are reference types", "Structs are value types on the stack; classes are reference types on the heap"], correct: 3 },
+            { q: "What does `@EnvironmentObject` do in SwiftUI?", options: ["Reads a value from UserDefaults", "Creates a new object instance per view", "Observes OS environment variables", "Injects a shared observable object into the view hierarchy without passing it explicitly"], correct: 3 },
+            { q: "What is a 'strong reference cycle' in Swift?", options: ["A retain count above 10", "Using `strong` keyword in Objective-C", "A cycle in a linked list", "When two objects hold strong references to each other, preventing deallocation"], correct: 3 },
+            { q: "Which GCD queue must always be used for UI updates?", options: ["DispatchQueue.global()", "A background concurrent queue", "Any queue", "DispatchQueue.main"], correct: 3 },
+            { q: "What does `@discardableResult` do in Swift?", options: ["Marks a function that throws errors", "Discards the function from memory", "Marks a deprecated function", "Suppresses the compiler warning when a function's return value is not used"], correct: 3 },
+        ],
+    },
+    flutter: {
+        easy: [
+            { q: "What programming language does Flutter use?", options: ["Kotlin", "Swift", "JavaScript", "Dart"], correct: 3 },
+            { q: "What is the fundamental building block of a Flutter UI?", options: ["View", "Component", "Fragment", "Widget"], correct: 3 },
+            { q: "Which widget arranges children vertically in Flutter?", options: ["Row", "Stack", "Container", "Column"], correct: 3 },
+            { q: "What does Hot Reload do in Flutter?", options: ["Restarts the app completely", "Clears the cache", "Rebuilds the widget tree from scratch", "Injects updated code into the running app without losing state"], correct: 3 },
+            { q: "What is the CLI command to create a new Flutter project?", options: ["flutter init", "flutter start", "flutter new", "flutter create"], correct: 3 },
+        ],
+        medium: [
+            { q: "What is the key difference between StatelessWidget and StatefulWidget?", options: ["StatelessWidget can rebuild itself; StatefulWidget cannot", "They are interchangeable", "StatelessWidget is faster but not recommended", "StatefulWidget holds mutable state that can trigger rebuilds; StatelessWidget does not"], correct: 3 },
+            { q: "Which method must every State class implement in Flutter?", options: ["initState()", "dispose()", "setState()", "build()"], correct: 3 },
+            { q: "What is a BuildContext in Flutter?", options: ["A background process manager", "A state management solution", "A layout constraint object", "A handle to the widget's location in the widget tree"], correct: 3 },
+            { q: "What does FutureBuilder do in Flutter?", options: ["Creates futures in isolation", "Manages multiple async operations", "Schedules future widget rebuilds", "Builds a widget subtree based on the latest snapshot of a Future"], correct: 3 },
+            { q: "Which package is a widely used state management solution in Flutter?", options: ["redux_flutter", "stateful_manager", "widget_state", "flutter_bloc / BLoC"], correct: 3 },
+        ],
+        hard: [
+            { q: "What is the purpose of the `key` property in Flutter widgets?", options: ["A unique ID for debugging only", "Required for all widgets to render", "Used only with List widgets", "Helps Flutter efficiently identify and update specific widgets during reconciliation"], correct: 3 },
+            { q: "What is a Dart Isolate?", options: ["A widget that renders independently", "A way to isolate network calls", "A debug mode for Flutter", "An independent worker with its own memory heap for concurrent execution"], correct: 3 },
+            { q: "What does InheritedWidget do in Flutter?", options: ["Allows inheriting styles from parent", "Provides access to platform APIs", "Extends the lifecycle of a StatefulWidget", "Efficiently propagates data down the widget tree without passing through constructors"], correct: 3 },
+            { q: "What is the render tree in Flutter?", options: ["Identical to the widget tree", "A list of all visible widgets", "The tree used for navigation", "A layer below the element tree that handles actual pixel painting"], correct: 3 },
+            { q: "What is LayoutBuilder used for in Flutter?", options: ["Building the app's navigation structure", "Managing widget layouts at compile time", "Creating custom scroll physics", "Building widgets that depend on the parent's size constraints"], correct: 3 },
+        ],
+    },
+    reactNative: {
+        easy: [
+            { q: "What language is used to write React Native apps?", options: ["Kotlin", "Swift", "Dart", "JavaScript / TypeScript"], correct: 3 },
+            { q: "Which component displays scrollable lists efficiently in React Native?", options: ["ScrollList", "ListView", "TableView", "FlatList"], correct: 3 },
+            { q: "What does React Native use instead of HTML divs for layout?", options: ["Box", "Container", "Panel", "View"], correct: 3 },
+            { q: "Which React hook manages local state in a component?", options: ["useEffect", "useContext", "useReducer", "useState"], correct: 3 },
+            { q: "What is the Metro bundler?", options: ["A testing framework", "A UI component library", "A state management tool", "A JavaScript bundler that transforms and serves React Native code"], correct: 3 },
+        ],
+        medium: [
+            { q: "What was the 'Bridge' in the classic React Native architecture?", options: ["A UI component", "A navigation library", "A build tool", "The async communication layer between JavaScript and native code"], correct: 3 },
+            { q: "What is the main performance difference between FlatList and ScrollView?", options: ["They are identical", "FlatList only works on iOS", "ScrollView is newer and preferred", "ScrollView renders all children at once; FlatList renders lazily for better performance"], correct: 3 },
+            { q: "What does the useEffect hook do in React Native?", options: ["Manages component styling", "Creates reusable custom hooks", "Replaces Redux for state management", "Runs side effects like data fetching after render"], correct: 3 },
+            { q: "Which library is the most popular for navigation in React Native?", options: ["React Router Native", "React Native Navigation (only)", "Expo Router (only)", "React Navigation"], correct: 3 },
+            { q: "What does the Platform module allow you to do?", options: ["Access location services", "Debug native code", "Install native packages", "Detect the OS and write platform-specific conditional logic"], correct: 3 },
+        ],
+        hard: [
+            { q: "What is JSI (JavaScript Interface) in React Native's New Architecture?", options: ["A new JavaScript syntax", "A JSON schema interface", "A new version of the Bridge", "A C++ layer that lets JS call native functions synchronously without serialization"], correct: 3 },
+            { q: "What is Fabric in React Native's New Architecture?", options: ["A CSS-in-JS library", "A state management solution", "A build optimization tool", "The new UI rendering system that synchronously connects native views with the JS thread"], correct: 3 },
+            { q: "What is the purpose of useCallback in React Native?", options: ["To cache a computed value", "To handle async callbacks", "To replace useEffect", "To memoize a callback, preventing unnecessary re-creation on every re-render"], correct: 3 },
+            { q: "How does Hermes improve React Native performance?", options: ["By JIT-compiling JS at runtime", "By replacing the Bridge entirely", "By caching network responses", "By pre-compiling JS to bytecode, reducing startup time and memory usage"], correct: 3 },
+            { q: "What are TurboModules in React Native's New Architecture?", options: ["A faster build system", "A UI rendering pipeline", "A TypeScript compiler plugin", "An optimized native module system using JSI for lazy loading of native modules"], correct: 3 },
+        ],
+    },
+    xamarin: {
+        easy: [
+            { q: "What programming language is used in Xamarin development?", options: ["Swift", "Kotlin", "Dart", "C#"], correct: 3 },
+            { q: "What does Xamarin.Forms allow you to do?", options: ["Build apps only for Android", "Create web applications", "Deploy apps to the App Store only", "Write shared UI code that runs on iOS, Android, and other platforms"], correct: 3 },
+            { q: "What is XAML in Xamarin?", options: ["A scripting language", "A database query language", "A build tool", "A markup language used to define UIs declaratively"], correct: 3 },
+            { q: "Which Microsoft product has Xamarin evolved into?", options: ["Azure Mobile Apps", "Visual Studio Code", "Blazor", ".NET MAUI"], correct: 3 },
+            { q: "What is ContentPage in Xamarin.Forms?", options: ["A database table", "A networking component", "An animation class", "A page type that displays a single view as its content"], correct: 3 },
+        ],
+        medium: [
+            { q: "What is data binding in Xamarin.Forms?", options: ["Connecting to a database", "A networking protocol", "Passing data between pages", "Automatically syncing UI elements with data sources"], correct: 3 },
+            { q: "Which design pattern is most commonly used with Xamarin.Forms?", options: ["MVC", "MVP", "VIPER", "MVVM"], correct: 3 },
+            { q: "What is ICommand used for in Xamarin MVVM?", options: ["Executing database commands", "Sending network commands", "Managing app lifecycle", "Binding button actions to ViewModel logic"], correct: 3 },
+            { q: "What is the Dependency Service in Xamarin.Forms?", options: ["A package manager", "An IoC container", "A network dependency resolver", "A mechanism to inject platform-specific implementations into shared code"], correct: 3 },
+            { q: "What does ObservableCollection<T> provide in Xamarin?", options: ["Observes network changes", "Stores observable app settings", "Monitors background tasks", "A collection that notifies the UI when items are added, removed, or changed"], correct: 3 },
+        ],
+        hard: [
+            { q: "What is a Custom Renderer in Xamarin.Forms?", options: ["A tool to render XAML", "A custom animation engine", "A code generator", "A platform-specific class that overrides the default rendering of a Xamarin.Forms control"], correct: 3 },
+            { q: "What is Shell navigation in Xamarin.Forms?", options: ["A command-line tool", "A navigation graph like Android's", "A way to navigate between projects", "A URI-based navigation system with built-in flyout and tab bar support"], correct: 3 },
+            { q: "What is the purpose of Effects in Xamarin.Forms?", options: ["Adding visual animations", "Applying CSS effects", "Handling MVVM side effects", "Lightweight platform customizations to a control without a full Custom Renderer"], correct: 3 },
+            { q: "How does MessagingCenter work in Xamarin.Forms?", options: ["Sends push notifications", "A REST messaging client", "A chat SDK", "A pub-sub system for loosely coupled communication between components"], correct: 3 },
+            { q: "What is the difference between BindingContext and DataContext?", options: ["They are identical", "DataContext is for database connections", "BindingContext is only for ListView", "BindingContext is Xamarin.Forms specific; DataContext is from WPF / .NET MAUI"], correct: 3 },
+        ],
+    },
+    ionic: {
+        easy: [
+            { q: "What core web technologies does Ionic use?", options: ["Kotlin and Swift", "Dart and Flutter", "C# and XAML", "HTML, CSS, and JavaScript / TypeScript"], correct: 3 },
+            { q: "What is Capacitor in the Ionic ecosystem?", options: ["A state management library", "An Ionic UI component", "A testing framework", "A native runtime that bridges web code to native device APIs"], correct: 3 },
+            { q: "Which Ionic component displays a list?", options: ["ion-table", "ion-flatlist", "ion-collection", "ion-list"], correct: 3 },
+            { q: "What does ion-router-outlet do?", options: ["Connects to an external API", "Provides offline routing", "Manages route guards", "Acts as a placeholder where routed page components are rendered"], correct: 3 },
+            { q: "Which framework does Ionic most commonly pair with?", options: ["Vue only", "React only", "Svelte only", "Angular"], correct: 3 },
+        ],
+        medium: [
+            { q: "What is the key difference between Cordova and Capacitor?", options: ["They are the same", "Capacitor is only for iOS", "Cordova is maintained by the Ionic team", "Cordova is the legacy native bridge; Capacitor is its modern, web-first replacement"], correct: 3 },
+            { q: "Which Ionic lifecycle hook fires every time a page becomes the active view?", options: ["ngOnInit", "ionViewDidLoad", "ngAfterViewInit", "ionViewWillEnter"], correct: 3 },
+            { q: "What is Ionic Storage used for?", options: ["Cloud storage integration", "File system access", "A Redux-based store", "A key-value store abstracting LocalStorage, IndexedDB, and SQLite"], correct: 3 },
+            { q: "How does Ionic handle platform-specific styling automatically?", options: ["One style fits all", "Separate SCSS files per platform", "Using Sass mixins only", "CSS variables + automatically applying MD or iOS mode based on the detected platform"], correct: 3 },
+            { q: "What is ion-infinite-scroll used for?", options: ["Infinite animation loops", "Making ScrollView infinitely tall", "Scrolling images in a carousel", "Loading more data as the user scrolls to the bottom of a list"], correct: 3 },
+        ],
+        hard: [
+            { q: "How is a Capacitor Plugin structured?", options: ["A JavaScript-only library", "A Cordova plugin wrapper", "An Angular service module", "A web implementation + platform-specific native implementations for iOS and Android"], correct: 3 },
+            { q: "What does the @capacitor/app backButton event handle?", options: ["Triggering app updates", "Creating custom back navigation in iOS", "Detecting device restarts", "The Android hardware back button press in JavaScript"], correct: 3 },
+            { q: "What is the difference between ActivatedRoute and Router in Ionic Angular?", options: ["They are identical", "Router is only for lazy loading", "ActivatedRoute is deprecated", "ActivatedRoute gives info about the current route; Router navigates programmatically"], correct: 3 },
+            { q: "What does lazy loading do in Ionic Angular?", options: ["Delays image loading", "A performance issue to avoid", "Loads data from a cache", "Loads feature modules only when their route is first accessed, reducing bundle size"], correct: 3 },
+            { q: "How does ionViewDidEnter differ from ngAfterViewInit?", options: ["They fire at the same time", "ionViewDidEnter only fires on iOS", "ngAfterViewInit replaces all Ionic lifecycle hooks", "ngAfterViewInit fires once on creation; ionViewDidEnter fires every time the page enters the viewport"], correct: 3 },
+        ],
+    },
 };
 
 const quizRatings = [
-    { min: 0, max: 0, label: "Novice",    emoji: "🌱" },
-    { min: 1, max: 1, label: "Beginner",  emoji: "📖" },
-    { min: 2, max: 2, label: "Learner",   emoji: "🔍" },
-    { min: 3, max: 3, label: "Proficient",emoji: "⚡" },
-    { min: 4, max: 4, label: "Expert",    emoji: "🏆" },
-    { min: 5, max: 5, label: "AI Master", emoji: "🧠" }
+    { min: 0, max: 0, label: "Just Getting Started", emoji: "🌱" },
+    { min: 1, max: 1, label: "Beginner",              emoji: "📖" },
+    { min: 2, max: 2, label: "Learning",              emoji: "🔍" },
+    { min: 3, max: 3, label: "Proficient",            emoji: "⚡" },
+    { min: 4, max: 4, label: "Expert",                emoji: "🏆" },
+    { min: 5, max: 5, label: "Master Developer",      emoji: "🧠" },
 ];
 
-let quizState = { questions: [], current: 0, answers: [], difficulty: '' };
+let quizState = { platform: '', difficulty: '', questions: [], current: 0, answers: [] };
 
 function openQuiz() {
     const modal = document.getElementById('quiz-modal');
     modal.classList.remove('quiz-modal-hidden');
-    showScreen('difficulty');
+    showScreen('platform');
     modal.onclick = (e) => { if (e.target === modal) closeQuiz(); };
 }
 
@@ -230,19 +296,23 @@ function closeQuiz() {
 }
 
 function showScreen(name) {
-    ['difficulty', 'question', 'results'].forEach(s => {
-        const el = document.getElementById(`quiz-screen-${s}`);
-        el.classList.toggle('quiz-screen-hidden', s !== name);
+    ['platform', 'difficulty', 'question', 'results'].forEach(s => {
+        document.getElementById(`quiz-screen-${s}`).classList.toggle('quiz-screen-hidden', s !== name);
     });
 }
 
+function selectPlatform(platform) {
+    quizState.platform = platform;
+    const meta = quizPlatforms[platform];
+    document.getElementById('quiz-diff-platform-name').textContent = meta.label;
+    document.getElementById('quiz-diff-platform-icon').innerHTML =
+        `<img src="${meta.icon}" alt="${meta.label}" style="width:44px;height:44px;object-fit:contain;">`;
+    showScreen('difficulty');
+}
+
 function startQuiz(difficulty) {
-    quizState = {
-        questions: quizData[difficulty],
-        current: 0,
-        answers: Array(quizData[difficulty].length).fill(null),
-        difficulty
-    };
+    const questions = quizData[quizState.platform][difficulty];
+    quizState = { ...quizState, difficulty, questions, current: 0, answers: Array(questions.length).fill(null) };
     renderQuestion();
     showScreen('question');
 }
@@ -250,12 +320,11 @@ function startQuiz(difficulty) {
 function renderQuestion() {
     const { questions, current, answers } = quizState;
     const q = questions[current];
-    const total = questions.length;
     const letters = ['A', 'B', 'C', 'D'];
 
     document.getElementById('quiz-q-text').textContent = q.q;
-    document.getElementById('quiz-progress-label').textContent = `${current + 1} / ${total}`;
-    document.getElementById('quiz-progress-fill').style.width = `${((current + 1) / total) * 100}%`;
+    document.getElementById('quiz-progress-label').textContent = `${current + 1} / ${questions.length}`;
+    document.getElementById('quiz-progress-fill').style.width = `${((current + 1) / questions.length) * 100}%`;
 
     const optionsEl = document.getElementById('quiz-options');
     optionsEl.innerHTML = '';
@@ -269,7 +338,7 @@ function renderQuestion() {
 
     const nextBtn = document.getElementById('quiz-next-btn');
     nextBtn.disabled = answers[current] === null;
-    nextBtn.textContent = current === total - 1 ? 'Submit ✓' : 'Next →';
+    nextBtn.textContent = current === questions.length - 1 ? 'Submit ✓' : 'Next →';
 }
 
 function selectOption(index) {
@@ -288,15 +357,17 @@ function quizNext() {
 }
 
 function showResults() {
-    const { questions, answers } = quizState;
+    const { questions, answers, platform, difficulty } = quizState;
     const letters = ['A', 'B', 'C', 'D'];
     let score = 0;
     answers.forEach((ans, i) => { if (ans === questions[i].correct) score++; });
 
     const rating = quizRatings.find(r => score >= r.min && score <= r.max);
+    const platformLabel = quizPlatforms[platform].label;
     document.getElementById('quiz-result-emoji').textContent = rating.emoji;
     document.getElementById('quiz-result-score').textContent = `${score} / ${questions.length}`;
-    document.getElementById('quiz-result-rating').textContent = rating.label;
+    document.getElementById('quiz-result-rating').textContent =
+        `${rating.label} · ${platformLabel} ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
 
     const reviewEl = document.getElementById('quiz-review-list');
     reviewEl.innerHTML = '';
@@ -304,9 +375,8 @@ function showResults() {
         const correct = answers[i] === q.correct;
         const item = document.createElement('div');
         item.className = `quiz-review-item ${correct ? 'quiz-review-correct' : 'quiz-review-wrong'}`;
-        item.innerHTML = `
-            <strong>${correct ? '✓' : '✗'} ${q.q}</strong>
-            <span class="quiz-review-answer">Correct answer: ${letters[q.correct]}. ${q.options[q.correct]}</span>`;
+        item.innerHTML = `<strong>${correct ? '✓' : '✗'} ${q.q}</strong>
+            <span class="quiz-review-answer">Correct: ${letters[q.correct]}. ${q.options[q.correct]}</span>`;
         reviewEl.appendChild(item);
     });
 
@@ -314,7 +384,7 @@ function showResults() {
 }
 
 function restartQuiz() {
-    showScreen('difficulty');
+    showScreen('platform');
 }
 
 /* ========== END QUIZ MODULE ========== */
@@ -330,6 +400,7 @@ window.search = search;
 window.alter = alter;
 window.openQuiz = openQuiz;
 window.closeQuiz = closeQuiz;
+window.selectPlatform = selectPlatform;
 window.startQuiz = startQuiz;
 window.selectOption = selectOption;
 window.quizNext = quizNext;

@@ -95,7 +95,7 @@ function onCatchDroidClick() {
     window.location.href = '/droid.html';
 }
 function onCatchIosClick() {
-    window.location.href = '/ios.html';
+    window.location.href = '/squircle.html';
 }
 
 /* ---------- Search logic (works with explicit <tbody>) ---------- */

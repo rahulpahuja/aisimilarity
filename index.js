@@ -219,8 +219,10 @@ const quizRatings = [
 let quizState = { questions: [], current: 0, answers: [], difficulty: '' };
 
 function openQuiz() {
-    document.getElementById('quiz-modal').classList.remove('quiz-modal-hidden');
+    const modal = document.getElementById('quiz-modal');
+    modal.classList.remove('quiz-modal-hidden');
     showScreen('difficulty');
+    modal.onclick = (e) => { if (e.target === modal) closeQuiz(); };
 }
 
 function closeQuiz() {

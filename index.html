@@ -857,6 +857,14 @@
         <div class="quiz-container">
             <button class="quiz-close-btn" onclick="closeQuiz()" aria-label="Close quiz">&times;</button>
 
+            <!-- Screen 0: Loading -->
+            <div id="quiz-screen-loading" class="quiz-screen quiz-screen-hidden">
+                <div class="quiz-loading">
+                    <div class="quiz-spinner"></div>
+                    <p id="quiz-loading-msg">Loading quiz&hellip;</p>
+                </div>
+            </div>
+
             <!-- Screen 1: Platform -->
             <div id="quiz-screen-platform" class="quiz-screen">
                 <div class="quiz-icon-header">&#128241;</div>

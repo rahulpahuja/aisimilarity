@@ -559,6 +559,31 @@ body.dark-mode .quiz-subtitle { color: #aaa; }
 
 body.dark-mode .quiz-pick-label { color: #ccc; }
 
+/* Loading screen */
+.quiz-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    gap: 16px;
+    color: #888;
+    font-size: 14px;
+}
+
+.quiz-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #e0e0e0;
+    border-top-color: var(--primary-1);
+    border-radius: 50%;
+    animation: quizSpin 0.7s linear infinite;
+}
+
+@keyframes quizSpin {
+    to { transform: rotate(360deg); }
+}
+
 /* Platform grid */
 .quiz-platform-grid {
     display: grid;

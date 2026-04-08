@@ -91,6 +91,9 @@ function onBlogsClick() {
     // currently coming soon
     alert('Blogs are coming soon');
 }
+function onCatchDroidClick() {
+    window.location.href = '/droid.html';
+}
 
 /* ---------- Search logic (works with explicit <tbody>) ---------- */
 function search() {
@@ -252,6 +255,7 @@ window.onInterviewQuestionsListClick = onInterviewQuestionsListClick;
 window.onShareFeedbackClick = onShareFeedbackClick;
 window.onComposeClick = onComposeClick;
 window.onBlogsClick = onBlogsClick;
+window.onCatchDroidClick = onCatchDroidClick;
 window.search = search;
 window.alter = alter;
 window.openQuiz = openQuiz;

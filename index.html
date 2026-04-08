@@ -99,6 +99,13 @@
             <h1 class="gradient-text" id="title"></h1>
             <h3 class="subheading-text">Your ultimate guide to bridging the gap between Android and iOS Platforms</h3>
 
+            <div class="quiz-entry">
+                <button class="quiz-cta-btn" onclick="openQuiz()">
+                    <span class="quiz-cta-icon">&#129504;</span> Take the Knowledge Quiz
+                </button>
+                <p class="quiz-cta-sub">Test your AI, NLP &amp; similarity knowledge &mdash; Easy, Medium, or Hard</p>
+            </div>
+
             <div class="search-area">
                 <div class="input-group">
                     <input type="search" class="form-control rounded" placeholder="Enter your Search Query here"
@@ -842,6 +849,49 @@
             </table>
 
             <hr class="dotted-line">
+        </div>
+    </div>
+
+    <!-- ===== QUIZ MODAL ===== -->
+    <div id="quiz-modal" class="quiz-modal quiz-modal-hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
+        <div class="quiz-container">
+            <button class="quiz-close-btn" onclick="closeQuiz()" aria-label="Close quiz">&times;</button>
+
+            <!-- Screen: Difficulty -->
+            <div id="quiz-screen-difficulty" class="quiz-screen">
+                <div class="quiz-icon-header">&#129504;</div>
+                <h2 class="quiz-title" id="quiz-modal-title">Knowledge Check</h2>
+                <p class="quiz-subtitle">Test your understanding of AI, NLP &amp; similarity algorithms</p>
+                <p class="quiz-pick-label">Choose your difficulty</p>
+                <div class="quiz-diff-row">
+                    <button class="quiz-diff-btn quiz-diff-easy"  onclick="startQuiz('easy')">Easy</button>
+                    <button class="quiz-diff-btn quiz-diff-medium" onclick="startQuiz('medium')">Medium</button>
+                    <button class="quiz-diff-btn quiz-diff-hard"  onclick="startQuiz('hard')">Hard</button>
+                </div>
+            </div>
+
+            <!-- Screen: Question -->
+            <div id="quiz-screen-question" class="quiz-screen quiz-screen-hidden">
+                <div class="quiz-progress-row">
+                    <div class="quiz-progress-bar"><div id="quiz-progress-fill" class="quiz-progress-fill"></div></div>
+                    <span id="quiz-progress-label" class="quiz-progress-label">1 / 5</span>
+                </div>
+                <p id="quiz-q-text" class="quiz-q-text"></p>
+                <div id="quiz-options" class="quiz-options"></div>
+                <button id="quiz-next-btn" class="quiz-nav-btn" onclick="quizNext()" disabled>Next &rarr;</button>
+            </div>
+
+            <!-- Screen: Results -->
+            <div id="quiz-screen-results" class="quiz-screen quiz-screen-hidden">
+                <div class="quiz-icon-header" id="quiz-result-emoji"></div>
+                <h2 class="quiz-result-score" id="quiz-result-score"></h2>
+                <p class="quiz-result-rating" id="quiz-result-rating"></p>
+                <div id="quiz-review-list" class="quiz-review-list"></div>
+                <div class="quiz-result-actions">
+                    <button class="quiz-nav-btn" onclick="restartQuiz()">&#8635; Try Again</button>
+                    <button class="quiz-nav-btn quiz-nav-btn-secondary" onclick="closeQuiz()">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

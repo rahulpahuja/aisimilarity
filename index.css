@@ -323,30 +323,65 @@ body.dark-mode .btn-outline-primary:hover {
 /* === Quiz CTA === */
 .quiz-entry {
     text-align: center;
-    padding: 32px 16px 0;
+    padding: 40px 16px 8px;
+    position: relative;
 }
 
 .quiz-cta-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--text-1);
-    color: var(--bg);
+    gap: 10px;
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-2), var(--brand-3));
+    background-size: 200% 200%;
+    animation: quizCtaShift 4s ease infinite;
+    color: #fff;
     border: none;
     border-radius: var(--radius-xl);
-    padding: 13px 28px;
-    font-size: 14px;
-    font-weight: 600;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 700;
     font-family: inherit;
     cursor: pointer;
     letter-spacing: -0.01em;
-    transition: opacity 0.15s, transform 0.15s;
+    box-shadow:
+        0 0 0 4px rgba(79, 70, 229, 0.15),
+        0 8px 32px rgba(37, 99, 235, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
 }
 
-.quiz-cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.quiz-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: calc(var(--radius-xl) + 3px);
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-2), var(--brand-3));
+    background-size: 200% 200%;
+    animation: quizCtaShift 4s ease infinite;
+    filter: blur(12px);
+    opacity: 0.45;
+    z-index: -1;
+}
+
+.quiz-cta-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 0 0 4px rgba(79, 70, 229, 0.2),
+        0 14px 40px rgba(37, 99, 235, 0.5);
+}
+
+.quiz-cta-btn:active { transform: translateY(0) scale(0.99); }
+
+@keyframes quizCtaShift {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+
+.quiz-cta-icon { font-size: 20px; }
 
 .quiz-cta-sub {
-    margin: 10px 0 0;
+    margin: 12px 0 0;
     font-size: 13px;
     color: var(--text-3);
 }

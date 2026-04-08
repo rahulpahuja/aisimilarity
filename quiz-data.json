@@ -22,21 +22,36 @@
         { "q": "What does APK stand for?", "options": ["App Process Kit", "Android Package Kit", "Application Platform Key", "Android Program Kernel"], "correct": 1 },
         { "q": "Which component is the entry point of an Android app?", "options": ["Fragment", "Service", "Activity", "BroadcastReceiver"], "correct": 2 },
         { "q": "Which file declares app permissions and components in Android?", "options": ["build.gradle", "settings.gradle", "proguard-rules.pro", "AndroidManifest.xml"], "correct": 3 },
-        { "q": "Which component is used to display large lists efficiently in Android?", "options": ["ListView", "ScrollView", "GridView", "RecyclerView"], "correct": 3 }
+        { "q": "Which component is used to display large lists efficiently in Android?", "options": ["ListView", "ScrollView", "GridView", "RecyclerView"], "correct": 3 },
+        { "q": "What tool is used to build Android projects?", "options": ["Maven", "Ant", "Gradle", "Webpack"], "correct": 2 },
+        { "q": "Which XML attribute is used to assign a unique identifier to a UI element?", "options": ["android:name", "android:id", "android:tag", "android:key"], "correct": 1 },
+        { "q": "What is the base class for all UI components in Android?", "options": ["ViewGroup", "Activity", "View", "Component"], "correct": 2 },
+        { "q": "Which folder is used to store image resources in an Android project?", "options": ["/assets", "/res/drawable", "/res/images", "/src/images"], "correct": 1 },
+        { "q": "What does 'ADB' stand for in Android development?", "options": ["Android Debug Bridge", "Application Data Base", "Android Device Builder", "App Debug Binary"], "correct": 0 }
       ],
       "medium": [
         { "q": "What is the purpose of a ViewModel in Android Architecture Components?", "options": ["Render UI layouts", "Handle network requests", "Survive configuration changes and hold UI-related data", "Manage database queries directly"], "correct": 2 },
         { "q": "Which Kotlin feature is used for asynchronous programming in modern Android?", "options": ["AsyncTask", "HandlerThread", "RxJava", "Coroutines"], "correct": 3 },
         { "q": "What does LiveData do in Android?", "options": ["Streams live crash reports", "Handles real-time network streaming", "Manages background threads", "An observable, lifecycle-aware data holder"], "correct": 3 },
         { "q": "Which Activity lifecycle method is called when the Activity becomes visible to the user?", "options": ["onCreate()", "onRestart()", "onStart()", "onResume()"], "correct": 2 },
-        { "q": "What is Jetpack Compose?", "options": ["A dependency injection framework", "A tool for building REST APIs", "A testing library", "A declarative UI toolkit for building native Android UI"], "correct": 3 }
+        { "q": "What is Jetpack Compose?", "options": ["A dependency injection framework", "A tool for building REST APIs", "A testing library", "A declarative UI toolkit for building native Android UI"], "correct": 3 },
+        { "q": "Which component runs in the background to perform long-running operations?", "options": ["Activity", "Service", "BroadcastReceiver", "ContentProvider"], "correct": 1 },
+        { "q": "What is a PendingIntent?", "options": ["An intent that has failed to execute", "A token that gives a foreign application permission to execute a piece of your code", "An intent waiting for user confirmation", "An intent used strictly for database operations"], "correct": 1 },
+        { "q": "Which of these is NOT a valid Android layout type?", "options": ["ConstraintLayout", "LinearLayout", "StackLayout", "FrameLayout"], "correct": 2 },
+        { "q": "What does SharedPreferences store?", "options": ["Large multimedia files", "Key-value pairs of primitive data types", "Relational database tables", "Compiled application code"], "correct": 1 },
+        { "q": "What is the purpose of the 'Context' object in Android?", "options": ["To manage database schemas", "To provide access to application-specific resources and classes", "To handle all background threading", "To compile XML to Java/Kotlin"], "correct": 1 }
       ],
       "hard": [
         { "q": "What is the difference between `launch` and `async` in Kotlin Coroutines?", "options": ["`launch` returns a Deferred; `async` returns a Job", "`launch` is for UI thread only", "`launch` returns a Job (fire-and-forget); `async` returns a Deferred (with result)", "They are identical"], "correct": 2 },
         { "q": "In WorkManager, which constraint ensures work only runs when connected to a network?", "options": ["NetworkType.ANY", "NetworkType.CONNECTED", "NetworkType.METERED", "NetworkType.UNMETERED"], "correct": 1 },
         { "q": "What does the `@Composable` annotation mean in Jetpack Compose?", "options": ["Marks a function as a coroutine", "Marks a function for dependency injection", "Marks a function as a ViewHolder", "Marks a function that describes a piece of UI"], "correct": 3 },
         { "q": "Which pattern does Android's Room library use for database access?", "options": ["Active Record", "Repository only", "Observer pattern", "DAO (Data Access Object)"], "correct": 3 },
-        { "q": "What is 'recomposition' in Jetpack Compose?", "options": ["Rebuilding the entire app from scratch", "Restarting an Activity", "A method to refactor code", "Re-executing composable functions when observed state changes"], "correct": 3 }
+        { "q": "What is 'recomposition' in Jetpack Compose?", "options": ["Rebuilding the entire app from scratch", "Restarting an Activity", "A method to refactor code", "Re-executing composable functions when observed state changes"], "correct": 3 },
+        { "q": "How does Dagger/Hilt manage dependencies in Android?", "options": ["Service Locator pattern", "Compile-time dependency injection via code generation", "Runtime reflection", "Manual constructor injection only"], "correct": 1 },
+        { "q": "What causes an Activity context memory leak?", "options": ["Passing a Context to a short-lived function", "A static reference holding onto an Activity instance after it's destroyed", "Using the Application context in a Singleton", "Starting too many Activities at once"], "correct": 1 },
+        { "q": "What is the primary function of ProGuard/R8?", "options": ["Code shrinking, optimization, and obfuscation", "Converting Kotlin to Java", "Managing XML layouts", "Signing the APK for release"], "correct": 0 },
+        { "q": "In Android's Binder architecture, what is an AIDL?", "options": ["Android Interactive Data Layer", "Android Interface Definition Language", "Application Internal Design Logic", "App Interface Declaration Link"], "correct": 1 },
+        { "q": "Which View method is responsible for measuring the size of a custom view and its children?", "options": ["onDraw()", "onLayout()", "onMeasure()", "onSizeChanged()"], "correct": 2 }
       ]
     },
     "ios": {
@@ -45,21 +60,36 @@
         { "q": "What does UIKit provide?", "options": ["Database management", "Networking utilities", "App Store submission tools", "UI components and infrastructure for building iOS apps"], "correct": 3 },
         { "q": "Which method is called first in a UIViewController's lifecycle?", "options": ["viewDidAppear()", "viewWillAppear()", "viewWillLoad()", "viewDidLoad()"], "correct": 3 },
         { "q": "What is SwiftUI?", "options": ["A Swift compiler plugin", "A networking library", "A testing framework", "A framework for building UI declaratively with Swift"], "correct": 3 },
-        { "q": "What is a Storyboard in iOS development?", "options": ["A project documentation file", "A type of View Controller", "An animation library", "A visual tool to design and connect UI screens"], "correct": 3 }
+        { "q": "What is a Storyboard in iOS development?", "options": ["A project documentation file", "A type of View Controller", "An animation library", "A visual tool to design and connect UI screens"], "correct": 3 },
+        { "q": "Which IDE is used officially for iOS development?", "options": ["Visual Studio", "IntelliJ IDEA", "Xcode", "Eclipse"], "correct": 2 },
+        { "q": "What is the entry point of an iOS application built with UIKit?", "options": ["AppDelegate", "ViewController", "Main.storyboard", "SceneDelegate"], "correct": 0 },
+        { "q": "What file contains configuration data like bundle identifier and version number?", "options": ["Podfile", "Info.plist", "App.config", "Settings.bundle"], "correct": 1 },
+        { "q": "Which of these is used for simple key-value local storage in iOS?", "options": ["CoreData", "Realm", "UserDefaults", "SQLite"], "correct": 2 },
+        { "q": "What keyword is used to declare a constant in Swift?", "options": ["var", "let", "const", "final"], "correct": 1 }
       ],
       "medium": [
         { "q": "What is ARC in iOS?", "options": ["App Runtime Controller", "Asynchronous Resource Cache", "App Release Cycle", "Automatic Reference Counting — manages memory by tracking object references"], "correct": 3 },
         { "q": "Which SwiftUI property wrapper marks a variable as a local source of truth?", "options": ["@Binding", "@ObservedObject", "@EnvironmentObject", "@State"], "correct": 3 },
         { "q": "What is the Combine framework used for?", "options": ["Combining multiple apps into one", "Managing Core Data relationships", "Handling push notifications", "Processing values over time using publishers and subscribers"], "correct": 3 },
         { "q": "Why are `weak` references used in Swift?", "options": ["To make a variable optional", "To improve performance", "To share data between threads", "To avoid strong reference cycles that cause memory leaks"], "correct": 3 },
-        { "q": "Which class is used to make network requests in iOS?", "options": ["NSRequest", "URLConnection", "HTTPClient", "URLSession"], "correct": 3 }
+        { "q": "Which class is used to make network requests in iOS?", "options": ["NSRequest", "URLConnection", "HTTPClient", "URLSession"], "correct": 3 },
+        { "q": "What is a closure in Swift?", "options": ["A method to close a View", "A self-contained block of functionality that can be passed around", "A protocol requirement", "A memory deallocation process"], "correct": 1 },
+        { "q": "Which architecture pattern is standardly promoted by Apple for UIKit apps?", "options": ["MVVM", "VIPER", "MVC", "Redux"], "correct": 2 },
+        { "q": "What is the primary purpose of Core Data?", "options": ["Network caching", "Object graph and framework for managing model layer objects", "User authentication", "Image processing"], "correct": 1 },
+        { "q": "How do you define a custom data type that defines a blueprint of methods and properties?", "options": ["Extension", "Enum", "Struct", "Protocol"], "correct": 3 },
+        { "q": "What does Auto Layout do?", "options": ["Automatically writes UI code", "Dynamically calculates the size and position of all views based on constraints", "Generates app icons", "Automatically formats Swift code"], "correct": 1 }
       ],
       "hard": [
         { "q": "How do `struct` and `class` differ in Swift regarding memory storage?", "options": ["Both are on the heap", "Both are on the stack", "Classes are value types; structs are reference types", "Structs are value types on the stack; classes are reference types on the heap"], "correct": 3 },
         { "q": "What does `@EnvironmentObject` do in SwiftUI?", "options": ["Reads a value from UserDefaults", "Creates a new object instance per view", "Observes OS environment variables", "Injects a shared observable object into the view hierarchy without passing it explicitly"], "correct": 3 },
         { "q": "What is a 'strong reference cycle' in Swift?", "options": ["A retain count above 10", "Using `strong` keyword in Objective-C", "A cycle in a linked list", "When two objects hold strong references to each other, preventing deallocation"], "correct": 3 },
         { "q": "Which GCD queue must always be used for UI updates?", "options": ["DispatchQueue.global()", "A background concurrent queue", "Any queue", "DispatchQueue.main"], "correct": 3 },
-        { "q": "What does `@discardableResult` do in Swift?", "options": ["Marks a function that throws errors", "Discards the function from memory", "Marks a deprecated function", "Suppresses the compiler warning when a function's return value is not used"], "correct": 3 }
+        { "q": "What does `@discardableResult` do in Swift?", "options": ["Marks a function that throws errors", "Discards the function from memory", "Marks a deprecated function", "Suppresses the compiler warning when a function's return value is not used"], "correct": 3 },
+        { "q": "What is Method Swizzling in Objective-C/Swift?", "options": ["Changing a method's implementation at runtime", "Swapping two variables", "A way to encrypt methods", "Reversing an array of strings"], "correct": 0 },
+        { "q": "What is the purpose of a RunLoop in iOS?", "options": ["To loop through arrays infinitely", "To process input sources and timers associated with a thread", "To manage app animations", "To reboot the app on crash"], "correct": 1 },
+        { "q": "What does the `some` keyword represent in Swift (e.g., `some View`)?", "options": ["An optional value", "An opaque return type", "A generic array", "A protocol extension"], "correct": 1 },
+        { "q": "How does `unowned` differ from `weak` in Swift?", "options": ["unowned is used for structs", "unowned variables can be nil", "unowned assumes the reference will never become nil once set", "They are identical"], "correct": 2 },
+        { "q": "What is the primary use of the Instruments tool in Xcode?", "options": ["Designing the UI", "Profiling app performance and memory usage", "Writing unit tests", "Managing Git repositories"], "correct": 1 }
       ]
     },
     "flutter": {
@@ -68,21 +98,36 @@
         { "q": "What is the fundamental building block of a Flutter UI?", "options": ["View", "Component", "Fragment", "Widget"], "correct": 3 },
         { "q": "Which widget arranges children vertically in Flutter?", "options": ["Row", "Stack", "Container", "Column"], "correct": 3 },
         { "q": "What does Hot Reload do in Flutter?", "options": ["Restarts the app completely", "Clears the cache", "Rebuilds the widget tree from scratch", "Injects updated code into the running app without losing state"], "correct": 3 },
-        { "q": "What is the CLI command to create a new Flutter project?", "options": ["flutter init", "flutter start", "flutter new", "flutter create"], "correct": 3 }
+        { "q": "What is the CLI command to create a new Flutter project?", "options": ["flutter init", "flutter start", "flutter new", "flutter create"], "correct": 3 },
+        { "q": "Which widget provides a material design visual layout structure?", "options": ["MaterialApp", "Scaffold", "ThemeData", "Container"], "correct": 1 },
+        { "q": "Which file is used to manage dependencies and assets in a Flutter project?", "options": ["build.gradle", "package.json", "pubspec.yaml", "flutter.config"], "correct": 2 },
+        { "q": "What does the 'pub get' command do?", "options": ["Compiles the app", "Fetches packages defined in pubspec.yaml", "Publishes the app to stores", "Generates the APK"], "correct": 1 },
+        { "q": "How do you display an image from the internet in Flutter?", "options": ["Image.network('url')", "NetworkImage('url')", "Image.asset('url')", "Both A and B can be used"], "correct": 3 },
+        { "q": "Which widget is used to create a text input field?", "options": ["TextView", "TextField", "InputText", "FormText"], "correct": 1 }
       ],
       "medium": [
         { "q": "What is the key difference between StatelessWidget and StatefulWidget?", "options": ["StatelessWidget can rebuild itself; StatefulWidget cannot", "They are interchangeable", "StatelessWidget is faster but not recommended", "StatefulWidget holds mutable state that can trigger rebuilds; StatelessWidget does not"], "correct": 3 },
         { "q": "Which method must every State class implement in Flutter?", "options": ["initState()", "dispose()", "setState()", "build()"], "correct": 3 },
         { "q": "What is a BuildContext in Flutter?", "options": ["A background process manager", "A state management solution", "A layout constraint object", "A handle to the widget's location in the widget tree"], "correct": 3 },
         { "q": "What does FutureBuilder do in Flutter?", "options": ["Creates futures in isolation", "Manages multiple async operations", "Schedules future widget rebuilds", "Builds a widget subtree based on the latest snapshot of a Future"], "correct": 3 },
-        { "q": "Which package is a widely used state management solution in Flutter?", "options": ["redux_flutter", "stateful_manager", "widget_state", "flutter_bloc / BLoC"], "correct": 3 }
+        { "q": "Which package is a widely used state management solution in Flutter?", "options": ["redux_flutter", "stateful_manager", "widget_state", "flutter_bloc / BLoC"], "correct": 3 },
+        { "q": "What is the purpose of the Navigator in Flutter?", "options": ["Managing GPS locations", "Managing a stack of route objects for screen transitions", "Fetching API routes", "Controlling web sockets"], "correct": 1 },
+        { "q": "When is `initState()` called in a StatefulWidget?", "options": ["Every time the widget rebuilds", "Right before the widget is destroyed", "Exactly once when the state object is inserted into the tree", "Whenever the device rotates"], "correct": 2 },
+        { "q": "What is a Sliver in Flutter?", "options": ["A lightweight animation", "A portion of a scrollable area that you can configure to behave in a special way", "A database wrapper", "A background thread worker"], "correct": 1 },
+        { "q": "How can you pass data from a parent to a child widget?", "options": ["Via globals", "Using SharedPreferences", "Through the child widget's constructor parameters", "Using setState on the child"], "correct": 2 },
+        { "q": "What does the `Expanded` widget do?", "options": ["Zooms in on a widget", "Expands a child of a Row, Column, or Flex so that the child fills the available space", "Makes text larger", "Opens a dialog box"], "correct": 1 }
       ],
       "hard": [
         { "q": "What is the purpose of the `key` property in Flutter widgets?", "options": ["A unique ID for debugging only", "Required for all widgets to render", "Used only with List widgets", "Helps Flutter efficiently identify and update specific widgets during reconciliation"], "correct": 3 },
         { "q": "What is a Dart Isolate?", "options": ["A widget that renders independently", "A way to isolate network calls", "A debug mode for Flutter", "An independent worker with its own memory heap for concurrent execution"], "correct": 3 },
         { "q": "What does InheritedWidget do in Flutter?", "options": ["Allows inheriting styles from parent", "Provides access to platform APIs", "Extends the lifecycle of a StatefulWidget", "Efficiently propagates data down the widget tree without passing through constructors"], "correct": 3 },
         { "q": "What is the render tree in Flutter?", "options": ["Identical to the widget tree", "A list of all visible widgets", "The tree used for navigation", "A layer below the element tree that handles actual pixel painting"], "correct": 3 },
-        { "q": "What is LayoutBuilder used for in Flutter?", "options": ["Building the app's navigation structure", "Managing widget layouts at compile time", "Creating custom scroll physics", "Building widgets that depend on the parent's size constraints"], "correct": 3 }
+        { "q": "What is LayoutBuilder used for in Flutter?", "options": ["Building the app's navigation structure", "Managing widget layouts at compile time", "Creating custom scroll physics", "Building widgets that depend on the parent's size constraints"], "correct": 3 },
+        { "q": "How does Platform Channel communication work in Flutter?", "options": ["Synchronous HTTP requests", "Asynchronous message passing using a binary codec", "Direct C++ method invocation", "Using WebSockets locally"], "correct": 1 },
+        { "q": "What is a RenderObject in Flutter's architecture?", "options": ["A UI design asset", "An object that handles size, layout, and painting logic for a widget", "A 3D rendering context", "An animation controller state"], "correct": 1 },
+        { "q": "What does `vsync` provide to an AnimationController?", "options": ["Video synchronization", "A TickerProvider to prevent off-screen animations from consuming resources", "Vertical layout alignment", "Virtual scrolling capability"], "correct": 1 },
+        { "q": "What is the primary use case for Dart FFI?", "options": ["Flutter Foreign Interface for UI", "Fast File Input", "Calling C APIs dynamically from Dart", "Formatting Dart code automatically"], "correct": 2 },
+        { "q": "What triggers a `didUpdateWidget` call?", "options": ["When the app goes to the background", "When the parent rebuilds and provides a new widget instance of the same type and key", "When setState is called inside the widget itself", "When an InheritedWidget changes"], "correct": 1 }
       ]
     },
     "reactNative": {
@@ -91,21 +136,36 @@
         { "q": "Which component displays scrollable lists efficiently in React Native?", "options": ["ScrollList", "ListView", "TableView", "FlatList"], "correct": 3 },
         { "q": "What does React Native use instead of HTML divs for layout?", "options": ["Box", "Container", "Panel", "View"], "correct": 3 },
         { "q": "Which React hook manages local state in a component?", "options": ["useEffect", "useContext", "useReducer", "useState"], "correct": 3 },
-        { "q": "What is the Metro bundler?", "options": ["A testing framework", "A UI component library", "A state management tool", "A JavaScript bundler that transforms and serves React Native code"], "correct": 3 }
+        { "q": "What is the Metro bundler?", "options": ["A testing framework", "A UI component library", "A state management tool", "A JavaScript bundler that transforms and serves React Native code"], "correct": 3 },
+        { "q": "How are styles typically defined in React Native?", "options": ["Using raw CSS files", "Using StyleSheet.create()", "Using Sass/SCSS", "Using HTML style tags"], "correct": 1 },
+        { "q": "Which component is used to handle text input from the user?", "options": ["Input", "TextField", "TextInput", "TextBox"], "correct": 2 },
+        { "q": "What replaces the <img> tag in React Native?", "options": ["Photo", "Image", "Picture", "Img"], "correct": 1 },
+        { "q": "What is Expo in the context of React Native?", "options": ["A state manager", "A database", "A framework and set of tools built around React Native", "A navigation library"], "correct": 2 },
+        { "q": "Which flexbox property is used to align items along the primary axis?", "options": ["alignItems", "justifyContent", "flexDirection", "alignSelf"], "correct": 1 }
       ],
       "medium": [
         { "q": "What was the 'Bridge' in the classic React Native architecture?", "options": ["A UI component", "A navigation library", "A build tool", "The async communication layer between JavaScript and native code"], "correct": 3 },
         { "q": "What is the main performance difference between FlatList and ScrollView?", "options": ["They are identical", "FlatList only works on iOS", "ScrollView is newer and preferred", "ScrollView renders all children at once; FlatList renders lazily for better performance"], "correct": 3 },
         { "q": "What does the useEffect hook do in React Native?", "options": ["Manages component styling", "Creates reusable custom hooks", "Replaces Redux for state management", "Runs side effects like data fetching after render"], "correct": 3 },
         { "q": "Which library is the most popular for navigation in React Native?", "options": ["React Router Native", "React Native Navigation (only)", "Expo Router (only)", "React Navigation"], "correct": 3 },
-        { "q": "What does the Platform module allow you to do?", "options": ["Access location services", "Debug native code", "Install native packages", "Detect the OS and write platform-specific conditional logic"], "correct": 3 }
+        { "q": "What does the Platform module allow you to do?", "options": ["Access location services", "Debug native code", "Install native packages", "Detect the OS and write platform-specific conditional logic"], "correct": 3 },
+        { "q": "What is the purpose of the SafeAreaView component?", "options": ["To encrypt user data", "To ensure content renders within the safe area boundaries of a device (like avoiding notches)", "To prevent app crashes", "To sandbox webviews"], "correct": 1 },
+        { "q": "How do you fetch data from a REST API in React Native?", "options": ["Using the fetch() API or libraries like Axios", "Using AsyncStorage", "Using NativeModules.net", "Using React.get()"], "correct": 0 },
+        { "q": "What does AsyncStorage do?", "options": ["Handles asynchronous state updates", "Provides an unencrypted, asynchronous, persistent, key-value storage system", "Syncs data to the cloud", "Manages background threads"], "correct": 1 },
+        { "q": "What is the Context API used for?", "options": ["Network context tracking", "Managing device orientation", "Sharing global data like themes or user info without prop drilling", "Bridging native modules"], "correct": 2 },
+        { "q": "Which prop is required for objects inside the 'data' array of a FlatList?", "options": ["id", "index", "key", "Usually a unique key extracted via keyExtractor"], "correct": 3 }
       ],
       "hard": [
         { "q": "What is JSI (JavaScript Interface) in React Native's New Architecture?", "options": ["A new JavaScript syntax", "A JSON schema interface", "A new version of the Bridge", "A C++ layer that lets JS call native functions synchronously without serialization"], "correct": 3 },
         { "q": "What is Fabric in React Native's New Architecture?", "options": ["A CSS-in-JS library", "A state management solution", "A build optimization tool", "The new UI rendering system that synchronously connects native views with the JS thread"], "correct": 3 },
         { "q": "What is the purpose of useCallback in React Native?", "options": ["To cache a computed value", "To handle async callbacks", "To replace useEffect", "To memoize a callback, preventing unnecessary re-creation on every re-render"], "correct": 3 },
         { "q": "How does Hermes improve React Native performance?", "options": ["By JIT-compiling JS at runtime", "By replacing the Bridge entirely", "By caching network responses", "By pre-compiling JS to bytecode, reducing startup time and memory usage"], "correct": 3 },
-        { "q": "What are TurboModules in React Native's New Architecture?", "options": ["A faster build system", "A UI rendering pipeline", "A TypeScript compiler plugin", "An optimized native module system using JSI for lazy loading of native modules"], "correct": 3 }
+        { "q": "What are TurboModules in React Native's New Architecture?", "options": ["A faster build system", "A UI rendering pipeline", "A TypeScript compiler plugin", "An optimized native module system using JSI for lazy loading of native modules"], "correct": 3 },
+        { "q": "What does Reanimated 2/3 utilize to achieve high performance animations?", "options": ["The standard React Native Bridge", "CSS Transitions", "Running animation logic directly on the UI thread using Worklets", "HTML Canvas"], "correct": 2 },
+        { "q": "What is 'prop drilling' and why is it considered an anti-pattern in large apps?", "options": ["Using too many props", "Passing props through multiple intermediate components that don't need them", "Drilling into native code via props", "Modifying props directly"], "correct": 1 },
+        { "q": "How do you detect memory leaks in a React Native app?", "options": ["Using console.log", "It's impossible in JS", "Using Xcode Instruments for iOS and Android Studio Profiler/LeakCanary for Android", "Using the Metro bundler GUI"], "correct": 2 },
+        { "q": "In React Native, what does `InteractionManager.runAfterInteractions` do?", "options": ["Tracks user clicks", "Schedules a task to run after all animations and interactions have completed", "Forces a UI re-render", "Blocks the main thread"], "correct": 1 },
+        { "q": "What is the role of Yoga in React Native?", "options": ["A state management library", "An animation engine", "A cross-platform layout engine that implements Flexbox", "A testing framework"], "correct": 2 }
       ]
     },
     "xamarin": {
@@ -114,21 +174,36 @@
         { "q": "What does Xamarin.Forms allow you to do?", "options": ["Build apps only for Android", "Create web applications", "Deploy apps to the App Store only", "Write shared UI code that runs on iOS, Android, and other platforms"], "correct": 3 },
         { "q": "What is XAML in Xamarin?", "options": ["A scripting language", "A database query language", "A build tool", "A markup language used to define UIs declaratively"], "correct": 3 },
         { "q": "Which Microsoft product has Xamarin evolved into?", "options": ["Azure Mobile Apps", "Visual Studio Code", "Blazor", ".NET MAUI"], "correct": 3 },
-        { "q": "What is ContentPage in Xamarin.Forms?", "options": ["A database table", "A networking component", "An animation class", "A page type that displays a single view as its content"], "correct": 3 }
+        { "q": "What is ContentPage in Xamarin.Forms?", "options": ["A database table", "A networking component", "An animation class", "A page type that displays a single view as its content"], "correct": 3 },
+        { "q": "What is a NuGet package?", "options": ["A snack", "A native UI component", "The package manager for .NET that allows adding external libraries", "A build configuration"], "correct": 2 },
+        { "q": "Which layout arranges children in rows and columns?", "options": ["StackLayout", "AbsoluteLayout", "Grid", "FlexLayout"], "correct": 2 },
+        { "q": "What is App.xaml used for?", "options": ["Storing local database records", "Defining app-level resources and the initial navigation page", "Managing backend server connections", "Writing unit tests"], "correct": 1 },
+        { "q": "What is a Label in Xamarin.Forms?", "options": ["A database row", "A UI control used to display text", "A project tag", "A navigation marker"], "correct": 1 },
+        { "q": "How do you specify an image source in XAML?", "options": ["src='image.png'", "href='image.png'", "Source='image.png'", "Image='image.png'"], "correct": 2 }
       ],
       "medium": [
         { "q": "What is data binding in Xamarin.Forms?", "options": ["Connecting to a database", "A networking protocol", "Passing data between pages", "Automatically syncing UI elements with data sources"], "correct": 3 },
         { "q": "Which design pattern is most commonly used with Xamarin.Forms?", "options": ["MVC", "MVP", "VIPER", "MVVM"], "correct": 3 },
         { "q": "What is ICommand used for in Xamarin MVVM?", "options": ["Executing database commands", "Sending network commands", "Managing app lifecycle", "Binding button actions to ViewModel logic"], "correct": 3 },
         { "q": "What is the Dependency Service in Xamarin.Forms?", "options": ["A package manager", "An IoC container", "A network dependency resolver", "A mechanism to inject platform-specific implementations into shared code"], "correct": 3 },
-        { "q": "What does ObservableCollection<T> provide in Xamarin?", "options": ["Observes network changes", "Stores observable app settings", "Monitors background tasks", "A collection that notifies the UI when items are added, removed, or changed"], "correct": 3 }
+        { "q": "What does ObservableCollection<T> provide in Xamarin?", "options": ["Observes network changes", "Stores observable app settings", "Monitors background tasks", "A collection that notifies the UI when items are added, removed, or changed"], "correct": 3 },
+        { "q": "What is a Trigger in Xamarin.Forms?", "options": ["A database hook", "A way to start an animation", "A declarative way to change UI properties based on conditions or events", "A push notification handler"], "correct": 2 },
+        { "q": "How does INotifyPropertyChanged work?", "options": ["It notifies the server of data changes", "It alerts the view that a property in the ViewModel has changed", "It pushes notifications to the user's lock screen", "It detects OS property changes"], "correct": 1 },
+        { "q": "What is a Converter in Xamarin data binding?", "options": ["Converts C# to Java", "Converts data formats between the source (ViewModel) and the target (UI)", "Converts images to Base64", "Converts layout structures"], "correct": 1 },
+        { "q": "What is Xamarin.Essentials?", "options": ["A UI library", "A library providing cross-platform APIs for native device features (e.g., GPS, Battery)", "A premium support package", "A database ORM"], "correct": 1 },
+        { "q": "What is the purpose of the 'x:Name' attribute in XAML?", "options": ["To name the app", "To assign a CSS class", "To give a UI element a variable name accessible from the C# code-behind", "To specify a database table"], "correct": 2 }
       ],
       "hard": [
         { "q": "What is a Custom Renderer in Xamarin.Forms?", "options": ["A tool to render XAML", "A custom animation engine", "A code generator", "A platform-specific class that overrides the default rendering of a Xamarin.Forms control"], "correct": 3 },
         { "q": "What is Shell navigation in Xamarin.Forms?", "options": ["A command-line tool", "A navigation graph like Android's", "A way to navigate between projects", "A URI-based navigation system with built-in flyout and tab bar support"], "correct": 3 },
         { "q": "What is the purpose of Effects in Xamarin.Forms?", "options": ["Adding visual animations", "Applying CSS effects", "Handling MVVM side effects", "Lightweight platform customizations to a control without a full Custom Renderer"], "correct": 3 },
         { "q": "How does MessagingCenter work in Xamarin.Forms?", "options": ["Sends push notifications", "A REST messaging client", "A chat SDK", "A pub-sub system for loosely coupled communication between components"], "correct": 3 },
-        { "q": "What is the difference between BindingContext and DataContext?", "options": ["They are identical", "DataContext is for database connections", "BindingContext is only for ListView", "BindingContext is Xamarin.Forms specific; DataContext is from WPF / .NET MAUI"], "correct": 3 }
+        { "q": "What is the difference between BindingContext and DataContext?", "options": ["They are identical", "DataContext is for database connections", "BindingContext is only for ListView", "BindingContext is Xamarin.Forms specific; DataContext is from WPF / .NET MAUI"], "correct": 3 },
+        { "q": "What is a BindableProperty in Xamarin.Forms?", "options": ["A standard C# property", "A property that can be stored in SQLite", "A special property that supports data binding, styling, and default values", "A read-only property"], "correct": 2 },
+        { "q": "How does Xamarin.iOS compile C# code?", "options": ["JIT (Just-in-Time) compilation", "AOT (Ahead-of-Time) compilation directly to ARM assembly", "Transpiling to Swift", "Interpreting via a VM"], "correct": 1 },
+        { "q": "What is the primary cause of Memory Leaks in Xamarin apps?", "options": ["Using large images", "Failing to unsubscribe from events or leaving strong references to native objects", "Not using SQLite", "Too many async/await calls"], "correct": 1 },
+        { "q": "What is Native Embedding in Xamarin.Forms?", "options": ["Adding C++ code", "Placing standard Xamarin.Forms controls inside purely native iOS/Android layouts", "Embedding web views", "Storing data locally"], "correct": 1 },
+        { "q": "What does the `[assembly: ExportRenderer]` attribute do?", "options": ["Exports the app to the store", "Registers a Custom Renderer with Xamarin.Forms at the platform level", "Exports a database", "Renders a PDF"], "correct": 1 }
       ]
     },
     "ionic": {
@@ -137,21 +212,36 @@
         { "q": "What is Capacitor in the Ionic ecosystem?", "options": ["A state management library", "An Ionic UI component", "A testing framework", "A native runtime that bridges web code to native device APIs"], "correct": 3 },
         { "q": "Which Ionic component displays a list?", "options": ["ion-table", "ion-flatlist", "ion-collection", "ion-list"], "correct": 3 },
         { "q": "What does ion-router-outlet do?", "options": ["Connects to an external API", "Provides offline routing", "Manages route guards", "Acts as a placeholder where routed page components are rendered"], "correct": 3 },
-        { "q": "Which framework does Ionic most commonly pair with?", "options": ["Vue only", "React only", "Svelte only", "Angular"], "correct": 3 }
+        { "q": "Which framework does Ionic most commonly pair with?", "options": ["Vue only", "React only", "Svelte only", "Angular"], "correct": 3 },
+        { "q": "What CLI command starts a local development server for an Ionic app?", "options": ["ionic start", "ionic serve", "ionic build", "ionic run"], "correct": 1 },
+        { "q": "Which component is used for top-level navigation headers in Ionic?", "options": ["ion-header", "ion-top", "ion-nav", "ion-menu"], "correct": 0 },
+        { "q": "What is IonIcons?", "options": ["A backend database", "A premium icon pack", "Ionic's official open-source icon set", "A CSS framework"], "correct": 2 },
+        { "q": "How do you create a button in Ionic?", "options": ["<button class='ion'>", "<ion-button>", "<ionic-btn>", "<btn-ionic>"], "correct": 1 },
+        { "q": "What does 'cross-platform' mean in the context of Ionic?", "options": ["Runs only on Windows and Mac", "One codebase deploys to iOS, Android, and the Web", "Requires multiple codebases", "Only works on mobile browsers"], "correct": 1 }
       ],
       "medium": [
         { "q": "What is the key difference between Cordova and Capacitor?", "options": ["They are the same", "Capacitor is only for iOS", "Cordova is maintained by the Ionic team", "Cordova is the legacy native bridge; Capacitor is its modern, web-first replacement"], "correct": 3 },
         { "q": "Which Ionic lifecycle hook fires every time a page becomes the active view?", "options": ["ngOnInit", "ionViewDidLoad", "ngAfterViewInit", "ionViewWillEnter"], "correct": 3 },
         { "q": "What is Ionic Storage used for?", "options": ["Cloud storage integration", "File system access", "A Redux-based store", "A key-value store abstracting LocalStorage, IndexedDB, and SQLite"], "correct": 3 },
         { "q": "How does Ionic handle platform-specific styling automatically?", "options": ["One style fits all", "Separate SCSS files per platform", "Using Sass mixins only", "CSS variables + automatically applying MD or iOS mode based on the detected platform"], "correct": 3 },
-        { "q": "What is ion-infinite-scroll used for?", "options": ["Infinite animation loops", "Making ScrollView infinitely tall", "Scrolling images in a carousel", "Loading more data as the user scrolls to the bottom of a list"], "correct": 3 }
+        { "q": "What is ion-infinite-scroll used for?", "options": ["Infinite animation loops", "Making ScrollView infinitely tall", "Scrolling images in a carousel", "Loading more data as the user scrolls to the bottom of a list"], "correct": 3 },
+        { "q": "What is a 'Progressive Web App' (PWA) in the context of Ionic?", "options": ["An app that only works offline", "A web app using modern web capabilities to deliver an app-like experience", "An app written in PHP", "A paid app store application"], "correct": 1 },
+        { "q": "How are grid layouts managed in Ionic?", "options": ["Using <ion-grid>, <ion-row>, and <ion-col>", "Using Bootstrap classes only", "Using standard HTML tables", "Using <ion-flex>"], "correct": 0 },
+        { "q": "What does the `mode` attribute do on an Ionic component?", "options": ["Changes the app environment (dev/prod)", "Overrides the platform styling (e.g., forcing iOS styling on Android)", "Enables dark mode", "Switches between Angular and React"], "correct": 1 },
+        { "q": "Which Ionic component allows you to swipe items to reveal actions (like delete/archive)?", "options": ["ion-swipe", "ion-item-sliding", "ion-action-sheet", "ion-list-swipe"], "correct": 1 },
+        { "q": "What is an Ion-Action-Sheet?", "options": ["A spreadsheet component", "A database table view", "A dialog that slides up from the bottom of the screen to present a set of options", "A swipeable tab menu"], "correct": 2 }
       ],
       "hard": [
         { "q": "How is a Capacitor Plugin structured?", "options": ["A JavaScript-only library", "A Cordova plugin wrapper", "An Angular service module", "A web implementation + platform-specific native implementations for iOS and Android"], "correct": 3 },
         { "q": "What does the @capacitor/app backButton event handle?", "options": ["Triggering app updates", "Creating custom back navigation in iOS", "Detecting device restarts", "The Android hardware back button press in JavaScript"], "correct": 3 },
         { "q": "What is the difference between ActivatedRoute and Router in Ionic Angular?", "options": ["They are identical", "Router is only for lazy loading", "ActivatedRoute is deprecated", "ActivatedRoute gives info about the current route; Router navigates programmatically"], "correct": 3 },
         { "q": "What does lazy loading do in Ionic Angular?", "options": ["Delays image loading", "A performance issue to avoid", "Loads data from a cache", "Loads feature modules only when their route is first accessed, reducing bundle size"], "correct": 3 },
-        { "q": "How does ionViewDidEnter differ from ngAfterViewInit?", "options": ["They fire at the same time", "ionViewDidEnter only fires on iOS", "ngAfterViewInit replaces all Ionic lifecycle hooks", "ngAfterViewInit fires once on creation; ionViewDidEnter fires every time the page enters the viewport"], "correct": 3 }
+        { "q": "How does ionViewDidEnter differ from ngAfterViewInit?", "options": ["They fire at the same time", "ionViewDidEnter only fires on iOS", "ngAfterViewInit replaces all Ionic lifecycle hooks", "ngAfterViewInit fires once on creation; ionViewDidEnter fires every time the page enters the viewport"], "correct": 3 },
+        { "q": "What is StencilJS in relation to Ionic?", "options": ["A routing library", "A compiler created by Ionic that generates standards-compliant Web Components", "A state management tool", "An icon designer"], "correct": 1 },
+        { "q": "How do you optimize an Ionic app to avoid rendering jank?", "options": ["Write everything in jQuery", "Use `trackBy` in ngFor, avoid heavy computations on the UI thread, and rely on CSS transforms instead of layout changes", "Remove all CSS", "Compile to Cordova instead of Capacitor"], "correct": 1 },
+        { "q": "What is the purpose of Shadow DOM in Ionic components?", "options": ["To create drop shadows", "To encapsulate component CSS styles and DOM structure, preventing global style leaks", "To hide components from screen readers", "To manage dark mode automatically"], "correct": 1 },
+        { "q": "In Capacitor, how do you inject custom Swift or Kotlin code into your project?", "options": ["You cannot; Capacitor is JS only", "By writing custom Capacitor plugins or modifying the native iOS/Android projects directly via Xcode/Android Studio", "By compiling it through Stencil", "Using Cordova hooks only"], "correct": 1 },
+        { "q": "What does the `ion-virtual-scroll` (or equivalent virtual scrolling implementation) do?", "options": ["Simulates mouse scrolling on mobile", "Creates 3D scrolling effects", "Renders only the DOM elements currently visible in the viewport to maintain performance on massive lists", "Allows scrolling horizontally and vertically simultaneously"], "correct": 2 }
       ]
     }
   }

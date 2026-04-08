@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the App</title>
+    <style>
+        /* CSS Styling - Apple Minimalist Dark Mode */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000; /* True OLED Black */
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            user-select: none;
+            -webkit-user-select: none; /* Prevent text selection on iOS */
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 40px; /* Safe area padding */
+            left: 0;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        h1 {
+            color: #F5F5F7; /* Apple's off-white */
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        #score-board {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #0A84FF; /* iOS System Blue (Dark Mode) */
+            margin-top: 5px;
+        }
+
+        #instructions {
+            color: #86868B; /* iOS Secondary Gray */
+            font-size: 1rem;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ui-layer">
+        <h1>Catch the App</h1>
+        <div id="score-board">0</div>
+        <div id="instructions">Tap the rogue app to force quit it.</div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score-board');
+
+        // Resize canvas to fill window
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let score = 0;
+
+        // Function to draw an iOS-style Squircle (Rounded Rectangle)
+        function drawSquircle(ctx, x, y, size, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + size - radius, y);
+            ctx.quadraticCurveTo(x + size, y, x + size, y + radius);
+            ctx.lineTo(x + size, y + size - radius);
+            ctx.quadraticCurveTo(x + size, y + size, x + size - radius, y + size);
+            ctx.lineTo(x + radius, y + size);
+            ctx.quadraticCurveTo(x, y + size, x, y + size - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // The App Icon Object
+        const appIcon = {
+            size: 80,
+            x: canvas.width / 2 - 40,
+            y: canvas.height / 2 - 40,
+            dx: 4,
+            dy: 4,
+            
+            draw() {
+                // Create an iOS-style gradient (e.g., Apple Music/Podcasts vibe)
+                const gradient = ctx.createLinearGradient(this.x, this.y, this.x, this.y + this.size);
+                gradient.addColorStop(0, '#FF2D55'); // iOS Pink
+                gradient.addColorStop(1, '#5E5CE6'); // iOS Indigo
+                
+                ctx.fillStyle = gradient;
+                
+                // Draw the squircle icon (corner radius is usually ~22% of the size)
+                const cornerRadius = this.size * 0.22;
+                drawSquircle(ctx, this.x, this.y, this.size, cornerRadius);
+
+                // Draw a simple white "A" logo inside the app
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = `bold ${this.size * 0.6}px -apple-system, sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('A', this.x + this.size / 2, this.y + this.size / 2 + (this.size * 0.05));
+            },
+
+            update() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                // Bounce off walls
+                if (this.x + this.size > canvas.width || this.x < 0) {
+                    this.dx = -this.dx;
+                }
+                if (this.y + this.size > canvas.height || this.y < 0) {
+                    this.dy = -this.dy;
+                }
+
+                this.draw();
+            },
+
+            respawn() {
+                // Gets slightly smaller
+                this.size = Math.max(40, 80 - (score * 1.5)); 
+                
+                // Keep within bounds
+                this.x = Math.random() * (canvas.width - this.size);
+                this.y = Math.random() * (canvas.height - this.size);
+                
+                // Increase speed, randomize direction
+                const speedMult = 1 + (score * 0.12);
+                this.dx = (Math.random() > 0.5 ? 4 : -4) * speedMult;
+                this.dy = (Math.random() > 0.5 ? 4 : -4) * speedMult;
+            }
+        };
+
+        // Interaction Logic
+        function handleInteraction(event) {
+            event.preventDefault(); 
+            
+            let clientX, clientY;
+            if (event.touches && event.touches.length > 0) {
+                clientX = event.touches[0].clientX;
+                clientY = event.touches[0].clientY;
+            } else {
+                clientX = event.clientX;
+                clientY = event.clientY;
+            }
+
+            // Hitbox logic: Check if click is inside the squircle boundaries
+            if (clientX >= appIcon.x && clientX <= appIcon.x + appIcon.size &&
+                clientY >= appIcon.y && clientY <= appIcon.y + appIcon.size) {
+                
+                score++;
+                scoreElement.innerText = score;
+                
+                // Haptic-like visual flash effect (Apple style smooth fade)
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                appIcon.respawn();
+            }
+        }
+
+        canvas.addEventListener('mousedown', handleInteraction);
+        canvas.addEventListener('touchstart', handleInteraction, { passive: false });
+
+        // Animation Loop
+        function animate() {
+            // Smooth motion blur effect overlay
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            appIcon.update();
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        appIcon.draw();
+        animate();
+
+    </script>
+</body>
+</html>

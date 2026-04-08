@@ -216,6 +216,16 @@ body.dark-mode .drawer {
     color: #fff;
 }
 
+.gradient-nav-title {
+    background-image: linear-gradient(to right, var(--primary-1), var(--primary-2), var(--primary-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
 .drawer ul {
     list-style: none;
     padding: 0;

@@ -3,9 +3,6 @@
 /* ---------- Utility: DOMContentLoaded single init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
 
-const topToggle = document.getElementById("dark-mode-toggle-top");
-if (topToggle) toggles.push(topToggle);
-
     // Typewriter initial state
     const titleEl = document.getElementById("title");
     if (titleEl) titleEl.textContent = "";

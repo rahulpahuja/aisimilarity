@@ -94,6 +94,9 @@ function onBlogsClick() {
 function onCatchDroidClick() {
     window.location.href = '/droid.html';
 }
+function onCatchIosClick() {
+    window.location.href = '/ios.html';
+}
 
 /* ---------- Search logic (works with explicit <tbody>) ---------- */
 function search() {

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Droid</title>
+    <style>
+        /* CSS Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #202124; /* Android Studio Dark Theme Background */
+            font-family: 'Roboto', sans-serif;
+            user-select: none;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            pointer-events: none; /* Lets clicks pass through to the canvas */
+        }
+
+        h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        #score-board {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3DDC84; /* Official Android Green */
+            text-shadow: 0 0 10px rgba(61, 220, 132, 0.5);
+            margin-top: 5px;
+        }
+
+        #instructions {
+            color: #9aa0a6;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ui-layer">
+        <h1>CATCH THE DROID</h1>
+        <div id="score-board">0</div>
+        <div id="instructions">Tap the Android to fix the "bug". It gets faster!</div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        // JavaScript & Game Logic
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score-board');
+
+        // Resize canvas to fill window
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Game State
+        let score = 0;
+        const droidColor = '#3DDC84';
+        
+        // The Droid Object
+        const droid = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 40,
+            dx: 3, // X velocity
+            dy: 3, // Y velocity
+            
+            draw() {
+                // We draw a stylized Android Head
+                ctx.fillStyle = droidColor;
+                
+                // Head (Semi-circle)
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, Math.PI, 0, false);
+                ctx.fill();
+
+                // Eyes
+                ctx.fillStyle = '#202124'; // Match background
+                const eyeRadius = this.radius * 0.15;
+                const eyeOffset = this.radius * 0.4;
+                
+                // Left Eye
+                ctx.beginPath();
+                ctx.arc(this.x - eyeOffset, this.y - this.radius * 0.4, eyeRadius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Right Eye
+                ctx.beginPath();
+                ctx.arc(this.x + eyeOffset, this.y - this.radius * 0.4, eyeRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Antennae
+                ctx.strokeStyle = droidColor;
+                ctx.lineWidth = this.radius * 0.1;
+                ctx.lineCap = 'round';
+                
+                // Left Antenna
+                ctx.beginPath();
+                ctx.moveTo(this.x - this.radius * 0.5, this.y - this.radius * 0.8);
+                ctx.lineTo(this.x - this.radius * 0.8, this.y - this.radius * 1.3);
+                ctx.stroke();
+
+                // Right Antenna
+                ctx.beginPath();
+                ctx.moveTo(this.x + this.radius * 0.5, this.y - this.radius * 0.8);
+                ctx.lineTo(this.x + this.radius * 0.8, this.y - this.radius * 1.3);
+                ctx.stroke();
+            },
+
+            update() {
+                // Move the droid
+                this.x += this.dx;
+                this.y += this.dy;
+
+                // Bounce off walls (accounting for radius so it doesn't clip)
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                    this.dx = -this.dx;
+                }
+                if (this.y > canvas.height || this.y - this.radius * 1.5 < 0) {
+                    this.dy = -this.dy;
+                }
+
+                this.draw();
+            },
+
+            // Randomize position and increase speed
+            respawn() {
+                this.radius = Math.max(20, 40 - (score * 0.5)); // Gets slightly smaller
+                this.x = this.radius + Math.random() * (canvas.width - this.radius * 2);
+                this.y = this.radius * 2 + Math.random() * (canvas.height - this.radius * 3);
+                
+                // Increase speed by 10% each click, keeping the direction random
+                const speedMult = 1 + (score * 0.1);
+                this.dx = (Math.random() > 0.5 ? 3 : -3) * speedMult;
+                this.dy = (Math.random() > 0.5 ? 3 : -3) * speedMult;
+            }
+        };
+
+        // Interaction Logic
+        // Support both mouse clicks and mobile taps
+        function handleInteraction(event) {
+            // Prevent default zooming/scrolling on mobile
+            event.preventDefault(); 
+            
+            let clientX, clientY;
+            if (event.touches && event.touches.length > 0) {
+                clientX = event.touches[0].clientX;
+                clientY = event.touches[0].clientY;
+            } else {
+                clientX = event.clientX;
+                clientY = event.clientY;
+            }
+
+            // Calculate distance between click and the center of the Droid
+            // Using the Pythagorean theorem
+            const dist = Math.hypot(clientX - droid.x, clientY - (droid.y - droid.radius/2));
+
+            // If the click is inside the droid's radius
+            if (dist < droid.radius * 1.2) { // 1.2 gives a slightly forgiving hitbox
+                score++;
+                scoreElement.innerText = score;
+                
+                // Add a little flash effect
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                droid.respawn();
+            }
+        }
+
+        canvas.addEventListener('mousedown', handleInteraction);
+        canvas.addEventListener('touchstart', handleInteraction, { passive: false });
+
+        // Main Game Loop (Hardware Accelerated via requestAnimationFrame)
+        function animate() {
+            // Clear the screen with a slight fade effect for motion blur
+            ctx.fillStyle = 'rgba(32, 33, 36, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            droid.update();
+            requestAnimationFrame(animate);
+        }
+
+        // Start the game
+        droid.draw();
+        animate();
+
+    </script>
+</body>
+</html>

@@ -32,12 +32,12 @@
 body.dark-mode {
     --bg:        #09090f;
     --surface:   #111118;
-    --surface-2: #18181f;
-    --border:    rgba(255, 255, 255, 0.08);
+    --surface-2: #1c1c26;
+    --border:    rgba(255, 255, 255, 0.10);
 
     --text-1: #f1f5f9;
     --text-2: #94a3b8;
-    --text-3: #475569;
+    --text-3: #64748b;   /* was #475569 — too dark to read on dark bg */
 }
 
 /* === Reset & Base === */
@@ -79,7 +79,8 @@ body {
 }
 
 body.dark-mode .header {
-    background: rgba(9, 9, 15, 0.85);
+    background: rgba(9, 9, 15, 0.88);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .switch {
@@ -118,12 +119,14 @@ body.dark-mode .header {
 
 body.dark-mode .btn-outline-primary {
     color: var(--text-2) !important;
-    border-color: var(--border) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    background: transparent !important;
 }
 
 body.dark-mode .btn-outline-primary:hover {
     background: var(--surface-2) !important;
     color: var(--text-1) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* === Hamburger menu button === */
@@ -240,7 +243,7 @@ body.dark-mode .btn-outline-primary:hover {
 .dark-toggle-wrapper .slider {
     width: 32px;
     height: 18px;
-    background: var(--border);
+    background: #cbd5e1;
     border-radius: 50px;
     position: relative;
     transition: background 0.2s;
@@ -262,6 +265,7 @@ body.dark-mode .btn-outline-primary:hover {
 
 .dark-toggle-wrapper input:checked + .slider { background: var(--brand-1); }
 .dark-toggle-wrapper input:checked + .slider::before { transform: translateX(14px); }
+body.dark-mode .dark-toggle-wrapper .slider { background: #334155; }
 
 /* === Hero section === */
 #body { padding: 0 0 48px; }
@@ -453,6 +457,10 @@ table.data-table {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
+body.dark-mode table.data-table {
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+
 caption.table-head {
     caption-side: top;
     font-weight: 700;
@@ -514,26 +522,97 @@ img {
     color: var(--text-2);
 }
 
-/* Table links */
+/* ── Linked cells ── */
 tbody td a {
     text-decoration: none;
     color: var(--brand-1);
     display: flex;
     align-items: center;
     gap: 4px;
-    transition: color 0.12s;
+    transition: color 0.15s;
+}
+
+/* External link arrow — always faint, sharpens on hover */
+tbody td a::after {
+    content: '↗';
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0.28;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+    margin-left: 2px;
 }
 
 tbody td a:hover { color: var(--brand-3); }
+tbody td a:hover::after { opacity: 1; }
+tbody td a:hover .table-label {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
 tbody td a .table-label { color: inherit; }
 
-/* Not Applicable cells */
-.table-label[style*="Not Applicable"],
-td .table-label:only-child {
+/* Cell-level affordance — pointer + subtle left accent on hover */
+tbody td:has(a) { cursor: pointer; position: relative; }
+
+tbody td:has(a)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--brand-1);
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+tbody td:has(a):hover::before { opacity: 0.6; }
+
+/* Tooltip hint on hover — "Open docs ↗" */
+tbody td:has(a)::after {
+    content: 'Open docs';
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--text-1);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 10;
+    letter-spacing: 0.01em;
+}
+
+tbody td:has(a):hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── Not Applicable cells ── */
+tbody td:not(:has(a)) .table-label {
     color: var(--text-3);
     font-style: italic;
     font-weight: 400;
 }
+
+/* keep the component name column readable (it's also :not(:has(a))) */
+.table-head-component .table-label {
+    color: var(--text-2) !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+
+/* ── Dark mode link colours ── */
+body.dark-mode tbody td a { color: #60a5fa; }   /* blue-400 — readable on dark */
+body.dark-mode tbody td a:hover { color: #a78bfa; } /* violet-400 */
 
 /* === Badges === */
 .coming-soon-badge {

@@ -857,20 +857,54 @@
         <div class="quiz-container">
             <button class="quiz-close-btn" onclick="closeQuiz()" aria-label="Close quiz">&times;</button>
 
-            <!-- Screen: Difficulty -->
-            <div id="quiz-screen-difficulty" class="quiz-screen">
-                <div class="quiz-icon-header">&#129504;</div>
-                <h2 class="quiz-title" id="quiz-modal-title">Knowledge Check</h2>
-                <p class="quiz-subtitle">Test your understanding of AI, NLP &amp; similarity algorithms</p>
-                <p class="quiz-pick-label">Choose your difficulty</p>
-                <div class="quiz-diff-row">
-                    <button class="quiz-diff-btn quiz-diff-easy"  onclick="startQuiz('easy')">Easy</button>
-                    <button class="quiz-diff-btn quiz-diff-medium" onclick="startQuiz('medium')">Medium</button>
-                    <button class="quiz-diff-btn quiz-diff-hard"  onclick="startQuiz('hard')">Hard</button>
+            <!-- Screen 1: Platform -->
+            <div id="quiz-screen-platform" class="quiz-screen">
+                <div class="quiz-icon-header">&#128241;</div>
+                <h2 class="quiz-title" id="quiz-modal-title">Mobile Dev Quiz</h2>
+                <p class="quiz-subtitle">Pick a platform and test your knowledge</p>
+                <p class="quiz-pick-label">Choose your platform</p>
+                <div class="quiz-platform-grid">
+                    <button class="quiz-platform-btn" onclick="selectPlatform('android')">
+                        <img src="assets/android.svg" alt="Android" class="quiz-platform-icon" />
+                        <span>Android</span>
+                    </button>
+                    <button class="quiz-platform-btn" onclick="selectPlatform('ios')">
+                        <img src="assets/ios.svg" alt="iOS" class="quiz-platform-icon" />
+                        <span>iOS</span>
+                    </button>
+                    <button class="quiz-platform-btn" onclick="selectPlatform('flutter')">
+                        <img src="assets/flutter.svg" alt="Flutter" class="quiz-platform-icon" />
+                        <span>Flutter</span>
+                    </button>
+                    <button class="quiz-platform-btn" onclick="selectPlatform('reactNative')">
+                        <img src="assets/react.svg" alt="React Native" class="quiz-platform-icon" />
+                        <span>React Native</span>
+                    </button>
+                    <button class="quiz-platform-btn" onclick="selectPlatform('xamarin')">
+                        <img src="assets/x.svg" alt="Xamarin" class="quiz-platform-icon" />
+                        <span>Xamarin</span>
+                    </button>
+                    <button class="quiz-platform-btn" onclick="selectPlatform('ionic')">
+                        <img src="assets/ionic.svg" alt="Ionic" class="quiz-platform-icon" />
+                        <span>Ionic</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Screen: Question -->
+            <!-- Screen 2: Difficulty -->
+            <div id="quiz-screen-difficulty" class="quiz-screen quiz-screen-hidden">
+                <button class="quiz-back-btn" onclick="showScreen('platform')" aria-label="Back to platform">&larr; Back</button>
+                <div class="quiz-icon-header" id="quiz-diff-platform-icon"></div>
+                <h2 class="quiz-title" id="quiz-diff-platform-name"></h2>
+                <p class="quiz-subtitle">Choose your difficulty level</p>
+                <div class="quiz-diff-row">
+                    <button class="quiz-diff-btn quiz-diff-easy"   onclick="startQuiz('easy')">Easy</button>
+                    <button class="quiz-diff-btn quiz-diff-medium" onclick="startQuiz('medium')">Medium</button>
+                    <button class="quiz-diff-btn quiz-diff-hard"   onclick="startQuiz('hard')">Hard</button>
+                </div>
+            </div>
+
+            <!-- Screen 3: Question -->
             <div id="quiz-screen-question" class="quiz-screen quiz-screen-hidden">
                 <div class="quiz-progress-row">
                     <div class="quiz-progress-bar"><div id="quiz-progress-fill" class="quiz-progress-fill"></div></div>
@@ -881,7 +915,7 @@
                 <button id="quiz-next-btn" class="quiz-nav-btn" onclick="quizNext()" disabled>Next &rarr;</button>
             </div>
 
-            <!-- Screen: Results -->
+            <!-- Screen 4: Results -->
             <div id="quiz-screen-results" class="quiz-screen quiz-screen-hidden">
                 <div class="quiz-icon-header" id="quiz-result-emoji"></div>
                 <h2 class="quiz-result-score" id="quiz-result-score"></h2>

@@ -1,0 +1,314 @@
+[
+  {
+    "slug": "compose-state-hoisting-remember-remembersaveable",
+    "title": "Compose state hoisting: remember vs rememberSaveable",
+    "date": "2026-11-02",
+    "order": 1,
+    "category": "Jetpack Compose",
+    "tags": [
+      "compose",
+      "state",
+      "viewmodel"
+    ],
+    "summary": "Where Compose state should live: UI element vs screen state, remember vs rememberSaveable, and how to write stateless composables.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "compose-recomposition-stability-skipping",
+    "title": "Compose recomposition, stability and skipping explained",
+    "date": "2026-11-02",
+    "order": 2,
+    "category": "Jetpack Compose",
+    "tags": [
+      "compose",
+      "performance",
+      "recomposition"
+    ],
+    "summary": "How recomposition and skipping actually work, what strong skipping changed, when @Stable and @Immutable help, and how to measure instead of guessing.",
+    "readingMinutes": 8
+  },
+  {
+    "slug": "navigation-3-compose-guide",
+    "title": "Navigation 3 for Compose: a practical guide",
+    "date": "2026-11-02",
+    "order": 3,
+    "category": "Jetpack Compose",
+    "tags": [
+      "compose",
+      "navigation",
+      "navigation3"
+    ],
+    "summary": "Navigation 3 in practice: you own the back stack and NavDisplay renders it. Serializable keys, ViewModel scoping, scenes for tablets, and NavHost differences.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "material3-theming-dynamic-color",
+    "title": "Material 3 theming in Compose: dynamic color and tokens",
+    "date": "2026-11-02",
+    "order": 4,
+    "category": "Jetpack Compose",
+    "tags": [
+      "compose",
+      "material3",
+      "theming",
+      "dynamic-color"
+    ],
+    "summary": "Build a Material 3 theme in Compose: ColorScheme, dynamic color on Android 12+, typography, shapes, dark mode, and tokens instead of hard-coded colors.",
+    "readingMinutes": 6
+  },
+  {
+    "slug": "adaptive-layouts-compose-foldables-tablets",
+    "title": "Adaptive Compose layouts for tablets, foldables and resizable windows",
+    "date": "2026-11-02",
+    "order": 5,
+    "category": "Jetpack Compose",
+    "tags": [
+      "compose",
+      "adaptive",
+      "foldables",
+      "tablets"
+    ],
+    "summary": "Adaptive Compose UIs for phones, tablets and foldables: size classes, NavigationSuiteScaffold, list-detail scenes, adaptive grids, and state across resizing.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "kotlin-coroutines-structured-concurrency-android",
+    "title": "Kotlin Coroutines on Android: Structured Concurrency Done Right",
+    "date": "2026-11-02",
+    "order": 6,
+    "category": "Kotlin & Architecture",
+    "tags": [
+      "kotlin",
+      "coroutines",
+      "viewmodel",
+      "lifecycle",
+      "concurrency"
+    ],
+    "summary": "Scopes, dispatchers, cooperative cancellation and exception handling for Android coroutines, plus the mistakes that leak work or swallow errors.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "stateflow-sharedflow-collect-safely-android",
+    "title": "StateFlow, SharedFlow and Safe Flow Collection on Android",
+    "date": "2026-11-02",
+    "order": 7,
+    "category": "Kotlin & Architecture",
+    "tags": [
+      "kotlin",
+      "flow",
+      "stateflow",
+      "sharedflow",
+      "lifecycle",
+      "compose"
+    ],
+    "summary": "When to use Flow, StateFlow or SharedFlow, how stateIn and WhileSubscribed work, and how to collect from the UI without leaks or lost one-off events.",
+    "readingMinutes": 6
+  },
+  {
+    "slug": "viewmodel-unidirectional-data-flow-mvi",
+    "title": "ViewModel, Unidirectional Data Flow and a Framework-Free MVI",
+    "date": "2026-11-02",
+    "order": 8,
+    "category": "Kotlin & Architecture",
+    "tags": [
+      "viewmodel",
+      "mvi",
+      "architecture",
+      "state",
+      "savedstatehandle"
+    ],
+    "summary": "Use ViewModel as a screen-level state holder with unidirectional data flow, a pure reducer, SavedStateHandle, and a list of what never belongs in it.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "hilt-dependency-injection-android-guide",
+    "title": "Hilt on Android: A Practical Guide, with Koin and Manual DI Compared",
+    "date": "2026-11-02",
+    "order": 9,
+    "category": "Kotlin & Architecture",
+    "tags": [
+      "hilt",
+      "dagger",
+      "dependency-injection",
+      "koin",
+      "testing"
+    ],
+    "summary": "Hilt setup, modules, scopes, @HiltViewModel, assisted injection and test replacement, with honest trade-offs against Koin and hand-written DI.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "android-lifecycle-process-death-configuration-changes",
+    "title": "Android Lifecycle, Configuration Changes and Process Death",
+    "date": "2026-11-02",
+    "order": 10,
+    "category": "Kotlin & Architecture",
+    "tags": [
+      "lifecycle",
+      "process-death",
+      "savedstate",
+      "viewmodel",
+      "testing"
+    ],
+    "summary": "What survives rotation versus process death, how to save and restore state with SavedStateHandle and rememberSaveable, and how to actually test process death.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "room-database-android-migrations-flow",
+    "title": "Room on Android: Flow queries, relations and safe migrations",
+    "date": "2026-11-02",
+    "order": 11,
+    "category": "Data & Networking",
+    "tags": [
+      "room",
+      "sqlite",
+      "flow",
+      "migrations",
+      "ksp"
+    ],
+    "summary": "Set up Room with KSP, expose Flow queries, model relations and transactions, and ship schema changes without crashing or wiping user data.",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "datastore-vs-sharedpreferences",
+    "title": "DataStore vs SharedPreferences: what to use and how to migrate",
+    "date": "2026-11-02",
+    "order": 12,
+    "category": "Data & Networking",
+    "tags": [
+      "datastore",
+      "sharedpreferences",
+      "storage",
+      "migration",
+      "room"
+    ],
+    "summary": "Preferences DataStore, Proto DataStore and SharedPreferences compared: why apply() can stall the main thread, how to migrate, and when Room fits better.",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "workmanager-background-work-android",
+    "title": "WorkManager: reliable background work and when not to use it",
+    "date": "2026-11-02",
+    "order": 13,
+    "category": "Data & Networking",
+    "tags": [
+      "workmanager",
+      "background",
+      "coroutines",
+      "testing"
+    ],
+    "summary": "WorkManager for deferrable, guaranteed work: constraints, CoroutineWorker, unique work, chains, backoff, expedited work, testing, and what it is not for.",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "retrofit-okhttp-kotlinx-serialization",
+    "title": "Retrofit, OkHttp and kotlinx.serialization: a modern networking stack",
+    "date": "2026-11-02",
+    "order": 14,
+    "category": "Data & Networking",
+    "tags": [
+      "retrofit",
+      "okhttp",
+      "kotlinx-serialization",
+      "networking",
+      "security"
+    ],
+    "summary": "Wire Retrofit, OkHttp and kotlinx.serialization together: suspend APIs, interceptors, timeouts, a Result type for errors, caching and safe logging.",
+    "readingMinutes": 6
+  },
+  {
+    "slug": "android-testing-viewmodel-turbine-compose",
+    "title": "Android testing: ViewModels, Turbine and Compose UI tests",
+    "date": "2026-11-02",
+    "order": 15,
+    "category": "Data & Networking",
+    "tags": [
+      "testing",
+      "viewmodel",
+      "turbine",
+      "coroutines",
+      "compose"
+    ],
+    "summary": "A practical Android test strategy: runTest and TestDispatcher for ViewModels, Turbine for Flows, fakes over mocks, and Compose UI tests with semantics.",
+    "readingMinutes": 6
+  },
+  {
+    "slug": "edge-to-edge-android-15-compose",
+    "title": "Edge-to-Edge on Android 15: Insets in Compose and Views",
+    "date": "2026-11-02",
+    "order": 16,
+    "category": "Platform & Performance",
+    "tags": [
+      "edge-to-edge",
+      "insets",
+      "compose",
+      "android-15",
+      "ime"
+    ],
+    "summary": "Android 15 draws apps behind the system bars when targetSdk is 35. How enableEdgeToEdge, WindowInsets, IME insets and bar contrast work in Compose and Views.",
+    "readingMinutes": 6
+  },
+  {
+    "slug": "runtime-permissions-photo-picker-android",
+    "title": "Android Runtime Permissions, Photo Picker and Notifications",
+    "date": "2026-11-02",
+    "order": 17,
+    "category": "Platform & Performance",
+    "tags": [
+      "permissions",
+      "photo-picker",
+      "notifications",
+      "activity-result",
+      "privacy"
+    ],
+    "summary": "Ask for permissions in context, handle permanent denial, replace storage permissions with the Photo Picker, and request POST_NOTIFICATIONS well.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "r8-shrinking-keep-rules-android",
+    "title": "R8 on Android: Shrinking, Keep Rules and Release-Only Crashes",
+    "date": "2026-11-02",
+    "order": 18,
+    "category": "Platform & Performance",
+    "tags": [
+      "r8",
+      "proguard",
+      "minify",
+      "keep-rules",
+      "release-build"
+    ],
+    "summary": "What R8 shrinks, optimizes and renames, how to write narrow keep rules, why broad ones hurt, and how to read mapping files when only the release build crashes.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "anr-causes-diagnosis-fixes-android",
+    "title": "Android ANRs: Causes, Reading Traces and Fixes",
+    "date": "2026-11-02",
+    "order": 19,
+    "category": "Platform & Performance",
+    "tags": [
+      "anr",
+      "strictmode",
+      "main-thread",
+      "android-vitals",
+      "performance"
+    ],
+    "summary": "What triggers an Android ANR, how to read the main thread in a trace, how to catch blocking calls with StrictMode, and the fixes that actually remove the cause.",
+    "readingMinutes": 7
+  },
+  {
+    "slug": "baseline-profiles-startup-performance-android",
+    "title": "Android Startup Performance: Baseline Profiles and App Startup",
+    "date": "2026-11-02",
+    "order": 20,
+    "category": "Platform & Performance",
+    "tags": [
+      "startup",
+      "baseline-profiles",
+      "macrobenchmark",
+      "app-startup",
+      "performance"
+    ],
+    "summary": "Cold, warm and hot starts, how to measure them with Macrobenchmark, and how Baseline Profiles, Startup Profiles and the App Startup library cut cold-start time.",
+    "readingMinutes": 7
+  }
+]

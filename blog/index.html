@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-root="../" data-page="blog">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android engineering blog | AI Similarity</title>
+    <meta name="description" content="Practical Android engineering articles on Jetpack Compose, Kotlin, data and performance, with notes on the iOS counterpart.">
+    <meta property="og:title" content="Android engineering blog | AI Similarity">
+    <meta property="og:description" content="Practical Android engineering articles on Jetpack Compose, Kotlin, data and performance, with notes on the iOS counterpart.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92KXYXDDWD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-92KXYXDDWD');
+    </script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="stylesheet" href="blog.css">
+    <script defer src="../assets/js/shell.js"></script>
+    <script defer src="blog.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="site-header"></div>
+    <main id="main" class="container">
+        <div id="blog-app" aria-busy="true">
+            <header class="page-head">
+                <h1>Blog</h1>
+                <p>Practical Android engineering articles, with a note on the iOS counterpart where one exists.</p>
+            </header>
+
+            <section class="blog-tools" aria-label="Search and filter posts">
+                <label class="search">
+                    <span class="sr-only">Search posts by title, summary, tag or category</span>
+                    <input id="q" data-search type="search" placeholder="Search posts, tags, categories…  (press / )" autocomplete="off" spellcheck="false">
+                </label>
+                <div class="filter-row">
+                    <span class="filter-label" id="cats-label">Category</span>
+                    <div class="chips" id="cats" role="group" aria-labelledby="cats-label"></div>
+                </div>
+                <div class="filter-row">
+                    <span class="filter-label" id="tags-label">Tags</span>
+                    <div class="chips" id="tags" role="group" aria-labelledby="tags-label"></div>
+                </div>
+                <div class="row count-row">
+                    <p class="result-count" id="count" aria-live="polite" role="status">Loading posts…</p>
+                    <button type="button" class="btn btn-small" id="clear" hidden>Clear filters</button>
+                </div>
+            </section>
+
+            <section id="posts" aria-label="Posts"></section>
+            <noscript><p class="empty-state">Enable JavaScript to browse and search the posts.</p></noscript>
+        </div>
+    </main>
+    <div id="site-footer"></div>
+</body>
+
+</html>

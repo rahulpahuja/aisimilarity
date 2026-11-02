@@ -1,0 +1,397 @@
+{
+  "meta": {
+    "description": "Classic (Android Views / UIKit) cross-framework component mappings, migrated from the original home-page tables.",
+    "platformKeys": {
+      "android": "Android Views/XML",
+      "ios": "UIKit"
+    }
+  },
+  "groups": [
+    {
+      "id": "ui",
+      "label": "Composition",
+      "items": [
+        {
+          "component": "Horizontal Row",
+          "links": {
+            "android": "https://developer.android.com/develop/ui/compose/layouts/basics",
+            "ios": "https://developer.apple.com/documentation/swiftui/hstack",
+            "react_native": "https://reactnative.dev/docs/view",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Row-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/stacklayout?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/row"
+          },
+          "android": "Row",
+          "ios": "HStack",
+          "react_native": "View",
+          "flutter": "Row",
+          "xamarin": "Stack Layout",
+          "ionic": "ion-row"
+        },
+        {
+          "component": "Vertical Column",
+          "links": {
+            "android": "https://developer.android.com/develop/ui/compose/layouts/basics",
+            "ios": "https://developer.apple.com/documentation/swiftui/vstack",
+            "react_native": "https://reactnative.dev/docs/view",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Column-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/verticalstacklayout?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/col"
+          },
+          "android": "Column",
+          "ios": "VStack",
+          "react_native": "View",
+          "flutter": "Column",
+          "xamarin": "VerticalStackLayout",
+          "ionic": "ion-col"
+        },
+        {
+          "component": "Button",
+          "links": {
+            "android": "https://developer.android.com/develop/ui/compose/components/button",
+            "ios": "https://developer.apple.com/documentation/swiftui/button",
+            "react_native": "https://reactnative.dev/docs/button",
+            "flutter": "https://api.flutter.dev/flutter/material/ElevatedButton-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/button"
+          },
+          "android": "Button",
+          "ios": "Button",
+          "react_native": "Button",
+          "flutter": "ElevatedButton",
+          "xamarin": "Button",
+          "ionic": "ion-button"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "label": "UI Components",
+      "items": [
+        {
+          "component": "Text Box",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/EditText",
+            "ios": "https://developer.apple.com/documentation/uikit/uitextfield",
+            "react_native": "https://reactnative.dev/docs/textinput",
+            "flutter": "https://api.flutter.dev/flutter/material/TextField-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/entry?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/input"
+          },
+          "android": "EditText",
+          "ios": "UITextField",
+          "react_native": "TextInput",
+          "flutter": "TextField",
+          "xamarin": "Entry",
+          "ionic": "ion-input"
+        },
+        {
+          "component": "Label",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/TextView",
+            "ios": "https://developer.apple.com/documentation/uikit/uilabel",
+            "react_native": "https://reactnative.dev/docs/text",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Text-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/label"
+          },
+          "android": "TextView",
+          "ios": "UILabel",
+          "react_native": "Text",
+          "flutter": "Text",
+          "xamarin": "Label",
+          "ionic": "ion-label"
+        },
+        {
+          "component": "Drop Down",
+          "links": {
+            "android": "https://developer.android.com/guide/topics/ui/controls/spinner",
+            "ios": "https://developer.apple.com/documentation/uikit/uipickerview",
+            "react_native": "https://github.com/react-native-picker/picker",
+            "flutter": "https://api.flutter.dev/flutter/material/DropdownButton-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/select"
+          },
+          "android": "Spinner",
+          "ios": "DropDownButton",
+          "react_native": "Picker",
+          "flutter": "DropdownButton",
+          "xamarin": "Picker",
+          "ionic": "ion-select"
+        },
+        {
+          "component": "Button",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/Button",
+            "ios": "https://developer.apple.com/documentation/uikit/uibutton",
+            "react_native": "https://reactnative.dev/docs/button",
+            "flutter": "https://api.flutter.dev/flutter/material/ElevatedButton-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/button"
+          },
+          "android": "Button",
+          "ios": "UIButton",
+          "react_native": "Button",
+          "flutter": "ElevatedButton",
+          "xamarin": "Button",
+          "ionic": "ion-button"
+        },
+        {
+          "component": "Image",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/ImageView",
+            "ios": "https://developer.apple.com/documentation/uikit/uiimageview",
+            "react_native": "https://reactnative.dev/docs/image",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Image-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/image?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/img"
+          },
+          "android": "ImageView",
+          "ios": "UIImageView",
+          "react_native": "Image",
+          "flutter": "Image",
+          "xamarin": "Image",
+          "ionic": "ion-img"
+        }
+      ]
+    },
+    {
+      "id": "form",
+      "label": "Form",
+      "items": [
+        {
+          "component": "Form",
+          "links": {
+            "android": "https://developer.android.com/reference/android/app/Activity",
+            "ios": "https://developer.apple.com/documentation/uikit/view_controllers",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pages/contentpage?view=net-maui-9.0"
+          },
+          "android": "Activity",
+          "ios": "UIViewController",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "ContentPage",
+          "ionic": null
+        },
+        {
+          "component": "Child of Form",
+          "links": {
+            "android": "https://developer.android.com/guide/components/fragments",
+            "ios": "http://developers.apple.com",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/contentview?view=net-maui-9.0"
+          },
+          "android": "Fragment",
+          "ios": "UIChildViewController",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "ContentView",
+          "ionic": null
+        },
+        {
+          "component": "View",
+          "links": {
+            "android": "https://developer.android.com/reference/android/view/View",
+            "ios": "https://developer.apple.com/documentation/uikit/uiview",
+            "react_native": "https://reactnative.dev/docs/view",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Widget-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/contentview?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/content"
+          },
+          "android": "View",
+          "ios": "UIView",
+          "react_native": "View",
+          "flutter": "Widget",
+          "xamarin": "ContentView",
+          "ionic": "ion-content"
+        },
+        {
+          "component": "UI Development Framework",
+          "links": {
+            "android": "https://developer.android.com/compose",
+            "ios": "https://developer.apple.com/documentation/swiftui/",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/xaml/"
+          },
+          "android": "Jetpack Compose",
+          "ios": "Swift UI",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "XAML",
+          "ionic": null
+        }
+      ]
+    },
+    {
+      "id": "net",
+      "label": "Networking & Databases",
+      "items": [
+        {
+          "component": "Networking Component",
+          "links": {
+            "android": "https://developer.android.com/reference/java/net/HttpURLConnection",
+            "ios": "https://developer.apple.com/documentation/foundation/urlsession",
+            "react_native": "https://reactnative.dev/docs/network",
+            "flutter": "https://docs.flutter.dev/cookbook/networking/fetch-data",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient",
+            "ionic": "https://angular.dev/guide/http"
+          },
+          "android": "HttpUrlConnection",
+          "ios": "URLSession",
+          "react_native": "Fetch",
+          "flutter": "Http",
+          "xamarin": "HttpClient",
+          "ionic": "HttpClient"
+        },
+        {
+          "component": "Object Relation Mapping",
+          "links": {
+            "android": "https://developer.android.com/training/data-storage/room",
+            "ios": "https://developer.apple.com/documentation/coredata",
+            "xamarin": "https://github.com/praeclarum/sqlite-net",
+            "ionic": "https://ionicframework.com/docs/angular/storage"
+          },
+          "android": "RoomDatabase",
+          "ios": "CoreData",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "SQLite-net",
+          "ionic": "Ionic Storage"
+        },
+        {
+          "component": "Stream Calls",
+          "links": {
+            "android": "https://developer.android.com/kotlin/flow",
+            "ios": "https://developer.apple.com/documentation/combine",
+            "xamarin": "https://github.com/dotnet/reactive",
+            "ionic": "https://rxjs.dev"
+          },
+          "android": "Flow",
+          "ios": "Combine",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "Rx.NET",
+          "ionic": "RxJS"
+        }
+      ]
+    },
+    {
+      "id": "view",
+      "label": "Layouts & View Group",
+      "items": [
+        {
+          "component": "List",
+          "links": {
+            "android": "https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView",
+            "ios": "https://developer.apple.com/documentation/uikit/uitableview",
+            "react_native": "https://reactnative.dev/docs/flatlist",
+            "flutter": "https://api.flutter.dev/flutter/widgets/ListView-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview/?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/list"
+          },
+          "android": "RecyclerView",
+          "ios": "UITableView",
+          "react_native": "FlatList",
+          "flutter": "ListView",
+          "xamarin": "CollectionView",
+          "ionic": "ion-list"
+        },
+        {
+          "component": "Scroll View",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/ScrollView",
+            "ios": "https://developer.apple.com/documentation/uikit/uiscrollview",
+            "react_native": "https://reactnative.dev/docs/scrollview",
+            "flutter": "https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/content"
+          },
+          "android": "ScrollView",
+          "ios": "UIScrollView",
+          "react_native": "ScrollView",
+          "flutter": "ScrollView",
+          "xamarin": "ScrollView",
+          "ionic": "ion-content"
+        },
+        {
+          "component": "Vertical Layout",
+          "links": {
+            "android": "https://developer.android.com/guide/topics/ui/layout/linear",
+            "ios": "https://developer.apple.com/documentation/uikit/uistackview",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Column-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/verticalstacklayout?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/grid"
+          },
+          "android": "LinearLayout",
+          "ios": "UIStackView",
+          "react_native": null,
+          "flutter": "Column",
+          "xamarin": "VerticalStackLayout",
+          "ionic": "ion-grid"
+        },
+        {
+          "component": "Horizontal Layout",
+          "links": {
+            "android": "https://developer.android.com/guide/topics/ui/layout/linear",
+            "ios": "https://developer.apple.com/documentation/uikit/uistackview",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Row-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/horizontalstacklayout?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/grid"
+          },
+          "android": "LinearLayout",
+          "ios": "UIStackView",
+          "react_native": null,
+          "flutter": "Row",
+          "xamarin": "HorizontalStackLayout",
+          "ionic": "ion-grid"
+        },
+        {
+          "component": "Grid",
+          "links": {
+            "android": "https://developer.android.com/reference/android/widget/GridView",
+            "ios": "https://developer.apple.com/documentation/uikit/uicollectionview",
+            "react_native": "https://reactnative.dev/docs/flatlist",
+            "flutter": "https://api.flutter.dev/flutter/widgets/GridView-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/grid?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/grid"
+          },
+          "android": "GridView",
+          "ios": "UICollectionView",
+          "react_native": "FlatList",
+          "flutter": "GridView",
+          "xamarin": "Grid",
+          "ionic": "ion-grid"
+        },
+        {
+          "component": "Stacking View",
+          "links": {
+            "android": "https://developer.android.com/guide/topics/ui/declaring-layout",
+            "ios": "https://developer.apple.com/documentation/uikit/uiview",
+            "react_native": "https://reactnative.dev/docs/view",
+            "flutter": "https://api.flutter.dev/flutter/widgets/Stack-class.html",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/absolutelayout?view=net-maui-9.0"
+          },
+          "android": "Absolute Layout",
+          "ios": "UIView",
+          "react_native": "View",
+          "flutter": "Stack",
+          "xamarin": "AbsoluteLayout",
+          "ionic": null
+        },
+        {
+          "component": "Navigation",
+          "links": {
+            "android": "https://developer.android.com/guide/navigation",
+            "ios": "https://developer.apple.com/documentation/uikit/uistoryboard",
+            "xamarin": "https://learn.microsoft.com/en-us/dotnet/maui/user-interface/shell/?view=net-maui-9.0",
+            "ionic": "https://ionicframework.com/docs/api/router-outlet"
+          },
+          "android": "Navigation Graph",
+          "ios": "UIStoryboard",
+          "react_native": null,
+          "flutter": null,
+          "xamarin": "Shell",
+          "ionic": "ion-router-outlet"
+        }
+      ]
+    }
+  ]
+}

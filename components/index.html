@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-root="../" data-page="components">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Components explorer | AI Similarity</title>
+  <meta name="description" content="Find any UI component and its counterpart in Jetpack Compose, SwiftUI, Android Views, UIKit, Flutter, React Native, .NET MAUI and Ionic. Search by any platform's name.">
+  <meta property="og:title" content="Components explorer | AI Similarity">
+  <meta property="og:description" content="Find any UI component and its counterpart on every mobile platform, with links to the official docs.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-92KXYXDDWD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-92KXYXDDWD');
+  </script>
+
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="components.css">
+  <script defer src="../assets/js/shell.js"></script>
+  <script defer src="components.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <header class="page-head">
+      <h1>Components <span class="gradient-text">explorer</span></h1>
+      <p id="cx-lede">Find a UI component and its counterpart on every mobile platform. Search by any platform's name.</p>
+    </header>
+
+    <section class="cx-controls" aria-label="Search and filters">
+      <label class="search">
+        <span class="sr-only">Search components by any platform's name</span>
+        <input id="cx-q" data-search type="search" autocomplete="off" spellcheck="false"
+               placeholder="Search a component or any platform's name, e.g. Label, UILabel, LazyColumn, ListView">
+      </label>
+
+      <div class="cx-bar">
+        <div class="cx-group" role="group" aria-label="Era">
+          <span class="cx-label" id="cx-era-l">Era</span>
+          <div class="chips" id="cx-era" aria-labelledby="cx-era-l"></div>
+        </div>
+        <div class="cx-group" role="group" aria-label="Mode">
+          <span class="cx-label" id="cx-mode-l">Mode</span>
+          <div class="chips" id="cx-mode" aria-labelledby="cx-mode-l"></div>
+        </div>
+        <div class="cx-group" role="group" aria-label="View">
+          <span class="cx-label" id="cx-view-l">View</span>
+          <div class="chips" id="cx-view" aria-labelledby="cx-view-l"></div>
+        </div>
+        <div class="cx-group cx-actions">
+          <button type="button" class="btn" id="cx-copy">Copy link</button>
+          <button type="button" class="btn" id="cx-clear" hidden>Clear all</button>
+        </div>
+      </div>
+
+      <div class="cx-group" id="cx-cols-wrap">
+        <span class="cx-label" id="cx-cols-l">Columns</span>
+        <div class="chips" id="cx-cols" role="group" aria-labelledby="cx-cols-l"></div>
+      </div>
+
+      <div class="cx-group" id="cx-ft-wrap" hidden>
+        <label class="cx-sel"><span class="cx-label">From</span><select id="cx-from"></select></label>
+        <button type="button" class="btn cx-swap" id="cx-swap" aria-label="Swap source and target platform" title="Swap">&#8644;</button>
+        <label class="cx-sel"><span class="cx-label">To</span><select id="cx-to"></select></label>
+      </div>
+
+      <div class="cx-group cx-cats-group">
+        <span class="cx-label" id="cx-cat-l">Category</span>
+        <div class="chips cx-cats collapsed" id="cx-cats" role="group" aria-labelledby="cx-cat-l"></div>
+        <button type="button" class="cx-linkbtn" id="cx-cats-toggle" aria-expanded="false" hidden>Show all categories</button>
+      </div>
+    </section>
+
+    <div class="cx-status">
+      <p class="result-count" id="cx-count" aria-live="polite"></p>
+      <p class="cx-live sr-only" id="cx-live" aria-live="polite"></p>
+    </div>
+    <div id="cx-warn" class="cx-warn" role="alert" hidden></div>
+    <div id="cx-suggest" hidden></div>
+
+    <section id="cx-results" aria-label="Results" aria-busy="true">
+      <noscript><p class="empty-state">This page needs JavaScript to search the component data.</p></noscript>
+    </section>
+    <div class="cx-more" id="cx-more"></div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

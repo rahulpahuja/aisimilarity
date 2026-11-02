@@ -1,11 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-root="" data-page="home">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Similarity - Android to iOS, Flutter and React Native equivalents</title>
+    <meta name="description" content="Know it on Android? Search one index to find the iOS, SwiftUI, Flutter, React Native, .NET MAUI and Ionic equivalent of any component, library or concept.">
+    <meta property="og:title" content="AI Similarity - Android to iOS, Flutter and React Native equivalents">
+    <meta property="og:description" content="Search components, libraries and platform concepts across Android, iOS, Flutter, React Native, .NET MAUI and Ionic.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>Welcome to AI Similarity</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92KXYXDDWD"></script>
@@ -16,894 +21,158 @@
         gtag('config', 'G-92KXYXDDWD');
     </script>
 
-    <script src="site-config.js"></script>
-    <script src="theme-init.js"></script>
-
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/quiz.css">
     <link rel="stylesheet" href="index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <script defer src="assets/js/shell.js"></script>
+    <script defer src="assets/js/home.js"></script>
+    <script defer src="assets/js/quiz.js"></script>
     <script defer src="index.js"></script>
 </head>
 
-<body id="app-body">
-    <div class="app">
-        <!-- Menu Button -->
-        <button id="menu-btn" class="menu-button" onclick="toggleDrawer()">&#9776;</button>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="site-header"></div>
 
-        <!-- Drawer Menu -->
-        <div id="drawer" class="drawer hidden" aria-hidden="true">
-            <div class="gradient-nav-title">AI Similarity</div>
-            <ul>
-                <li>
-                    <button class="coming-soon" onclick="onComposeClick()">
-                        Compose Components<span class="tag">New</span>
-                    </button>
-                </li>
-                <li>
-                    <button disabled class="coming-soon">Blogs <span class="tag">Coming Soon</span></button>
-                </li>
-                <li><button type="button" onclick="onCatchDroidClick()">&#129408; Catch the Droid</button></li>
-                <li><button type="button" onclick="onCatchIosClick()">&#129408; Catch the iOS</button></li>
-                <li><button type="button" onclick="onInterviewQuestionsListClick()">Interview Questions</button></li>
-                <li><button type="button" onclick="onShareFeedbackClick()">Share Feedback</button></li>
-                <li><button type="button" onclick="onContributorListJoinClick()">Join Contributors List</button></li>
-                <li>
-                    <label class="dark-toggle-wrapper">
-                        <input type="checkbox" id="dark-mode-toggle-drawer" aria-label="Toggle dark mode (drawer)">
-                        <span class="slider"></span>
-                        <span>Dark Mode</span>
-                    </label>
-                </li>
-            </ul>
-        </div>
+    <main id="main" class="container">
+        <!-- Hero + omnibox -->
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Know it on Android? <span class="gradient-text">Find it on iOS, Flutter, React Native&hellip;</span></h1>
+            <p class="hero-sub">One search across components, libraries, platform concepts and guides.</p>
 
-        <div class="header">
-            <div class="switch">
-                <div class="blogs" style="position: relative; display: inline-block;">
-                    <button type="button" class="btn btn-outline-primary" onclick="onComposeClick()">Compose
-                        Components</button>
-                    <span class="coming-soon-badge">New</span>
-                </div>
-                <div class="blogs" style="position: relative; display: inline-block;">
-                    <button type="button" class="btn btn-outline-primary" onclick="onBlogsClick()">Blogs</button>
-                    <span class="coming-soon-badge">Coming Soon</span>
-                </div>
-                <div style="position: relative; display: inline-block;">
-                    <button type="button" class="btn btn-outline-primary" onclick="onCatchDroidClick()">&#129408; Catch the Droid</button>
-                    <span class="coming-soon-badge">Game</span>
-                </div>
-                <div style="position: relative; display: inline-block;">
-                    <button type="button" class="btn btn-outline-primary" onclick="onCatchIosClick()">&#129408; Catch the iOS</button>
-                    <span class="coming-soon-badge">Game</span>
-                </div>
-                <div class="qa-contributors-list">
-                    <button type="button" class="btn btn-outline-primary"
-                        onclick="onInterviewQuestionsListClick()">Interview Questions</button>
-                </div>
-                <div class="share-feedback">
-                    <button type="button" class="btn btn-outline-primary" onclick="onShareFeedbackClick()">Share
-                        Feedback</button>
-                </div>
-                <div class="join-contributors-list">
-                    <button type="button" class="btn btn-outline-primary" onclick="onContributorListJoinClick()">Join
-                        Contributors List</button>
-                </div>
-
-                <label class="dark-toggle-wrapper" style="margin-left:12px;">
-                    <input type="checkbox" id="dark-mode-toggle" aria-label="Toggle dark mode (header)">
-                    <span class="slider"></span>
-                    <span>Dark Mode</span>
+            <form class="omni" role="search" autocomplete="off">
+                <label class="search">
+                    <span class="sr-only">Search components, libraries, equivalents and blog posts</span>
+                    <input id="omni-input" data-search type="search" name="q"
+                           role="combobox" aria-autocomplete="list" aria-haspopup="listbox"
+                           aria-expanded="false" aria-controls="omni-list"
+                           placeholder="Try UILabel, Retrofit, WorkManager, LazyColumn&hellip;"
+                           autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
                 </label>
-            </div>
-        </div>
+                <div id="omni-popup" class="omni-popup" hidden>
+                    <div id="omni-list" class="omni-list" role="listbox" aria-label="Search results"></div>
+                    <div id="omni-foot" class="omni-foot"></div>
+                </div>
+            </form>
+            <p class="omni-keys small muted">Press <kbd>/</kbd> anywhere to search.</p>
+            <div id="omni-status" class="sr-only" role="status" aria-live="polite"></div>
 
-        <div id="body">
-            <!-- Marquee Section -->
-            <div class="marquee-wrapper">
-                <div class="marquee-text gradient-text">
-                    🚀 Compose Components newly added &nbsp;·&nbsp; 🎓 Added new interview questions &nbsp;·&nbsp; 🧠 Quiz to test your knowledge — pick your platform! &nbsp;·&nbsp; 🎮 2 new games to play: Catch the Droid &amp; Catch the iOS &nbsp;·&nbsp; 🔗 Updated coming soon links with real docs &nbsp;·&nbsp; ✨ All-new design &amp; dark mode &nbsp;·&nbsp; and a lot more coming!
+            <div id="quick" class="quick" hidden>
+                <span class="small muted">Quick lookups</span>
+                <div id="quick-chips" class="chips"></div>
+            </div>
+        </section>
+
+        <!-- Inline "see all results" view (filled by home.js) -->
+        <section id="omni-results" class="omni-results" aria-label="Search results" hidden></section>
+
+        <!-- Section tiles -->
+        <section class="section" aria-labelledby="explore-title">
+            <h2 id="explore-title">Explore</h2>
+            <div class="grid tiles">
+                <a class="card tile" href="components/">
+                    <h3>Components</h3>
+                    <p class="muted small">UI building blocks side by side: Compose, SwiftUI, Views, UIKit, React Native, Flutter, .NET MAUI and Ionic.</p>
+                    <span class="tile-count badge" data-count="components" hidden></span>
+                </a>
+                <a class="card tile" href="libraries/">
+                    <h3>Libraries</h3>
+                    <p class="muted small">The library that does the same job on each platform, with install coordinates.</p>
+                    <span class="tile-count badge" data-count="libraries" hidden></span>
+                </a>
+                <a class="card tile" href="equivalents/">
+                    <h3>Equivalents</h3>
+                    <p class="muted small">Platform concepts and tooling mapped across Android, iOS and cross-platform frameworks.</p>
+                    <span class="tile-count badge" data-count="equivalents" hidden></span>
+                </a>
+                <a class="card tile" href="blog/">
+                    <h3>Blog</h3>
+                    <p class="muted small">Practical guides with an iOS comparison for each topic.</p>
+                    <span class="tile-count badge" data-count="blog" hidden></span>
+                </a>
+                <a class="card tile" href="iqlist.html">
+                    <h3>Interview questions</h3>
+                    <p class="muted small">Topic checklist for mobile developer interviews.</p>
+                </a>
+                <div class="card tile">
+                    <h3>Games</h3>
+                    <p class="muted small">A break between lookups.</p>
+                    <p class="tile-links">
+                        <a href="droid.html">Catch the Droid</a>
+                        <a href="squircle.html">Catch the iOS</a>
+                    </p>
                 </div>
             </div>
+            <p class="small muted classic-link">Prefer the original layout? Open the <a href="compose/compose.html">classic Compose view</a>.</p>
+        </section>
 
-            <h1 class="gradient-text" id="title"></h1>
-            <h3 class="subheading-text">Your ultimate guide to bridging the gap between Android and iOS Platforms</h3>
-
-            <div class="quiz-entry">
-                <button class="quiz-cta-btn" onclick="openQuiz()">
-                    <span class="quiz-cta-icon">&#129504;</span> Take the Knowledge Quiz
-                </button>
-                <p class="quiz-cta-sub">Android, iOS, Flutter, React Native, Xamarin or Ionic &mdash; pick your platform</p>
+        <!-- Latest from the blog (hidden until blog/posts.json loads) -->
+        <section id="latest" class="section" aria-labelledby="latest-title" hidden>
+            <div class="section-head">
+                <h2 id="latest-title">Latest from the blog</h2>
+                <a href="blog/">All posts &rarr;</a>
             </div>
+            <div id="latest-list" class="grid"></div>
+        </section>
 
-            <div class="search-area">
-                <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Enter your Search Query here"
-                        aria-label="Search" id="search-query" />
-                    <button type="button" class="btn btn-outline-primary" onclick="search()">Search</button>
+        <!-- Quiz entry -->
+        <section class="section quiz-entry" aria-labelledby="quiz-entry-title">
+            <div class="card quiz-card">
+                <div>
+                    <h2 id="quiz-entry-title">Knowledge quiz</h2>
+                    <p class="muted">Android, iOS, Flutter, React Native, Xamarin or Ionic &mdash; pick a platform and a difficulty.</p>
                 </div>
+                <button type="button" class="btn btn-primary" data-quiz-open aria-haspopup="dialog">Take the quiz</button>
             </div>
+        </section>
+    </main>
 
-            <!-- TABLE: Composition -->
-            <table id="table-data-ui" class="data-table">
-                <caption class="table-head">Composition</caption>
-                <thead>
-                    <tr>
-                        <th class="table-head">Component</th>
-                        <th><img src="assets/android.svg" alt="Android logo" />Android Native</th>
-                        <th><img src="assets/ios.svg" alt="iOS logo" />iOS Native</th>
-                        <th><img src="assets/react.svg" alt="React logo" />React Native</th>
-                        <th><img src="assets/flutter.svg" alt="Flutter logo" />Flutter</th>
-                        <th><img src="assets/x.svg" alt="Xamarin logo" />Xamarin</th>
-                        <th><img src="assets/ionic.svg" alt="Ionic logo" />Ionic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Horizontal Row</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/develop/ui/compose/layouts/basics" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Row</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/hstack"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">HStack</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">View</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Row-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Row</h4>
-                            </a></td>
-                        <td class="table-head-x"><a
-                                href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/stacklayout?view=net-maui-9.0"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Stack Layout</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/row" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ion-row</h4>
-                            </a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Vertical Column</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/develop/ui/compose/layouts/basics" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Column</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/vstack"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">VStack</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">View</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/Column-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Column</h4>
-                            </a></td>
-                        <td class="table-head-x"><a
-                                href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/verticalstacklayout?view=net-maui-9.0"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">VerticalStackLayout</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/col" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ion-col</h4>
-                            </a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Button</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/develop/ui/compose/components/button"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/button"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/button" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/material/ElevatedButton-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ElevatedButton</h4>
-                            </a></td>
-                        <td class="table-head-x"><a
-                                href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button?view=net-maui-9.0"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/button"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-button</h4>
-                            </a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr class="dotted-line">
-
-            <!-- TABLE: UI Components -->
-            <table id="table-data-components" class="data-table">
-                <caption class="table-head">UI Components</caption>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th><img src="assets/android.svg" alt="Android logo" />Android Native</th>
-                        <th><img src="assets/ios.svg" alt="iOS logo" />iOS Native</th>
-                        <th><img src="assets/react.svg" alt="React logo" />React Native</th>
-                        <th><img src="assets/flutter.svg" alt="Flutter logo" />Flutter</th>
-                        <th><img src="assets/x.svg" alt="Xamarin logo" />Xamarin</th>
-                        <th><img src="assets/ionic.svg" alt="Ionic logo" />Ionic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Text Box</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/EditText" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">EditText</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uitextfield"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UITextField</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/textinput" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">TextInput</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/material/TextField-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">TextField</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/entry?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Entry</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/input" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-input</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Label</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/TextView" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">TextView</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uilabel"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UILabel</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/text" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Text</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Text-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Text</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Label</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/label" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-label</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Drop Down</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/guide/topics/ui/controls/spinner" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Spinner</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/uikit/uipickerview" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">DropDownButton</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://github.com/react-native-picker/picker" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Picker</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/material/DropdownButton-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">DropdownButton</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Picker</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/select" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-select</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Button</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/Button" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uibutton"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIButton</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/button" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/material/ElevatedButton-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ElevatedButton</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Button</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/button" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-button</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Image</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/ImageView" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ImageView</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uiimageview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIImageView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/image" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Image</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/Image-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Image</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/image?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Image</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/img" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-img</h4>
-                            </a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr class="dotted-line">
-
-            <!-- TABLE: Form -->
-            <table id="table-data-form" class="data-table">
-                <caption class="table-head">Form</caption>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th><img src="assets/android.svg" alt="Android logo" />Android Native</th>
-                        <th><img src="assets/ios.svg" alt="iOS logo" />iOS Native</th>
-                        <th><img src="assets/react.svg" alt="React logo" />React Native</th>
-                        <th><img src="assets/flutter.svg" alt="Flutter logo" />Flutter</th>
-                        <th><img src="assets/x.svg" alt="Xamarin logo" />Xamarin</th>
-                        <th><img src="assets/ionic.svg" alt="Ionic logo" />Ionic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Form</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/app/Activity" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Activity</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/uikit/view_controllers" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">UIViewController</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pages/contentpage?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ContentPage</h4>
-                            </a></td>
-                        <td class="table-head-ionic">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Child of Form</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/guide/components/fragments" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Fragment</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="http://developers.apple.com" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">UIChildViewController</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/contentview?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ContentView</h4>
-                            </a></td>
-                        <td class="table-head-ionic">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">View</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/view/View" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">View</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uiview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">View</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/Widget-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Widget</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/contentview?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ContentView</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/content" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-content</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">UI Development Framework</h4>
-                        </td>
-                        <td class="table-head-android"><a href="https://developer.android.com/compose" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Jetpack Compose</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/swiftui/"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Swift UI</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/xaml/" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">XAML</h4>
-                            </a></td>
-                        <td class="table-head-ionic">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr class="dotted-line">
-
-            <!-- TABLE: Networking & Databases -->
-            <table id="table-data-net" class="data-table">
-                <caption class="table-head">Networking & Databases</caption>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th><img src="assets/android.svg" alt="Android logo" />Android Native</th>
-                        <th><img src="assets/ios.svg" alt="iOS logo" />iOS Native</th>
-                        <th><img src="assets/react.svg" alt="React logo" />React Native</th>
-                        <th><img src="assets/flutter.svg" alt="Flutter logo" />Flutter</th>
-                        <th><img src="assets/x.svg" alt="Xamarin logo" />Xamarin</th>
-                        <th><img src="assets/ionic.svg" alt="Ionic logo" />Ionic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Networking Component</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/java/net/HttpURLConnection"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">HttpUrlConnection</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/foundation/urlsession" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">URLSession</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/network" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Fetch</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a href="https://docs.flutter.dev/cookbook/networking/fetch-data"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Http</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">HttpClient</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://angular.dev/guide/http" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">HttpClient</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Object Relation Mapping</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/training/data-storage/room" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">RoomDatabase</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/coredata"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">CoreData</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://github.com/praeclarum/sqlite-net" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">SQLite-net</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/angular/storage" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Ionic Storage</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Stream Calls</h4>
-                        </td>
-                        <td class="table-head-android"><a href="https://developer.android.com/kotlin/flow"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Flow</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/combine"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Combine</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://github.com/dotnet/reactive" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Rx.NET</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://rxjs.dev" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">RxJS</h4>
-                            </a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr class="dotted-line">
-
-            <!-- TABLE: Layouts & View Group -->
-            <table id="table-data-view" class="data-table">
-                <caption class="table-head">Layouts & View Group</caption>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th><img src="assets/android.svg" alt="Android logo" />Android Native</th>
-                        <th><img src="assets/ios.svg" alt="iOS logo" />iOS Native</th>
-                        <th><img src="assets/react.svg" alt="React logo" />React Native</th>
-                        <th><img src="assets/flutter.svg" alt="Flutter logo" />Flutter</th>
-                        <th><img src="assets/x.svg" alt="Xamarin logo" />Xamarin</th>
-                        <th><img src="assets/ionic.svg" alt="Ionic logo" />Ionic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">List</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">RecyclerView</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uitableview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UITableView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/flatlist" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">FlatList</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/ListView-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ListView</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/collectionview/?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">CollectionView</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/list" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-list</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Scroll View</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/ScrollView" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ScrollView</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/uikit/uiscrollview" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">UIScrollView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/scrollview" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">ScrollView</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ScrollView</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/scrollview?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ScrollView</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/content" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-content</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Vertical Layout</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/guide/topics/ui/layout/linear" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">LinearLayout</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uistackview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIStackView</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                                <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/Column-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Column</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/verticalstacklayout?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">VerticalStackLayout</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/grid" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-grid</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Horizontal Layout</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/guide/topics/ui/layout/linear" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">LinearLayout</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uistackview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIStackView</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                                <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter"><a href="https://api.flutter.dev/flutter/widgets/Row-class.html"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Row</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/horizontalstacklayout?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">HorizontalStackLayout</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/grid" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-grid</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Grid</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/reference/android/widget/GridView" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">GridView</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/uikit/uicollectionview" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">UICollectionView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/flatlist" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">FlatList</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/GridView-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">GridView</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/grid?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Grid</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/grid" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-grid</h4>
-                            </a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Stacking View</h4>
-                        </td>
-                        <td class="table-head-android"><a
-                                href="https://developer.android.com/guide/topics/ui/declaring-layout" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Absolute Layout</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a href="https://developer.apple.com/documentation/uikit/uiview"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">UIView</h4>
-                            </a></td>
-                        <td class="table-head-react"><a href="https://reactnative.dev/docs/view" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">View</h4>
-                            </a></td>
-                        <td class="table-head-flutter"><a
-                                href="https://api.flutter.dev/flutter/widgets/Stack-class.html" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">Stack</h4>
-                            </a></td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/absolutelayout?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">AbsoluteLayout</h4>
-                            </a></td>
-                        <td class="table-head-ionic">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="table-head-component">
-                            <h4 class="table-label">Navigation</h4>
-                        </td>
-                        <td class="table-head-android"><a href="https://developer.android.com/guide/navigation"
-                                target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Navigation Graph</h4>
-                            </a></td>
-                        <td class="table-head-ios"><a
-                                href="https://developer.apple.com/documentation/uikit/uistoryboard" target="_blank"
-                                rel="noopener noreferrer">
-                                <h4 class="table-label">UIStoryboard</h4>
-                            </a></td>
-                        <td class="table-head-react">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-flutter">
-                            <h4 class="table-label">Not Applicable</h4>
-                        </td>
-                        <td class="table-head-x"><a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/shell/?view=net-maui-9.0" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">Shell</h4>
-                            </a></td>
-                        <td class="table-head-ionic"><a href="https://ionicframework.com/docs/api/router-outlet" target="_blank" rel="noopener noreferrer">
-                                <h4 class="table-label">ion-router-outlet</h4>
-                            </a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr class="dotted-line">
-        </div>
-    </div>
+    <div id="site-footer"></div>
 
     <!-- ===== QUIZ MODAL ===== -->
-    <div id="quiz-modal" class="quiz-modal quiz-modal-hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
+    <div id="quiz-modal" class="quiz-modal quiz-modal-hidden" role="dialog" aria-modal="true" aria-label="Mobile developer knowledge quiz">
         <div class="quiz-container">
-            <button class="quiz-close-btn" onclick="closeQuiz()" aria-label="Close quiz">&times;</button>
+            <button type="button" class="quiz-close-btn" data-quiz-action="close" aria-label="Close quiz">&times;</button>
 
             <!-- Screen 0: Loading -->
             <div id="quiz-screen-loading" class="quiz-screen quiz-screen-hidden">
-                <div class="quiz-loading">
+                <div class="quiz-loading" role="status">
                     <div class="quiz-spinner"></div>
                     <p id="quiz-loading-msg">Loading quiz&hellip;</p>
+                    <button type="button" id="quiz-retry-btn" class="quiz-nav-btn" data-quiz-action="retry" hidden>Try again</button>
                 </div>
             </div>
 
             <!-- Screen 1: Platform -->
             <div id="quiz-screen-platform" class="quiz-screen">
-                <div class="quiz-icon-header">&#128241;</div>
+                <div class="quiz-icon-header" aria-hidden="true">&#128241;</div>
                 <h2 class="quiz-title" id="quiz-modal-title">Mobile Dev Quiz</h2>
                 <p class="quiz-subtitle">Pick a platform and test your knowledge</p>
                 <p class="quiz-pick-label">Choose your platform</p>
                 <div class="quiz-platform-grid">
-                    <button class="quiz-platform-btn" onclick="selectPlatform('android')">
-                        <img src="assets/android.svg" alt="Android" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="android">
+                        <img src="assets/android.svg" alt="" class="quiz-platform-icon">
                         <span>Android</span>
                     </button>
-                    <button class="quiz-platform-btn" onclick="selectPlatform('ios')">
-                        <img src="assets/ios.svg" alt="iOS" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="ios">
+                        <img src="assets/ios.svg" alt="" class="quiz-platform-icon">
                         <span>iOS</span>
                     </button>
-                    <button class="quiz-platform-btn" onclick="selectPlatform('flutter')">
-                        <img src="assets/flutter.svg" alt="Flutter" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="flutter">
+                        <img src="assets/flutter.svg" alt="" class="quiz-platform-icon">
                         <span>Flutter</span>
                     </button>
-                    <button class="quiz-platform-btn" onclick="selectPlatform('reactNative')">
-                        <img src="assets/react.svg" alt="React Native" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="reactNative">
+                        <img src="assets/react.svg" alt="" class="quiz-platform-icon">
                         <span>React Native</span>
                     </button>
-                    <button class="quiz-platform-btn" onclick="selectPlatform('xamarin')">
-                        <img src="assets/x.svg" alt="Xamarin" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="xamarin">
+                        <img src="assets/x.svg" alt="" class="quiz-platform-icon">
                         <span>Xamarin</span>
                     </button>
-                    <button class="quiz-platform-btn" onclick="selectPlatform('ionic')">
-                        <img src="assets/ionic.svg" alt="Ionic" class="quiz-platform-icon" />
+                    <button type="button" class="quiz-platform-btn" data-quiz-platform="ionic">
+                        <img src="assets/ionic.svg" alt="" class="quiz-platform-icon">
                         <span>Ionic</span>
                     </button>
                 </div>
@@ -911,14 +180,14 @@
 
             <!-- Screen 2: Difficulty -->
             <div id="quiz-screen-difficulty" class="quiz-screen quiz-screen-hidden">
-                <button class="quiz-back-btn" onclick="showScreen('platform')" aria-label="Back to platform">&larr; Back</button>
+                <button type="button" class="quiz-back-btn" data-quiz-action="back" aria-label="Back to platform">&larr; Back</button>
                 <div class="quiz-icon-header" id="quiz-diff-platform-icon"></div>
                 <h2 class="quiz-title" id="quiz-diff-platform-name"></h2>
                 <p class="quiz-subtitle">Choose your difficulty level</p>
                 <div class="quiz-diff-row">
-                    <button class="quiz-diff-btn quiz-diff-easy"   onclick="startQuiz('easy')">Easy</button>
-                    <button class="quiz-diff-btn quiz-diff-medium" onclick="startQuiz('medium')">Medium</button>
-                    <button class="quiz-diff-btn quiz-diff-hard"   onclick="startQuiz('hard')">Hard</button>
+                    <button type="button" class="quiz-diff-btn quiz-diff-easy" data-quiz-diff="easy">Easy</button>
+                    <button type="button" class="quiz-diff-btn quiz-diff-medium" data-quiz-diff="medium">Medium</button>
+                    <button type="button" class="quiz-diff-btn quiz-diff-hard" data-quiz-diff="hard">Hard</button>
                 </div>
             </div>
 
@@ -930,22 +199,21 @@
                 </div>
                 <p id="quiz-q-text" class="quiz-q-text"></p>
                 <div id="quiz-options" class="quiz-options"></div>
-                <button id="quiz-next-btn" class="quiz-nav-btn" onclick="quizNext()" disabled>Next &rarr;</button>
+                <button type="button" id="quiz-next-btn" class="quiz-nav-btn" data-quiz-action="next" disabled>Next &rarr;</button>
             </div>
 
             <!-- Screen 4: Results -->
             <div id="quiz-screen-results" class="quiz-screen quiz-screen-hidden">
-                <div class="quiz-icon-header" id="quiz-result-emoji"></div>
+                <div class="quiz-icon-header" id="quiz-result-emoji" aria-hidden="true"></div>
                 <h2 class="quiz-result-score" id="quiz-result-score"></h2>
                 <p class="quiz-result-rating" id="quiz-result-rating"></p>
                 <div id="quiz-review-list" class="quiz-review-list"></div>
                 <div class="quiz-result-actions">
-                    <button class="quiz-nav-btn" onclick="restartQuiz()">&#8635; Try Again</button>
-                    <button class="quiz-nav-btn quiz-nav-btn-secondary" onclick="closeQuiz()">Close</button>
+                    <button type="button" class="quiz-nav-btn" data-quiz-action="restart">&#8635; Try Again</button>
+                    <button type="button" class="quiz-nav-btn quiz-nav-btn-secondary" data-quiz-action="close">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>

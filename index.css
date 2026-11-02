@@ -133,6 +133,11 @@
 .quiz-card p { margin: 0; max-width: 56ch; }
 .quiz-card .btn { min-height: 44px; }
 
+/* platform logo strip under the search box (logos come from site.css .pf-<key>::before) */
+.pf-strip { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 0; padding: 0; }
+.pf-strip li { display: inline-flex; align-items: center; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+.pf-strip .pf { font-size: .8rem; text-transform: none; letter-spacing: 0; color: var(--text-1); }
+
 @media (max-width: 600px) {
   .hero { padding-top: 28px; }
   .omni-popup { max-height: 60vh; }

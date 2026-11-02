@@ -190,6 +190,27 @@ a.card:hover, .card.hoverable:hover { border-color: var(--brand-1); box-shadow: 
 
 /* platform label: <span class="pf pf-android">Android</span> */
 .pf { font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+/* Platform logos: every .pf-<key> label and every chip[data-pf=<key>] shows its logo (assets/<icon>.svg).
+   Single place to change; page scripts only need to emit the existing class/attribute. */
+.pf::before, .chip[data-pf]::before {
+  content: ""; display: none; flex: none; /* shown only when a platform key rule below matches */
+  width: 1.3em; height: 1.3em; margin-right: .45em; vertical-align: -.3em;
+  background: center / contain no-repeat;
+}
+.chip[data-pf]::before { margin-right: 0; vertical-align: baseline; width: 1.25em; height: 1.25em; }
+.pf-android::before, .chip[data-pf="android"]::before { display: inline-block; background-image: url(../android.svg); }
+.pf-compose::before, .chip[data-pf="compose"]::before { display: inline-block; background-image: url(../jetpack-compose.svg); }
+.pf-ios::before, .chip[data-pf="ios"]::before { display: inline-block; background-image: url(../ios.svg); }
+.pf-swiftui::before, .chip[data-pf="swiftui"]::before { display: inline-block; background-image: url(../swiftui.svg); }
+.pf-react_native::before, .chip[data-pf="react_native"]::before { display: inline-block; background-image: url(../react.svg); }
+.pf-flutter::before, .chip[data-pf="flutter"]::before { display: inline-block; background-image: url(../flutter.svg); }
+.pf-xamarin::before, .chip[data-pf="xamarin"]::before { display: inline-block; background-image: url(../x.svg); width: 3.1em; }
+.pf-ionic::before, .chip[data-pf="ionic"]::before { display: inline-block; background-image: url(../ionic.svg); width: 3.1em; }
+/* the Apple logo is a single black path: invert it on dark surfaces (selected chips undo this below) */
+html[data-theme="dark"] .pf-ios::before, html[data-theme="dark"] .chip[data-pf="ios"]::before { filter: invert(1); }
+/* selected chips are brand-blue: put the logo on a white tile so blue logos (React, Ionic, Compose) stay visible, and keep the Apple logo black on it */
+.chip[data-pf][aria-pressed="true"]::before { background-color: #fff; border-radius: 5px; box-sizing: border-box; padding: .17em; background-origin: content-box; }
+html .chip[data-pf][aria-pressed="true"]::before { filter: none; }
 .pf-android { color: var(--pf-android); } .pf-compose { color: var(--pf-compose); }
 .pf-ios { color: var(--pf-ios); } .pf-swiftui { color: var(--pf-swiftui); }
 .pf-react_native { color: var(--pf-react_native); } .pf-flutter { color: var(--pf-flutter); }

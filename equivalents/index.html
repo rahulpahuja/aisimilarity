@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-root="../" data-page="equivalents">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Android to iOS Equivalents: what is it called on the other platform? | AI Similarity</title>
+    <meta name="description" content="Look up what an Android concept or tool is called on iOS (and Flutter or React Native), and the other way round: Activity, Intent, WorkManager, SharedPreferences, Keystore, Gradle and more, with links to official docs.">
+    <meta property="og:title" content="Android to iOS Equivalents | AI Similarity">
+    <meta property="og:description" content="What is X in Android called in iOS? A searchable Rosetta stone for mobile concepts and tooling across Android, iOS, Flutter and React Native.">
+    <meta property="og:type" content="website">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92KXYXDDWD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-92KXYXDDWD');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="stylesheet" href="equivalents.css">
+    <script defer src="../assets/js/shell.js"></script>
+    <script defer src="equivalents.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="container">
+    <header class="page-head">
+        <h1>Platform <span class="gradient-text">equivalents</span></h1>
+        <p id="eq-intro">Look up what a concept or tool is called on the other platform. Pick the platform you know, pick the one you are moving to, and search.</p>
+    </header>
+
+    <noscript><p class="empty-state">This page needs JavaScript to load the equivalents table.</p></noscript>
+
+    <section class="card eq-controls" aria-label="Search and filters">
+        <label class="search eq-search">
+            <span class="sr-only">Search equivalents by any platform name, title, note or tag</span>
+            <input id="eq-q" data-search type="search" autocomplete="off" spellcheck="false"
+                   placeholder="Search any name: Activity, UIViewController, WorkManager, Keychain, Gradle…">
+        </label>
+
+        <div class="eq-dir" role="group" aria-label="Direction">
+            <div class="eq-field">
+                <label for="eq-from">I know</label>
+                <select id="eq-from" class="eq-select"></select>
+            </div>
+            <button id="eq-swap" class="btn eq-swap" type="button" aria-label="Swap direction" title="Swap direction"><span aria-hidden="true">⇄</span></button>
+            <div class="eq-field">
+                <label for="eq-to">Show me</label>
+                <select id="eq-to" class="eq-select"></select>
+            </div>
+        </div>
+
+        <div class="eq-row-controls">
+            <div class="chips" id="eq-kind" role="group" aria-label="Type">
+                <button type="button" class="chip" data-kind="concept" aria-pressed="false">Concepts <span class="count" data-count></span></button>
+                <button type="button" class="chip" data-kind="tooling" aria-pressed="false">Tooling <span class="count" data-count></span></button>
+                <button type="button" class="chip" data-kind="" aria-pressed="true">All <span class="count" data-count></span></button>
+            </div>
+            <div class="eq-field eq-inline">
+                <label for="eq-tag">Tag</label>
+                <select id="eq-tag" class="eq-select"></select>
+            </div>
+            <div class="eq-field eq-inline">
+                <label for="eq-sort">Order</label>
+                <select id="eq-sort" class="eq-select"></select>
+            </div>
+        </div>
+
+        <div class="chips" id="eq-cats" role="group" aria-label="Category"></div>
+
+        <nav id="eq-az" class="eq-az" aria-label="Jump to letter" hidden></nav>
+    </section>
+
+    <div class="eq-statusbar">
+        <p id="eq-count" class="result-count" role="status" aria-live="polite">Loading…</p>
+        <div class="row">
+            <button id="eq-reset" class="btn" type="button" hidden>Clear filters</button>
+            <button id="eq-copy" class="btn" type="button">Copy link</button>
+        </div>
+    </div>
+
+    <p id="eq-hidden" class="small muted eq-hidden" hidden></p>
+
+    <div id="eq-loading" class="empty-state" role="status">Loading equivalents…</div>
+    <div id="eq-error" class="empty-state" role="alert" hidden>
+        <p><strong>Could not load the equivalents data.</strong></p>
+        <p class="small" id="eq-error-msg"></p>
+        <button id="eq-retry" class="btn btn-primary" type="button">Retry</button>
+    </div>
+    <div id="eq-empty" class="empty-state" hidden></div>
+
+    <div id="eq-list" class="eq-list" hidden>
+        <table class="eq-table" id="eq-table">
+            <caption class="sr-only">Platform equivalents</caption>
+            <thead><tr id="eq-thead"></tr></thead>
+            <tbody id="eq-body"></tbody>
+        </table>
+    </div>
+    <div class="eq-more" id="eq-more-wrap" hidden>
+        <button id="eq-more" class="btn" type="button"></button>
+    </div>
+
+    <p class="small muted eq-foot">Mappings are best-effort: the closest idea on the other platform, not an exact behavioural match. Read the gotcha under each row and confirm in the linked official docs.</p>
+</main>
+
+<div id="site-footer"></div>
+</body>
+</html>

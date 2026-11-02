@@ -1,0 +1,2025 @@
+{
+  "meta": {
+    "updated": "2026-11-02",
+    "note": "UI component libraries and UI-adjacent libraries mapped across platforms. Install strings carry no versions. Entries with install 'Built into ...' are platform-provided. Statuses reflect GitHub archive flags, pub.dev discontinued flags, npm deprecation notices and project READMEs checked on 2026-11-02; Compose artifacts are hosted on Google Maven (maven.google.com), others on Maven Central unless marked JitPack."
+  },
+  "categories": [
+    {
+      "id": "ui-components",
+      "label": "UI component libraries & design systems"
+    },
+    {
+      "id": "charts",
+      "label": "Charts & graphs"
+    },
+    {
+      "id": "animation",
+      "label": "Animation & custom graphics"
+    },
+    {
+      "id": "image-loading",
+      "label": "Images: loading, picking, vectors"
+    },
+    {
+      "id": "icons-fonts",
+      "label": "Icons & fonts"
+    },
+    {
+      "id": "lists-and-scrolling",
+      "label": "Lists & scrolling"
+    },
+    {
+      "id": "forms-and-pickers",
+      "label": "Forms, pickers & inputs"
+    },
+    {
+      "id": "calendars",
+      "label": "Calendars & date pickers"
+    },
+    {
+      "id": "sheets-and-popups",
+      "label": "Bottom sheets, menus & transient messages"
+    },
+    {
+      "id": "rich-content",
+      "label": "Markdown, HTML & rich text"
+    },
+    {
+      "id": "media",
+      "label": "Video, audio & scanning"
+    },
+    {
+      "id": "maps",
+      "label": "Maps"
+    },
+    {
+      "id": "placeholders",
+      "label": "Skeleton & shimmer placeholders"
+    },
+    {
+      "id": "pagers-onboarding",
+      "label": "Pagers, carousels, splash & onboarding"
+    },
+    {
+      "id": "haptics-gestures",
+      "label": "Haptics, gestures & swipe actions"
+    },
+    {
+      "id": "deprecated-migrations",
+      "label": "Deprecated libraries & migrations"
+    }
+  ],
+  "items": [
+    {
+      "id": "component-design-system",
+      "category": "ui-components",
+      "title": "Design-system component kit (buttons, text fields, app bars, cards)",
+      "description": "The component set each platform ships or the most common community kit. Android: Material 3 for Compose (Material Components for Views is the XML equivalent); iOS: SwiftUI/UIKit system controls; Flutter: Material and Cupertino widget libraries; React Native: no first-party kit, react-native-paper (Material) is a common choice. Other RN kits include react-native-elements, gluestack-ui and Tamagui.",
+      "platforms": {
+        "android": {
+          "name": "Material 3 (Compose)",
+          "url": "https://developer.android.com/develop/ui/compose/designsystems/material3",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI / UIKit system controls",
+          "url": "https://developer.apple.com/documentation/swiftui",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "Material & Cupertino widgets",
+          "url": "https://docs.flutter.dev/ui/widgets/material",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "React Native Paper",
+          "url": "https://callstack.github.io/react-native-paper/",
+          "install": "npm i react-native-paper"
+        }
+      },
+      "builtin": {
+        "android": "Material Components for Views (com.google.android.material:material) is the XML/Views counterpart of Material 3 for Compose.",
+        "ios": "System controls adopt the current OS design automatically; Apple's Human Interface Guidelines replace Material.",
+        "flutter": "Cupertino widgets (https://docs.flutter.dev/ui/widgets/cupertino) give iOS-style controls from the same SDK."
+      },
+      "tags": [
+        "design-system",
+        "material",
+        "components"
+      ]
+    },
+    {
+      "id": "adaptive-layouts",
+      "category": "ui-components",
+      "title": "Adaptive layouts (window size classes, list-detail, navigation suite)",
+      "description": "Layout helpers that switch between bottom bar, rail and multi-pane layouts based on window size. Android: Material 3 adaptive libraries for Compose; iOS: NavigationSplitView and size classes; Flutter: LayoutBuilder / MediaQuery plus NavigationRail; React Native: useWindowDimensions with custom breakpoints.",
+      "platforms": {
+        "android": {
+          "name": "Material 3 Adaptive",
+          "url": "https://developer.android.com/develop/ui/compose/layouts/adaptive",
+          "install": "androidx.compose.material3.adaptive:adaptive-layout",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "NavigationSplitView / size classes",
+          "url": "https://developer.apple.com/documentation/swiftui/navigationsplitview",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "Adaptive & responsive design guide",
+          "url": "https://docs.flutter.dev/ui/adaptive-responsive",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "useWindowDimensions",
+          "url": "https://reactnative.dev/docs/usewindowdimensions",
+          "install": "Built into React Native (no install)"
+        }
+      },
+      "builtin": {
+        "android": "Related artifacts: androidx.compose.material3.adaptive:adaptive-navigation and androidx.compose.material3:material3-adaptive-navigation-suite.",
+        "flutter": "The flutter_adaptive_scaffold package is marked discontinued on pub.dev; use the built-in widgets."
+      },
+      "tags": [
+        "adaptive",
+        "tablet",
+        "foldable",
+        "responsive"
+      ]
+    },
+    {
+      "id": "runtime-permissions-ui",
+      "category": "ui-components",
+      "title": "Runtime permission request helpers",
+      "description": "State holders that wrap the platform permission prompt flow. Android: Accompanist Permissions (still published for Compose); iOS has no cross-framework helper, each framework exposes its own authorization API; Flutter: permission_handler; React Native: react-native-permissions.",
+      "platforms": {
+        "android": {
+          "name": "Accompanist Permissions",
+          "url": "https://google.github.io/accompanist/permissions/",
+          "install": "com.google.accompanist:accompanist-permissions",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Per-framework authorization APIs",
+          "url": "https://developer.apple.com/documentation/uikit/protecting-the-user-s-privacy",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "permission_handler",
+          "url": "https://pub.dev/packages/permission_handler",
+          "install": "flutter pub add permission_handler"
+        },
+        "react_native": {
+          "name": "react-native-permissions",
+          "url": "https://github.com/zoontek/react-native-permissions",
+          "install": "npm i react-native-permissions"
+        }
+      },
+      "builtin": {
+        "android": "ActivityResultContracts.RequestPermission (androidx.activity) is the platform API underneath."
+      },
+      "tags": [
+        "permissions",
+        "accompanist"
+      ]
+    },
+    {
+      "id": "keyboard-handling",
+      "category": "ui-components",
+      "title": "Keyboard avoidance & IME insets",
+      "description": "Moving content out of the way of the on-screen keyboard. Android: WindowInsets.ime in Compose Foundation; iOS: keyboard layout guide / SwiftUI safe-area handling; Flutter: MediaQuery.viewInsets and Scaffold resizing; React Native: react-native-keyboard-controller.",
+      "platforms": {
+        "android": {
+          "name": "WindowInsets.ime (Compose Foundation)",
+          "url": "https://developer.android.com/develop/ui/compose/system/insets",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Keyboard layout guide / safe area",
+          "url": "https://developer.apple.com/documentation/uikit/uiview/keyboardlayoutguide",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "MediaQuery.viewInsets",
+          "url": "https://api.flutter.dev/flutter/widgets/MediaQueryData/viewInsets.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "react-native-keyboard-controller",
+          "url": "https://github.com/kirillzyusko/react-native-keyboard-controller",
+          "install": "npm i react-native-keyboard-controller"
+        }
+      },
+      "tags": [
+        "keyboard",
+        "insets",
+        "ime"
+      ]
+    },
+    {
+      "id": "headless-component-primitives",
+      "category": "ui-components",
+      "title": "Unstyled / copy-in component primitives",
+      "description": "Behaviour-and-accessibility primitives you style yourself. Android: Compose Unstyled; iOS: plain SwiftUI views with custom ButtonStyle/ViewModifier; Flutter: shadcn_ui is a port of the shadcn/ui look; React Native: gluestack-ui (copy-in components styled with NativeWind). NativeBase, the earlier gluestack predecessor, carries an npm deprecation notice pointing to gluestack-ui.",
+      "platforms": {
+        "android": {
+          "name": "Compose Unstyled",
+          "url": "https://composeunstyled.com/",
+          "install": "com.composables:core",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI custom styles (ButtonStyle, ViewModifier)",
+          "url": "https://developer.apple.com/documentation/swiftui/buttonstyle",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "shadcn_ui",
+          "url": "https://pub.dev/packages/shadcn_ui",
+          "install": "flutter pub add shadcn_ui"
+        },
+        "react_native": {
+          "name": "gluestack-ui",
+          "url": "https://github.com/gluestack/gluestack-ui",
+          "install": "npm i gluestack-ui"
+        }
+      },
+      "tags": [
+        "design-system",
+        "unstyled",
+        "headless"
+      ]
+    },
+    {
+      "id": "charts-modern",
+      "category": "charts",
+      "title": "Charts (line, bar, area)",
+      "description": "Declarative chart libraries. Android: Vico (Compose and Views); iOS: Swift Charts, built in since iOS 16; Flutter: fl_chart; React Native: victory-native.",
+      "platforms": {
+        "android": {
+          "name": "Vico",
+          "url": "https://github.com/patrykandpatrick/vico",
+          "install": "com.patrykandpatrick.vico:compose-m3",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "Swift Charts",
+          "url": "https://developer.apple.com/documentation/charts",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "fl_chart",
+          "url": "https://pub.dev/packages/fl_chart",
+          "install": "flutter pub add fl_chart"
+        },
+        "react_native": {
+          "name": "victory-native",
+          "url": "https://github.com/FormidableLabs/victory-native-xl",
+          "install": "npm i victory-native"
+        }
+      },
+      "builtin": {
+        "ios": "Swift Charts needs no dependency; UIKit apps host it with UIHostingController."
+      },
+      "tags": [
+        "charts",
+        "graph",
+        "dataviz"
+      ]
+    },
+    {
+      "id": "charts-classic",
+      "category": "charts",
+      "title": "Charts (established View-based libraries)",
+      "description": "Long-standing imperative chart views. MPAndroidChart (Android Views, distributed via JitPack) and DGCharts (formerly Charts, iOS) share an API lineage. Flutter: Syncfusion charts (commercial license terms apply); React Native: react-native-gifted-charts.",
+      "platforms": {
+        "android": {
+          "name": "MPAndroidChart",
+          "url": "https://github.com/PhilJay/MPAndroidChart",
+          "install": "com.github.PhilJay:MPAndroidChart (JitPack)",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "DGCharts (Charts)",
+          "url": "https://github.com/ChartsOrg/Charts",
+          "install": "https://github.com/ChartsOrg/Charts (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "syncfusion_flutter_charts",
+          "url": "https://pub.dev/packages/syncfusion_flutter_charts",
+          "install": "flutter pub add syncfusion_flutter_charts"
+        },
+        "react_native": {
+          "name": "react-native-gifted-charts",
+          "url": "https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts",
+          "install": "npm i react-native-gifted-charts"
+        }
+      },
+      "tags": [
+        "charts",
+        "views"
+      ]
+    },
+    {
+      "id": "lottie",
+      "category": "animation",
+      "title": "Lottie vector animations (After Effects JSON)",
+      "description": "Plays Lottie/Bodymovin JSON animations. The same file works on all platforms.",
+      "platforms": {
+        "android": {
+          "name": "lottie-android (Compose and Views)",
+          "url": "https://airbnb.io/lottie/#/android-compose",
+          "install": "com.airbnb.android:lottie-compose",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "lottie-ios",
+          "url": "https://github.com/airbnb/lottie-ios",
+          "install": "https://github.com/airbnb/lottie-ios (Swift Package Manager)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "lottie",
+          "url": "https://pub.dev/packages/lottie",
+          "install": "flutter pub add lottie"
+        },
+        "react_native": {
+          "name": "lottie-react-native",
+          "url": "https://github.com/lottie-react-native/lottie-react-native",
+          "install": "npm i lottie-react-native"
+        }
+      },
+      "builtin": {
+        "android": "For Views use com.airbnb.android:lottie."
+      },
+      "tags": [
+        "lottie",
+        "animation",
+        "json"
+      ]
+    },
+    {
+      "id": "animation-apis",
+      "category": "animation",
+      "title": "Declarative UI animation APIs",
+      "description": "State-driven property animations. Android: Compose Animation APIs; iOS: SwiftUI withAnimation / animation modifiers; Flutter: implicit animations plus flutter_animate for chained effects; React Native: react-native-reanimated.",
+      "platforms": {
+        "android": {
+          "name": "Compose Animation",
+          "url": "https://developer.android.com/develop/ui/compose/animation/introduction",
+          "install": "androidx.compose.animation:animation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI animations",
+          "url": "https://developer.apple.com/documentation/swiftui/animations",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "flutter_animate",
+          "url": "https://pub.dev/packages/flutter_animate",
+          "install": "flutter pub add flutter_animate"
+        },
+        "react_native": {
+          "name": "React Native Reanimated",
+          "url": "https://docs.swmansion.com/react-native-reanimated/",
+          "install": "npm i react-native-reanimated"
+        }
+      },
+      "builtin": {
+        "flutter": "Implicit animation widgets (AnimatedContainer, AnimatedOpacity, ...) ship in the SDK: https://docs.flutter.dev/ui/animations",
+        "react_native": "The built-in Animated API remains available without extra dependencies."
+      },
+      "tags": [
+        "animation",
+        "motion",
+        "transitions"
+      ]
+    },
+    {
+      "id": "rive",
+      "category": "animation",
+      "title": "Rive interactive animations (state machines)",
+      "description": "Runtime for Rive files with state machines driven by app inputs. React Native has a legacy package (rive-react-native) and a newer Nitro-based runtime (@rive-app/react-native); the legacy repo README points to the new runtime.",
+      "platforms": {
+        "android": {
+          "name": "rive-android",
+          "url": "https://github.com/rive-app/rive-android",
+          "install": "app.rive:rive-android",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "rive-ios",
+          "url": "https://github.com/rive-app/rive-ios",
+          "install": "https://github.com/rive-app/rive-ios (Swift Package Manager)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "rive",
+          "url": "https://pub.dev/packages/rive",
+          "install": "flutter pub add rive"
+        },
+        "react_native": {
+          "name": "@rive-app/react-native",
+          "url": "https://github.com/rive-app/rive-nitro-react-native",
+          "install": "npm i @rive-app/react-native"
+        }
+      },
+      "tags": [
+        "rive",
+        "animation",
+        "state-machine"
+      ]
+    },
+    {
+      "id": "confetti",
+      "category": "animation",
+      "title": "Confetti / particle celebrations",
+      "description": "Short particle effects for success states.",
+      "platforms": {
+        "android": {
+          "name": "Konfetti (Compose)",
+          "url": "https://github.com/DanielMartinus/Konfetti",
+          "install": "nl.dionsegijn:konfetti-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "ConfettiSwiftUI",
+          "url": "https://github.com/simibac/ConfettiSwiftUI",
+          "install": "https://github.com/simibac/ConfettiSwiftUI (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "confetti",
+          "url": "https://pub.dev/packages/confetti",
+          "install": "flutter pub add confetti"
+        },
+        "react_native": {
+          "name": "react-native-confetti-cannon",
+          "url": "https://github.com/VincentCATILLON/react-native-confetti-cannon",
+          "install": "npm i react-native-confetti-cannon"
+        }
+      },
+      "tags": [
+        "confetti",
+        "particles",
+        "fun"
+      ]
+    },
+    {
+      "id": "custom-2d-graphics",
+      "category": "animation",
+      "title": "Custom 2D drawing (canvas)",
+      "description": "Low-level drawing surfaces. Android: Compose Canvas; iOS: SwiftUI Canvas / Core Graphics; Flutter: CustomPainter; React Native: Skia via @shopify/react-native-skia.",
+      "platforms": {
+        "android": {
+          "name": "Compose Canvas / DrawScope",
+          "url": "https://developer.android.com/develop/ui/compose/graphics/draw/overview",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI Canvas",
+          "url": "https://developer.apple.com/documentation/swiftui/canvas",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "CustomPainter",
+          "url": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "React Native Skia",
+          "url": "https://shopify.github.io/react-native-skia/",
+          "install": "npm i @shopify/react-native-skia"
+        }
+      },
+      "tags": [
+        "canvas",
+        "skia",
+        "drawing"
+      ]
+    },
+    {
+      "id": "image-loading",
+      "category": "image-loading",
+      "title": "Image loading & caching",
+      "description": "Async network image loading with memory/disk caches. Android: Coil; iOS: Kingfisher; Flutter: cached_network_image; React Native: expo-image.",
+      "platforms": {
+        "android": {
+          "name": "Coil",
+          "url": "https://coil-kt.github.io/coil/",
+          "install": "io.coil-kt.coil3:coil-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Kingfisher",
+          "url": "https://github.com/onevcat/Kingfisher",
+          "install": "https://github.com/onevcat/Kingfisher (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "cached_network_image",
+          "url": "https://pub.dev/packages/cached_network_image",
+          "install": "flutter pub add cached_network_image"
+        },
+        "react_native": {
+          "name": "expo-image",
+          "url": "https://docs.expo.dev/versions/latest/sdk/image/",
+          "install": "npm i expo-image"
+        }
+      },
+      "builtin": {
+        "ios": "AsyncImage (SwiftUI) loads remote images but does not provide a persistent disk cache beyond URLCache.",
+        "android": "Coil 3 needs a network artifact too, for example io.coil-kt.coil3:coil-network-okhttp."
+      },
+      "tags": [
+        "image",
+        "cache",
+        "network"
+      ]
+    },
+    {
+      "id": "image-loading-alt",
+      "category": "image-loading",
+      "title": "Image loading & caching (long-established alternatives)",
+      "description": "Alternative loaders with a long history. Android: Glide (Views and Compose via the compose artifact); iOS: SDWebImage (with SDWebImageSwiftUI); Flutter: extended_image; React Native: react-native-fast-image.",
+      "platforms": {
+        "android": {
+          "name": "Glide",
+          "url": "https://bumptech.github.io/glide/",
+          "install": "com.github.bumptech.glide:glide",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "SDWebImage",
+          "url": "https://github.com/SDWebImage/SDWebImage",
+          "install": "https://github.com/SDWebImage/SDWebImage (Swift Package Manager)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "extended_image",
+          "url": "https://pub.dev/packages/extended_image",
+          "install": "flutter pub add extended_image"
+        },
+        "react_native": {
+          "name": "react-native-fast-image",
+          "url": "https://github.com/DylanVann/react-native-fast-image",
+          "install": "npm i react-native-fast-image"
+        }
+      },
+      "builtin": {
+        "android": "Compose integration: com.github.bumptech.glide:compose. Picasso (com.squareup.picasso:picasso) is another Views-era loader.",
+        "ios": "Nuke (https://github.com/kean/Nuke) is another maintained Swift option."
+      },
+      "tags": [
+        "image",
+        "cache",
+        "glide"
+      ]
+    },
+    {
+      "id": "photo-picker",
+      "category": "image-loading",
+      "title": "Photo / media picker",
+      "description": "Letting users choose photos without broad storage permission. Android: Photo Picker via ActivityResultContracts.PickVisualMedia; iOS: PHPickerViewController / SwiftUI PhotosPicker; Flutter: image_picker; React Native: expo-image-picker.",
+      "platforms": {
+        "android": {
+          "name": "Android Photo Picker",
+          "url": "https://developer.android.com/training/data-storage/shared/photopicker",
+          "install": "androidx.activity:activity-compose",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "PhotosPicker / PHPickerViewController",
+          "url": "https://developer.apple.com/documentation/photosui/photospicker",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "image_picker",
+          "url": "https://pub.dev/packages/image_picker",
+          "install": "flutter pub add image_picker"
+        },
+        "react_native": {
+          "name": "expo-image-picker",
+          "url": "https://docs.expo.dev/versions/latest/sdk/imagepicker/",
+          "install": "npm i expo-image-picker"
+        }
+      },
+      "tags": [
+        "photo",
+        "picker",
+        "gallery"
+      ]
+    },
+    {
+      "id": "image-cropper",
+      "category": "image-loading",
+      "title": "Image cropping UI",
+      "description": "Crop/rotate screens for user-selected images. Android: Android-Image-Cropper (CanHub fork, published under com.vanniktech); iOS: TOCropViewController; Flutter: image_cropper; React Native: react-native-image-crop-picker.",
+      "platforms": {
+        "android": {
+          "name": "Android-Image-Cropper (CanHub)",
+          "url": "https://github.com/CanHub/Android-Image-Cropper",
+          "install": "com.vanniktech:android-image-cropper",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "TOCropViewController",
+          "url": "https://github.com/TimOliver/TOCropViewController",
+          "install": "https://github.com/TimOliver/TOCropViewController (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "image_cropper",
+          "url": "https://pub.dev/packages/image_cropper",
+          "install": "flutter pub add image_cropper"
+        },
+        "react_native": {
+          "name": "react-native-image-crop-picker",
+          "url": "https://github.com/ivpusic/react-native-image-crop-picker",
+          "install": "npm i react-native-image-crop-picker"
+        }
+      },
+      "builtin": {
+        "android": "The original ArthurHub/Android-Image-Cropper repository has not been updated since 2023; the CanHub fork is the actively updated one."
+      },
+      "tags": [
+        "image",
+        "crop"
+      ]
+    },
+    {
+      "id": "svg-rendering",
+      "category": "image-loading",
+      "title": "SVG rendering",
+      "description": "Drawing SVG files at runtime. Android: Coil SVG decoder; iOS: Xcode asset catalogs accept SVG natively, SVGView renders SVG files at runtime in SwiftUI; Flutter: flutter_svg; React Native: react-native-svg.",
+      "platforms": {
+        "android": {
+          "name": "Coil SVG",
+          "url": "https://coil-kt.github.io/coil/svgs/",
+          "install": "io.coil-kt.coil3:coil-svg",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "SVGView",
+          "url": "https://github.com/exyte/SVGView",
+          "install": "https://github.com/exyte/SVGView (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "flutter_svg",
+          "url": "https://pub.dev/packages/flutter_svg",
+          "install": "flutter pub add flutter_svg"
+        },
+        "react_native": {
+          "name": "react-native-svg",
+          "url": "https://github.com/software-mansion/react-native-svg",
+          "install": "npm i react-native-svg"
+        }
+      },
+      "builtin": {
+        "android": "Android Studio converts SVG to VectorDrawable at build time, which Compose can load with painterResource."
+      },
+      "tags": [
+        "svg",
+        "vector",
+        "image"
+      ]
+    },
+    {
+      "id": "zoomable-image",
+      "category": "image-loading",
+      "title": "Pinch-to-zoom image viewer",
+      "description": "Zoomable/pannable image surfaces. Android: Telephoto; iOS: UIScrollView zooming (built in); Flutter: photo_view; React Native has no single dominant library, so none is listed.",
+      "platforms": {
+        "android": {
+          "name": "Telephoto zoomable-image",
+          "url": "https://saket.github.io/telephoto/zoomableimage/",
+          "install": "me.saket.telephoto:zoomable-image-coil",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "UIScrollView zooming",
+          "url": "https://developer.apple.com/documentation/uikit/uiscrollview",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "photo_view",
+          "url": "https://pub.dev/packages/photo_view",
+          "install": "flutter pub add photo_view"
+        },
+        "react_native": null
+      },
+      "tags": [
+        "image",
+        "zoom",
+        "gesture"
+      ]
+    },
+    {
+      "id": "icon-sets",
+      "category": "icons-fonts",
+      "title": "Icon sets",
+      "description": "Icon fonts/vector sets. Android: Material Icons (extended set) for Compose; iOS: SF Symbols; Flutter: Icons class plus cupertino_icons; React Native: @expo/vector-icons (or expo-symbols for SF Symbols on iOS).",
+      "platforms": {
+        "android": {
+          "name": "Material Icons Extended",
+          "url": "https://developer.android.com/develop/ui/compose/graphics/images/material",
+          "install": "androidx.compose.material:material-icons-extended",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SF Symbols",
+          "url": "https://developer.apple.com/sf-symbols/",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "cupertino_icons",
+          "url": "https://pub.dev/packages/cupertino_icons",
+          "install": "flutter pub add cupertino_icons"
+        },
+        "react_native": {
+          "name": "@expo/vector-icons",
+          "url": "https://docs.expo.dev/guides/icons/",
+          "install": "npm i @expo/vector-icons"
+        }
+      },
+      "builtin": {
+        "flutter": "Material Icons ship in the SDK as the Icons class.",
+        "react_native": "react-native-vector-icons now publishes per-icon-family packages (the monolithic npm package carries a deprecation notice)."
+      },
+      "tags": [
+        "icons",
+        "symbols"
+      ]
+    },
+    {
+      "id": "custom-fonts",
+      "category": "icons-fonts",
+      "title": "Custom & Google fonts",
+      "description": "Loading non-system fonts. Android: Downloadable Google Fonts in Compose; iOS: bundle fonts and list them in Info.plist (UIAppFonts); Flutter: google_fonts; React Native: expo-font.",
+      "platforms": {
+        "android": {
+          "name": "Compose Google Fonts",
+          "url": "https://developer.android.com/develop/ui/compose/text/fonts",
+          "install": "androidx.compose.ui:ui-text-google-fonts",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Custom fonts in apps",
+          "url": "https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "google_fonts",
+          "url": "https://pub.dev/packages/google_fonts",
+          "install": "flutter pub add google_fonts"
+        },
+        "react_native": {
+          "name": "expo-font",
+          "url": "https://docs.expo.dev/versions/latest/sdk/font/",
+          "install": "npm i expo-font"
+        }
+      },
+      "tags": [
+        "fonts",
+        "typography"
+      ]
+    },
+    {
+      "id": "lazy-lists",
+      "category": "lists-and-scrolling",
+      "title": "Virtualized lists",
+      "description": "Recycling/lazy lists for large data sets. Android: LazyColumn (Compose) or RecyclerView (Views); iOS: SwiftUI List / LazyVStack or UICollectionView; Flutter: ListView.builder (super_sliver_list for very large variable-height lists); React Native: FlashList.",
+      "platforms": {
+        "android": {
+          "name": "RecyclerView",
+          "url": "https://developer.android.com/develop/ui/views/layout/recyclerview",
+          "install": "androidx.recyclerview:recyclerview",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "UICollectionView / SwiftUI List",
+          "url": "https://developer.apple.com/documentation/swiftui/list",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "super_sliver_list",
+          "url": "https://pub.dev/packages/super_sliver_list",
+          "install": "flutter pub add super_sliver_list"
+        },
+        "react_native": {
+          "name": "FlashList",
+          "url": "https://shopify.github.io/flash-list/",
+          "install": "npm i @shopify/flash-list"
+        }
+      },
+      "builtin": {
+        "android": "Compose: LazyColumn/LazyRow live in androidx.compose.foundation:foundation.",
+        "flutter": "ListView.builder and CustomScrollView slivers are built in.",
+        "react_native": "FlatList is built in; FlashList is a drop-in-style alternative."
+      },
+      "tags": [
+        "list",
+        "recycler",
+        "virtualization"
+      ]
+    },
+    {
+      "id": "list-composition-frameworks",
+      "category": "lists-and-scrolling",
+      "title": "Declarative data-to-cell list frameworks (Views era)",
+      "description": "Frameworks that build heterogeneous lists from models for imperative UI toolkits. Epoxy (Android RecyclerView) and IGListKit (iOS UICollectionView). Declarative toolkits (Compose, SwiftUI, Flutter, React Native) cover this natively, so those platforms are left empty.",
+      "platforms": {
+        "android": {
+          "name": "Epoxy",
+          "url": "https://github.com/airbnb/epoxy",
+          "install": "com.airbnb.android:epoxy",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "IGListKit",
+          "url": "https://github.com/Instagram/IGListKit",
+          "install": "https://github.com/Instagram/IGListKit (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": null,
+        "react_native": null
+      },
+      "tags": [
+        "list",
+        "views",
+        "diffing"
+      ]
+    },
+    {
+      "id": "pull-to-refresh",
+      "category": "lists-and-scrolling",
+      "title": "Pull-to-refresh",
+      "description": "Swipe-down refresh gesture. Android: PullToRefreshBox in Material 3; iOS: .refreshable / UIRefreshControl; Flutter: RefreshIndicator; React Native: RefreshControl.",
+      "platforms": {
+        "android": {
+          "name": "PullToRefreshBox (Material 3)",
+          "url": "https://developer.android.com/develop/ui/compose/components/pull-to-refresh",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "refreshable(action:)",
+          "url": "https://developer.apple.com/documentation/swiftui/view/refreshable(action:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "RefreshIndicator",
+          "url": "https://api.flutter.dev/flutter/material/RefreshIndicator-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "RefreshControl",
+          "url": "https://reactnative.dev/docs/refreshcontrol",
+          "install": "Built into React Native (no install)"
+        }
+      },
+      "builtin": {
+        "android": "Views: SwipeRefreshLayout in androidx.swiperefreshlayout:swiperefreshlayout. Accompanist SwipeRefresh is deprecated."
+      },
+      "tags": [
+        "refresh",
+        "gesture"
+      ]
+    },
+    {
+      "id": "pagination",
+      "category": "lists-and-scrolling",
+      "title": "Paged / infinite lists",
+      "description": "Loading list data in pages as the user scrolls. Android: Paging 3 with Compose or RecyclerView; iOS has no standard library (SwiftUI List with onAppear triggers and async/await); Flutter: infinite_scroll_pagination; React Native: FlatList/FlashList onEndReached, often combined with TanStack Query infinite queries.",
+      "platforms": {
+        "android": {
+          "name": "Paging 3",
+          "url": "https://developer.android.com/topic/libraries/architecture/paging/v3-overview",
+          "install": "androidx.paging:paging-compose",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "List + onAppear + async/await",
+          "url": "https://developer.apple.com/documentation/swiftui/list",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "infinite_scroll_pagination",
+          "url": "https://pub.dev/packages/infinite_scroll_pagination",
+          "install": "flutter pub add infinite_scroll_pagination"
+        },
+        "react_native": {
+          "name": "FlatList onEndReached",
+          "url": "https://reactnative.dev/docs/flatlist#onendreached",
+          "install": "Built into React Native (no install)"
+        }
+      },
+      "tags": [
+        "paging",
+        "infinite-scroll"
+      ]
+    },
+    {
+      "id": "reorderable-lists",
+      "category": "lists-and-scrolling",
+      "title": "Drag-to-reorder lists",
+      "description": "Long-press-and-drag list reordering. Android: Reorderable (Compose); iOS: onMove in SwiftUI List edit mode; Flutter: ReorderableListView; React Native: react-native-draggable-flatlist.",
+      "platforms": {
+        "android": {
+          "name": "Reorderable",
+          "url": "https://github.com/Calvin-LL/Reorderable",
+          "install": "sh.calvin.reorderable:reorderable",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "onMove(perform:)",
+          "url": "https://developer.apple.com/documentation/swiftui/dynamicviewcontent/onmove(perform:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "ReorderableListView",
+          "url": "https://api.flutter.dev/flutter/material/ReorderableListView-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "react-native-draggable-flatlist",
+          "url": "https://github.com/computerjazz/react-native-draggable-flatlist",
+          "install": "npm i react-native-draggable-flatlist"
+        }
+      },
+      "tags": [
+        "list",
+        "drag",
+        "reorder"
+      ]
+    },
+    {
+      "id": "date-time-pickers",
+      "category": "forms-and-pickers",
+      "title": "Date & time pickers",
+      "description": "Native-style date/time selection. Android: Material 3 DatePicker/TimePicker; iOS: DatePicker; Flutter: showDatePicker / showTimePicker; React Native: @react-native-community/datetimepicker.",
+      "platforms": {
+        "android": {
+          "name": "Material 3 DatePicker / TimePicker",
+          "url": "https://developer.android.com/develop/ui/compose/components/datepickers",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "DatePicker",
+          "url": "https://developer.apple.com/documentation/swiftui/datepicker",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "showDatePicker",
+          "url": "https://api.flutter.dev/flutter/material/showDatePicker.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "@react-native-community/datetimepicker",
+          "url": "https://github.com/react-native-datetimepicker/datetimepicker",
+          "install": "npm i @react-native-community/datetimepicker"
+        }
+      },
+      "tags": [
+        "date",
+        "time",
+        "picker"
+      ]
+    },
+    {
+      "id": "dropdowns-and-pickers",
+      "category": "forms-and-pickers",
+      "title": "Dropdowns & option pickers",
+      "description": "Selecting one value from a list. Android: ExposedDropdownMenuBox in Material 3; iOS: Picker / Menu; Flutter: DropdownMenu (dropdown_search for searchable lists); React Native: @react-native-picker/picker.",
+      "platforms": {
+        "android": {
+          "name": "ExposedDropdownMenuBox",
+          "url": "https://developer.android.com/develop/ui/compose/components/menu",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Picker",
+          "url": "https://developer.apple.com/documentation/swiftui/picker",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "dropdown_search",
+          "url": "https://pub.dev/packages/dropdown_search",
+          "install": "flutter pub add dropdown_search"
+        },
+        "react_native": {
+          "name": "@react-native-picker/picker",
+          "url": "https://github.com/react-native-picker/picker",
+          "install": "npm i @react-native-picker/picker"
+        }
+      },
+      "builtin": {
+        "flutter": "DropdownMenu and DropdownButton are in the SDK."
+      },
+      "tags": [
+        "dropdown",
+        "select",
+        "picker"
+      ]
+    },
+    {
+      "id": "form-state-validation",
+      "category": "forms-and-pickers",
+      "title": "Form state & validation",
+      "description": "Form state handling and validation. Flutter: flutter_form_builder; React Native: react-hook-form. Android and iOS apps usually validate in the ViewModel/Observable model, so there is no dominant library; platform entries describe the built-in approach.",
+      "platforms": {
+        "android": {
+          "name": "State hoisting in ViewModel (Compose text fields)",
+          "url": "https://developer.android.com/develop/ui/compose/text/user-input",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI Form / @FocusState",
+          "url": "https://developer.apple.com/documentation/swiftui/form",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "flutter_form_builder",
+          "url": "https://pub.dev/packages/flutter_form_builder",
+          "install": "flutter pub add flutter_form_builder"
+        },
+        "react_native": {
+          "name": "react-hook-form",
+          "url": "https://react-hook-form.com/",
+          "install": "npm i react-hook-form"
+        }
+      },
+      "tags": [
+        "forms",
+        "validation"
+      ]
+    },
+    {
+      "id": "calendar-views",
+      "category": "calendars",
+      "title": "Calendar month/week views",
+      "description": "Full calendar UIs, not just date pickers. Android: kizitonwose Calendar (Compose and Views); iOS: HorizonCalendar; Flutter: table_calendar; React Native: react-native-calendars.",
+      "platforms": {
+        "android": {
+          "name": "Calendar (kizitonwose)",
+          "url": "https://github.com/kizitonwose/Calendar",
+          "install": "com.kizitonwose.calendar:compose",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "HorizonCalendar",
+          "url": "https://github.com/airbnb/HorizonCalendar",
+          "install": "https://github.com/airbnb/HorizonCalendar (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "table_calendar",
+          "url": "https://pub.dev/packages/table_calendar",
+          "install": "flutter pub add table_calendar"
+        },
+        "react_native": {
+          "name": "react-native-calendars",
+          "url": "https://github.com/wix/react-native-calendars",
+          "install": "npm i react-native-calendars"
+        }
+      },
+      "builtin": {
+        "android": "Views artifact: com.kizitonwose.calendar:view.",
+        "ios": "SwiftUI apps can host HorizonCalendar via UIViewRepresentable; DatePicker with .graphical style is built in."
+      },
+      "tags": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "id": "bottom-sheets",
+      "category": "sheets-and-popups",
+      "title": "Bottom sheets",
+      "description": "Modal and persistent bottom sheets with detents. Android: Material 3 ModalBottomSheet; iOS: .sheet with presentationDetents; Flutter: showModalBottomSheet (wolt_modal_sheet for multi-page sheets); React Native: @gorhom/bottom-sheet.",
+      "platforms": {
+        "android": {
+          "name": "ModalBottomSheet (Material 3)",
+          "url": "https://developer.android.com/develop/ui/compose/components/bottom-sheets",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "sheet + presentationDetents",
+          "url": "https://developer.apple.com/documentation/swiftui/view/presentationdetents(_:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "wolt_modal_sheet",
+          "url": "https://pub.dev/packages/wolt_modal_sheet",
+          "install": "flutter pub add wolt_modal_sheet"
+        },
+        "react_native": {
+          "name": "@gorhom/bottom-sheet",
+          "url": "https://github.com/gorhom/react-native-bottom-sheet",
+          "install": "npm i @gorhom/bottom-sheet"
+        }
+      },
+      "builtin": {
+        "flutter": "showModalBottomSheet is built in.",
+        "android": "Views: com.google.android.material:material provides BottomSheetDialog."
+      },
+      "tags": [
+        "bottom-sheet",
+        "modal"
+      ]
+    },
+    {
+      "id": "toasts-banners",
+      "category": "sheets-and-popups",
+      "title": "Toasts, snackbars & in-app banners",
+      "description": "Transient messages. Android: Material 3 Snackbar; iOS: SwiftMessages (no built-in toast); Flutter: SnackBar (built in) or fluttertoast; React Native: react-native-toast-message.",
+      "platforms": {
+        "android": {
+          "name": "Snackbar (Material 3)",
+          "url": "https://developer.android.com/develop/ui/compose/components/snackbar",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftMessages",
+          "url": "https://github.com/SwiftKickMobile/SwiftMessages",
+          "install": "https://github.com/SwiftKickMobile/SwiftMessages (Swift Package Manager)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "fluttertoast",
+          "url": "https://pub.dev/packages/fluttertoast",
+          "install": "flutter pub add fluttertoast"
+        },
+        "react_native": {
+          "name": "react-native-toast-message",
+          "url": "https://github.com/calintamas/react-native-toast-message",
+          "install": "npm i react-native-toast-message"
+        }
+      },
+      "builtin": {
+        "android": "android.widget.Toast is also built in.",
+        "flutter": "ScaffoldMessenger.showSnackBar is built in."
+      },
+      "tags": [
+        "toast",
+        "snackbar",
+        "banner"
+      ]
+    },
+    {
+      "id": "native-menus",
+      "category": "sheets-and-popups",
+      "title": "Dropdown & context menus",
+      "description": "Overflow and long-press menus. Android: DropdownMenu in Material 3; iOS: Menu and contextMenu; Flutter: MenuAnchor; React Native: zeego (wraps native menu components).",
+      "platforms": {
+        "android": {
+          "name": "DropdownMenu (Material 3)",
+          "url": "https://developer.android.com/develop/ui/compose/components/menu",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Menu / contextMenu",
+          "url": "https://developer.apple.com/documentation/swiftui/menu",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "MenuAnchor",
+          "url": "https://api.flutter.dev/flutter/material/MenuAnchor-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "zeego",
+          "url": "https://github.com/nandorojo/zeego",
+          "install": "npm i zeego"
+        }
+      },
+      "tags": [
+        "menu",
+        "context-menu"
+      ]
+    },
+    {
+      "id": "markdown-rendering",
+      "category": "rich-content",
+      "title": "Markdown rendering",
+      "description": "Displaying Markdown. Android: multiplatform-markdown-renderer (Compose; Markwon for Views); iOS: SwiftUI Text and AttributedString parse inline Markdown natively, swift-markdown-ui renders full documents (its README says it is in maintenance mode); Flutter: flutter_markdown_plus (flutter_markdown is discontinued on pub.dev); React Native: react-native-markdown-display.",
+      "platforms": {
+        "android": {
+          "name": "multiplatform-markdown-renderer",
+          "url": "https://github.com/mikepenz/multiplatform-markdown-renderer",
+          "install": "com.mikepenz:multiplatform-markdown-renderer-m3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "swift-markdown-ui",
+          "url": "https://github.com/gonzalezreal/swift-markdown-ui",
+          "install": "https://github.com/gonzalezreal/swift-markdown-ui (Swift Package Manager)",
+          "ui": "swiftui",
+          "note": "README states the project is in maintenance mode."
+        },
+        "flutter": {
+          "name": "flutter_markdown_plus",
+          "url": "https://pub.dev/packages/flutter_markdown_plus",
+          "install": "flutter pub add flutter_markdown_plus"
+        },
+        "react_native": {
+          "name": "react-native-markdown-display",
+          "url": "https://github.com/iamacup/react-native-markdown-display",
+          "install": "npm i react-native-markdown-display"
+        }
+      },
+      "builtin": {
+        "android": "Markwon (io.noties.markwon:core) targets Views/TextView.",
+        "ios": "AttributedString(markdown:) is built in for inline styles."
+      },
+      "tags": [
+        "markdown",
+        "text"
+      ]
+    },
+    {
+      "id": "rich-text-editor",
+      "category": "rich-content",
+      "title": "Rich text editor",
+      "description": "WYSIWYG editing with bold/italic/lists. Android: compose-rich-editor; iOS: RichTextKit; Flutter: flutter_quill; React Native: react-native-enriched-html (the former react-native-enriched name carries an npm notice that it was renamed).",
+      "platforms": {
+        "android": {
+          "name": "compose-rich-editor",
+          "url": "https://github.com/MohamedRejeb/compose-rich-editor",
+          "install": "com.mohamedrejeb.richeditor:richeditor-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "RichTextKit",
+          "url": "https://github.com/danielsaidi/RichTextKit",
+          "install": "https://github.com/danielsaidi/RichTextKit (Swift Package Manager)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "flutter_quill",
+          "url": "https://pub.dev/packages/flutter_quill",
+          "install": "flutter pub add flutter_quill"
+        },
+        "react_native": {
+          "name": "react-native-enriched-html",
+          "url": "https://github.com/software-mansion/react-native-enriched-html",
+          "install": "npm i react-native-enriched-html"
+        }
+      },
+      "builtin": {
+        "ios": "SwiftUI TextEditor supports AttributedString editing in recent OS versions."
+      },
+      "tags": [
+        "editor",
+        "rich-text"
+      ]
+    },
+    {
+      "id": "html-rendering",
+      "category": "rich-content",
+      "title": "HTML-to-native text rendering",
+      "description": "Showing server-provided HTML without a WebView. Android: HtmlCompat / AnnotatedString.fromHtml; iOS: NSAttributedString HTML import; Flutter: flutter_html; React Native: @native-html/render (successor to react-native-render-html, whose repo is archived).",
+      "platforms": {
+        "android": {
+          "name": "HtmlCompat",
+          "url": "https://developer.android.com/reference/androidx/core/text/HtmlCompat",
+          "install": "androidx.core:core",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "NSAttributedString HTML import",
+          "url": "https://developer.apple.com/documentation/foundation/nsattributedstring",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "flutter_html",
+          "url": "https://pub.dev/packages/flutter_html",
+          "install": "flutter pub add flutter_html"
+        },
+        "react_native": {
+          "name": "@native-html/render",
+          "url": "https://github.com/native-html/render",
+          "install": "npm i @native-html/render"
+        }
+      },
+      "builtin": {
+        "ios": "Parsing HTML via NSAttributedString must run on the main thread."
+      },
+      "tags": [
+        "html",
+        "text"
+      ]
+    },
+    {
+      "id": "video-player",
+      "category": "media",
+      "title": "Video playback",
+      "description": "Android: Media3 ExoPlayer; iOS: AVPlayer / AVKit; Flutter: video_player; React Native: expo-video or react-native-video.",
+      "platforms": {
+        "android": {
+          "name": "Media3 ExoPlayer",
+          "url": "https://developer.android.com/media/media3/exoplayer",
+          "install": "androidx.media3:media3-exoplayer",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "AVKit VideoPlayer / AVPlayer",
+          "url": "https://developer.apple.com/documentation/avkit/videoplayer",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "video_player",
+          "url": "https://pub.dev/packages/video_player",
+          "install": "flutter pub add video_player"
+        },
+        "react_native": {
+          "name": "expo-video",
+          "url": "https://docs.expo.dev/versions/latest/sdk/video/",
+          "install": "npm i expo-video"
+        }
+      },
+      "builtin": {
+        "android": "UI layer: androidx.media3:media3-ui (Views) and androidx.media3:media3-ui-compose (Compose).",
+        "react_native": "react-native-video (npm i react-native-video) is the common non-Expo alternative."
+      },
+      "tags": [
+        "video",
+        "exoplayer",
+        "avplayer"
+      ]
+    },
+    {
+      "id": "audio-playback",
+      "category": "media",
+      "title": "Audio playback & background audio",
+      "description": "Android: Media3 session/service for background playback; iOS: AVFoundation with MPNowPlayingInfoCenter; Flutter: just_audio (audio_service for background); React Native: react-native-track-player (expo-audio for simple playback).",
+      "platforms": {
+        "android": {
+          "name": "Media3 Session",
+          "url": "https://developer.android.com/media/media3/session/background-playback",
+          "install": "androidx.media3:media3-session",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "AVFoundation / Now Playing",
+          "url": "https://developer.apple.com/documentation/avfaudio/avaudioplayer",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "just_audio",
+          "url": "https://pub.dev/packages/just_audio",
+          "install": "flutter pub add just_audio"
+        },
+        "react_native": {
+          "name": "react-native-track-player",
+          "url": "https://github.com/doublesymmetry/react-native-track-player",
+          "install": "npm i react-native-track-player"
+        }
+      },
+      "tags": [
+        "audio",
+        "background",
+        "media-session"
+      ]
+    },
+    {
+      "id": "youtube-embed",
+      "category": "media",
+      "title": "YouTube embedded player",
+      "description": "Android: android-youtube-player; iOS: YouTubePlayerKit (Apple has no first-party API; the official youtube-ios-player-helper repo is archived); Flutter: youtube_player_iframe; React Native: react-native-youtube-iframe.",
+      "platforms": {
+        "android": {
+          "name": "android-youtube-player",
+          "url": "https://github.com/PierfrancescoSoffritti/android-youtube-player",
+          "install": "com.pierfrancescosoffritti.androidyoutubeplayer:core",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "YouTubePlayerKit",
+          "url": "https://github.com/SvenTiigi/YouTubePlayerKit",
+          "install": "https://github.com/SvenTiigi/YouTubePlayerKit (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "youtube_player_iframe",
+          "url": "https://pub.dev/packages/youtube_player_iframe",
+          "install": "flutter pub add youtube_player_iframe"
+        },
+        "react_native": {
+          "name": "react-native-youtube-iframe",
+          "url": "https://github.com/LonelyCpp/react-native-youtube-iframe",
+          "install": "npm i react-native-youtube-iframe"
+        }
+      },
+      "builtin": {
+        "ios": "youtube/youtube-ios-player-helper is archived on GitHub."
+      },
+      "tags": [
+        "youtube",
+        "video",
+        "embed"
+      ]
+    },
+    {
+      "id": "barcode-scanning",
+      "category": "media",
+      "title": "QR / barcode scanning",
+      "description": "Android: ML Kit Barcode Scanning; iOS: VisionKit DataScannerViewController or Vision; Flutter: mobile_scanner; React Native: react-native-vision-camera (code scanner) or expo-camera.",
+      "platforms": {
+        "android": {
+          "name": "ML Kit Barcode Scanning",
+          "url": "https://developers.google.com/ml-kit/vision/barcode-scanning/android",
+          "install": "com.google.mlkit:barcode-scanning",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "VisionKit DataScannerViewController",
+          "url": "https://developer.apple.com/documentation/visionkit/datascannerviewcontroller",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "mobile_scanner",
+          "url": "https://pub.dev/packages/mobile_scanner",
+          "install": "flutter pub add mobile_scanner"
+        },
+        "react_native": {
+          "name": "react-native-vision-camera",
+          "url": "https://github.com/margelo/react-native-vision-camera",
+          "install": "npm i react-native-vision-camera"
+        }
+      },
+      "tags": [
+        "qr",
+        "barcode",
+        "camera"
+      ]
+    },
+    {
+      "id": "maps-google",
+      "category": "maps",
+      "title": "Maps (Google Maps SDK)",
+      "description": "Android: Maps Compose; iOS: MapKit (Apple's built-in; the Google Maps SDK for iOS is the Google alternative); Flutter: google_maps_flutter; React Native: react-native-maps. Google Maps usage needs an API key and billing setup.",
+      "platforms": {
+        "android": {
+          "name": "Maps Compose",
+          "url": "https://github.com/googlemaps/android-maps-compose",
+          "install": "com.google.maps.android:maps-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "MapKit",
+          "url": "https://developer.apple.com/documentation/mapkit",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "google_maps_flutter",
+          "url": "https://pub.dev/packages/google_maps_flutter",
+          "install": "flutter pub add google_maps_flutter"
+        },
+        "react_native": {
+          "name": "react-native-maps",
+          "url": "https://github.com/react-native-maps/react-native-maps",
+          "install": "npm i react-native-maps"
+        }
+      },
+      "tags": [
+        "maps",
+        "location"
+      ]
+    },
+    {
+      "id": "maps-open-source",
+      "category": "maps",
+      "title": "Maps (open-source MapLibre)",
+      "description": "MapLibre renders vector tiles from any compatible tile server without a vendor SDK key. Android: MapLibre Native; iOS: MapLibre Native (SwiftPM distribution repo); Flutter: maplibre_gl; React Native: @maplibre/maplibre-react-native.",
+      "platforms": {
+        "android": {
+          "name": "MapLibre Native for Android",
+          "url": "https://github.com/maplibre/maplibre-native",
+          "install": "org.maplibre.gl:android-sdk",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "MapLibre Native for iOS",
+          "url": "https://github.com/maplibre/maplibre-gl-native-distribution",
+          "install": "https://github.com/maplibre/maplibre-gl-native-distribution (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "maplibre_gl",
+          "url": "https://pub.dev/packages/maplibre_gl",
+          "install": "flutter pub add maplibre_gl"
+        },
+        "react_native": {
+          "name": "@maplibre/maplibre-react-native",
+          "url": "https://github.com/maplibre/maplibre-react-native",
+          "install": "npm i @maplibre/maplibre-react-native"
+        }
+      },
+      "tags": [
+        "maps",
+        "maplibre",
+        "open-source"
+      ]
+    },
+    {
+      "id": "shimmer-skeleton",
+      "category": "placeholders",
+      "title": "Skeleton / shimmer loading placeholders",
+      "description": "Placeholders shown while content loads. Android: compose-shimmer (Facebook's Shimmer for Views is archived); iOS: SwiftUI .redacted(reason: .placeholder) built in, SkeletonView for UIKit; Flutter: skeletonizer; React Native: react-native-skeleton-placeholder.",
+      "platforms": {
+        "android": {
+          "name": "compose-shimmer",
+          "url": "https://github.com/valentinilk/compose-shimmer",
+          "install": "com.valentinilk.shimmer:compose-shimmer",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SkeletonView",
+          "url": "https://github.com/Juanpe/SkeletonView",
+          "install": "https://github.com/Juanpe/SkeletonView (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "skeletonizer",
+          "url": "https://pub.dev/packages/skeletonizer",
+          "install": "flutter pub add skeletonizer"
+        },
+        "react_native": {
+          "name": "react-native-skeleton-placeholder",
+          "url": "https://github.com/chramos/react-native-skeleton-placeholder",
+          "install": "npm i react-native-skeleton-placeholder"
+        }
+      },
+      "builtin": {
+        "ios": "SwiftUI: View.redacted(reason: .placeholder) needs no dependency."
+      },
+      "tags": [
+        "shimmer",
+        "skeleton",
+        "loading"
+      ]
+    },
+    {
+      "id": "shimmer-views",
+      "category": "placeholders",
+      "title": "Shimmer effect for Views (archived)",
+      "description": "Facebook Shimmer is the classic Views shimmer layout; the repository is archived. Kept here so existing projects can find a replacement.",
+      "platforms": {
+        "android": {
+          "name": "Shimmer for Android (Facebook)",
+          "url": "https://github.com/facebook/shimmer-android",
+          "install": "com.facebook.shimmer:shimmer",
+          "ui": "views",
+          "status": "archived"
+        },
+        "ios": {
+          "name": "SkeletonView",
+          "url": "https://github.com/Juanpe/SkeletonView",
+          "install": "https://github.com/Juanpe/SkeletonView (Swift Package Manager)",
+          "ui": "uikit"
+        },
+        "flutter": {
+          "name": "shimmer",
+          "url": "https://pub.dev/packages/shimmer",
+          "install": "flutter pub add shimmer"
+        },
+        "react_native": null
+      },
+      "builtin": {
+        "android": "Prefer compose-shimmer for Compose, or a custom ValueAnimator/gradient for Views."
+      },
+      "tags": [
+        "shimmer",
+        "archived"
+      ]
+    },
+    {
+      "id": "pagers",
+      "category": "pagers-onboarding",
+      "title": "Swipeable pages (pager)",
+      "description": "Horizontal/vertical paging. Android: HorizontalPager/VerticalPager in Compose Foundation (Accompanist Pager is deprecated); iOS: TabView with page style; Flutter: PageView; React Native: react-native-pager-view.",
+      "platforms": {
+        "android": {
+          "name": "HorizontalPager (Compose Foundation)",
+          "url": "https://developer.android.com/develop/ui/compose/layouts/pager",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "TabView page style",
+          "url": "https://developer.apple.com/documentation/swiftui/tabviewstyle/page",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "PageView",
+          "url": "https://api.flutter.dev/flutter/widgets/PageView-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "react-native-pager-view",
+          "url": "https://github.com/callstack/react-native-pager-view",
+          "install": "npm i react-native-pager-view"
+        }
+      },
+      "builtin": {
+        "android": "Views: androidx.viewpager2:viewpager2."
+      },
+      "tags": [
+        "pager",
+        "viewpager"
+      ]
+    },
+    {
+      "id": "carousels",
+      "category": "pagers-onboarding",
+      "title": "Carousels",
+      "description": "Scrollable item carousels with snap behaviour. Android: Material 3 carousels; iOS: horizontal ScrollView with scrollTargetBehavior; Flutter: CarouselView (built in) or carousel_slider; React Native: react-native-reanimated-carousel.",
+      "platforms": {
+        "android": {
+          "name": "Material 3 Carousel",
+          "url": "https://developer.android.com/develop/ui/compose/components/carousel",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "scrollTargetBehavior",
+          "url": "https://developer.apple.com/documentation/swiftui/view/scrolltargetbehavior(_:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "carousel_slider",
+          "url": "https://pub.dev/packages/carousel_slider",
+          "install": "flutter pub add carousel_slider"
+        },
+        "react_native": {
+          "name": "react-native-reanimated-carousel",
+          "url": "https://github.com/dohooo/react-native-reanimated-carousel",
+          "install": "npm i react-native-reanimated-carousel"
+        }
+      },
+      "builtin": {
+        "flutter": "CarouselView ships in the Material library."
+      },
+      "tags": [
+        "carousel",
+        "snap"
+      ]
+    },
+    {
+      "id": "splash-screen",
+      "category": "pagers-onboarding",
+      "title": "Splash / launch screen",
+      "description": "Android: SplashScreen compat library (Android 12+ system splash with backport); iOS: launch screen storyboard / Info.plist; Flutter: flutter_native_splash; React Native: expo-splash-screen or react-native-bootsplash.",
+      "platforms": {
+        "android": {
+          "name": "SplashScreen API",
+          "url": "https://developer.android.com/develop/ui/views/launch/splash-screen",
+          "install": "androidx.core:core-splashscreen",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "Launch screen",
+          "url": "https://developer.apple.com/documentation/xcode/specifying-your-apps-launch-screen",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "flutter_native_splash",
+          "url": "https://pub.dev/packages/flutter_native_splash",
+          "install": "flutter pub add flutter_native_splash"
+        },
+        "react_native": {
+          "name": "react-native-bootsplash",
+          "url": "https://github.com/zoontek/react-native-bootsplash",
+          "install": "npm i react-native-bootsplash"
+        }
+      },
+      "tags": [
+        "splash",
+        "launch"
+      ]
+    },
+    {
+      "id": "onboarding-intro",
+      "category": "pagers-onboarding",
+      "title": "Intro / onboarding slides",
+      "description": "Multi-step welcome screens. Android and iOS apps build these from a pager (see pagers); dedicated packages exist for Flutter (introduction_screen) and React Native (react-native-app-intro-slider).",
+      "platforms": {
+        "android": {
+          "name": "HorizontalPager + page indicator",
+          "url": "https://developer.android.com/develop/ui/compose/layouts/pager",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "TabView page style with indexViewStyle",
+          "url": "https://developer.apple.com/documentation/swiftui/tabviewstyle/page",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "introduction_screen",
+          "url": "https://pub.dev/packages/introduction_screen",
+          "install": "flutter pub add introduction_screen"
+        },
+        "react_native": {
+          "name": "react-native-app-intro-slider",
+          "url": "https://github.com/Jacse/react-native-app-intro-slider",
+          "install": "npm i react-native-app-intro-slider"
+        }
+      },
+      "tags": [
+        "onboarding",
+        "intro"
+      ]
+    },
+    {
+      "id": "haptics",
+      "category": "haptics-gestures",
+      "title": "Haptic feedback",
+      "description": "Android: HapticFeedback in Compose / VibrationEffect; iOS: UIFeedbackGenerator and SwiftUI sensoryFeedback; Flutter: HapticFeedback in services (vibration package for custom patterns); React Native: expo-haptics.",
+      "platforms": {
+        "android": {
+          "name": "HapticFeedback (Compose)",
+          "url": "https://developer.android.com/reference/kotlin/androidx/compose/ui/hapticfeedback/HapticFeedback",
+          "install": "androidx.compose.ui:ui",
+          "ui": "both"
+        },
+        "ios": {
+          "name": "sensoryFeedback / UIFeedbackGenerator",
+          "url": "https://developer.apple.com/documentation/swiftui/view/sensoryfeedback(_:trigger:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "HapticFeedback",
+          "url": "https://api.flutter.dev/flutter/services/HapticFeedback-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "expo-haptics",
+          "url": "https://docs.expo.dev/versions/latest/sdk/haptics/",
+          "install": "npm i expo-haptics"
+        }
+      },
+      "tags": [
+        "haptics",
+        "vibration"
+      ]
+    },
+    {
+      "id": "gesture-handling",
+      "category": "haptics-gestures",
+      "title": "Gesture recognition",
+      "description": "Android: Compose pointerInput / detectTapGestures etc.; iOS: SwiftUI gestures / UIGestureRecognizer; Flutter: GestureDetector; React Native: react-native-gesture-handler (native-driven gestures, pairs with Reanimated).",
+      "platforms": {
+        "android": {
+          "name": "Compose gestures",
+          "url": "https://developer.android.com/develop/ui/compose/touch-input/pointer-input/understand-gestures",
+          "install": "androidx.compose.foundation:foundation",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SwiftUI gestures",
+          "url": "https://developer.apple.com/documentation/swiftui/gestures",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "GestureDetector",
+          "url": "https://api.flutter.dev/flutter/widgets/GestureDetector-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "react-native-gesture-handler",
+          "url": "https://docs.swmansion.com/react-native-gesture-handler/",
+          "install": "npm i react-native-gesture-handler"
+        }
+      },
+      "tags": [
+        "gestures",
+        "touch"
+      ]
+    },
+    {
+      "id": "swipe-actions",
+      "category": "haptics-gestures",
+      "title": "Swipe-to-dismiss / swipe actions on rows",
+      "description": "Android: SwipeToDismissBox in Material 3; iOS: .swipeActions on List rows; Flutter: flutter_slidable (Dismissible is built in); React Native: react-native-gesture-handler Swipeable-style rows or react-native-swipe-list-view.",
+      "platforms": {
+        "android": {
+          "name": "SwipeToDismissBox (Material 3)",
+          "url": "https://developer.android.com/develop/ui/compose/touch-input/user-interactions/swipe-to-dismiss",
+          "install": "androidx.compose.material3:material3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "swipeActions",
+          "url": "https://developer.apple.com/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "flutter_slidable",
+          "url": "https://pub.dev/packages/flutter_slidable",
+          "install": "flutter pub add flutter_slidable"
+        },
+        "react_native": {
+          "name": "react-native-swipe-list-view",
+          "url": "https://github.com/jemise111/react-native-swipe-list-view",
+          "install": "npm i react-native-swipe-list-view"
+        }
+      },
+      "tags": [
+        "swipe",
+        "list",
+        "gesture"
+      ]
+    },
+    {
+      "id": "accompanist-legacy",
+      "category": "deprecated-migrations",
+      "title": "Accompanist modules that were deprecated in favour of official APIs",
+      "description": "Accompanist's README lists Navigation-Animation, Navigation-Material and System UI Controller as deprecated and removed. The Pager, SwipeRefresh and FlowLayout module READMEs state they are deprecated because official Compose APIs now exist; the Placeholder README says it is deprecated and unmaintained. Only Permissions, Drawable Painter and Adaptive are listed as current in the README.",
+      "platforms": {
+        "android": {
+          "name": "Accompanist Pager / SwipeRefresh / FlowLayout / Placeholder",
+          "url": "https://github.com/google/accompanist",
+          "install": "com.google.accompanist:accompanist-pager",
+          "ui": "compose",
+          "status": "deprecated",
+          "note": "Last published modules on Maven Central: 0.36.0 for these artifacts; Permissions and Adaptive reached 0.37.x."
+        },
+        "ios": {
+          "name": "Not applicable — SwiftUI ships equivalents",
+          "url": "https://developer.apple.com/documentation/swiftui",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "swiftui"
+        },
+        "flutter": null,
+        "react_native": null
+      },
+      "builtin": {
+        "android": "Pager -> HorizontalPager/VerticalPager (Compose Foundation); SwipeRefresh -> PullToRefreshBox (Material 3); FlowLayout -> FlowRow/FlowColumn (Compose Foundation); Placeholder -> a shimmer library such as compose-shimmer or a custom modifier.",
+        "ios": "TabView(.page), .refreshable and redacted(reason: .placeholder) cover the same needs."
+      },
+      "tags": [
+        "accompanist",
+        "migration",
+        "deprecated"
+      ]
+    },
+    {
+      "id": "system-bars-edge-to-edge",
+      "category": "deprecated-migrations",
+      "title": "System bar styling / edge-to-edge",
+      "description": "Accompanist SystemUiController is deprecated and removed; Accompanist recommends migrating to edge-to-edge. Android: enableEdgeToEdge() plus WindowInsets; iOS: safe area and status bar style are handled by the system/SwiftUI; Flutter: SystemChrome; React Native: react-native-safe-area-context (react-native-edge-to-edge now carries an npm deprecation notice saying to set edgeToEdgeEnabled=true in android/gradle.properties).",
+      "platforms": {
+        "android": {
+          "name": "Accompanist SystemUiController",
+          "url": "https://google.github.io/accompanist/systemuicontroller/",
+          "install": "com.google.accompanist:accompanist-systemuicontroller",
+          "ui": "compose",
+          "status": "deprecated"
+        },
+        "ios": {
+          "name": "Safe area & status bar style",
+          "url": "https://developer.apple.com/documentation/swiftui/view/ignoressafearea(_:edges:)",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "SystemChrome",
+          "url": "https://api.flutter.dev/flutter/services/SystemChrome-class.html",
+          "install": "Built into the Flutter SDK (no install)"
+        },
+        "react_native": {
+          "name": "react-native-safe-area-context",
+          "url": "https://github.com/AppAndFlow/react-native-safe-area-context",
+          "install": "npm i react-native-safe-area-context"
+        }
+      },
+      "builtin": {
+        "android": "Replacement: enableEdgeToEdge() from androidx.activity (androidx.activity:activity) with WindowInsets in Compose."
+      },
+      "tags": [
+        "edge-to-edge",
+        "insets",
+        "accompanist"
+      ]
+    },
+    {
+      "id": "flutter-markdown-migration",
+      "category": "deprecated-migrations",
+      "title": "Flutter markdown package migration",
+      "description": "pub.dev marks flutter_markdown as discontinued with flutter_markdown_plus as the replacement. Android/iOS rows show the same job on those platforms.",
+      "platforms": {
+        "android": {
+          "name": "multiplatform-markdown-renderer",
+          "url": "https://github.com/mikepenz/multiplatform-markdown-renderer",
+          "install": "com.mikepenz:multiplatform-markdown-renderer-m3",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "swift-markdown-ui",
+          "url": "https://github.com/gonzalezreal/swift-markdown-ui",
+          "install": "https://github.com/gonzalezreal/swift-markdown-ui (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "flutter": {
+          "name": "flutter_markdown",
+          "url": "https://pub.dev/packages/flutter_markdown",
+          "install": "flutter pub add flutter_markdown",
+          "status": "deprecated",
+          "note": "Discontinued on pub.dev; replaced by flutter_markdown_plus."
+        },
+        "react_native": {
+          "name": "react-native-markdown-display",
+          "url": "https://github.com/iamacup/react-native-markdown-display",
+          "install": "npm i react-native-markdown-display"
+        }
+      },
+      "tags": [
+        "markdown",
+        "migration"
+      ]
+    },
+    {
+      "id": "rn-vector-icons-migration",
+      "category": "deprecated-migrations",
+      "title": "React Native icon package migration",
+      "description": "The monolithic react-native-vector-icons npm package carries a deprecation notice because the project moved to per-icon-family packages (@react-native-vector-icons/*). Expo projects can use @expo/vector-icons.",
+      "platforms": {
+        "android": {
+          "name": "Material Icons Extended",
+          "url": "https://developer.android.com/develop/ui/compose/graphics/images/material",
+          "install": "androidx.compose.material:material-icons-extended",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "SF Symbols",
+          "url": "https://developer.apple.com/sf-symbols/",
+          "install": "Built into the iOS SDK (no install)",
+          "ui": "both"
+        },
+        "flutter": {
+          "name": "cupertino_icons",
+          "url": "https://pub.dev/packages/cupertino_icons",
+          "install": "flutter pub add cupertino_icons"
+        },
+        "react_native": {
+          "name": "react-native-vector-icons",
+          "url": "https://github.com/oblador/react-native-vector-icons",
+          "install": "npm i react-native-vector-icons",
+          "status": "deprecated",
+          "note": "Use per-family packages such as @react-native-vector-icons/material-design-icons."
+        }
+      },
+      "tags": [
+        "icons",
+        "migration"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3365 @@
+{
+  "meta": {
+    "updated": "2026-11-02",
+    "note": "Non-UI dependencies mapped across Android, iOS, Flutter and React Native. 'install' is a Gradle group:artifact, a SwiftPM repository URL, 'flutter pub add', 'npm i' or similar; versions are deliberately omitted. Entries with install = null are platform-provided APIs. Status flags (deprecated / archived) were checked against vendor pages and repositories on 2026-11-02."
+  },
+  "categories": [
+    {
+      "id": "networking",
+      "label": "Networking & APIs"
+    },
+    {
+      "id": "serialization",
+      "label": "Serialization & data formats"
+    },
+    {
+      "id": "dependency-injection",
+      "label": "Dependency injection"
+    },
+    {
+      "id": "persistence",
+      "label": "Persistence & storage"
+    },
+    {
+      "id": "async-reactive",
+      "label": "Concurrency, reactive streams & state"
+    },
+    {
+      "id": "navigation",
+      "label": "Navigation & routing"
+    },
+    {
+      "id": "logging-debugging",
+      "label": "Logging & debugging"
+    },
+    {
+      "id": "analytics-crash",
+      "label": "Analytics, crash reporting & monitoring"
+    },
+    {
+      "id": "backend-services",
+      "label": "Backend-as-a-service"
+    },
+    {
+      "id": "push-notifications",
+      "label": "Push & local notifications"
+    },
+    {
+      "id": "auth-security",
+      "label": "Authentication & security"
+    },
+    {
+      "id": "image-processing",
+      "label": "Image processing"
+    },
+    {
+      "id": "testing",
+      "label": "Testing"
+    },
+    {
+      "id": "build-package",
+      "label": "Build tools & package managers"
+    },
+    {
+      "id": "code-generation",
+      "label": "Code generation"
+    },
+    {
+      "id": "ml-vision",
+      "label": "On-device ML, vision & speech"
+    },
+    {
+      "id": "camera-media",
+      "label": "Camera & media"
+    },
+    {
+      "id": "billing",
+      "label": "In-app purchases & billing"
+    },
+    {
+      "id": "maps-location",
+      "label": "Maps, location & sensors"
+    },
+    {
+      "id": "background-work",
+      "label": "Background work"
+    },
+    {
+      "id": "remote-config",
+      "label": "Remote config, flags & links"
+    },
+    {
+      "id": "date-time",
+      "label": "Date & time"
+    },
+    {
+      "id": "platform-helpers",
+      "label": "Permissions & platform helpers"
+    },
+    {
+      "id": "static-analysis",
+      "label": "Linting & formatting"
+    },
+    {
+      "id": "data-structures",
+      "label": "Collections & utilities"
+    }
+  ],
+  "items": [
+    {
+      "id": "http-client",
+      "category": "networking",
+      "title": "HTTP client",
+      "description": "General-purpose HTTP client with interceptors/adapters, retries and request customisation. OkHttp is the de-facto Android engine (Retrofit and Coil sit on it); Alamofire wraps URLSession.",
+      "platforms": {
+        "android": {
+          "name": "OkHttp",
+          "url": "https://lysine.dev/okhttp/",
+          "install": "com.squareup.okhttp3:okhttp"
+        },
+        "ios": {
+          "name": "Alamofire",
+          "url": "https://github.com/Alamofire/Alamofire",
+          "install": "https://github.com/Alamofire/Alamofire (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "axios",
+          "url": "https://axios-http.com/",
+          "install": "npm i axios"
+        },
+        "flutter": {
+          "name": "dio",
+          "url": "https://pub.dev/packages/dio",
+          "install": "flutter pub add dio"
+        }
+      },
+      "builtin": {
+        "android": "HttpURLConnection (java.net) - low level, no interceptors",
+        "ios": "URLSession (Foundation) - fully capable on its own; async/await APIs built in",
+        "flutter": "package:http (flutter pub add http) and dart:io HttpClient",
+        "react_native": "fetch() is built into React Native"
+      },
+      "tags": [
+        "http",
+        "rest",
+        "interceptors"
+      ]
+    },
+    {
+      "id": "declarative-api-layer",
+      "category": "networking",
+      "title": "Declarative REST API layer",
+      "description": "Describe endpoints as typed interfaces/enums and let the library build requests and decode responses. Retrofit sits on OkHttp; Moya sits on Alamofire.",
+      "platforms": {
+        "android": {
+          "name": "Retrofit",
+          "url": "https://lysine.dev/retrofit/",
+          "install": "com.squareup.retrofit2:retrofit"
+        },
+        "ios": {
+          "name": "Moya",
+          "url": "https://github.com/Moya/Moya",
+          "install": "https://github.com/Moya/Moya (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "retrofit (Dart)",
+          "url": "https://pub.dev/packages/retrofit",
+          "install": "flutter pub add retrofit"
+        }
+      },
+      "tags": [
+        "rest",
+        "api",
+        "codegen"
+      ]
+    },
+    {
+      "id": "http-client-kmp",
+      "category": "networking",
+      "title": "Kotlin Multiplatform HTTP client",
+      "description": "Ktor Client is a coroutine-based client with pluggable engines. On Android it runs on OkHttp or CIO; in Kotlin Multiplatform shared code the Darwin engine runs it on iOS. Relevant only if you share Kotlin code with iOS.",
+      "platforms": {
+        "android": {
+          "name": "Ktor Client",
+          "url": "https://ktor.io/docs/client-create-new-application.html",
+          "install": "io.ktor:ktor-client-core"
+        },
+        "ios": {
+          "name": "Ktor Client (Darwin engine, via Kotlin Multiplatform)",
+          "url": "https://ktor.io/docs/client-engines.html#darwin",
+          "install": "io.ktor:ktor-client-darwin"
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "tags": [
+        "kmp",
+        "http",
+        "coroutines"
+      ]
+    },
+    {
+      "id": "websocket",
+      "category": "networking",
+      "title": "WebSocket client",
+      "description": "Persistent bidirectional connections. Android and iOS ship client APIs; Flutter and React Native each have a thin wrapper or built-in.",
+      "platforms": {
+        "android": {
+          "name": "OkHttp WebSocket",
+          "url": "https://lysine.dev/okhttp/",
+          "install": "com.squareup.okhttp3:okhttp"
+        },
+        "ios": {
+          "name": "URLSessionWebSocketTask",
+          "url": "https://developer.apple.com/documentation/foundation/urlsessionwebsockettask",
+          "install": null
+        },
+        "react_native": {
+          "name": "WebSocket (built-in)",
+          "url": "https://reactnative.dev/docs/network#websocket-support",
+          "install": null
+        },
+        "flutter": {
+          "name": "web_socket_channel",
+          "url": "https://pub.dev/packages/web_socket_channel",
+          "install": "flutter pub add web_socket_channel"
+        }
+      },
+      "builtin": {
+        "ios": "URLSessionWebSocketTask is part of Foundation (iOS 13+)",
+        "react_native": "WebSocket is a built-in global"
+      },
+      "tags": [
+        "realtime",
+        "websocket"
+      ]
+    },
+    {
+      "id": "graphql-client",
+      "category": "networking",
+      "title": "GraphQL client",
+      "description": "Typed GraphQL clients with normalised caching. Apollo ships maintained SDKs for Android (Kotlin), iOS (Swift) and JavaScript.",
+      "platforms": {
+        "android": {
+          "name": "Apollo Kotlin",
+          "url": "https://www.apollographql.com/docs/kotlin",
+          "install": "com.apollographql.apollo:apollo-runtime"
+        },
+        "ios": {
+          "name": "Apollo iOS",
+          "url": "https://github.com/apollographql/apollo-ios",
+          "install": "https://github.com/apollographql/apollo-ios (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Apollo Client",
+          "url": "https://www.apollographql.com/docs/react",
+          "install": "npm i @apollo/client graphql"
+        },
+        "flutter": {
+          "name": "graphql_flutter",
+          "url": "https://pub.dev/packages/graphql_flutter",
+          "install": "flutter pub add graphql_flutter"
+        }
+      },
+      "tags": [
+        "graphql",
+        "api"
+      ]
+    },
+    {
+      "id": "grpc-client",
+      "category": "networking",
+      "title": "gRPC client",
+      "description": "Protobuf-based RPC. Official gRPC libraries exist for Android (Java/Kotlin), Swift and Dart; React Native has no first-party gRPC client (Connect-style HTTP clients are the usual route).",
+      "platforms": {
+        "android": {
+          "name": "gRPC Java / Kotlin",
+          "url": "https://grpc.io/docs/platforms/android/",
+          "install": "io.grpc:grpc-okhttp"
+        },
+        "ios": {
+          "name": "grpc-swift-2",
+          "url": "https://github.com/grpc/grpc-swift-2",
+          "install": "https://github.com/grpc/grpc-swift-2 (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "grpc (Dart)",
+          "url": "https://pub.dev/packages/grpc",
+          "install": "flutter pub add grpc"
+        }
+      },
+      "tags": [
+        "grpc",
+        "protobuf",
+        "rpc"
+      ]
+    },
+    {
+      "id": "network-reachability",
+      "category": "networking",
+      "title": "Network reachability / connectivity",
+      "description": "Observe whether the device has a usable network and which transport (Wi-Fi, cellular) is active. Platform APIs on Android and iOS; plugins wrap them for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "ConnectivityManager.NetworkCallback",
+          "url": "https://developer.android.com/develop/connectivity/network-ops/reading-network-state",
+          "install": null
+        },
+        "ios": {
+          "name": "NWPathMonitor (Network framework)",
+          "url": "https://developer.apple.com/documentation/network/nwpathmonitor",
+          "install": null
+        },
+        "react_native": {
+          "name": "@react-native-community/netinfo",
+          "url": "https://github.com/react-native-netinfo/react-native-netinfo",
+          "install": "npm i @react-native-community/netinfo"
+        },
+        "flutter": {
+          "name": "connectivity_plus",
+          "url": "https://pub.dev/packages/connectivity_plus",
+          "install": "flutter pub add connectivity_plus"
+        }
+      },
+      "builtin": {
+        "android": "ConnectivityManager is part of the platform SDK",
+        "ios": "Network framework is part of the platform SDK"
+      },
+      "tags": [
+        "connectivity",
+        "offline"
+      ]
+    },
+    {
+      "id": "json-serialization",
+      "category": "serialization",
+      "title": "JSON serialization (typed models)",
+      "description": "Map JSON to typed models. kotlinx.serialization uses a compiler plugin (no runtime reflection); Codable is compiler-synthesised; json_serializable generates code via build_runner. Moshi (codegen via KSP) is a long-standing Android alternative. React Native has no typed-model layer - JSON.parse yields plain objects (add a validator such as zod if you need runtime checks).",
+      "platforms": {
+        "android": {
+          "name": "kotlinx.serialization",
+          "url": "https://github.com/Kotlin/kotlinx.serialization",
+          "install": "org.jetbrains.kotlinx:kotlinx-serialization-json"
+        },
+        "ios": {
+          "name": "Codable (Swift standard library / Foundation)",
+          "url": "https://developer.apple.com/documentation/swift/codable",
+          "install": null
+        },
+        "react_native": {
+          "name": "zod (runtime schema validation)",
+          "url": "https://zod.dev/",
+          "install": "npm i zod"
+        },
+        "flutter": {
+          "name": "json_serializable",
+          "url": "https://pub.dev/packages/json_serializable",
+          "install": "flutter pub add json_annotation dev:json_serializable dev:build_runner"
+        }
+      },
+      "builtin": {
+        "ios": "Codable, JSONEncoder and JSONDecoder are built in",
+        "flutter": "dart:convert (jsonDecode / jsonEncode) is built in",
+        "react_native": "JSON.parse / JSON.stringify are built in"
+      },
+      "tags": [
+        "json",
+        "codegen"
+      ]
+    },
+    {
+      "id": "json-reflection-dynamic",
+      "category": "serialization",
+      "title": "Reflection-based / dynamic JSON",
+      "description": "Gson maps JSON via reflection. Its README states it is in maintenance mode and not recommended for Android because reflection conflicts with R8 shrinking; prefer kotlinx.serialization (or Moshi) on new code. SwiftyJSON offers dynamic JSON access; Codable is the usual choice on new Swift code.",
+      "platforms": {
+        "android": {
+          "name": "Gson",
+          "url": "https://github.com/google/gson",
+          "install": "com.google.code.gson:gson"
+        },
+        "ios": {
+          "name": "SwiftyJSON",
+          "url": "https://github.com/SwiftyJSON/SwiftyJSON",
+          "install": "https://github.com/SwiftyJSON/SwiftyJSON (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "tags": [
+        "json",
+        "legacy"
+      ]
+    },
+    {
+      "id": "protobuf",
+      "category": "serialization",
+      "title": "Protocol Buffers",
+      "description": "Binary schema-based serialisation for APIs and storage. Google ships protobuf-kotlin-lite for Android; Apple maintains swift-protobuf; Dart and JavaScript have maintained runtimes.",
+      "platforms": {
+        "android": {
+          "name": "Protobuf Kotlin Lite",
+          "url": "https://protobuf.dev/getting-started/kotlintutorial/",
+          "install": "com.google.protobuf:protobuf-kotlin-lite"
+        },
+        "ios": {
+          "name": "SwiftProtobuf",
+          "url": "https://github.com/apple/swift-protobuf",
+          "install": "https://github.com/apple/swift-protobuf (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "protobuf-es",
+          "url": "https://github.com/bufbuild/protobuf-es",
+          "install": "npm i @bufbuild/protobuf"
+        },
+        "flutter": {
+          "name": "protobuf (Dart)",
+          "url": "https://pub.dev/packages/protobuf",
+          "install": "flutter pub add protobuf"
+        }
+      },
+      "tags": [
+        "protobuf",
+        "binary"
+      ]
+    },
+    {
+      "id": "di-compile-time-container",
+      "category": "dependency-injection",
+      "title": "Dependency injection (graph / container)",
+      "description": "Hilt (built on Dagger) validates the dependency graph at build time via annotation processing. Swinject is a runtime container with no compile-time graph checking. injectable generates get_it registrations in Flutter.",
+      "platforms": {
+        "android": {
+          "name": "Hilt",
+          "url": "https://dagger.dev/hilt/",
+          "install": "com.google.dagger:hilt-android"
+        },
+        "ios": {
+          "name": "Swinject",
+          "url": "https://github.com/Swinject/Swinject",
+          "install": "https://github.com/Swinject/Swinject (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "injectable",
+          "url": "https://pub.dev/packages/injectable",
+          "install": "flutter pub add injectable dev:injectable_generator dev:build_runner"
+        }
+      },
+      "builtin": {
+        "react_native": "No DI container is idiomatic; React Context and module imports cover most cases"
+      },
+      "tags": [
+        "di",
+        "ioc"
+      ]
+    },
+    {
+      "id": "di-service-locator",
+      "category": "dependency-injection",
+      "title": "Lightweight DI / service locator",
+      "description": "Koin is a Kotlin DSL (service-locator style, no codegen required). Factory provides property-wrapper based registration in Swift; swift-dependencies from Point-Free is a popular alternative with built-in test overrides. get_it is the common Flutter service locator.",
+      "platforms": {
+        "android": {
+          "name": "Koin",
+          "url": "https://insert-koin.io/",
+          "install": "io.insert-koin:koin-android"
+        },
+        "ios": {
+          "name": "Factory",
+          "url": "https://github.com/hmlongco/Factory",
+          "install": "https://github.com/hmlongco/Factory (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "get_it",
+          "url": "https://pub.dev/packages/get_it",
+          "install": "flutter pub add get_it"
+        }
+      },
+      "tags": [
+        "di",
+        "service-locator"
+      ]
+    },
+    {
+      "id": "local-db-platform-orm",
+      "category": "persistence",
+      "title": "Local database (object/ORM layer)",
+      "description": "SQLite-backed (Room, drift) or platform-managed (SwiftData, which sits on Core Data) persistence with typed models and observable queries. SwiftData requires iOS 17+; on earlier iOS versions use Core Data or GRDB.",
+      "platforms": {
+        "android": {
+          "name": "Room",
+          "url": "https://developer.android.com/training/data-storage/room",
+          "install": "androidx.room:room-runtime"
+        },
+        "ios": {
+          "name": "SwiftData",
+          "url": "https://developer.apple.com/documentation/swiftdata",
+          "install": null,
+          "ui": "swiftui"
+        },
+        "react_native": {
+          "name": "WatermelonDB",
+          "url": "https://github.com/Nozbe/WatermelonDB",
+          "install": "npm i @nozbe/watermelondb"
+        },
+        "flutter": {
+          "name": "drift",
+          "url": "https://pub.dev/packages/drift",
+          "install": "flutter pub add drift dev:drift_dev dev:build_runner"
+        }
+      },
+      "builtin": {
+        "ios": "SwiftData (iOS 17+) and Core Data (https://developer.apple.com/documentation/coredata) are part of the OS"
+      },
+      "tags": [
+        "database",
+        "orm",
+        "sqlite"
+      ]
+    },
+    {
+      "id": "local-db-sql-first",
+      "category": "persistence",
+      "title": "SQL-first database access",
+      "description": "Write SQL (or thin query builders) and get typed results. SQLDelight generates Kotlin from .sq files; GRDB is a Swift SQLite toolkit with record types and observation; sqflite and expo-sqlite give direct SQLite access.",
+      "platforms": {
+        "android": {
+          "name": "SQLDelight",
+          "url": "https://sqldelight.github.io/sqldelight/",
+          "install": "app.cash.sqldelight:android-driver"
+        },
+        "ios": {
+          "name": "GRDB.swift",
+          "url": "https://github.com/groue/GRDB.swift",
+          "install": "https://github.com/groue/GRDB.swift (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "expo-sqlite",
+          "url": "https://docs.expo.dev/versions/latest/sdk/sqlite/",
+          "install": "npx expo install expo-sqlite"
+        },
+        "flutter": {
+          "name": "sqflite",
+          "url": "https://pub.dev/packages/sqflite",
+          "install": "flutter pub add sqflite"
+        }
+      },
+      "tags": [
+        "database",
+        "sqlite",
+        "sql"
+      ]
+    },
+    {
+      "id": "local-db-object-store",
+      "category": "persistence",
+      "title": "Embedded object database (ObjectBox)",
+      "description": "ObjectBox is a non-SQL embedded object database with SDKs for Android/JVM, Swift and Dart.",
+      "platforms": {
+        "android": {
+          "name": "ObjectBox (Java/Kotlin)",
+          "url": "https://docs.objectbox.io/kotlin-support",
+          "install": "io.objectbox:objectbox-android"
+        },
+        "ios": {
+          "name": "ObjectBox Swift",
+          "url": "https://github.com/objectbox/objectbox-swift",
+          "install": "https://github.com/objectbox/objectbox-swift-spm (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "objectbox (Dart)",
+          "url": "https://pub.dev/packages/objectbox",
+          "install": "flutter pub add objectbox objectbox_flutter_libs"
+        }
+      },
+      "tags": [
+        "database",
+        "nosql",
+        "object-store"
+      ]
+    },
+    {
+      "id": "local-db-realm",
+      "category": "persistence",
+      "title": "Realm database (MongoDB)",
+      "description": "Object database with SDKs on every platform. MongoDB deprecated the Atlas Device SDKs (including Realm and Device Sync) in September 2024 and, per its deprecation page, they reached end-of-life on 2025-09-30. The open-source repositories remain and local-only use works (Realm Kotlin 3.0+ drops sync), but new projects should weigh the lack of vendor-backed development.",
+      "platforms": {
+        "android": {
+          "name": "Realm Kotlin",
+          "url": "https://github.com/realm/realm-kotlin",
+          "install": "io.realm.kotlin:library-base",
+          "status": "deprecated"
+        },
+        "ios": {
+          "name": "Realm Swift",
+          "url": "https://github.com/realm/realm-swift",
+          "install": "https://github.com/realm/realm-swift (Swift Package Manager)",
+          "status": "deprecated"
+        },
+        "react_native": {
+          "name": "realm (JS)",
+          "url": "https://github.com/realm/realm-js",
+          "install": "npm i realm",
+          "status": "deprecated"
+        },
+        "flutter": {
+          "name": "realm (Dart)",
+          "url": "https://pub.dev/packages/realm",
+          "install": "flutter pub add realm",
+          "status": "deprecated"
+        }
+      },
+      "tags": [
+        "database",
+        "deprecated",
+        "mongodb"
+      ]
+    },
+    {
+      "id": "key-value-store",
+      "category": "persistence",
+      "title": "Key-value preferences storage",
+      "description": "Small settings and flags. DataStore replaces SharedPreferences with async, transactional APIs; UserDefaults is the iOS equivalent. Not for secrets (see secure storage).",
+      "platforms": {
+        "android": {
+          "name": "Jetpack DataStore",
+          "url": "https://developer.android.com/topic/libraries/architecture/datastore",
+          "install": "androidx.datastore:datastore-preferences"
+        },
+        "ios": {
+          "name": "UserDefaults / @AppStorage",
+          "url": "https://developer.apple.com/documentation/foundation/userdefaults",
+          "install": null
+        },
+        "react_native": {
+          "name": "AsyncStorage",
+          "url": "https://react-native-async-storage.github.io/",
+          "install": "npm i @react-native-async-storage/async-storage"
+        },
+        "flutter": {
+          "name": "shared_preferences",
+          "url": "https://pub.dev/packages/shared_preferences",
+          "install": "flutter pub add shared_preferences"
+        }
+      },
+      "builtin": {
+        "android": "SharedPreferences (platform API) still works but DataStore is the Jetpack recommendation",
+        "ios": "UserDefaults is part of Foundation"
+      },
+      "tags": [
+        "preferences",
+        "settings"
+      ]
+    },
+    {
+      "id": "fast-key-value-store",
+      "category": "persistence",
+      "title": "Fast memory-mapped key-value store (MMKV)",
+      "description": "Tencent's mmap-based key-value store, available as a native library on Android and iOS with wrappers for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "MMKV",
+          "url": "https://github.com/Tencent/MMKV",
+          "install": "com.tencent:mmkv"
+        },
+        "ios": {
+          "name": "MMKV (iOS)",
+          "url": "https://github.com/Tencent/MMKV",
+          "install": "https://github.com/Tencent/MMKV (CocoaPods: pod 'MMKV'; SwiftPM manifest in repo)"
+        },
+        "react_native": {
+          "name": "react-native-mmkv",
+          "url": "https://github.com/mrousavy/react-native-mmkv",
+          "install": "npm i react-native-mmkv"
+        },
+        "flutter": {
+          "name": "mmkv (Dart)",
+          "url": "https://pub.dev/packages/mmkv",
+          "install": "flutter pub add mmkv"
+        }
+      },
+      "tags": [
+        "key-value",
+        "performance"
+      ]
+    },
+    {
+      "id": "secure-storage",
+      "category": "persistence",
+      "title": "Secure credential storage (Keystore / Keychain)",
+      "description": "Store tokens and secrets in hardware-backed storage. Jetpack Security (EncryptedSharedPreferences / EncryptedFile) is deprecated: its release notes state all APIs are deprecated in favour of platform APIs and direct Android Keystore use. KeychainAccess is a Swift wrapper over Keychain Services (no commits after May 2024 when checked; the raw Keychain API still works). Flutter and React Native wrappers use Keystore and Keychain underneath.",
+      "platforms": {
+        "android": {
+          "name": "androidx.security:security-crypto (EncryptedSharedPreferences)",
+          "url": "https://developer.android.com/jetpack/androidx/releases/security",
+          "install": "androidx.security:security-crypto",
+          "status": "deprecated"
+        },
+        "ios": {
+          "name": "KeychainAccess",
+          "url": "https://github.com/kishikawakatsumi/KeychainAccess",
+          "install": "https://github.com/kishikawakatsumi/KeychainAccess (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-keychain",
+          "url": "https://github.com/oblador/react-native-keychain",
+          "install": "npm i react-native-keychain"
+        },
+        "flutter": {
+          "name": "flutter_secure_storage",
+          "url": "https://pub.dev/packages/flutter_secure_storage",
+          "install": "flutter pub add flutter_secure_storage"
+        }
+      },
+      "builtin": {
+        "android": "Android Keystore system (https://developer.android.com/privacy-and-security/keystore) - platform API",
+        "ios": "Keychain Services (https://developer.apple.com/documentation/security/keychain-services) - platform API"
+      },
+      "tags": [
+        "security",
+        "keystore",
+        "keychain",
+        "deprecated"
+      ]
+    },
+    {
+      "id": "crypto-primitives",
+      "category": "persistence",
+      "title": "Cryptography primitives",
+      "description": "Encryption, hashing and signatures. Tink is Google's multi-language crypto library; CryptoKit (Apple, built in) is the standard on iOS, and swift-crypto offers a portable API-compatible implementation.",
+      "platforms": {
+        "android": {
+          "name": "Tink (Android)",
+          "url": "https://developers.google.com/tink",
+          "install": "com.google.crypto.tink:tink-android"
+        },
+        "ios": {
+          "name": "swift-crypto",
+          "url": "https://github.com/apple/swift-crypto",
+          "install": "https://github.com/apple/swift-crypto (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-quick-crypto",
+          "url": "https://github.com/margelo/react-native-quick-crypto",
+          "install": "npm i react-native-quick-crypto"
+        },
+        "flutter": {
+          "name": "cryptography",
+          "url": "https://pub.dev/packages/cryptography",
+          "install": "flutter pub add cryptography"
+        }
+      },
+      "builtin": {
+        "ios": "CryptoKit (https://developer.apple.com/documentation/cryptokit) is part of the OS",
+        "android": "javax.crypto / Android Keystore are platform APIs"
+      },
+      "tags": [
+        "crypto",
+        "security"
+      ]
+    },
+    {
+      "id": "async-concurrency",
+      "category": "async-reactive",
+      "title": "Structured concurrency (async/await)",
+      "description": "Kotlin coroutines come from kotlinx.coroutines; Swift Concurrency (async/await, actors, Task) is part of the language and runtime. Dart and JavaScript have Future/Promise with async/await built in.",
+      "platforms": {
+        "android": {
+          "name": "kotlinx.coroutines",
+          "url": "https://kotlinlang.org/docs/coroutines-guide.html",
+          "install": "org.jetbrains.kotlinx:kotlinx-coroutines-android"
+        },
+        "ios": {
+          "name": "Swift Concurrency",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+          "install": null
+        },
+        "react_native": {
+          "name": "Promises / async-await (JavaScript)",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function",
+          "install": null
+        },
+        "flutter": {
+          "name": "Future / async-await (Dart)",
+          "url": "https://dart.dev/libraries/async/async-await",
+          "install": null
+        }
+      },
+      "builtin": {
+        "ios": "Built into the Swift language and runtime",
+        "flutter": "Built into Dart",
+        "react_native": "Built into JavaScript (Hermes)"
+      },
+      "tags": [
+        "coroutines",
+        "async",
+        "concurrency"
+      ]
+    },
+    {
+      "id": "reactive-streams-builtin",
+      "category": "async-reactive",
+      "title": "Observable streams of values (first-party)",
+      "description": "Kotlin Flow/StateFlow (kotlinx.coroutines) versus Combine publishers and AsyncSequence/AsyncStream on Apple platforms. Dart's Stream is built in. For SwiftUI state, the Observation framework (iOS 17+) replaces most Combine ObservableObject use.",
+      "platforms": {
+        "android": {
+          "name": "Kotlin Flow / StateFlow",
+          "url": "https://kotlinlang.org/docs/flow.html",
+          "install": "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        },
+        "ios": {
+          "name": "Combine / AsyncSequence",
+          "url": "https://developer.apple.com/documentation/combine",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "Stream (Dart)",
+          "url": "https://dart.dev/libraries/async/using-streams",
+          "install": null
+        }
+      },
+      "builtin": {
+        "ios": "Combine (iOS 13+) and AsyncSequence are built in",
+        "flutter": "Stream is part of dart:async"
+      },
+      "tags": [
+        "flow",
+        "combine",
+        "streams"
+      ]
+    },
+    {
+      "id": "rx-family",
+      "category": "async-reactive",
+      "title": "ReactiveX libraries",
+      "description": "The Rx family has a port for each platform. RxJava/RxSwift are common in older codebases; new Android code usually prefers Flow and new Swift code prefers Swift Concurrency or Combine.",
+      "platforms": {
+        "android": {
+          "name": "RxJava 3",
+          "url": "https://github.com/ReactiveX/RxJava",
+          "install": "io.reactivex.rxjava3:rxjava"
+        },
+        "ios": {
+          "name": "RxSwift",
+          "url": "https://github.com/ReactiveX/RxSwift",
+          "install": "https://github.com/ReactiveX/RxSwift (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "RxJS",
+          "url": "https://rxjs.dev/",
+          "install": "npm i rxjs"
+        },
+        "flutter": {
+          "name": "RxDart",
+          "url": "https://pub.dev/packages/rxdart",
+          "install": "flutter pub add rxdart"
+        }
+      },
+      "tags": [
+        "rx",
+        "reactive"
+      ]
+    },
+    {
+      "id": "state-holder",
+      "category": "async-reactive",
+      "title": "View/screen state holder",
+      "description": "Holds screen state outside the view. Jetpack ViewModel survives configuration changes; Observation's @Observable is the SwiftUI default on iOS 17+. Flutter's provider and React Native's zustand are widely used lightweight options.",
+      "platforms": {
+        "android": {
+          "name": "Jetpack ViewModel",
+          "url": "https://developer.android.com/topic/libraries/architecture/viewmodel",
+          "install": "androidx.lifecycle:lifecycle-viewmodel"
+        },
+        "ios": {
+          "name": "Observation (@Observable)",
+          "url": "https://developer.apple.com/documentation/observation",
+          "install": null,
+          "ui": "swiftui"
+        },
+        "react_native": {
+          "name": "zustand",
+          "url": "https://github.com/pmndrs/zustand",
+          "install": "npm i zustand"
+        },
+        "flutter": {
+          "name": "provider",
+          "url": "https://pub.dev/packages/provider",
+          "install": "flutter pub add provider"
+        }
+      },
+      "builtin": {
+        "ios": "Observation is built in (iOS 17+); ObservableObject on earlier versions"
+      },
+      "tags": [
+        "state",
+        "mvvm",
+        "viewmodel"
+      ]
+    },
+    {
+      "id": "unidirectional-architecture",
+      "category": "async-reactive",
+      "title": "Unidirectional-data-flow (MVI) frameworks",
+      "description": "Orbit MVI is a Kotlin MVI library with a ViewModel integration; The Composable Architecture (TCA) is Point-Free's Swift equivalent; flutter_bloc and Redux Toolkit are the common Flutter and React Native choices.",
+      "platforms": {
+        "android": {
+          "name": "Orbit MVI",
+          "url": "https://github.com/orbit-mvi/orbit-mvi",
+          "install": "org.orbit-mvi:orbit-viewmodel"
+        },
+        "ios": {
+          "name": "The Composable Architecture",
+          "url": "https://github.com/pointfreeco/swift-composable-architecture",
+          "install": "https://github.com/pointfreeco/swift-composable-architecture (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Redux Toolkit",
+          "url": "https://redux-toolkit.js.org/",
+          "install": "npm i @reduxjs/toolkit react-redux"
+        },
+        "flutter": {
+          "name": "flutter_bloc",
+          "url": "https://pub.dev/packages/flutter_bloc",
+          "install": "flutter pub add flutter_bloc"
+        }
+      },
+      "tags": [
+        "mvi",
+        "redux",
+        "architecture"
+      ]
+    },
+    {
+      "id": "navigation-stack",
+      "category": "navigation",
+      "title": "In-app navigation / back stack",
+      "description": "Navigation 3 is the Compose-first Jetpack Navigation library, built around a developer-owned back stack. NavigationStack is SwiftUI's built-in. go_router and React Navigation are the established Flutter and React Native routers.",
+      "platforms": {
+        "android": {
+          "name": "Navigation 3",
+          "url": "https://developer.android.com/guide/navigation/navigation-3",
+          "install": "androidx.navigation3:navigation3-ui",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "NavigationStack",
+          "url": "https://developer.apple.com/documentation/swiftui/navigationstack",
+          "install": null,
+          "ui": "swiftui"
+        },
+        "react_native": {
+          "name": "React Navigation",
+          "url": "https://reactnavigation.org/",
+          "install": "npm i @react-navigation/native"
+        },
+        "flutter": {
+          "name": "go_router",
+          "url": "https://pub.dev/packages/go_router",
+          "install": "flutter pub add go_router"
+        }
+      },
+      "builtin": {
+        "ios": "NavigationStack is part of SwiftUI (iOS 16+); UINavigationController for UIKit"
+      },
+      "tags": [
+        "navigation",
+        "routing"
+      ]
+    },
+    {
+      "id": "navigation-typed-routing",
+      "category": "navigation",
+      "title": "Typed / file-based routing",
+      "description": "Navigation Compose supports type-safe routes using serializable classes. swift-navigation (Point-Free) adds state-driven navigation helpers for SwiftUI/UIKit. Expo Router is file-system routing on top of React Navigation.",
+      "platforms": {
+        "android": {
+          "name": "Navigation Compose (type-safe routes)",
+          "url": "https://developer.android.com/guide/navigation/design/type-safety",
+          "install": "androidx.navigation:navigation-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "swift-navigation",
+          "url": "https://github.com/pointfreeco/swift-navigation",
+          "install": "https://github.com/pointfreeco/swift-navigation (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Expo Router",
+          "url": "https://docs.expo.dev/router/introduction/",
+          "install": "npx expo install expo-router"
+        },
+        "flutter": {
+          "name": "auto_route",
+          "url": "https://pub.dev/packages/auto_route",
+          "install": "flutter pub add auto_route"
+        }
+      },
+      "tags": [
+        "navigation",
+        "deep-links"
+      ]
+    },
+    {
+      "id": "navigation-fragments",
+      "category": "navigation",
+      "title": "Fragment-based navigation component (Views)",
+      "description": "Legacy Android Views navigation graph. UIKit's equivalent is UINavigationController plus coordinators, which is a pattern rather than a library.",
+      "platforms": {
+        "android": {
+          "name": "Navigation Component (Fragment)",
+          "url": "https://developer.android.com/guide/navigation",
+          "install": "androidx.navigation:navigation-fragment-ktx",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "UINavigationController",
+          "url": "https://developer.apple.com/documentation/uikit/uinavigationcontroller",
+          "install": null,
+          "ui": "uikit"
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "builtin": {
+        "ios": "UINavigationController is part of UIKit"
+      },
+      "tags": [
+        "navigation",
+        "views",
+        "uikit"
+      ]
+    },
+    {
+      "id": "logging",
+      "category": "logging-debugging",
+      "title": "Logging",
+      "description": "Timber adds pluggable trees over android.util.Log; swift-log is Apple's logging API with swappable backends; the OS unified logger (os.Logger) is built in on iOS.",
+      "platforms": {
+        "android": {
+          "name": "Timber",
+          "url": "https://github.com/JakeWharton/timber",
+          "install": "com.jakewharton.timber:timber"
+        },
+        "ios": {
+          "name": "swift-log",
+          "url": "https://github.com/apple/swift-log",
+          "install": "https://github.com/apple/swift-log (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-logs",
+          "url": "https://github.com/onubo/react-native-logs",
+          "install": "npm i react-native-logs"
+        },
+        "flutter": {
+          "name": "logging (Dart)",
+          "url": "https://pub.dev/packages/logging",
+          "install": "flutter pub add logging"
+        }
+      },
+      "builtin": {
+        "android": "android.util.Log (Logcat)",
+        "ios": "os.Logger / OSLog (https://developer.apple.com/documentation/os/logger)"
+      },
+      "tags": [
+        "logging"
+      ]
+    },
+    {
+      "id": "file-logging-destinations",
+      "category": "logging-debugging",
+      "title": "Log destinations (file, remote)",
+      "description": "CocoaLumberjack provides file/remote log destinations on iOS. On Android the usual route is a custom Timber Tree writing to a file or crash reporter.",
+      "platforms": {
+        "android": {
+          "name": "Timber (custom Tree)",
+          "url": "https://github.com/JakeWharton/timber",
+          "install": "com.jakewharton.timber:timber"
+        },
+        "ios": {
+          "name": "CocoaLumberjack",
+          "url": "https://github.com/CocoaLumberjack/CocoaLumberjack",
+          "install": "https://github.com/CocoaLumberjack/CocoaLumberjack (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "tags": [
+        "logging",
+        "file"
+      ]
+    },
+    {
+      "id": "network-inspector",
+      "category": "logging-debugging",
+      "title": "In-app network inspector",
+      "description": "Shows captured HTTP traffic inside the debug build. Chucker plugs into OkHttp as an interceptor; Pulse captures URLSession traffic and logs.",
+      "platforms": {
+        "android": {
+          "name": "Chucker",
+          "url": "https://github.com/ChuckerTeam/chucker",
+          "install": "com.github.chuckerteam.chucker:library"
+        },
+        "ios": {
+          "name": "Pulse",
+          "url": "https://github.com/kean/Pulse",
+          "install": "https://github.com/kean/Pulse (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-network-logger",
+          "url": "https://github.com/alexbrazier/react-native-network-logger",
+          "install": "npm i react-native-network-logger"
+        },
+        "flutter": {
+          "name": "alice",
+          "url": "https://pub.dev/packages/alice",
+          "install": "flutter pub add alice"
+        }
+      },
+      "tags": [
+        "debug",
+        "network"
+      ]
+    },
+    {
+      "id": "leak-detection",
+      "category": "logging-debugging",
+      "title": "Memory leak detection",
+      "description": "LeakCanary watches for leaked objects in debug builds. On iOS the equivalent workflow is Xcode's Memory Graph Debugger / Instruments (tooling, not a dependency); Flutter's leak_tracker detects leaked Dart objects.",
+      "platforms": {
+        "android": {
+          "name": "LeakCanary",
+          "url": "https://square.github.io/leakcanary/",
+          "install": "com.squareup.leakcanary:leakcanary-android"
+        },
+        "ios": {
+          "name": "Xcode Memory Graph Debugger",
+          "url": "https://developer.apple.com/documentation/xcode/gathering-information-about-memory-use",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "leak_tracker",
+          "url": "https://pub.dev/packages/leak_tracker",
+          "install": "flutter pub add dev:leak_tracker"
+        }
+      },
+      "builtin": {
+        "ios": "Memory Graph Debugger and Instruments Leaks are part of Xcode"
+      },
+      "tags": [
+        "memory",
+        "debug"
+      ]
+    },
+    {
+      "id": "analytics-firebase",
+      "category": "analytics-crash",
+      "title": "Product analytics (Firebase / Google Analytics)",
+      "description": "Event analytics and audiences via Google Analytics for Firebase. Android uses the Firebase BoM; iOS uses the firebase-ios-sdk Swift package (product FirebaseAnalytics).",
+      "platforms": {
+        "android": {
+          "name": "Firebase Analytics",
+          "url": "https://firebase.google.com/docs/analytics/get-started?platform=android",
+          "install": "com.google.firebase:firebase-analytics"
+        },
+        "ios": {
+          "name": "Firebase Analytics (iOS)",
+          "url": "https://firebase.google.com/docs/analytics/get-started?platform=ios",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseAnalytics"
+        },
+        "react_native": {
+          "name": "React Native Firebase Analytics",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/analytics",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/analytics"
+        },
+        "flutter": {
+          "name": "firebase_analytics",
+          "url": "https://pub.dev/packages/firebase_analytics",
+          "install": "flutter pub add firebase_analytics"
+        }
+      },
+      "tags": [
+        "analytics",
+        "firebase"
+      ]
+    },
+    {
+      "id": "crash-firebase",
+      "category": "analytics-crash",
+      "title": "Crash reporting (Firebase Crashlytics)",
+      "description": "Real-time crash and non-fatal reporting. Needs the Crashlytics Gradle plugin on Android and a dSYM upload step on iOS.",
+      "platforms": {
+        "android": {
+          "name": "Firebase Crashlytics",
+          "url": "https://firebase.google.com/docs/crashlytics/get-started?platform=android",
+          "install": "com.google.firebase:firebase-crashlytics"
+        },
+        "ios": {
+          "name": "Firebase Crashlytics (iOS)",
+          "url": "https://firebase.google.com/docs/crashlytics/get-started?platform=ios",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseCrashlytics"
+        },
+        "react_native": {
+          "name": "React Native Firebase Crashlytics",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/crashlytics",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/crashlytics"
+        },
+        "flutter": {
+          "name": "firebase_crashlytics",
+          "url": "https://pub.dev/packages/firebase_crashlytics",
+          "install": "flutter pub add firebase_crashlytics"
+        }
+      },
+      "tags": [
+        "crash",
+        "firebase"
+      ]
+    },
+    {
+      "id": "crash-sentry",
+      "category": "analytics-crash",
+      "title": "Error monitoring & tracing (Sentry)",
+      "description": "Crash and error reporting with performance tracing; first-party SDKs on all four platforms.",
+      "platforms": {
+        "android": {
+          "name": "Sentry Android",
+          "url": "https://docs.sentry.io/platforms/android/",
+          "install": "io.sentry:sentry-android"
+        },
+        "ios": {
+          "name": "Sentry Cocoa",
+          "url": "https://github.com/getsentry/sentry-cocoa",
+          "install": "https://github.com/getsentry/sentry-cocoa (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Sentry React Native",
+          "url": "https://docs.sentry.io/platforms/react-native/",
+          "install": "npm i @sentry/react-native"
+        },
+        "flutter": {
+          "name": "sentry_flutter",
+          "url": "https://pub.dev/packages/sentry_flutter",
+          "install": "flutter pub add sentry_flutter"
+        }
+      },
+      "tags": [
+        "crash",
+        "errors",
+        "tracing"
+      ]
+    },
+    {
+      "id": "performance-firebase",
+      "category": "analytics-crash",
+      "title": "App performance monitoring (Firebase Performance)",
+      "description": "Automatic startup, screen-rendering and network traces plus custom traces.",
+      "platforms": {
+        "android": {
+          "name": "Firebase Performance Monitoring",
+          "url": "https://firebase.google.com/docs/perf-mon/get-started-android",
+          "install": "com.google.firebase:firebase-perf"
+        },
+        "ios": {
+          "name": "Firebase Performance (iOS)",
+          "url": "https://firebase.google.com/docs/perf-mon/get-started-ios",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebasePerformance"
+        },
+        "react_native": {
+          "name": "React Native Firebase Performance",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/perf",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/perf"
+        },
+        "flutter": {
+          "name": "firebase_performance",
+          "url": "https://pub.dev/packages/firebase_performance",
+          "install": "flutter pub add firebase_performance"
+        }
+      },
+      "tags": [
+        "performance",
+        "firebase"
+      ]
+    },
+    {
+      "id": "analytics-posthog",
+      "category": "analytics-crash",
+      "title": "Product analytics & feature flags (PostHog)",
+      "description": "Open-source product analytics with session replay and feature flags; first-party SDKs for all four platforms.",
+      "platforms": {
+        "android": {
+          "name": "PostHog Android",
+          "url": "https://posthog.com/docs/libraries/android",
+          "install": "com.posthog:posthog-android"
+        },
+        "ios": {
+          "name": "PostHog iOS",
+          "url": "https://github.com/PostHog/posthog-ios",
+          "install": "https://github.com/PostHog/posthog-ios (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "PostHog React Native",
+          "url": "https://posthog.com/docs/libraries/react-native",
+          "install": "npm i posthog-react-native"
+        },
+        "flutter": {
+          "name": "posthog_flutter",
+          "url": "https://pub.dev/packages/posthog_flutter",
+          "install": "flutter pub add posthog_flutter"
+        }
+      },
+      "tags": [
+        "analytics",
+        "feature-flags"
+      ]
+    },
+    {
+      "id": "analytics-amplitude",
+      "category": "analytics-crash",
+      "title": "Product analytics (Amplitude)",
+      "description": "Event analytics with Kotlin, Swift, Flutter and React Native SDKs.",
+      "platforms": {
+        "android": {
+          "name": "Amplitude Android (Kotlin)",
+          "url": "https://amplitude.com/docs/sdks/analytics/android/android-kotlin-sdk",
+          "install": "com.amplitude:analytics-android"
+        },
+        "ios": {
+          "name": "Amplitude-Swift",
+          "url": "https://github.com/amplitude/Amplitude-Swift",
+          "install": "https://github.com/amplitude/Amplitude-Swift (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Amplitude React Native",
+          "url": "https://amplitude.com/docs/sdks/analytics/react-native/react-native-sdk",
+          "install": "npm i @amplitude/analytics-react-native"
+        },
+        "flutter": {
+          "name": "amplitude_flutter",
+          "url": "https://pub.dev/packages/amplitude_flutter",
+          "install": "flutter pub add amplitude_flutter"
+        }
+      },
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "id": "backend-firebase-auth",
+      "category": "backend-services",
+      "title": "Hosted user authentication (Firebase Auth)",
+      "description": "Email/password, phone, and federated sign-in with Firebase-issued tokens.",
+      "platforms": {
+        "android": {
+          "name": "Firebase Authentication",
+          "url": "https://firebase.google.com/docs/auth/android/start",
+          "install": "com.google.firebase:firebase-auth"
+        },
+        "ios": {
+          "name": "Firebase Authentication (iOS)",
+          "url": "https://firebase.google.com/docs/auth/ios/start",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseAuth"
+        },
+        "react_native": {
+          "name": "React Native Firebase Auth",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/auth",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/auth"
+        },
+        "flutter": {
+          "name": "firebase_auth",
+          "url": "https://pub.dev/packages/firebase_auth",
+          "install": "flutter pub add firebase_auth"
+        }
+      },
+      "tags": [
+        "auth",
+        "firebase"
+      ]
+    },
+    {
+      "id": "backend-firestore",
+      "category": "backend-services",
+      "title": "Cloud document database (Cloud Firestore)",
+      "description": "Offline-capable document database with real-time listeners.",
+      "platforms": {
+        "android": {
+          "name": "Cloud Firestore",
+          "url": "https://firebase.google.com/docs/firestore/quickstart",
+          "install": "com.google.firebase:firebase-firestore"
+        },
+        "ios": {
+          "name": "Cloud Firestore (iOS)",
+          "url": "https://firebase.google.com/docs/firestore/quickstart",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseFirestore"
+        },
+        "react_native": {
+          "name": "React Native Firebase Firestore",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/firestore",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/firestore"
+        },
+        "flutter": {
+          "name": "cloud_firestore",
+          "url": "https://pub.dev/packages/cloud_firestore",
+          "install": "flutter pub add cloud_firestore"
+        }
+      },
+      "tags": [
+        "database",
+        "firebase",
+        "realtime"
+      ]
+    },
+    {
+      "id": "backend-supabase",
+      "category": "backend-services",
+      "title": "Postgres backend (Supabase)",
+      "description": "Open-source Postgres backend with auth, storage and realtime. Android uses the community supabase-kt (Kotlin Multiplatform); the Swift, Dart and JS clients are published by Supabase.",
+      "platforms": {
+        "android": {
+          "name": "supabase-kt",
+          "url": "https://github.com/supabase-community/supabase-kt",
+          "install": "io.github.jan-tennert.supabase:postgrest-kt"
+        },
+        "ios": {
+          "name": "supabase-swift",
+          "url": "https://github.com/supabase/supabase-swift",
+          "install": "https://github.com/supabase/supabase-swift (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "supabase-js",
+          "url": "https://github.com/supabase/supabase-js",
+          "install": "npm i @supabase/supabase-js"
+        },
+        "flutter": {
+          "name": "supabase_flutter",
+          "url": "https://pub.dev/packages/supabase_flutter",
+          "install": "flutter pub add supabase_flutter"
+        }
+      },
+      "tags": [
+        "backend",
+        "postgres",
+        "auth"
+      ]
+    },
+    {
+      "id": "push-fcm-apns",
+      "category": "push-notifications",
+      "title": "Remote push notifications",
+      "description": "Android receives remote push via Firebase Cloud Messaging. iOS delivery always goes through APNs; the Firebase SDK can wrap APNs tokens so one FCM backend serves both. Both platforms require a user-granted notification permission (Android 13+ and iOS).",
+      "platforms": {
+        "android": {
+          "name": "Firebase Cloud Messaging",
+          "url": "https://firebase.google.com/docs/cloud-messaging/android/client",
+          "install": "com.google.firebase:firebase-messaging"
+        },
+        "ios": {
+          "name": "Firebase Cloud Messaging (APNs bridge)",
+          "url": "https://firebase.google.com/docs/cloud-messaging/ios/client",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseMessaging"
+        },
+        "react_native": {
+          "name": "React Native Firebase Messaging",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/messaging",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/messaging"
+        },
+        "flutter": {
+          "name": "firebase_messaging",
+          "url": "https://pub.dev/packages/firebase_messaging",
+          "install": "flutter pub add firebase_messaging"
+        }
+      },
+      "builtin": {
+        "ios": "APNs registration is built in via UIApplication + UserNotifications (https://developer.apple.com/documentation/usernotifications/registering-your-app-with-apns)"
+      },
+      "tags": [
+        "push",
+        "fcm",
+        "apns"
+      ]
+    },
+    {
+      "id": "push-onesignal",
+      "category": "push-notifications",
+      "title": "Push notification service (OneSignal)",
+      "description": "Third-party push/in-app messaging platform with native SDKs.",
+      "platforms": {
+        "android": {
+          "name": "OneSignal Android",
+          "url": "https://documentation.onesignal.com/docs/android-sdk-setup",
+          "install": "com.onesignal:OneSignal"
+        },
+        "ios": {
+          "name": "OneSignal iOS",
+          "url": "https://github.com/OneSignal/OneSignal-iOS-SDK",
+          "install": "https://github.com/OneSignal/OneSignal-iOS-SDK (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-onesignal",
+          "url": "https://github.com/OneSignal/react-native-onesignal",
+          "install": "npm i react-native-onesignal"
+        },
+        "flutter": {
+          "name": "onesignal_flutter",
+          "url": "https://pub.dev/packages/onesignal_flutter",
+          "install": "flutter pub add onesignal_flutter"
+        }
+      },
+      "tags": [
+        "push",
+        "messaging"
+      ]
+    },
+    {
+      "id": "local-notifications",
+      "category": "push-notifications",
+      "title": "Local / scheduled notifications",
+      "description": "Android posts notifications through NotificationManager on a notification channel; iOS schedules UNNotificationRequest via UserNotifications. Notifee (React Native) is archived and no longer maintained; its README recommends expo-notifications.",
+      "platforms": {
+        "android": {
+          "name": "NotificationManagerCompat",
+          "url": "https://developer.android.com/develop/ui/views/notifications",
+          "install": "androidx.core:core-ktx"
+        },
+        "ios": {
+          "name": "UserNotifications",
+          "url": "https://developer.apple.com/documentation/usernotifications",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-notifications",
+          "url": "https://docs.expo.dev/versions/latest/sdk/notifications/",
+          "install": "npx expo install expo-notifications"
+        },
+        "flutter": {
+          "name": "flutter_local_notifications",
+          "url": "https://pub.dev/packages/flutter_local_notifications",
+          "install": "flutter pub add flutter_local_notifications"
+        }
+      },
+      "builtin": {
+        "android": "NotificationManager is part of the platform SDK; NotificationManagerCompat is in androidx.core",
+        "ios": "UserNotifications is part of the OS"
+      },
+      "tags": [
+        "notifications",
+        "local"
+      ]
+    },
+    {
+      "id": "oauth-appauth",
+      "category": "auth-security",
+      "title": "OAuth 2.0 / OIDC client (AppAuth)",
+      "description": "OpenID Foundation's AppAuth libraries implement the OAuth 2.0 native-app best-practice (system browser + PKCE) on Android and iOS, with wrappers for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "AppAuth-Android",
+          "url": "https://github.com/openid/AppAuth-Android",
+          "install": "net.openid:appauth"
+        },
+        "ios": {
+          "name": "AppAuth-iOS",
+          "url": "https://github.com/openid/AppAuth-iOS",
+          "install": "https://github.com/openid/AppAuth-iOS (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-app-auth",
+          "url": "https://github.com/FormidableLabs/react-native-app-auth",
+          "install": "npm i react-native-app-auth"
+        },
+        "flutter": {
+          "name": "flutter_appauth",
+          "url": "https://pub.dev/packages/flutter_appauth",
+          "install": "flutter pub add flutter_appauth"
+        }
+      },
+      "builtin": {
+        "ios": "ASWebAuthenticationSession (AuthenticationServices) is the built-in browser-auth primitive"
+      },
+      "tags": [
+        "oauth",
+        "oidc",
+        "auth"
+      ]
+    },
+    {
+      "id": "passkeys-credential-manager",
+      "category": "auth-security",
+      "title": "Passkeys & credential APIs",
+      "description": "Credential Manager is Android's unified API for passkeys, passwords and federated sign-in. On iOS, passkeys and Sign in with Apple are exposed through AuthenticationServices.",
+      "platforms": {
+        "android": {
+          "name": "Credential Manager",
+          "url": "https://developer.android.com/identity/sign-in/credential-manager",
+          "install": "androidx.credentials:credentials"
+        },
+        "ios": {
+          "name": "AuthenticationServices (passkeys)",
+          "url": "https://developer.apple.com/documentation/authenticationservices",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-passkey",
+          "url": "https://github.com/f-23/react-native-passkey",
+          "install": "npm i react-native-passkey"
+        },
+        "flutter": {
+          "name": "passkeys",
+          "url": "https://pub.dev/packages/passkeys",
+          "install": "flutter pub add passkeys"
+        }
+      },
+      "builtin": {
+        "ios": "AuthenticationServices is part of the OS"
+      },
+      "tags": [
+        "passkeys",
+        "webauthn",
+        "auth"
+      ]
+    },
+    {
+      "id": "google-sign-in",
+      "category": "auth-security",
+      "title": "Sign in with Google",
+      "description": "On Android, the Google ID helper library (googleid) is used with Credential Manager; the legacy Google Sign-In APIs are being replaced by it. iOS uses the GoogleSignIn-iOS SDK.",
+      "platforms": {
+        "android": {
+          "name": "Sign in with Google (Credential Manager)",
+          "url": "https://developer.android.com/identity/sign-in/credential-manager-siwg",
+          "install": "com.google.android.libraries.identity.googleid:googleid"
+        },
+        "ios": {
+          "name": "GoogleSignIn-iOS",
+          "url": "https://github.com/google/GoogleSignIn-iOS",
+          "install": "https://github.com/google/GoogleSignIn-iOS (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-google-signin",
+          "url": "https://react-native-google-signin.github.io/",
+          "install": "npm i @react-native-google-signin/google-signin"
+        },
+        "flutter": {
+          "name": "google_sign_in",
+          "url": "https://pub.dev/packages/google_sign_in",
+          "install": "flutter pub add google_sign_in"
+        }
+      },
+      "tags": [
+        "auth",
+        "google",
+        "sso"
+      ]
+    },
+    {
+      "id": "biometric-auth",
+      "category": "auth-security",
+      "title": "Biometric authentication",
+      "description": "Face/fingerprint prompts. androidx.biometric wraps BiometricPrompt; iOS uses LocalAuthentication (LAContext).",
+      "platforms": {
+        "android": {
+          "name": "androidx.biometric",
+          "url": "https://developer.android.com/identity/sign-in/biometric-auth",
+          "install": "androidx.biometric:biometric"
+        },
+        "ios": {
+          "name": "LocalAuthentication",
+          "url": "https://developer.apple.com/documentation/localauthentication",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-local-authentication",
+          "url": "https://docs.expo.dev/versions/latest/sdk/local-authentication/",
+          "install": "npx expo install expo-local-authentication"
+        },
+        "flutter": {
+          "name": "local_auth",
+          "url": "https://pub.dev/packages/local_auth",
+          "install": "flutter pub add local_auth"
+        }
+      },
+      "builtin": {
+        "ios": "LocalAuthentication is part of the OS"
+      },
+      "tags": [
+        "biometric",
+        "faceid",
+        "fingerprint"
+      ]
+    },
+    {
+      "id": "app-attestation",
+      "category": "auth-security",
+      "title": "App / device attestation",
+      "description": "Prove requests come from a genuine app on a genuine device. Play Integrity (Android) and App Attest/DeviceCheck (iOS) are the platform services; Firebase App Check wraps both for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "Play Integrity API",
+          "url": "https://developer.android.com/google/play/integrity",
+          "install": "com.google.android.play:integrity"
+        },
+        "ios": {
+          "name": "App Attest (DeviceCheck)",
+          "url": "https://developer.apple.com/documentation/devicecheck/establishing-your-app-s-integrity",
+          "install": null
+        },
+        "react_native": {
+          "name": "React Native Firebase App Check",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/app-check",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/app-check"
+        },
+        "flutter": {
+          "name": "firebase_app_check",
+          "url": "https://pub.dev/packages/firebase_app_check",
+          "install": "flutter pub add firebase_app_check"
+        }
+      },
+      "builtin": {
+        "ios": "DeviceCheck / App Attest are part of the OS"
+      },
+      "tags": [
+        "attestation",
+        "integrity",
+        "security"
+      ]
+    },
+    {
+      "id": "image-manipulation",
+      "category": "image-processing",
+      "title": "Image manipulation (resize, crop, rotate, EXIF)",
+      "description": "ExifInterface reads and writes EXIF metadata on Android; ImageIO and Core Image are the iOS frameworks. The Dart image package is pure Dart; expo-image-manipulator wraps native resize/crop for React Native.",
+      "platforms": {
+        "android": {
+          "name": "ExifInterface",
+          "url": "https://developer.android.com/reference/androidx/exifinterface/media/ExifInterface",
+          "install": "androidx.exifinterface:exifinterface"
+        },
+        "ios": {
+          "name": "ImageIO / Core Image",
+          "url": "https://developer.apple.com/documentation/imageio",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-image-manipulator",
+          "url": "https://docs.expo.dev/versions/latest/sdk/imagemanipulator/",
+          "install": "npx expo install expo-image-manipulator"
+        },
+        "flutter": {
+          "name": "image",
+          "url": "https://pub.dev/packages/image",
+          "install": "flutter pub add image"
+        }
+      },
+      "builtin": {
+        "android": "android.graphics.Bitmap and BitmapFactory are platform APIs",
+        "ios": "ImageIO and Core Image are part of the OS"
+      },
+      "tags": [
+        "image",
+        "exif",
+        "resize"
+      ]
+    },
+    {
+      "id": "unit-test-framework",
+      "category": "testing",
+      "title": "Unit-test framework",
+      "description": "JUnit 5 requires an additional Gradle plugin for Android local tests (the AGP default runner is JUnit 4). Swift Testing (Xcode 16+) is the modern Swift framework; XCTest remains for UI and performance tests.",
+      "platforms": {
+        "android": {
+          "name": "JUnit",
+          "url": "https://junit.org/junit5/",
+          "install": "org.junit.jupiter:junit-jupiter"
+        },
+        "ios": {
+          "name": "Swift Testing",
+          "url": "https://github.com/swiftlang/swift-testing",
+          "install": null
+        },
+        "react_native": {
+          "name": "Jest",
+          "url": "https://jestjs.io/",
+          "install": "npm i -D jest"
+        },
+        "flutter": {
+          "name": "flutter_test",
+          "url": "https://api.flutter.dev/flutter/flutter_test/",
+          "install": "flutter_test (SDK package, included in new Flutter projects)"
+        }
+      },
+      "builtin": {
+        "ios": "XCTest (https://developer.apple.com/documentation/xctest) and Swift Testing ship with Xcode"
+      },
+      "tags": [
+        "unit-test",
+        "junit",
+        "xctest"
+      ]
+    },
+    {
+      "id": "mocking",
+      "category": "testing",
+      "title": "Mocking",
+      "description": "MockK is a Kotlin-native mocking library. Swift lacks runtime mocking, so tools generate mocks from protocols (Mockolo); mocktail avoids codegen in Dart; Jest has built-in mock functions.",
+      "platforms": {
+        "android": {
+          "name": "MockK",
+          "url": "https://mockk.io/",
+          "install": "io.mockk:mockk"
+        },
+        "ios": {
+          "name": "Mockolo",
+          "url": "https://github.com/uber/mockolo",
+          "install": "https://github.com/uber/mockolo (command-line tool; build from source or Homebrew)"
+        },
+        "react_native": {
+          "name": "Jest mock functions",
+          "url": "https://jestjs.io/docs/mock-functions",
+          "install": null
+        },
+        "flutter": {
+          "name": "mocktail",
+          "url": "https://pub.dev/packages/mocktail",
+          "install": "flutter pub add dev:mocktail"
+        }
+      },
+      "builtin": {
+        "react_native": "jest.fn() and jest.mock() are built into Jest"
+      },
+      "tags": [
+        "mock",
+        "testing"
+      ]
+    },
+    {
+      "id": "flow-async-testing",
+      "category": "testing",
+      "title": "Testing streams and async code",
+      "description": "Turbine provides a test DSL for Kotlin Flow. In Swift, async/await tests are supported directly by Swift Testing and XCTest.",
+      "platforms": {
+        "android": {
+          "name": "Turbine",
+          "url": "https://github.com/cashapp/turbine",
+          "install": "app.cash.turbine:turbine"
+        },
+        "ios": {
+          "name": "Async tests (Swift Testing / XCTest)",
+          "url": "https://developer.apple.com/documentation/xctest/asynchronous-tests-and-expectations",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "builtin": {
+        "ios": "Built into XCTest and Swift Testing"
+      },
+      "tags": [
+        "flow",
+        "async",
+        "testing"
+      ]
+    },
+    {
+      "id": "assertions",
+      "category": "testing",
+      "title": "Fluent assertions & matchers",
+      "description": "Truth is Google's fluent assertion library for Java/Kotlin; Nimble provides matchers for Swift tests; Dart and Jest ship matchers in the framework.",
+      "platforms": {
+        "android": {
+          "name": "Truth",
+          "url": "https://truth.dev/",
+          "install": "com.google.truth:truth"
+        },
+        "ios": {
+          "name": "Nimble",
+          "url": "https://github.com/Quick/Nimble",
+          "install": "https://github.com/Quick/Nimble (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Jest expect",
+          "url": "https://jestjs.io/docs/expect",
+          "install": null
+        },
+        "flutter": {
+          "name": "matcher",
+          "url": "https://pub.dev/packages/matcher",
+          "install": null
+        }
+      },
+      "builtin": {
+        "flutter": "matcher is bundled with flutter_test",
+        "react_native": "expect is built into Jest"
+      },
+      "tags": [
+        "assertions",
+        "matchers"
+      ]
+    },
+    {
+      "id": "instrumented-ui-tests",
+      "category": "testing",
+      "title": "UI / end-to-end test framework (in-process)",
+      "description": "Espresso drives Views on a device/emulator; XCUITest drives the iOS UI out of process; Flutter's integration_test and Detox (React Native) run on device/simulator.",
+      "platforms": {
+        "android": {
+          "name": "Espresso",
+          "url": "https://developer.android.com/training/testing/espresso",
+          "install": "androidx.test.espresso:espresso-core",
+          "ui": "views"
+        },
+        "ios": {
+          "name": "XCUITest",
+          "url": "https://developer.apple.com/documentation/xctest/xcuiapplication",
+          "install": null
+        },
+        "react_native": {
+          "name": "Detox",
+          "url": "https://wix.github.io/Detox/",
+          "install": "npm i -D detox"
+        },
+        "flutter": {
+          "name": "integration_test",
+          "url": "https://docs.flutter.dev/testing/integration-tests",
+          "install": "integration_test (SDK package)"
+        }
+      },
+      "builtin": {
+        "ios": "XCUITest ships with Xcode"
+      },
+      "tags": [
+        "e2e",
+        "ui-test"
+      ]
+    },
+    {
+      "id": "component-ui-tests",
+      "category": "testing",
+      "title": "Component / widget UI tests",
+      "description": "Compose's test rule runs UI tests with semantics matchers; Flutter widget tests and React Native Testing Library run without a device. ViewInspector introspects SwiftUI view hierarchies in unit tests.",
+      "platforms": {
+        "android": {
+          "name": "Compose UI Test",
+          "url": "https://developer.android.com/develop/ui/compose/testing",
+          "install": "androidx.compose.ui:ui-test-junit4",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "ViewInspector",
+          "url": "https://github.com/nalexn/ViewInspector",
+          "install": "https://github.com/nalexn/ViewInspector (Swift Package Manager)",
+          "ui": "swiftui"
+        },
+        "react_native": {
+          "name": "React Native Testing Library",
+          "url": "https://callstack.github.io/react-native-testing-library/",
+          "install": "npm i -D @testing-library/react-native"
+        },
+        "flutter": {
+          "name": "Flutter widget tests",
+          "url": "https://docs.flutter.dev/cookbook/testing/widget/introduction",
+          "install": "flutter_test (SDK package)"
+        }
+      },
+      "tags": [
+        "ui-test",
+        "compose",
+        "swiftui"
+      ]
+    },
+    {
+      "id": "jvm-android-tests",
+      "category": "testing",
+      "title": "Android framework tests on the JVM (Robolectric)",
+      "description": "Robolectric runs Android framework code on a local JVM without an emulator. iOS has no equivalent concept: XCTest runs in the Simulator or, for Swift packages, on the macOS host. Flutter and Jest tests run on the host VM / Node.",
+      "platforms": {
+        "android": {
+          "name": "Robolectric",
+          "url": "https://robolectric.org/",
+          "install": "org.robolectric:robolectric"
+        },
+        "ios": {
+          "name": "No direct equivalent: XCTest in Simulator / swift test on host",
+          "url": "https://developer.apple.com/documentation/xctest",
+          "install": null
+        },
+        "react_native": {
+          "name": "Jest (Node)",
+          "url": "https://jestjs.io/",
+          "install": null
+        },
+        "flutter": {
+          "name": "flutter test (host VM)",
+          "url": "https://docs.flutter.dev/testing/overview",
+          "install": null
+        }
+      },
+      "tags": [
+        "robolectric",
+        "jvm",
+        "unit-test"
+      ]
+    },
+    {
+      "id": "snapshot-testing",
+      "category": "testing",
+      "title": "Screenshot / snapshot testing",
+      "description": "Paparazzi renders Android Views/Compose on the JVM and diffs against recorded images. swift-snapshot-testing records snapshots of views and other values. Flutter has golden files; Jest has snapshot matchers.",
+      "platforms": {
+        "android": {
+          "name": "Paparazzi",
+          "url": "https://github.com/cashapp/paparazzi",
+          "install": "app.cash.paparazzi:paparazzi-gradle-plugin"
+        },
+        "ios": {
+          "name": "swift-snapshot-testing",
+          "url": "https://github.com/pointfreeco/swift-snapshot-testing",
+          "install": "https://github.com/pointfreeco/swift-snapshot-testing (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Jest snapshot testing",
+          "url": "https://jestjs.io/docs/snapshot-testing",
+          "install": null
+        },
+        "flutter": {
+          "name": "Golden tests (matchesGoldenFile)",
+          "url": "https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html",
+          "install": null
+        }
+      },
+      "tags": [
+        "snapshot",
+        "screenshot",
+        "ui-test"
+      ]
+    },
+    {
+      "id": "e2e-maestro",
+      "category": "testing",
+      "title": "Cross-platform black-box UI flows (Maestro)",
+      "description": "Maestro runs YAML-defined UI flows against apps on emulators, simulators or devices, independent of the app's UI framework. Same tool on all four platforms.",
+      "platforms": {
+        "android": {
+          "name": "Maestro",
+          "url": "https://docs.maestro.dev/",
+          "install": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash"
+        },
+        "ios": {
+          "name": "Maestro",
+          "url": "https://docs.maestro.dev/",
+          "install": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash"
+        },
+        "react_native": {
+          "name": "Maestro",
+          "url": "https://docs.maestro.dev/",
+          "install": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash"
+        },
+        "flutter": {
+          "name": "Maestro",
+          "url": "https://docs.maestro.dev/",
+          "install": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash"
+        }
+      },
+      "tags": [
+        "e2e",
+        "ui-test",
+        "cross-platform"
+      ]
+    },
+    {
+      "id": "http-stubbing",
+      "category": "testing",
+      "title": "HTTP mocking / stubbing in tests",
+      "description": "MockWebServer runs a local server that replays canned responses. OHHTTPStubs intercepts URLSession requests (its repository had no commits after May 2024 when checked). http_mock_adapter does the same for dio; MSW intercepts requests in JavaScript tests.",
+      "platforms": {
+        "android": {
+          "name": "MockWebServer",
+          "url": "https://github.com/square/okhttp/tree/master/mockwebserver",
+          "install": "com.squareup.okhttp3:mockwebserver"
+        },
+        "ios": {
+          "name": "OHHTTPStubs",
+          "url": "https://github.com/AliSoftware/OHHTTPStubs",
+          "install": "https://github.com/AliSoftware/OHHTTPStubs (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Mock Service Worker",
+          "url": "https://mswjs.io/",
+          "install": "npm i -D msw"
+        },
+        "flutter": {
+          "name": "http_mock_adapter",
+          "url": "https://pub.dev/packages/http_mock_adapter",
+          "install": "flutter pub add dev:http_mock_adapter"
+        }
+      },
+      "tags": [
+        "http",
+        "mock",
+        "testing"
+      ]
+    },
+    {
+      "id": "dependency-manager",
+      "category": "build-package",
+      "title": "Dependency / package manager",
+      "description": "Gradle (with Maven Central and Google Maven), Swift Package Manager (Xcode-integrated), pub for Dart/Flutter, and npm/yarn/pnpm for React Native. CocoaPods remains in many iOS projects, but its maintainers have announced a plan to make the Trunk specs repo read-only (see the CocoaPods blog post 'CocoaPods Trunk Read-only Plan'); prefer SwiftPM for new dependencies.",
+      "platforms": {
+        "android": {
+          "name": "Gradle",
+          "url": "https://gradle.org/",
+          "install": null
+        },
+        "ios": {
+          "name": "Swift Package Manager",
+          "url": "https://www.swift.org/package-manager/",
+          "install": null
+        },
+        "react_native": {
+          "name": "npm",
+          "url": "https://docs.npmjs.com/",
+          "install": null
+        },
+        "flutter": {
+          "name": "pub",
+          "url": "https://dart.dev/tools/pub/cmd",
+          "install": null
+        }
+      },
+      "builtin": {
+        "ios": "SwiftPM is integrated into Xcode; CocoaPods (https://cocoapods.org) and Carthage are external tools",
+        "react_native": "yarn (https://yarnpkg.com/) and pnpm (https://pnpm.io/) are common alternatives to npm"
+      },
+      "tags": [
+        "build",
+        "dependencies",
+        "swiftpm",
+        "gradle"
+      ]
+    },
+    {
+      "id": "version-pinning",
+      "category": "build-package",
+      "title": "Central dependency versions & lockfiles",
+      "description": "Gradle version catalogs (libs.versions.toml) centralise coordinates and versions. SwiftPM records resolved versions in Package.resolved; Dart in pubspec.lock; npm in package-lock.json.",
+      "platforms": {
+        "android": {
+          "name": "Gradle version catalogs",
+          "url": "https://docs.gradle.org/current/userguide/version_catalogs.html",
+          "install": null
+        },
+        "ios": {
+          "name": "Package.swift + Package.resolved",
+          "url": "https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html",
+          "install": null
+        },
+        "react_native": {
+          "name": "package.json + lockfile",
+          "url": "https://docs.npmjs.com/cli/v11/configuring-npm/package-json/",
+          "install": null
+        },
+        "flutter": {
+          "name": "pubspec.yaml + pubspec.lock",
+          "url": "https://dart.dev/tools/pub/pubspec",
+          "install": null
+        }
+      },
+      "tags": [
+        "versions",
+        "lockfile"
+      ]
+    },
+    {
+      "id": "package-registries",
+      "category": "build-package",
+      "title": "Package registries",
+      "description": "Where dependencies are published. Android resolves from Google Maven and Maven Central (JitPack for Git-built libraries); Swift packages resolve from Git URLs, indexed by the Swift Package Index; Dart uses pub.dev; JavaScript uses the npm registry.",
+      "platforms": {
+        "android": {
+          "name": "Maven Central / Google Maven",
+          "url": "https://central.sonatype.com/",
+          "install": null
+        },
+        "ios": {
+          "name": "Swift Package Index",
+          "url": "https://swiftpackageindex.com/",
+          "install": null
+        },
+        "react_native": {
+          "name": "npm registry",
+          "url": "https://docs.npmjs.com/about-npm",
+          "install": null
+        },
+        "flutter": {
+          "name": "pub.dev",
+          "url": "https://pub.dev/",
+          "install": null
+        }
+      },
+      "tags": [
+        "registry",
+        "discovery"
+      ]
+    },
+    {
+      "id": "build-toolchain",
+      "category": "build-package",
+      "title": "Build system / bundler",
+      "description": "Android Gradle Plugin builds APKs/AABs; Xcode's build system (xcodebuild) builds iOS apps; the Flutter tool drives both; Metro bundles React Native JavaScript.",
+      "platforms": {
+        "android": {
+          "name": "Android Gradle Plugin",
+          "url": "https://developer.android.com/build",
+          "install": "com.android.tools.build:gradle"
+        },
+        "ios": {
+          "name": "xcodebuild / Xcode build system",
+          "url": "https://developer.apple.com/documentation/xcode/build-system",
+          "install": null
+        },
+        "react_native": {
+          "name": "Metro",
+          "url": "https://metrobundler.dev/",
+          "install": "npm i metro"
+        },
+        "flutter": {
+          "name": "Flutter build tooling",
+          "url": "https://docs.flutter.dev/deployment",
+          "install": null
+        }
+      },
+      "builtin": {
+        "ios": "Ships with Xcode"
+      },
+      "tags": [
+        "build",
+        "agp",
+        "xcode",
+        "metro"
+      ]
+    },
+    {
+      "id": "release-automation",
+      "category": "build-package",
+      "title": "Release automation (fastlane)",
+      "description": "fastlane automates building, signing, screenshots and store uploads for both stores; the same tool is used from Flutter and React Native projects.",
+      "platforms": {
+        "android": {
+          "name": "fastlane",
+          "url": "https://docs.fastlane.tools/",
+          "install": "gem install fastlane (or brew install fastlane)"
+        },
+        "ios": {
+          "name": "fastlane",
+          "url": "https://docs.fastlane.tools/",
+          "install": "gem install fastlane (or brew install fastlane)"
+        },
+        "react_native": {
+          "name": "fastlane",
+          "url": "https://docs.fastlane.tools/",
+          "install": "gem install fastlane (or brew install fastlane)"
+        },
+        "flutter": {
+          "name": "fastlane",
+          "url": "https://docs.fastlane.tools/",
+          "install": "gem install fastlane (or brew install fastlane)"
+        }
+      },
+      "tags": [
+        "ci",
+        "release",
+        "fastlane"
+      ]
+    },
+    {
+      "id": "annotation-processing",
+      "category": "code-generation",
+      "title": "Annotation / macro processing",
+      "description": "KSP is Kotlin's symbol-processing API (used by Room, Moshi, Hilt and others). Swift macros (swift-syntax) expand code at compile time. Flutter uses build_runner generators; React Native relies on Babel plugins and TypeScript rather than codegen.",
+      "platforms": {
+        "android": {
+          "name": "KSP",
+          "url": "https://kotlinlang.org/docs/ksp-overview.html",
+          "install": "com.google.devtools.ksp:symbol-processing-api"
+        },
+        "ios": {
+          "name": "Swift macros (swift-syntax)",
+          "url": "https://github.com/swiftlang/swift-syntax",
+          "install": "https://github.com/swiftlang/swift-syntax (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "build_runner",
+          "url": "https://pub.dev/packages/build_runner",
+          "install": "flutter pub add dev:build_runner"
+        }
+      },
+      "tags": [
+        "ksp",
+        "macros",
+        "codegen"
+      ]
+    },
+    {
+      "id": "openapi-codegen",
+      "category": "code-generation",
+      "title": "OpenAPI client generation",
+      "description": "Generate typed API clients from an OpenAPI spec. OpenAPI Generator has Gradle and Dart targets; Apple's swift-openapi-generator is a SwiftPM plugin; orval generates TypeScript clients.",
+      "platforms": {
+        "android": {
+          "name": "OpenAPI Generator Gradle plugin",
+          "url": "https://openapi-generator.tech/docs/plugins/",
+          "install": "org.openapitools:openapi-generator-gradle-plugin"
+        },
+        "ios": {
+          "name": "swift-openapi-generator",
+          "url": "https://github.com/apple/swift-openapi-generator",
+          "install": "https://github.com/apple/swift-openapi-generator (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "orval",
+          "url": "https://orval.dev/",
+          "install": "npm i -D orval"
+        },
+        "flutter": {
+          "name": "openapi_generator",
+          "url": "https://pub.dev/packages/openapi_generator",
+          "install": "flutter pub add dev:openapi_generator_cli openapi_generator_annotations"
+        }
+      },
+      "tags": [
+        "openapi",
+        "codegen",
+        "api"
+      ]
+    },
+    {
+      "id": "resource-codegen",
+      "category": "code-generation",
+      "title": "Typed resource accessors",
+      "description": "AGP generates the R class for resources automatically. Xcode 15+ generates typed symbols for asset catalogs; SwiftGen is the older third-party route and also covers strings and other resources. flutter_gen generates asset constants.",
+      "platforms": {
+        "android": {
+          "name": "R class (generated by AGP)",
+          "url": "https://developer.android.com/guide/topics/resources/providing-resources",
+          "install": null
+        },
+        "ios": {
+          "name": "SwiftGen",
+          "url": "https://github.com/SwiftGen/SwiftGen",
+          "install": "https://github.com/SwiftGen/SwiftGen (Homebrew: brew install swiftgen, or SwiftPM plugin)"
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "flutter_gen",
+          "url": "https://pub.dev/packages/flutter_gen",
+          "install": "flutter pub add dev:flutter_gen_runner"
+        }
+      },
+      "builtin": {
+        "android": "Built into the Android Gradle Plugin",
+        "ios": "Xcode generates asset-catalog symbols (Xcode 15+)"
+      },
+      "tags": [
+        "resources",
+        "codegen"
+      ]
+    },
+    {
+      "id": "on-device-ml-runtime",
+      "category": "ml-vision",
+      "title": "On-device model runtime",
+      "description": "LiteRT (formerly TensorFlow Lite) runs .tflite models on Android; Core ML is Apple's runtime. Flutter and React Native bindings wrap TFLite.",
+      "platforms": {
+        "android": {
+          "name": "LiteRT",
+          "url": "https://ai.google.dev/edge/litert",
+          "install": "com.google.ai.edge.litert:litert"
+        },
+        "ios": {
+          "name": "Core ML",
+          "url": "https://developer.apple.com/documentation/coreml",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-fast-tflite",
+          "url": "https://github.com/mrousavy/react-native-fast-tflite",
+          "install": "npm i react-native-fast-tflite"
+        },
+        "flutter": {
+          "name": "tflite_flutter",
+          "url": "https://pub.dev/packages/tflite_flutter",
+          "install": "flutter pub add tflite_flutter"
+        }
+      },
+      "builtin": {
+        "ios": "Core ML is part of the OS"
+      },
+      "tags": [
+        "ml",
+        "tflite",
+        "coreml"
+      ]
+    },
+    {
+      "id": "text-recognition",
+      "category": "ml-vision",
+      "title": "Text recognition (OCR)",
+      "description": "ML Kit Text Recognition on Android; Vision's VNRecognizeTextRequest on iOS. Community plugins wrap ML Kit for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "ML Kit Text Recognition",
+          "url": "https://developers.google.com/ml-kit/vision/text-recognition/v2/android",
+          "install": "com.google.mlkit:text-recognition"
+        },
+        "ios": {
+          "name": "Vision text recognition",
+          "url": "https://developer.apple.com/documentation/vision/recognizing-text-in-images",
+          "install": null
+        },
+        "react_native": {
+          "name": "@react-native-ml-kit/text-recognition",
+          "url": "https://github.com/a7medev/react-native-ml-kit",
+          "install": "npm i @react-native-ml-kit/text-recognition"
+        },
+        "flutter": {
+          "name": "google_mlkit_text_recognition",
+          "url": "https://pub.dev/packages/google_mlkit_text_recognition",
+          "install": "flutter pub add google_mlkit_text_recognition"
+        }
+      },
+      "builtin": {
+        "ios": "Vision is part of the OS"
+      },
+      "tags": [
+        "ocr",
+        "mlkit",
+        "vision"
+      ]
+    },
+    {
+      "id": "face-detection",
+      "category": "ml-vision",
+      "title": "Face detection",
+      "description": "ML Kit Face Detection on Android; Vision face-rectangle/landmark requests on iOS.",
+      "platforms": {
+        "android": {
+          "name": "ML Kit Face Detection",
+          "url": "https://developers.google.com/ml-kit/vision/face-detection/android",
+          "install": "com.google.mlkit:face-detection"
+        },
+        "ios": {
+          "name": "Vision face detection",
+          "url": "https://developer.apple.com/documentation/vision/vndetectfacerectanglesrequest",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "google_mlkit_face_detection",
+          "url": "https://pub.dev/packages/google_mlkit_face_detection",
+          "install": "flutter pub add google_mlkit_face_detection"
+        }
+      },
+      "builtin": {
+        "ios": "Vision is part of the OS"
+      },
+      "tags": [
+        "face",
+        "mlkit",
+        "vision"
+      ]
+    },
+    {
+      "id": "on-device-translation",
+      "category": "ml-vision",
+      "title": "On-device translation",
+      "description": "ML Kit Translation downloads language models to the device. Apple's Translation framework (iOS 18+ for the programmatic TranslationSession API) provides system translation.",
+      "platforms": {
+        "android": {
+          "name": "ML Kit Translation",
+          "url": "https://developers.google.com/ml-kit/language/translation/android",
+          "install": "com.google.mlkit:translate"
+        },
+        "ios": {
+          "name": "Translation framework",
+          "url": "https://developer.apple.com/documentation/translation",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": {
+          "name": "google_mlkit_translation",
+          "url": "https://pub.dev/packages/google_mlkit_translation",
+          "install": "flutter pub add google_mlkit_translation"
+        }
+      },
+      "builtin": {
+        "ios": "Translation is part of the OS"
+      },
+      "tags": [
+        "translation",
+        "mlkit"
+      ]
+    },
+    {
+      "id": "on-device-llm",
+      "category": "ml-vision",
+      "title": "On-device generative AI",
+      "description": "ML Kit GenAI APIs (such as the Prompt API) expose Gemini Nano on supported Android devices; Apple's Foundation Models framework exposes the on-device model on Apple Intelligence devices (iOS 26+). Both depend on device and OS support. LiteRT-LM (com.google.ai.edge.litertlm) runs open models on Android.",
+      "platforms": {
+        "android": {
+          "name": "ML Kit GenAI Prompt API",
+          "url": "https://developers.google.com/ml-kit/genai",
+          "install": "com.google.mlkit:genai-prompt"
+        },
+        "ios": {
+          "name": "Foundation Models",
+          "url": "https://developer.apple.com/documentation/foundationmodels",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "builtin": {
+        "ios": "Foundation Models is part of the OS (iOS 26+, Apple Intelligence-capable devices)"
+      },
+      "tags": [
+        "llm",
+        "genai",
+        "on-device"
+      ]
+    },
+    {
+      "id": "speech-to-text",
+      "category": "ml-vision",
+      "title": "Speech recognition",
+      "description": "Android's SpeechRecognizer and Apple's Speech framework provide platform speech-to-text; plugins wrap them for Flutter and React Native. The older @react-native-voice/voice package is marked deprecated on npm in favour of expo-speech-recognition.",
+      "platforms": {
+        "android": {
+          "name": "SpeechRecognizer",
+          "url": "https://developer.android.com/reference/android/speech/SpeechRecognizer",
+          "install": null
+        },
+        "ios": {
+          "name": "Speech framework",
+          "url": "https://developer.apple.com/documentation/speech",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-speech-recognition",
+          "url": "https://github.com/jamsch/expo-speech-recognition",
+          "install": "npm i expo-speech-recognition"
+        },
+        "flutter": {
+          "name": "speech_to_text",
+          "url": "https://pub.dev/packages/speech_to_text",
+          "install": "flutter pub add speech_to_text"
+        }
+      },
+      "builtin": {
+        "android": "SpeechRecognizer is part of the platform SDK",
+        "ios": "Speech is part of the OS"
+      },
+      "tags": [
+        "speech",
+        "stt"
+      ]
+    },
+    {
+      "id": "text-to-speech",
+      "category": "ml-vision",
+      "title": "Text-to-speech",
+      "description": "Android TextToSpeech and iOS AVSpeechSynthesizer are platform APIs; flutter_tts and expo-speech wrap them.",
+      "platforms": {
+        "android": {
+          "name": "TextToSpeech",
+          "url": "https://developer.android.com/reference/android/speech/tts/TextToSpeech",
+          "install": null
+        },
+        "ios": {
+          "name": "AVSpeechSynthesizer",
+          "url": "https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-speech",
+          "url": "https://docs.expo.dev/versions/latest/sdk/speech/",
+          "install": "npx expo install expo-speech"
+        },
+        "flutter": {
+          "name": "flutter_tts",
+          "url": "https://pub.dev/packages/flutter_tts",
+          "install": "flutter pub add flutter_tts"
+        }
+      },
+      "builtin": {
+        "android": "TextToSpeech is part of the platform SDK",
+        "ios": "AVSpeechSynthesizer is part of the OS"
+      },
+      "tags": [
+        "speech",
+        "tts"
+      ]
+    },
+    {
+      "id": "camera",
+      "category": "camera-media",
+      "title": "Camera capture",
+      "description": "CameraX provides lifecycle-aware preview, capture, analysis and video; AVFoundation's capture APIs (AVCaptureSession) are the iOS counterpart. VisionCamera is the community React Native standard; Flutter's camera plugin is maintained by the Flutter team.",
+      "platforms": {
+        "android": {
+          "name": "CameraX",
+          "url": "https://developer.android.com/media/camera/camerax",
+          "install": "androidx.camera:camera-camera2"
+        },
+        "ios": {
+          "name": "AVFoundation capture",
+          "url": "https://developer.apple.com/documentation/avfoundation/capture-setup",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-vision-camera",
+          "url": "https://react-native-vision-camera.com/",
+          "install": "npm i react-native-vision-camera"
+        },
+        "flutter": {
+          "name": "camera",
+          "url": "https://pub.dev/packages/camera",
+          "install": "flutter pub add camera"
+        }
+      },
+      "builtin": {
+        "ios": "AVFoundation is part of the OS"
+      },
+      "tags": [
+        "camera",
+        "capture"
+      ]
+    },
+    {
+      "id": "media-playback",
+      "category": "camera-media",
+      "title": "Audio / video playback",
+      "description": "Media3 ExoPlayer on Android; AVPlayer/AVKit on iOS. video_player is the Flutter team's plugin; react-native-video is the common React Native player.",
+      "platforms": {
+        "android": {
+          "name": "Media3 ExoPlayer",
+          "url": "https://developer.android.com/media/media3/exoplayer",
+          "install": "androidx.media3:media3-exoplayer"
+        },
+        "ios": {
+          "name": "AVPlayer / AVKit",
+          "url": "https://developer.apple.com/documentation/avfoundation/avplayer",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-video",
+          "url": "https://github.com/react-native-video/react-native-video",
+          "install": "npm i react-native-video"
+        },
+        "flutter": {
+          "name": "video_player",
+          "url": "https://pub.dev/packages/video_player",
+          "install": "flutter pub add video_player"
+        }
+      },
+      "builtin": {
+        "ios": "AVFoundation / AVKit are part of the OS"
+      },
+      "tags": [
+        "video",
+        "audio",
+        "player"
+      ]
+    },
+    {
+      "id": "background-audio-session",
+      "category": "camera-media",
+      "title": "Background playback & media session",
+      "description": "Media3 MediaSession/MediaSessionService exposes playback to the system (lock screen, Bluetooth, Android Auto). MPNowPlayingInfoCenter and MPRemoteCommandCenter do this on iOS. audio_service and react-native-track-player package it for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "Media3 Session",
+          "url": "https://developer.android.com/media/media3/session/background-playback",
+          "install": "androidx.media3:media3-session"
+        },
+        "ios": {
+          "name": "MPNowPlayingInfoCenter",
+          "url": "https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-track-player",
+          "url": "https://github.com/doublesymmetry/react-native-track-player",
+          "install": "npm i react-native-track-player"
+        },
+        "flutter": {
+          "name": "audio_service",
+          "url": "https://pub.dev/packages/audio_service",
+          "install": "flutter pub add audio_service"
+        }
+      },
+      "builtin": {
+        "ios": "MediaPlayer framework is part of the OS"
+      },
+      "tags": [
+        "audio",
+        "media-session"
+      ]
+    },
+    {
+      "id": "media-picker",
+      "category": "camera-media",
+      "title": "Photo / media picker",
+      "description": "The Android Photo Picker (ActivityResultContracts.PickVisualMedia) and iOS PHPickerViewController both let users share selected media without broad storage/photo-library permission.",
+      "platforms": {
+        "android": {
+          "name": "Android Photo Picker",
+          "url": "https://developer.android.com/training/data-storage/shared/photopicker",
+          "install": "androidx.activity:activity-ktx"
+        },
+        "ios": {
+          "name": "PHPickerViewController / PhotosPicker",
+          "url": "https://developer.apple.com/documentation/photokit/phpickerviewcontroller",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-image-picker",
+          "url": "https://docs.expo.dev/versions/latest/sdk/imagepicker/",
+          "install": "npx expo install expo-image-picker"
+        },
+        "flutter": {
+          "name": "image_picker",
+          "url": "https://pub.dev/packages/image_picker",
+          "install": "flutter pub add image_picker"
+        }
+      },
+      "builtin": {
+        "ios": "PhotosUI is part of the OS"
+      },
+      "tags": [
+        "picker",
+        "photos"
+      ]
+    },
+    {
+      "id": "billing-native",
+      "category": "billing",
+      "title": "In-app purchases (store billing APIs)",
+      "description": "Google Play Billing Library on Android; StoreKit 2 on iOS (async/await API, iOS 15+). Flutter's in_app_purchase wraps both. react-native-iap moved to the OpenIAP monorepo; its old GitHub repo is archived but the npm package is still published.",
+      "platforms": {
+        "android": {
+          "name": "Play Billing Library",
+          "url": "https://developer.android.com/google/play/billing",
+          "install": "com.android.billingclient:billing-ktx"
+        },
+        "ios": {
+          "name": "StoreKit 2",
+          "url": "https://developer.apple.com/documentation/storekit",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-iap",
+          "url": "https://github.com/hyodotdev/openiap/tree/main/libraries/react-native-iap",
+          "install": "npm i react-native-iap"
+        },
+        "flutter": {
+          "name": "in_app_purchase",
+          "url": "https://pub.dev/packages/in_app_purchase",
+          "install": "flutter pub add in_app_purchase"
+        }
+      },
+      "builtin": {
+        "ios": "StoreKit is part of the OS"
+      },
+      "tags": [
+        "iap",
+        "billing",
+        "storekit"
+      ]
+    },
+    {
+      "id": "billing-revenuecat",
+      "category": "billing",
+      "title": "Subscription management platform (RevenueCat)",
+      "description": "RevenueCat wraps Play Billing and StoreKit behind one SDK and backend; first-party SDKs on all four platforms.",
+      "platforms": {
+        "android": {
+          "name": "purchases-android",
+          "url": "https://www.revenuecat.com/docs/getting-started/installation/android",
+          "install": "com.revenuecat.purchases:purchases"
+        },
+        "ios": {
+          "name": "purchases-ios",
+          "url": "https://github.com/RevenueCat/purchases-ios",
+          "install": "https://github.com/RevenueCat/purchases-ios (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "react-native-purchases",
+          "url": "https://www.revenuecat.com/docs/getting-started/installation/reactnative",
+          "install": "npm i react-native-purchases"
+        },
+        "flutter": {
+          "name": "purchases_flutter",
+          "url": "https://pub.dev/packages/purchases_flutter",
+          "install": "flutter pub add purchases_flutter"
+        }
+      },
+      "tags": [
+        "iap",
+        "subscriptions",
+        "revenuecat"
+      ]
+    },
+    {
+      "id": "in-app-review",
+      "category": "billing",
+      "title": "In-app review prompt",
+      "description": "Ask for a store rating without leaving the app. The OS decides whether the prompt actually appears on both platforms.",
+      "platforms": {
+        "android": {
+          "name": "Play In-App Review",
+          "url": "https://developer.android.com/guide/playcore/in-app-review",
+          "install": "com.google.android.play:review-ktx"
+        },
+        "ios": {
+          "name": "StoreKit requestReview",
+          "url": "https://developer.apple.com/documentation/storekit/requestreviewaction",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-store-review",
+          "url": "https://docs.expo.dev/versions/latest/sdk/storereview/",
+          "install": "npx expo install expo-store-review"
+        },
+        "flutter": {
+          "name": "in_app_review",
+          "url": "https://pub.dev/packages/in_app_review",
+          "install": "flutter pub add in_app_review"
+        }
+      },
+      "builtin": {
+        "ios": "StoreKit is part of the OS"
+      },
+      "tags": [
+        "review",
+        "ratings"
+      ]
+    },
+    {
+      "id": "location",
+      "category": "maps-location",
+      "title": "Device location",
+      "description": "Fused Location Provider (Google Play services) on Android; Core Location on iOS. Both require runtime permission. geolocator and expo-location wrap them for Flutter and React Native.",
+      "platforms": {
+        "android": {
+          "name": "Fused Location Provider",
+          "url": "https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderClient",
+          "install": "com.google.android.gms:play-services-location"
+        },
+        "ios": {
+          "name": "Core Location",
+          "url": "https://developer.apple.com/documentation/corelocation",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-location",
+          "url": "https://docs.expo.dev/versions/latest/sdk/location/",
+          "install": "npx expo install expo-location"
+        },
+        "flutter": {
+          "name": "geolocator",
+          "url": "https://pub.dev/packages/geolocator",
+          "install": "flutter pub add geolocator"
+        }
+      },
+      "builtin": {
+        "android": "android.location.LocationManager is the platform API (no Play services needed)",
+        "ios": "Core Location is part of the OS"
+      },
+      "tags": [
+        "location",
+        "gps",
+        "geofence"
+      ]
+    },
+    {
+      "id": "maps-sdk",
+      "category": "maps-location",
+      "title": "Map view SDK",
+      "description": "Google Maps SDK / Maps Compose on Android; MapKit on iOS (SwiftUI Map). Flutter and React Native have well-known wrappers over the native SDKs.",
+      "platforms": {
+        "android": {
+          "name": "Maps Compose",
+          "url": "https://developers.google.com/maps/documentation/android-sdk/maps-compose",
+          "install": "com.google.maps.android:maps-compose",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "MapKit",
+          "url": "https://developer.apple.com/documentation/mapkit",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-maps",
+          "url": "https://github.com/react-native-maps/react-native-maps",
+          "install": "npm i react-native-maps"
+        },
+        "flutter": {
+          "name": "google_maps_flutter",
+          "url": "https://pub.dev/packages/google_maps_flutter",
+          "install": "flutter pub add google_maps_flutter"
+        }
+      },
+      "builtin": {
+        "ios": "MapKit is part of the OS"
+      },
+      "tags": [
+        "maps"
+      ]
+    },
+    {
+      "id": "health-data",
+      "category": "maps-location",
+      "title": "Health & fitness data",
+      "description": "Health Connect (Android) and HealthKit (iOS) both require explicit per-data-type permissions. The Flutter `health` plugin covers both; React Native splits into platform-specific libraries.",
+      "platforms": {
+        "android": {
+          "name": "Health Connect",
+          "url": "https://developer.android.com/health-and-fitness/guides/health-connect",
+          "install": "androidx.health.connect:connect-client"
+        },
+        "ios": {
+          "name": "HealthKit",
+          "url": "https://developer.apple.com/documentation/healthkit",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-health-connect + react-native-health",
+          "url": "https://github.com/matinzd/react-native-health-connect",
+          "install": "npm i react-native-health-connect react-native-health"
+        },
+        "flutter": {
+          "name": "health",
+          "url": "https://pub.dev/packages/health",
+          "install": "flutter pub add health"
+        }
+      },
+      "builtin": {
+        "ios": "HealthKit is part of the OS"
+      },
+      "tags": [
+        "health",
+        "fitness"
+      ]
+    },
+    {
+      "id": "bluetooth-le",
+      "category": "maps-location",
+      "title": "Bluetooth Low Energy",
+      "description": "Nordic's Android-BLE-Library wraps BluetoothGatt; CoreBluetooth is the iOS framework. flutter_blue_plus and react-native-ble-plx cover both platforms.",
+      "platforms": {
+        "android": {
+          "name": "Nordic Android-BLE-Library",
+          "url": "https://github.com/NordicSemiconductor/Android-BLE-Library",
+          "install": "no.nordicsemi.android:ble"
+        },
+        "ios": {
+          "name": "CoreBluetooth",
+          "url": "https://developer.apple.com/documentation/corebluetooth",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-ble-plx",
+          "url": "https://github.com/dotintent/react-native-ble-plx",
+          "install": "npm i react-native-ble-plx"
+        },
+        "flutter": {
+          "name": "flutter_blue_plus",
+          "url": "https://pub.dev/packages/flutter_blue_plus",
+          "install": "flutter pub add flutter_blue_plus"
+        }
+      },
+      "builtin": {
+        "ios": "CoreBluetooth is part of the OS"
+      },
+      "tags": [
+        "ble",
+        "bluetooth"
+      ]
+    },
+    {
+      "id": "background-work",
+      "category": "background-work",
+      "title": "Deferrable background work",
+      "description": "WorkManager on Android; BGTaskScheduler on iOS. Both let the OS decide when to run; iOS is far more restrictive and gives no guarantee of timing.",
+      "platforms": {
+        "android": {
+          "name": "WorkManager",
+          "url": "https://developer.android.com/topic/libraries/architecture/workmanager",
+          "install": "androidx.work:work-runtime-ktx"
+        },
+        "ios": {
+          "name": "BGTaskScheduler",
+          "url": "https://developer.apple.com/documentation/backgroundtasks/bgtaskscheduler",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-background-task",
+          "url": "https://docs.expo.dev/versions/latest/sdk/background-task/",
+          "install": "npx expo install expo-background-task"
+        },
+        "flutter": {
+          "name": "workmanager",
+          "url": "https://pub.dev/packages/workmanager",
+          "install": "flutter pub add workmanager"
+        }
+      },
+      "builtin": {
+        "ios": "BackgroundTasks is part of the OS"
+      },
+      "tags": [
+        "background",
+        "scheduling"
+      ]
+    },
+    {
+      "id": "remote-config",
+      "category": "remote-config",
+      "title": "Remote config",
+      "description": "Server-controlled parameters fetched at runtime. Firebase Remote Config has SDKs on all four platforms.",
+      "platforms": {
+        "android": {
+          "name": "Firebase Remote Config",
+          "url": "https://firebase.google.com/docs/remote-config/get-started?platform=android",
+          "install": "com.google.firebase:firebase-config"
+        },
+        "ios": {
+          "name": "Firebase Remote Config (iOS)",
+          "url": "https://firebase.google.com/docs/remote-config/get-started?platform=ios",
+          "install": "https://github.com/firebase/firebase-ios-sdk (Swift Package Manager) - product FirebaseRemoteConfig"
+        },
+        "react_native": {
+          "name": "React Native Firebase Remote Config",
+          "url": "https://github.com/invertase/react-native-firebase/tree/main/packages/remote-config",
+          "install": "npm i @react-native-firebase/app @react-native-firebase/remote-config"
+        },
+        "flutter": {
+          "name": "firebase_remote_config",
+          "url": "https://pub.dev/packages/firebase_remote_config",
+          "install": "flutter pub add firebase_remote_config"
+        }
+      },
+      "tags": [
+        "remote-config",
+        "firebase",
+        "flags"
+      ]
+    },
+    {
+      "id": "feature-flags-openfeature",
+      "category": "remote-config",
+      "title": "Vendor-neutral feature flags (OpenFeature)",
+      "description": "OpenFeature is a CNCF specification with provider-based SDKs. SDKs exist for Kotlin (Android) and Swift (the Kotlin SDK is pre-1.0). Other languages have their own SDKs that are not listed here.",
+      "platforms": {
+        "android": {
+          "name": "OpenFeature Kotlin SDK",
+          "url": "https://github.com/open-feature/kotlin-sdk",
+          "install": "dev.openfeature:kotlin-sdk"
+        },
+        "ios": {
+          "name": "OpenFeature Swift SDK",
+          "url": "https://github.com/open-feature/swift-sdk",
+          "install": "https://github.com/open-feature/swift-sdk (Swift Package Manager)"
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "tags": [
+        "feature-flags",
+        "openfeature"
+      ]
+    },
+    {
+      "id": "firebase-dynamic-links",
+      "category": "remote-config",
+      "title": "Firebase Dynamic Links (shut down)",
+      "description": "Firebase Dynamic Links stopped serving links on 2025-08-25 per Firebase's deprecation FAQ. Migrate to App Links / Universal Links (see the Equivalents page) or a deep-link provider.",
+      "platforms": {
+        "android": {
+          "name": "Firebase Dynamic Links",
+          "url": "https://firebase.google.com/support/dynamic-links-faq",
+          "install": "com.google.firebase:firebase-dynamic-links",
+          "status": "deprecated"
+        },
+        "ios": {
+          "name": "Firebase Dynamic Links (iOS)",
+          "url": "https://firebase.google.com/support/dynamic-links-faq",
+          "install": "https://github.com/firebase/firebase-ios-sdk - product FirebaseDynamicLinks (do not use in new code)",
+          "status": "deprecated"
+        },
+        "react_native": {
+          "name": "React Native Firebase Dynamic Links",
+          "url": "https://github.com/invertase/react-native-firebase",
+          "install": "npm i @react-native-firebase/dynamic-links",
+          "status": "deprecated"
+        },
+        "flutter": {
+          "name": "firebase_dynamic_links",
+          "url": "https://pub.dev/packages/firebase_dynamic_links",
+          "install": "flutter pub add firebase_dynamic_links",
+          "status": "deprecated"
+        }
+      },
+      "tags": [
+        "deep-links",
+        "deprecated",
+        "firebase"
+      ]
+    },
+    {
+      "id": "date-time",
+      "category": "date-time",
+      "title": "Date & time API",
+      "description": "Android API 26+ has java.time natively; core library desugaring (desugar_jdk_libs) backports it to older API levels. Foundation's Date, Calendar and DateFormatter (or Date.FormatStyle) are the iOS APIs. intl handles formatting in Dart; date-fns is a common utility in JavaScript.",
+      "platforms": {
+        "android": {
+          "name": "java.time + core library desugaring",
+          "url": "https://developer.android.com/studio/write/java8-support-table",
+          "install": "com.android.tools:desugar_jdk_libs"
+        },
+        "ios": {
+          "name": "Foundation Date / Calendar",
+          "url": "https://developer.apple.com/documentation/foundation/date",
+          "install": null
+        },
+        "react_native": {
+          "name": "date-fns",
+          "url": "https://date-fns.org/",
+          "install": "npm i date-fns"
+        },
+        "flutter": {
+          "name": "intl",
+          "url": "https://pub.dev/packages/intl",
+          "install": "flutter pub add intl"
+        }
+      },
+      "builtin": {
+        "android": "java.time is built in on API 26+",
+        "ios": "Foundation is part of the OS",
+        "flutter": "DateTime is built into dart:core",
+        "react_native": "Date and Intl.DateTimeFormat are built in (Hermes)"
+      },
+      "tags": [
+        "date",
+        "time",
+        "timezone"
+      ]
+    },
+    {
+      "id": "kotlinx-datetime",
+      "category": "date-time",
+      "title": "Multiplatform date-time (kotlinx-datetime)",
+      "description": "A Kotlin Multiplatform date/time library with the same API on Android and iOS. Native Swift code simply uses Foundation.",
+      "platforms": {
+        "android": {
+          "name": "kotlinx-datetime",
+          "url": "https://github.com/Kotlin/kotlinx-datetime",
+          "install": "org.jetbrains.kotlinx:kotlinx-datetime"
+        },
+        "ios": {
+          "name": "Foundation Date / Calendar",
+          "url": "https://developer.apple.com/documentation/foundation/date",
+          "install": null
+        },
+        "react_native": null,
+        "flutter": null
+      },
+      "builtin": {
+        "ios": "Foundation is part of the OS"
+      },
+      "tags": [
+        "kmp",
+        "date"
+      ]
+    },
+    {
+      "id": "runtime-permissions",
+      "category": "platform-helpers",
+      "title": "Runtime permission requests",
+      "description": "Android: the first-party Activity Result API (ActivityResultContracts.RequestPermission); Accompanist Permissions adds Compose state helpers. iOS has no single API: each framework requests its own authorisation. permission_handler and react-native-permissions unify them.",
+      "platforms": {
+        "android": {
+          "name": "Accompanist Permissions",
+          "url": "https://google.github.io/accompanist/permissions/",
+          "install": "com.google.accompanist:accompanist-permissions",
+          "ui": "compose"
+        },
+        "ios": {
+          "name": "Per-framework authorization APIs",
+          "url": "https://developer.apple.com/documentation/uikit/protecting-the-user-s-privacy",
+          "install": null
+        },
+        "react_native": {
+          "name": "react-native-permissions",
+          "url": "https://github.com/zoontek/react-native-permissions",
+          "install": "npm i react-native-permissions"
+        },
+        "flutter": {
+          "name": "permission_handler",
+          "url": "https://pub.dev/packages/permission_handler",
+          "install": "flutter pub add permission_handler"
+        }
+      },
+      "builtin": {
+        "android": "ActivityResultContracts.RequestPermission (androidx.activity) is the first-party API",
+        "ios": "Each framework (CoreLocation, AVFoundation, Photos, ...) provides its own request API; Info.plist usage strings are mandatory"
+      },
+      "tags": [
+        "permissions"
+      ]
+    },
+    {
+      "id": "in-app-browser",
+      "category": "platform-helpers",
+      "title": "In-app browser / web auth tab",
+      "description": "Custom Tabs (Android) and SFSafariViewController / ASWebAuthenticationSession (iOS) open web content in a system-managed browser UI.",
+      "platforms": {
+        "android": {
+          "name": "Custom Tabs",
+          "url": "https://developer.android.com/develop/ui/views/layout/webapps/overview-of-android-custom-tabs",
+          "install": "androidx.browser:browser"
+        },
+        "ios": {
+          "name": "SFSafariViewController",
+          "url": "https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller",
+          "install": null
+        },
+        "react_native": {
+          "name": "expo-web-browser",
+          "url": "https://docs.expo.dev/versions/latest/sdk/webbrowser/",
+          "install": "npx expo install expo-web-browser"
+        },
+        "flutter": {
+          "name": "url_launcher",
+          "url": "https://pub.dev/packages/url_launcher",
+          "install": "flutter pub add url_launcher"
+        }
+      },
+      "builtin": {
+        "ios": "SafariServices is part of the OS"
+      },
+      "tags": [
+        "browser",
+        "custom-tabs"
+      ]
+    },
+    {
+      "id": "linter",
+      "category": "static-analysis",
+      "title": "Static analysis / linter",
+      "description": "detekt is a Kotlin static analyzer (the coordinate shown is the latest stable 1.x line; the 2.x alphas publish under dev.detekt). Android Lint also ships with AGP for Android-specific checks. SwiftLint enforces Swift style and conventions. Dart's analyzer uses flutter_lints; ESLint covers TypeScript/JavaScript.",
+      "platforms": {
+        "android": {
+          "name": "detekt",
+          "url": "https://detekt.dev/",
+          "install": "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+        },
+        "ios": {
+          "name": "SwiftLint",
+          "url": "https://github.com/realm/SwiftLint",
+          "install": "https://github.com/realm/SwiftLint (Homebrew: brew install swiftlint, or SwiftPM plugin)"
+        },
+        "react_native": {
+          "name": "ESLint",
+          "url": "https://eslint.org/",
+          "install": "npm i -D eslint"
+        },
+        "flutter": {
+          "name": "flutter_lints",
+          "url": "https://pub.dev/packages/flutter_lints",
+          "install": "flutter pub add dev:flutter_lints"
+        }
+      },
+      "builtin": {
+        "android": "Android Lint (https://developer.android.com/studio/write/lint) ships with the Android Gradle Plugin",
+        "flutter": "dart analyze ships with the Dart SDK"
+      },
+      "tags": [
+        "lint",
+        "static-analysis"
+      ]
+    },
+    {
+      "id": "formatter",
+      "category": "static-analysis",
+      "title": "Code formatter",
+      "description": "ktlint formats and lints Kotlin to the official style (Spotless is a Gradle wrapper that can run it). SwiftFormat reformats Swift. dart format is built in; Prettier is the JavaScript standard.",
+      "platforms": {
+        "android": {
+          "name": "ktlint",
+          "url": "https://ktlint.github.io/ktlint/",
+          "install": "com.pinterest.ktlint:ktlint-cli"
+        },
+        "ios": {
+          "name": "SwiftFormat",
+          "url": "https://github.com/nicklockwood/SwiftFormat",
+          "install": "https://github.com/nicklockwood/SwiftFormat (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "Prettier",
+          "url": "https://prettier.io/",
+          "install": "npm i -D prettier"
+        },
+        "flutter": {
+          "name": "dart format",
+          "url": "https://dart.dev/tools/dart-format",
+          "install": null
+        }
+      },
+      "builtin": {
+        "flutter": "dart format ships with the Dart SDK"
+      },
+      "tags": [
+        "format",
+        "style"
+      ]
+    },
+    {
+      "id": "immutable-collections",
+      "category": "data-structures",
+      "title": "Immutable / persistent collections",
+      "description": "kotlinx-collections-immutable provides persistent lists/maps (and stable types for Compose). Swift value semantics make most collections effectively immutable; swift-collections adds extra data structures. built_collection and immer fill the role in Dart and JavaScript.",
+      "platforms": {
+        "android": {
+          "name": "kotlinx.collections.immutable",
+          "url": "https://github.com/Kotlin/kotlinx.collections.immutable",
+          "install": "org.jetbrains.kotlinx:kotlinx-collections-immutable"
+        },
+        "ios": {
+          "name": "swift-collections",
+          "url": "https://github.com/apple/swift-collections",
+          "install": "https://github.com/apple/swift-collections (Swift Package Manager)"
+        },
+        "react_native": {
+          "name": "immer",
+          "url": "https://immerjs.github.io/immer/",
+          "install": "npm i immer"
+        },
+        "flutter": {
+          "name": "built_collection",
+          "url": "https://pub.dev/packages/built_collection",
+          "install": "flutter pub add built_collection"
+        }
+      },
+      "tags": [
+        "collections",
+        "immutability"
+      ]
+    }
+  ]
+}

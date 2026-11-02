@@ -1,0 +1,77 @@
+/* Libraries page — uses only tokens/primitives from assets/css/site.css */
+.lib-tools { display: grid; gap: 14px; }
+.lib-tools .search input { padding-top: 15px; padding-bottom: 15px; font-size: 1.05rem; }
+
+/* segmented control */
+.lib-seg { justify-self: start; display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md); max-width: 100%; }
+.lib-seg-btn { min-height: 40px; padding: 6px 14px; border: 0; border-radius: calc(var(--radius-md) - 3px); background: transparent; color: var(--text-2); font: 600 .9rem var(--font); cursor: pointer; flex: 1 1 auto; }
+.lib-seg-btn:hover { color: var(--text-1); }
+.lib-seg-btn[aria-pressed="true"] { background: var(--surface); color: var(--text-1); box-shadow: var(--shadow-1); }
+.lib-seg-btn .count { color: var(--text-3); font-weight: 500; }
+
+/* translate bar */
+.lib-translate { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.lib-translate .chip { min-height: 40px; }
+.lib-translate .icon-btn { width: 40px; height: 40px; }
+.lib-sel { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--text-2); }
+.lib-sel select { min-height: 40px; padding: 6px 28px 6px 10px; font: 500 .92rem var(--font); color: var(--text-1); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.lib-tr-hint { flex-basis: 100%; }
+.lib-translate:not(.on) .lib-tr-hint { display: none; }
+
+#cats .chip { min-height: 36px; }
+.chip[hidden] { display: none; }
+
+.lib-status-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.lib-status-row .result-count { margin: 0; }
+.lib-status-row .btn { min-height: 40px; }
+
+/* how to read */
+.lib-how { margin-top: 16px; padding: 0; }
+.lib-how summary { padding: 12px 16px; cursor: pointer; font-weight: 650; min-height: 44px; }
+.lib-how ul { margin: 0; padding: 0 16px 4px 36px; color: var(--text-2); }
+.lib-how li { margin-bottom: .5em; }
+.lib-how p { padding: 0 16px 12px; margin: 0; }
+
+#notice:not(:empty) { margin-top: 16px; }
+.lib-notice { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--warn); border-radius: var(--radius-md); color: var(--text-1); background: color-mix(in srgb, var(--warn) 10%, transparent); }
+
+.lib-results { margin-top: 18px; }
+.lib-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.lib-card { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.lib-card h3 { margin: 0; overflow-wrap: anywhere; }
+.lib-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; justify-content: space-between; }
+.lib-desc { margin: 0; color: var(--text-2); font-size: .9rem; }
+
+.lib-pfs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.lib-pfs > li { padding-top: 10px; border-top: 1px solid var(--border); min-width: 0; }
+.lib-entry-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.lib-name { font-weight: 650; overflow-wrap: anywhere; }
+.lib-ui { font-size: .7rem; padding: 1px 7px; }
+.lib-install { display: flex; align-items: stretch; gap: 6px; margin-top: 6px; min-width: 0; }
+.lib-install code { flex: 1 1 auto; min-width: 0; padding: 6px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: .8rem; overflow-wrap: anywhere; word-break: break-word; }
+.lib-copy { min-height: 40px; min-width: 64px; padding: 4px 10px; font-size: .82rem; justify-content: center; flex: 0 0 auto; }
+.lib-builtin { margin: 6px 0 0; font-size: .84rem; color: var(--text-2); }
+.lib-builtin strong { color: var(--text-1); }
+
+.lib-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.lib-tag { min-height: 28px; padding: 2px 9px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-3); font: 500 .76rem var(--font); cursor: pointer; }
+.lib-tag:hover { color: var(--text-1); background: var(--surface-2); }
+
+/* translate table */
+.lib-table table.data { min-width: 620px; }
+.lib-table td { min-width: 240px; }
+.lib-job { font-weight: 650; margin-bottom: 4px; }
+.lib-job .badge { margin-left: 6px; vertical-align: middle; }
+.lib-row-desc { margin: 4px 0 8px; font-size: .84rem; color: var(--text-2); }
+.lib-none { color: var(--text-3); font-size: .88rem; }
+
+.lib-more { display: flex; justify-content: center; margin-top: 18px; }
+.lib-more .btn { min-height: 44px; }
+.lib-more .btn[hidden] { display: none; }
+.empty-state .row { justify-content: center; margin-top: 12px; }
+.empty-state h2 { font-size: 1.15rem; color: var(--text-1); }
+
+@media (max-width: 520px) {
+  .lib-seg { display: flex; }
+  .lib-seg-btn { flex: 1 1 100%; }
+}

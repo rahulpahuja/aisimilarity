@@ -1,0 +1,3742 @@
+{
+  "meta": {
+    "updated": "2026-11-02",
+    "note": "Concept and tooling equivalents across Android, iOS, Flutter and React Native. Mappings are approximate; the notes call out where concepts do not map one-to-one. Verify API availability against your minimum OS version."
+  },
+  "categories": [
+    {
+      "id": "app-structure",
+      "label": "App structure & lifecycle",
+      "kind": "concept"
+    },
+    {
+      "id": "navigation",
+      "label": "Navigation & deep links",
+      "kind": "concept"
+    },
+    {
+      "id": "ui-layout",
+      "label": "Layout, resources, theming & accessibility",
+      "kind": "concept"
+    },
+    {
+      "id": "ui-components",
+      "label": "UI components & interaction",
+      "kind": "concept"
+    },
+    {
+      "id": "state-concurrency",
+      "label": "State, concurrency & networking",
+      "kind": "concept"
+    },
+    {
+      "id": "data-storage",
+      "label": "Data storage",
+      "kind": "concept"
+    },
+    {
+      "id": "background-work",
+      "label": "Background work & messaging",
+      "kind": "concept"
+    },
+    {
+      "id": "permissions-security",
+      "label": "Permissions & security",
+      "kind": "concept"
+    },
+    {
+      "id": "system-integration",
+      "label": "System integration",
+      "kind": "concept"
+    },
+    {
+      "id": "media-sensors",
+      "label": "Media, sensors & hardware",
+      "kind": "concept"
+    },
+    {
+      "id": "distribution",
+      "label": "Distribution & release",
+      "kind": "tooling"
+    },
+    {
+      "id": "tooling-ide",
+      "label": "IDE & debugging tools",
+      "kind": "tooling"
+    },
+    {
+      "id": "tooling-build",
+      "label": "Build & dependencies",
+      "kind": "tooling"
+    },
+    {
+      "id": "tooling-quality",
+      "label": "Testing, profiling & quality",
+      "kind": "tooling"
+    }
+  ],
+  "items": [
+    {
+      "id": "screen-unit",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Screen / unit of UI",
+      "android": {
+        "name": "Activity (Views) / @Composable destination",
+        "url": "https://developer.android.com/reference/android/app/Activity"
+      },
+      "ios": {
+        "name": "UIViewController / SwiftUI View",
+        "url": "https://developer.apple.com/documentation/uikit/uiviewcontroller"
+      },
+      "flutter": {
+        "name": "Widget (a route's top-level widget)",
+        "url": "https://api.flutter.dev/flutter/widgets/Widget-class.html"
+      },
+      "react_native": {
+        "name": "Screen component (React component)",
+        "url": "https://reactnative.dev/docs/components-and-apis"
+      },
+      "notes": "Modern Android is typically one Activity hosting many Compose/Fragment destinations, whereas iOS apps traditionally push one UIViewController per screen. In SwiftUI the View struct is a lightweight value description, not a long-lived object, so do not hold state or identity in it the way you would in an Activity.",
+      "tags": [
+        "screen",
+        "ui",
+        "basics"
+      ]
+    },
+    {
+      "id": "fragment-child-vc",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Reusable sub-screen / child container",
+      "android": {
+        "name": "Fragment",
+        "url": "https://developer.android.com/guide/fragments"
+      },
+      "ios": {
+        "name": "Child UIViewController (addChild) / SwiftUI subview",
+        "url": "https://developer.apple.com/documentation/uikit/uiviewcontroller/addchild(_:)"
+      },
+      "flutter": {
+        "name": "Widget composition",
+        "url": "https://docs.flutter.dev/ui/widgets-intro"
+      },
+      "react_native": {
+        "name": "Component composition",
+        "url": "https://reactnative.dev/docs/components-and-apis"
+      },
+      "notes": "Fragments have their own lifecycle plus a separate view lifecycle, which is a classic source of leaks. UIKit child view controllers are lighter and have no FragmentManager equivalent; in SwiftUI you simply compose views. Compose and SwiftUI both make this concept largely disappear.",
+      "tags": [
+        "fragment",
+        "ui",
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "app-entry",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Application entry point",
+      "android": {
+        "name": "Application class + launcher Activity",
+        "url": "https://developer.android.com/reference/android/app/Application"
+      },
+      "ios": {
+        "name": "@main App (SwiftUI) / UIApplicationDelegate",
+        "url": "https://developer.apple.com/documentation/swiftui/app"
+      },
+      "flutter": {
+        "name": "main() + runApp()",
+        "url": "https://api.flutter.dev/flutter/widgets/runApp.html"
+      },
+      "react_native": {
+        "name": "AppRegistry.registerComponent / index.js",
+        "url": "https://reactnative.dev/docs/appregistry"
+      },
+      "notes": "Android's Application.onCreate runs for every process start, including background components such as services and receivers, so heavy work there slows everything. iOS has no Application subclass in the same sense; use App.init or a UIApplicationDelegate adaptor and keep launch work small to avoid watchdog termination.",
+      "tags": [
+        "app",
+        "startup"
+      ]
+    },
+    {
+      "id": "manifest-plist",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "App configuration manifest",
+      "android": {
+        "name": "AndroidManifest.xml",
+        "url": "https://developer.android.com/guide/topics/manifest/manifest-intro"
+      },
+      "ios": {
+        "name": "Info.plist + entitlements",
+        "url": "https://developer.apple.com/documentation/bundleresources/information-property-list"
+      },
+      "flutter": {
+        "name": "Edit the native AndroidManifest.xml and Info.plist in the platform folders",
+        "url": null
+      },
+      "react_native": {
+        "name": "Edit the native AndroidManifest.xml and Info.plist in the platform folders",
+        "url": null
+      },
+      "notes": "The manifest declares components, permissions and intent filters; Info.plist declares usage-description strings, URL schemes and background modes, while capabilities live in a separate entitlements file. A missing Info.plist usage string crashes the app on first access; a missing manifest permission usually just fails silently.",
+      "tags": [
+        "config",
+        "permissions"
+      ]
+    },
+    {
+      "id": "lifecycle-screen",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Screen lifecycle callbacks",
+      "android": {
+        "name": "onCreate / onStart / onResume / onPause / onStop / onDestroy",
+        "url": "https://developer.android.com/guide/components/activities/activity-lifecycle"
+      },
+      "ios": {
+        "name": "viewDidLoad / viewWillAppear / viewDidAppear / viewDidDisappear; SwiftUI onAppear / onDisappear",
+        "url": "https://developer.apple.com/documentation/uikit/uiviewcontroller"
+      },
+      "flutter": {
+        "name": "State.initState / didChangeDependencies / dispose",
+        "url": "https://api.flutter.dev/flutter/widgets/State/initState.html"
+      },
+      "react_native": {
+        "name": "useEffect mount/cleanup; navigation focus events",
+        "url": "https://react.dev/reference/react/useEffect"
+      },
+      "notes": "The mapping is approximate: onStart/onResume are about visibility and focus, viewWillAppear fires on every reappearance including after a modal dismisses. SwiftUI onAppear can fire more than once and is not a safe one-time init hook; use .task for async work tied to the view.",
+      "tags": [
+        "lifecycle",
+        "callbacks"
+      ]
+    },
+    {
+      "id": "lifecycle-app",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "App foreground / background transitions",
+      "android": {
+        "name": "ProcessLifecycleOwner / Lifecycle.Event ON_START and ON_STOP",
+        "url": "https://developer.android.com/topic/libraries/architecture/lifecycle"
+      },
+      "ios": {
+        "name": "scenePhase (SwiftUI) / UISceneDelegate sceneDidEnterBackground",
+        "url": "https://developer.apple.com/documentation/swiftui/scenephase"
+      },
+      "flutter": {
+        "name": "WidgetsBindingObserver.didChangeAppLifecycleState",
+        "url": "https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver-class.html"
+      },
+      "react_native": {
+        "name": "AppState",
+        "url": "https://reactnative.dev/docs/appstate"
+      },
+      "notes": "iOS app lifecycle is scene-based (one app can have several scenes on iPad), so use scene phase, not the old applicationDidEnterBackground, in new code. On both platforms you get very little time after backgrounding, so persist state immediately instead of waiting for a terminate callback that will not come.",
+      "tags": [
+        "lifecycle",
+        "background"
+      ]
+    },
+    {
+      "id": "config-change",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Rotation / configuration change handling",
+      "android": {
+        "name": "Configuration change recreates Activity; ViewModel survives",
+        "url": "https://developer.android.com/guide/topics/resources/runtime-changes"
+      },
+      "ios": {
+        "name": "Trait collection / size change (no recreation)",
+        "url": "https://developer.apple.com/documentation/uikit/uitraitcollection"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android destroys and recreates the Activity on rotation, locale or dark-mode change unless you opt out, which is why ViewModel and rememberSaveable exist. iOS keeps the view controller alive and just calls layout/trait callbacks, so this whole class of bug mostly does not exist there.",
+      "tags": [
+        "lifecycle",
+        "rotation",
+        "state"
+      ]
+    },
+    {
+      "id": "state-restoration",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Surviving process death",
+      "android": {
+        "name": "SavedStateHandle / rememberSaveable / onSaveInstanceState",
+        "url": "https://developer.android.com/topic/libraries/architecture/saving-states"
+      },
+      "ios": {
+        "name": "@SceneStorage / NSUserActivity state restoration",
+        "url": "https://developer.apple.com/documentation/swiftui/scenestorage"
+      },
+      "flutter": {
+        "name": "RestorationMixin / RestorationScope",
+        "url": "https://api.flutter.dev/flutter/services/RestorationManager-class.html"
+      },
+      "react_native": null,
+      "notes": "Android can kill your process in the background and relaunch into the last screen, so UI state must be serializable and small. iOS can also terminate backgrounded apps but offers a narrower, scene-based restoration API; many iOS apps simply relaunch to the root.",
+      "tags": [
+        "state",
+        "restoration",
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "memory-pressure",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Low-memory signals",
+      "android": {
+        "name": "ComponentCallbacks2.onTrimMemory",
+        "url": "https://developer.android.com/topic/performance/memory"
+      },
+      "ios": {
+        "name": "didReceiveMemoryWarning / UIApplication memory warning notification",
+        "url": "https://developer.apple.com/documentation/uikit/uiviewcontroller/didreceivememorywarning()"
+      },
+      "flutter": {
+        "name": "WidgetsBindingObserver.didHaveMemoryPressure",
+        "url": "https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver/didHaveMemoryPressure.html"
+      },
+      "react_native": null,
+      "notes": "Android gives graded trim levels and uses the low-memory killer; iOS gives a single warning and then jetsams the app without further callbacks. Release caches on the signal, but design so that being killed silently is survivable.",
+      "tags": [
+        "memory",
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "launch-screen",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Launch / splash screen",
+      "android": {
+        "name": "SplashScreen API (androidx.core:core-splashscreen)",
+        "url": "https://developer.android.com/develop/ui/views/launch/splash-screen"
+      },
+      "ios": {
+        "name": "Launch screen (Info.plist UILaunchScreen / storyboard)",
+        "url": "https://developer.apple.com/documentation/bundleresources/information-property-list/uilaunchscreen"
+      },
+      "flutter": {
+        "name": "flutter_native_splash (community) / native launch screen",
+        "url": "https://pub.dev/packages/flutter_native_splash"
+      },
+      "react_native": {
+        "name": "expo-splash-screen (Expo) / native launch screen",
+        "url": "https://docs.expo.dev/versions/latest/sdk/splash-screen/"
+      },
+      "notes": "Android 12+ enforces a system splash screen made of an icon and background color on every cold start; custom full-screen splash Activities are discouraged. iOS launch screens are static and cannot run code, so any animated splash is just your first view.",
+      "tags": [
+        "launch",
+        "ux"
+      ]
+    },
+    {
+      "id": "dependency-injection",
+      "kind": "concept",
+      "category": "app-structure",
+      "title": "Dependency injection",
+      "android": {
+        "name": "Hilt / Dagger / Koin",
+        "url": "https://developer.android.com/training/dependency-injection/hilt-android"
+      },
+      "ios": {
+        "name": "SwiftUI @Environment + manual/initializer injection",
+        "url": "https://developer.apple.com/documentation/swiftui/environment"
+      },
+      "flutter": {
+        "name": "Provider / get_it",
+        "url": "https://pub.dev/packages/get_it"
+      },
+      "react_native": {
+        "name": "React Context",
+        "url": "https://react.dev/reference/react/useContext"
+      },
+      "notes": "Android has a de facto standard in Hilt with compile-time graphs; iOS has no first-party DI container, and most teams use initializer injection plus the SwiftUI environment. Do not expect an annotation-driven graph on iOS unless you add a third-party library.",
+      "tags": [
+        "di",
+        "architecture"
+      ]
+    },
+    {
+      "id": "nav-framework",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "In-app navigation / back stack",
+      "android": {
+        "name": "Navigation 3 (NavDisplay + back stack list) / Navigation Compose",
+        "url": "https://developer.android.com/guide/navigation/navigation-3"
+      },
+      "ios": {
+        "name": "NavigationStack (SwiftUI) / UINavigationController",
+        "url": "https://developer.apple.com/documentation/swiftui/navigationstack"
+      },
+      "flutter": {
+        "name": "Navigator / go_router",
+        "url": "https://api.flutter.dev/flutter/widgets/Navigator-class.html"
+      },
+      "react_native": {
+        "name": "React Navigation / Expo Router",
+        "url": "https://reactnavigation.org/docs/getting-started"
+      },
+      "notes": "Navigation 3 and NavigationStack share a design: you own the back stack as plain state (a list of keys vs a NavigationPath or typed array) and the UI renders it. Do not use the deprecated NavigationView on iOS; Navigation 2 on Android uses an opaque NavController instead of an owned stack.",
+      "tags": [
+        "navigation",
+        "back-stack"
+      ]
+    },
+    {
+      "id": "nav-tabs",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Bottom / tab navigation",
+      "android": {
+        "name": "NavigationBar (Material 3) with per-tab back stacks",
+        "url": "https://developer.android.com/develop/ui/compose/components/navigation-bar"
+      },
+      "ios": {
+        "name": "TabView (SwiftUI) / UITabBarController",
+        "url": "https://developer.apple.com/documentation/swiftui/tabview"
+      },
+      "flutter": {
+        "name": "NavigationBar + IndexedStack / StatefulShellRoute",
+        "url": "https://api.flutter.dev/flutter/material/NavigationBar-class.html"
+      },
+      "react_native": {
+        "name": "Bottom tabs navigator (React Navigation)",
+        "url": "https://reactnavigation.org/docs/bottom-tab-navigator"
+      },
+      "notes": "iOS tabs preserve each tab's state by default, while on Android you must opt in to save and restore per-tab back stacks. The iOS tab bar is a root-level container (max five items before More), whereas Android's bar is just another composable. Recent iOS versions restyle the tab bar, so check current HIG.",
+      "tags": [
+        "navigation",
+        "tabs"
+      ]
+    },
+    {
+      "id": "nav-arguments",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Passing data between screens",
+      "android": {
+        "name": "Type-safe route/key objects (@Serializable) + ViewModel args",
+        "url": "https://developer.android.com/guide/navigation/navigation-3/save-state"
+      },
+      "ios": {
+        "name": "navigationDestination(for:) with Hashable values",
+        "url": "https://developer.apple.com/documentation/swiftui/view/navigationdestination(for:destination:)"
+      },
+      "flutter": {
+        "name": "Route arguments / go_router parameters",
+        "url": "https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments"
+      },
+      "react_native": {
+        "name": "Route params",
+        "url": "https://reactnavigation.org/docs/params"
+      },
+      "notes": "Both modern stacks route on typed values instead of strings, which gives compile-time safety. Returning results to the previous screen is not built into either stack; on Android use state or events from a shared ViewModel, on iOS use bindings or callbacks.",
+      "tags": [
+        "navigation",
+        "arguments"
+      ]
+    },
+    {
+      "id": "deep-links",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Verified web-URL links into the app",
+      "android": {
+        "name": "Android App Links (assetlinks.json)",
+        "url": "https://developer.android.com/training/app-links"
+      },
+      "ios": {
+        "name": "Universal Links (apple-app-site-association)",
+        "url": "https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content"
+      },
+      "flutter": {
+        "name": "Deep linking via go_router / app_links",
+        "url": "https://docs.flutter.dev/ui/navigation/deep-linking"
+      },
+      "react_native": {
+        "name": "Linking",
+        "url": "https://reactnative.dev/docs/linking"
+      },
+      "notes": "Both verify domain ownership by hosting a JSON file on your site, so the OS can open https links directly in your app. Verification failures are silent and cached, so test on a real device and re-check after changing the file; iOS fetches via Apple's CDN, so changes can lag.",
+      "tags": [
+        "deep-link",
+        "url"
+      ]
+    },
+    {
+      "id": "custom-url-scheme",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Custom URL scheme",
+      "android": {
+        "name": "intent-filter with custom scheme",
+        "url": "https://developer.android.com/training/app-links/deep-linking"
+      },
+      "ios": {
+        "name": "CFBundleURLTypes / onOpenURL",
+        "url": "https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app"
+      },
+      "flutter": {
+        "name": "app_links package",
+        "url": "https://pub.dev/packages/app_links"
+      },
+      "react_native": {
+        "name": "Linking",
+        "url": "https://reactnative.dev/docs/linking"
+      },
+      "notes": "Custom schemes are unverified, so any app can claim myapp://; never carry auth tokens in them. Prefer verified https links, and use schemes only for app-to-app or dev tooling.",
+      "tags": [
+        "deep-link",
+        "url",
+        "security"
+      ]
+    },
+    {
+      "id": "back-handling",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "System back behavior",
+      "android": {
+        "name": "Back button/gesture, OnBackPressedDispatcher, Predictive Back",
+        "url": "https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture"
+      },
+      "ios": {
+        "name": "Edge swipe pop gesture (interactivePopGestureRecognizer) / navigation bar back",
+        "url": "https://developer.apple.com/documentation/uikit/uinavigationcontroller/interactivepopgesturerecognizer"
+      },
+      "flutter": {
+        "name": "PopScope",
+        "url": "https://api.flutter.dev/flutter/widgets/PopScope-class.html"
+      },
+      "react_native": {
+        "name": "BackHandler (Android only)",
+        "url": "https://reactnative.dev/docs/backhandler"
+      },
+      "notes": "iOS has no system back button; users go back via the swipe from the left edge or the nav bar item, so a custom left-edge swipe collides with it. On Android, intercepting back must follow Predictive Back rules (declare intent early, not in the callback).",
+      "tags": [
+        "navigation",
+        "back",
+        "gestures"
+      ]
+    },
+    {
+      "id": "adaptive-panes",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Adaptive master-detail layouts",
+      "android": {
+        "name": "Navigation 3 Scenes / ListDetailPaneScaffold",
+        "url": "https://developer.android.com/develop/ui/compose/layouts/adaptive/list-detail"
+      },
+      "ios": {
+        "name": "NavigationSplitView",
+        "url": "https://developer.apple.com/documentation/swiftui/navigationsplitview"
+      },
+      "flutter": {
+        "name": "LayoutBuilder + two-pane widgets (no built-in scaffold)",
+        "url": "https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html"
+      },
+      "react_native": null,
+      "notes": "Both collapse to a single pane on compact widths and expand on tablets, foldables and iPad. Drive decisions from window size classes, not device type, and keep selection state outside the pane widgets so it survives resizing.",
+      "tags": [
+        "adaptive",
+        "tablet",
+        "navigation"
+      ]
+    },
+    {
+      "id": "intent-implicit",
+      "kind": "concept",
+      "category": "navigation",
+      "title": "Handing work to another app/screen (Intent)",
+      "android": {
+        "name": "Intent (explicit and implicit) + intent filters",
+        "url": "https://developer.android.com/guide/components/intents-filters"
+      },
+      "ios": {
+        "name": "No single equivalent: URL schemes, Universal Links, App Intents, UIActivityViewController, app extensions",
+        "url": "https://developer.apple.com/documentation/appintents"
+      },
+      "flutter": {
+        "name": "url_launcher / platform channels",
+        "url": "https://pub.dev/packages/url_launcher"
+      },
+      "react_native": {
+        "name": "Linking",
+        "url": "https://reactnative.dev/docs/linking"
+      },
+      "notes": "An Intent is one mechanism for starting components, returning results and broadcasting. iOS splits these jobs across several unrelated APIs, and there is no registry of apps that can handle a generic action: you open a known URL or present the share sheet. Do not expect to query which apps can handle an action; iOS only lets you test for schemes you list in LSApplicationQueriesSchemes.",
+      "tags": [
+        "intent",
+        "interop",
+        "no-direct-equivalent"
+      ]
+    },
+    {
+      "id": "layout-engine",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Constraint-based layout",
+      "android": {
+        "name": "ConstraintLayout",
+        "url": "https://developer.android.com/develop/ui/views/layout/constraint-layout"
+      },
+      "ios": {
+        "name": "Auto Layout (NSLayoutConstraint / anchors)",
+        "url": "https://developer.apple.com/documentation/uikit/view-layout"
+      },
+      "flutter": {
+        "name": "Flex/Stack/Align (constraints go down, sizes go up)",
+        "url": "https://docs.flutter.dev/ui/layout/constraints"
+      },
+      "react_native": {
+        "name": "Flexbox (Yoga)",
+        "url": "https://reactnative.dev/docs/flexbox"
+      },
+      "notes": "Both express relationships between views, but Auto Layout constraints are solved at runtime and can conflict, logging unsatisfiable-constraint warnings, while ConstraintLayout rejects ambiguous layouts at design time. In Compose and SwiftUI you rarely need either; use Row/Column/Box or HStack/VStack/ZStack.",
+      "tags": [
+        "layout",
+        "views"
+      ]
+    },
+    {
+      "id": "stack-layouts",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Declarative layout primitives",
+      "android": {
+        "name": "Row / Column / Box (Compose)",
+        "url": "https://developer.android.com/develop/ui/compose/layouts/basics"
+      },
+      "ios": {
+        "name": "HStack / VStack / ZStack (SwiftUI)",
+        "url": "https://developer.apple.com/documentation/swiftui/layout-fundamentals"
+      },
+      "flutter": {
+        "name": "Row / Column / Stack",
+        "url": "https://docs.flutter.dev/ui/layout"
+      },
+      "react_native": {
+        "name": "View with flexDirection",
+        "url": "https://reactnative.dev/docs/flexbox"
+      },
+      "notes": "Compose modifiers are order-sensitive (padding then background differs from background then padding) and SwiftUI modifiers are too. React Native defaults to column direction and Flutter's Stack is positional, so ZStack is not a perfect match.",
+      "tags": [
+        "layout",
+        "declarative"
+      ]
+    },
+    {
+      "id": "units",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Sizing units",
+      "android": {
+        "name": "dp (layout) / sp (text)",
+        "url": "https://developer.android.com/training/multiscreen/screendensities"
+      },
+      "ios": {
+        "name": "points (pt); Dynamic Type for text",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/layout"
+      },
+      "flutter": {
+        "name": "Logical pixels",
+        "url": "https://docs.flutter.dev/ui/layout"
+      },
+      "react_native": {
+        "name": "Density-independent pixels (PixelRatio)",
+        "url": "https://reactnative.dev/docs/pixelratio"
+      },
+      "notes": "dp and pt are both density-independent and numbers often port 1:1 as a starting point, but they are not physically identical (dp is defined against a 160 dpi baseline; pt is scaled by the @2x/@3x factor of the device). Use sp or Dynamic Type for text so system font-size preferences are honored.",
+      "tags": [
+        "units",
+        "dp",
+        "pt"
+      ]
+    },
+    {
+      "id": "image-resources",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Image & bundled assets",
+      "android": {
+        "name": "res/drawable, mipmap, VectorDrawable",
+        "url": "https://developer.android.com/guide/topics/resources/drawable-resource"
+      },
+      "ios": {
+        "name": "Asset catalog (.xcassets), SF Symbols",
+        "url": "https://developer.apple.com/documentation/xcode/managing-assets-with-asset-catalogs"
+      },
+      "flutter": {
+        "name": "assets/ declared in pubspec.yaml",
+        "url": "https://docs.flutter.dev/ui/assets/assets-and-images"
+      },
+      "react_native": {
+        "name": "require() / Image source",
+        "url": "https://reactnative.dev/docs/images"
+      },
+      "notes": "Android uses density buckets (mdpi, xhdpi...) or vectors; iOS asset catalogs provide 1x/2x/3x or single-scale vectors and automatically support dark/high-contrast variants. Adaptive launcher icons on Android and app icons on iOS follow different shape rules, so you cannot reuse one asset.",
+      "tags": [
+        "assets",
+        "images"
+      ]
+    },
+    {
+      "id": "string-localization",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Localized strings",
+      "android": {
+        "name": "res/values/strings.xml, plurals",
+        "url": "https://developer.android.com/guide/topics/resources/string-resource"
+      },
+      "ios": {
+        "name": "String Catalog (.xcstrings) / Localizable.strings",
+        "url": "https://developer.apple.com/documentation/xcode/localizing-and-varying-text-with-a-string-catalog"
+      },
+      "flutter": {
+        "name": "ARB files + flutter gen-l10n",
+        "url": "https://docs.flutter.dev/ui/accessibility-and-localization/internationalization"
+      },
+      "react_native": {
+        "name": "expo-localization / i18n libraries",
+        "url": "https://docs.expo.dev/versions/latest/sdk/localization/"
+      },
+      "notes": "Placeholder syntax differs (%1$s on Android, %@ and %lld on iOS), so shared translation files need conversion. Both support plural rules, but iOS String Catalogs can also vary by device. Per-app language settings exist on both platforms.",
+      "tags": [
+        "i18n",
+        "strings"
+      ]
+    },
+    {
+      "id": "theming",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Theme / styling system",
+      "android": {
+        "name": "Material 3 theme (MaterialTheme / themes.xml)",
+        "url": "https://developer.android.com/develop/ui/compose/designsystems/material3"
+      },
+      "ios": {
+        "name": "Asset-catalog colors, tint color, SwiftUI ShapeStyle/foregroundStyle",
+        "url": "https://developer.apple.com/documentation/swiftui/color"
+      },
+      "flutter": {
+        "name": "ThemeData",
+        "url": "https://api.flutter.dev/flutter/material/ThemeData-class.html"
+      },
+      "react_native": {
+        "name": "StyleSheet + your own theme context",
+        "url": "https://reactnative.dev/docs/stylesheet"
+      },
+      "notes": "Android has a theme attribute system (themes, styles, dynamic color) that cascades through the view tree. iOS has no global style sheet: SwiftUI propagates a few values through the environment and appearance proxies in UIKit are limited. Expect to build your own design-token layer on iOS.",
+      "tags": [
+        "theme",
+        "design-system"
+      ]
+    },
+    {
+      "id": "dark-mode",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Dark mode",
+      "android": {
+        "name": "Theme.*.DayNight / isSystemInDarkTheme()",
+        "url": "https://developer.android.com/develop/ui/views/theming/darktheme"
+      },
+      "ios": {
+        "name": "UIUserInterfaceStyle / @Environment(\\.colorScheme)",
+        "url": "https://developer.apple.com/documentation/uikit/supporting-dark-mode-in-your-interface"
+      },
+      "flutter": {
+        "name": "ThemeData.dark / ThemeMode",
+        "url": "https://api.flutter.dev/flutter/material/ThemeData-class.html"
+      },
+      "react_native": {
+        "name": "useColorScheme / Appearance",
+        "url": "https://reactnative.dev/docs/usecolorscheme"
+      },
+      "notes": "Both follow the system setting by default. On Android, dark mode changes trigger a configuration change that recreates the Activity; iOS updates trait collections in place. Hard-coded colors are the main cause of broken dark UI on both.",
+      "tags": [
+        "theme",
+        "dark-mode"
+      ]
+    },
+    {
+      "id": "font-scaling",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Text scaling and custom fonts",
+      "android": {
+        "name": "sp units + font scale; res/font",
+        "url": "https://developer.android.com/develop/ui/compose/text/fonts"
+      },
+      "ios": {
+        "name": "Dynamic Type + custom fonts via UIFont/Font.custom",
+        "url": "https://developer.apple.com/documentation/swiftui/dynamictypesize"
+      },
+      "flutter": {
+        "name": "MediaQuery.textScalerOf; fonts in pubspec",
+        "url": "https://docs.flutter.dev/cookbook/design/fonts"
+      },
+      "react_native": {
+        "name": "allowFontScaling / fontScale",
+        "url": "https://reactnative.dev/docs/text"
+      },
+      "notes": "Both honor a user-chosen text size. iOS custom fonts only scale automatically if you use scaled metrics (UIFontMetrics / relativeTo), and Android clamps nothing by default, so test at the largest setting for truncation.",
+      "tags": [
+        "accessibility",
+        "typography"
+      ]
+    },
+    {
+      "id": "safe-area",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Safe areas / system bar insets",
+      "android": {
+        "name": "WindowInsets, enableEdgeToEdge()",
+        "url": "https://developer.android.com/develop/ui/views/layout/edge-to-edge"
+      },
+      "ios": {
+        "name": "Safe area (safeAreaInsets, safeAreaInset(edge:))",
+        "url": "https://developer.apple.com/documentation/uikit/uiview/safeareainsets"
+      },
+      "flutter": {
+        "name": "SafeArea widget",
+        "url": "https://api.flutter.dev/flutter/widgets/SafeArea-class.html"
+      },
+      "react_native": {
+        "name": "SafeAreaView (core is iOS only; use react-native-safe-area-context)",
+        "url": "https://reactnative.dev/docs/safeareaview"
+      },
+      "notes": "Android 15+ forces edge-to-edge for apps targeting SDK 35, so you must handle insets yourself. iOS SwiftUI draws within safe areas by default and you opt out with ignoresSafeArea; keyboard insets behave differently (Android needs imePadding, SwiftUI avoids the keyboard automatically).",
+      "tags": [
+        "layout",
+        "insets",
+        "edge-to-edge"
+      ]
+    },
+    {
+      "id": "size-classes",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Window / size classes",
+      "android": {
+        "name": "WindowSizeClass (Compact/Medium/Expanded)",
+        "url": "https://developer.android.com/develop/ui/compose/layouts/adaptive"
+      },
+      "ios": {
+        "name": "horizontalSizeClass / verticalSizeClass",
+        "url": "https://developer.apple.com/documentation/swiftui/environmentvalues/horizontalsizeclass"
+      },
+      "flutter": {
+        "name": "MediaQuery.sizeOf / LayoutBuilder",
+        "url": "https://api.flutter.dev/flutter/widgets/MediaQuery-class.html"
+      },
+      "react_native": {
+        "name": "useWindowDimensions",
+        "url": "https://reactnative.dev/docs/usewindowdimensions"
+      },
+      "notes": "iOS has only two classes (compact/regular) per axis, Android has three width buckets. On iPad multitasking and Android freeform windows the app window, not the screen, is what matters, so never read the physical display size.",
+      "tags": [
+        "adaptive",
+        "tablet"
+      ]
+    },
+    {
+      "id": "accessibility-screen-reader",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Screen reader",
+      "android": {
+        "name": "TalkBack",
+        "url": "https://developer.android.com/guide/topics/ui/accessibility"
+      },
+      "ios": {
+        "name": "VoiceOver",
+        "url": "https://developer.apple.com/documentation/accessibility"
+      },
+      "flutter": {
+        "name": "Semantics widget",
+        "url": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+      },
+      "react_native": {
+        "name": "Accessibility props / AccessibilityInfo",
+        "url": "https://reactnative.dev/docs/accessibility"
+      },
+      "notes": "TalkBack uses double-tap to activate and explores by touch with linear swipes; VoiceOver adds a rotor and different gestures. Test with the real screen reader on each platform since focus order and announcement timing differ.",
+      "tags": [
+        "accessibility",
+        "a11y"
+      ]
+    },
+    {
+      "id": "accessibility-labels",
+      "kind": "concept",
+      "category": "ui-layout",
+      "title": "Accessibility labels & semantics",
+      "android": {
+        "name": "contentDescription / Modifier.semantics",
+        "url": "https://developer.android.com/develop/ui/compose/accessibility"
+      },
+      "ios": {
+        "name": "accessibilityLabel / accessibilityHint / traits (.accessibilityLabel in SwiftUI)",
+        "url": "https://developer.apple.com/documentation/swiftui/view-accessibility"
+      },
+      "flutter": {
+        "name": "Semantics(label:)",
+        "url": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+      },
+      "react_native": {
+        "name": "accessibilityLabel / accessibilityRole",
+        "url": "https://reactnative.dev/docs/accessibility"
+      },
+      "notes": "iOS splits what Android lumps into contentDescription: label (what it is), value, hint (what happens) and traits (role). Do not put role words like 'button' in the label on either platform; the screen reader adds them.",
+      "tags": [
+        "accessibility",
+        "a11y",
+        "labels"
+      ]
+    },
+    {
+      "id": "list-recycling",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Scrolling list of many rows",
+      "android": {
+        "name": "RecyclerView (Views) / LazyColumn (Compose)",
+        "url": "https://developer.android.com/develop/ui/compose/lists"
+      },
+      "ios": {
+        "name": "UITableView / UICollectionView; SwiftUI List / LazyVStack",
+        "url": "https://developer.apple.com/documentation/swiftui/list"
+      },
+      "flutter": {
+        "name": "ListView.builder",
+        "url": "https://api.flutter.dev/flutter/widgets/ListView-class.html"
+      },
+      "react_native": {
+        "name": "FlatList",
+        "url": "https://reactnative.dev/docs/flatlist"
+      },
+      "notes": "All of these create rows lazily. Stable item identity matters everywhere: LazyColumn needs key, SwiftUI needs Identifiable ids, and UIKit now uses diffable data sources. SwiftUI List has built-in swipe actions and selection; in LazyVStack you rebuild them yourself.",
+      "tags": [
+        "list",
+        "performance"
+      ]
+    },
+    {
+      "id": "grid",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Grid of items",
+      "android": {
+        "name": "LazyVerticalGrid / GridLayoutManager",
+        "url": "https://developer.android.com/develop/ui/compose/lists#lazy-grids"
+      },
+      "ios": {
+        "name": "LazyVGrid / UICollectionViewCompositionalLayout",
+        "url": "https://developer.apple.com/documentation/swiftui/lazyvgrid"
+      },
+      "flutter": {
+        "name": "GridView.builder",
+        "url": "https://api.flutter.dev/flutter/widgets/GridView-class.html"
+      },
+      "react_native": {
+        "name": "FlatList numColumns",
+        "url": "https://reactnative.dev/docs/flatlist"
+      },
+      "notes": "UICollectionView composes layouts declaratively and is more flexible than GridLayoutManager. SwiftUI's Grid (non-lazy, aligned columns) is different from LazyVGrid; choose Grid for small tables and LazyVGrid for large data.",
+      "tags": [
+        "list",
+        "grid"
+      ]
+    },
+    {
+      "id": "alert-dialog",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Alert / confirmation dialog",
+      "android": {
+        "name": "AlertDialog",
+        "url": "https://developer.android.com/develop/ui/compose/components/dialog"
+      },
+      "ios": {
+        "name": "alert modifier (SwiftUI) / UIAlertController",
+        "url": "https://developer.apple.com/documentation/swiftui/view/alert(_:ispresented:actions:message:)"
+      },
+      "flutter": {
+        "name": "showDialog / AlertDialog",
+        "url": "https://api.flutter.dev/flutter/material/showDialog.html"
+      },
+      "react_native": {
+        "name": "Alert.alert",
+        "url": "https://reactnative.dev/docs/alert"
+      },
+      "notes": "iOS alerts are system-styled and limited to buttons plus an optional text field; you cannot embed arbitrary layout. Android dialogs are ordinary composables and accept any content. iOS buttons carry roles (destructive, cancel) that the system styles for you.",
+      "tags": [
+        "dialog",
+        "alert"
+      ]
+    },
+    {
+      "id": "transient-message",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Transient message (toast / snackbar)",
+      "android": {
+        "name": "Snackbar (Material) / Toast",
+        "url": "https://developer.android.com/develop/ui/compose/components/snackbar"
+      },
+      "ios": {
+        "name": "No system equivalent; custom overlay or a third-party toast",
+        "url": "https://developer.apple.com/documentation/swiftui/view/overlay(alignment:content:)"
+      },
+      "flutter": {
+        "name": "SnackBar",
+        "url": "https://api.flutter.dev/flutter/material/SnackBar-class.html"
+      },
+      "react_native": {
+        "name": "ToastAndroid (Android only)",
+        "url": "https://reactnative.dev/docs/toastandroid"
+      },
+      "notes": "iOS deliberately has no system toast or snackbar, and apps build a custom banner overlay or use inline error UI. Android Toast cannot be tapped or dismissed by the user, and since Android 11 custom toast views are blocked for apps targeting API 30+.",
+      "tags": [
+        "feedback",
+        "no-direct-equivalent"
+      ]
+    },
+    {
+      "id": "bottom-sheet",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Bottom sheet",
+      "android": {
+        "name": "ModalBottomSheet (Material 3)",
+        "url": "https://developer.android.com/develop/ui/compose/components/bottom-sheets"
+      },
+      "ios": {
+        "name": "sheet + presentationDetents (SwiftUI) / UISheetPresentationController",
+        "url": "https://developer.apple.com/documentation/swiftui/view/presentationdetents(_:)"
+      },
+      "flutter": {
+        "name": "showModalBottomSheet",
+        "url": "https://api.flutter.dev/flutter/material/showModalBottomSheet.html"
+      },
+      "react_native": {
+        "name": "Modal (or a library such as @gorhom/bottom-sheet)",
+        "url": "https://reactnative.dev/docs/modal"
+      },
+      "notes": "iOS sheets are first-class system presentations with detents (medium/large) and interactive dismissal by default. On Android you manage expansion state and nested scrolling yourself. Disabling swipe-to-dismiss uses interactiveDismissDisabled on iOS and confirmValueChange on Android.",
+      "tags": [
+        "sheet",
+        "modal"
+      ]
+    },
+    {
+      "id": "app-bar",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Top app bar / navigation bar",
+      "android": {
+        "name": "TopAppBar (Material 3)",
+        "url": "https://developer.android.com/develop/ui/compose/components/app-bars"
+      },
+      "ios": {
+        "name": "Navigation bar + toolbar (SwiftUI .toolbar, UINavigationBar)",
+        "url": "https://developer.apple.com/documentation/swiftui/view/toolbar(content:)"
+      },
+      "flutter": {
+        "name": "AppBar",
+        "url": "https://api.flutter.dev/flutter/material/AppBar-class.html"
+      },
+      "react_native": {
+        "name": "Header from React Navigation stack",
+        "url": "https://reactnavigation.org/docs/headers"
+      },
+      "notes": "On iOS the nav bar is owned by the navigation container, and the title comes from the screen (navigationTitle). On Android the app bar is a composable you place per screen. Large collapsing titles are a native iOS behavior; Android needs a scroll-behavior setup.",
+      "tags": [
+        "toolbar",
+        "navigation"
+      ]
+    },
+    {
+      "id": "text-input",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Text field",
+      "android": {
+        "name": "TextField / EditText",
+        "url": "https://developer.android.com/develop/ui/compose/text/user-input"
+      },
+      "ios": {
+        "name": "TextField / SecureField (SwiftUI) / UITextField",
+        "url": "https://developer.apple.com/documentation/swiftui/textfield"
+      },
+      "flutter": {
+        "name": "TextField",
+        "url": "https://api.flutter.dev/flutter/material/TextField-class.html"
+      },
+      "react_native": {
+        "name": "TextInput",
+        "url": "https://reactnative.dev/docs/textinput"
+      },
+      "notes": "Keyboard type, autofill hints, and return-key actions have different names on each platform (inputType/KeyboardOptions vs keyboardType/textContentType). Programmatic focus uses FocusRequester on Android and @FocusState on SwiftUI.",
+      "tags": [
+        "input",
+        "keyboard"
+      ]
+    },
+    {
+      "id": "date-picker",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Date / time picker",
+      "android": {
+        "name": "DatePicker / TimePicker (Material 3)",
+        "url": "https://developer.android.com/develop/ui/compose/components/datepickers"
+      },
+      "ios": {
+        "name": "DatePicker (SwiftUI)",
+        "url": "https://developer.apple.com/documentation/swiftui/datepicker"
+      },
+      "flutter": {
+        "name": "showDatePicker",
+        "url": "https://api.flutter.dev/flutter/material/showDatePicker.html"
+      },
+      "react_native": {
+        "name": "@react-native-community/datetimepicker",
+        "url": "https://github.com/react-native-datetimepicker/datetimepicker"
+      },
+      "notes": "iOS offers wheel, compact and graphical styles from one control; Android Material shows a modal dialog or a docked input. Dates are UTC milliseconds on Android's picker, so convert time zones deliberately.",
+      "tags": [
+        "input",
+        "date"
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Dropdown / context menu",
+      "android": {
+        "name": "DropdownMenu / PopupMenu",
+        "url": "https://developer.android.com/develop/ui/compose/components/menu"
+      },
+      "ios": {
+        "name": "Menu / contextMenu (SwiftUI) / UIMenu",
+        "url": "https://developer.apple.com/documentation/swiftui/menu"
+      },
+      "flutter": {
+        "name": "MenuAnchor / PopupMenuButton",
+        "url": "https://api.flutter.dev/flutter/material/MenuAnchor-class.html"
+      },
+      "react_native": null,
+      "notes": "iOS menus open from a tap or long-press and are system-rendered. Android menus are anchored popups that you position yourself. Long-press context menus exist in both but are not discoverable, so do not hide primary actions there.",
+      "tags": [
+        "menu"
+      ]
+    },
+    {
+      "id": "pull-to-refresh",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Pull to refresh",
+      "android": {
+        "name": "PullToRefreshBox (Material 3)",
+        "url": "https://developer.android.com/develop/ui/compose/components/pull-to-refresh"
+      },
+      "ios": {
+        "name": "refreshable modifier / UIRefreshControl",
+        "url": "https://developer.apple.com/documentation/swiftui/view/refreshable(action:)"
+      },
+      "flutter": {
+        "name": "RefreshIndicator",
+        "url": "https://api.flutter.dev/flutter/material/RefreshIndicator-class.html"
+      },
+      "react_native": {
+        "name": "RefreshControl",
+        "url": "https://reactnative.dev/docs/refreshcontrol"
+      },
+      "notes": "SwiftUI's refreshable takes an async closure and ends the spinner when it returns, so there is no isRefreshing flag to manage. Material needs you to set the refreshing state yourself.",
+      "tags": [
+        "list",
+        "refresh"
+      ]
+    },
+    {
+      "id": "search",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Search bar",
+      "android": {
+        "name": "SearchBar / DockedSearchBar",
+        "url": "https://developer.android.com/develop/ui/compose/components/search-bar"
+      },
+      "ios": {
+        "name": "searchable modifier / UISearchController",
+        "url": "https://developer.apple.com/documentation/swiftui/view/searchable(text:placement:prompt:)"
+      },
+      "flutter": {
+        "name": "SearchAnchor",
+        "url": "https://api.flutter.dev/flutter/material/SearchAnchor-class.html"
+      },
+      "react_native": null,
+      "notes": "On iOS search is attached to the navigation container and integrates with the nav bar and suggestions; on Android it is an explicit composable you lay out. Debounce querying yourself in both.",
+      "tags": [
+        "search"
+      ]
+    },
+    {
+      "id": "webview",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Embedded web content",
+      "android": {
+        "name": "WebView",
+        "url": "https://developer.android.com/develop/ui/views/layout/webapps/webview"
+      },
+      "ios": {
+        "name": "WKWebView / SwiftUI WebView",
+        "url": "https://developer.apple.com/documentation/webkit/wkwebview"
+      },
+      "flutter": {
+        "name": "webview_flutter",
+        "url": "https://pub.dev/packages/webview_flutter"
+      },
+      "react_native": {
+        "name": "react-native-webview (community package)",
+        "url": "https://github.com/react-native-webview/react-native-webview"
+      },
+      "notes": "Android WebView is updatable through Google Play System WebView; WKWebView follows the OS version. JavaScript bridging APIs differ (addJavascriptInterface vs WKScriptMessageHandler), and cookie/storage handling is configured differently (CookieManager vs WKWebsiteDataStore), so login state does not carry over automatically between your native HTTP client and the web view.",
+      "tags": [
+        "web",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "gestures",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Touch gestures",
+      "android": {
+        "name": "pointerInput / detectTapGestures / GestureDetector",
+        "url": "https://developer.android.com/develop/ui/compose/touch-input/pointer-input"
+      },
+      "ios": {
+        "name": "Gesture protocol (SwiftUI) / UIGestureRecognizer",
+        "url": "https://developer.apple.com/documentation/swiftui/gestures"
+      },
+      "flutter": {
+        "name": "GestureDetector",
+        "url": "https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"
+      },
+      "react_native": {
+        "name": "Pressable / PanResponder; Gesture Handler (community)",
+        "url": "https://reactnative.dev/docs/pressable"
+      },
+      "notes": "iOS recognizers are declared and arbitrated by the system (require failure, simultaneous), whereas Android gestures are mostly handled in a single pointer-event stream where you decide who consumes what. Conflicts between nested scroll and drag are the usual trouble spot.",
+      "tags": [
+        "gestures",
+        "touch"
+      ]
+    },
+    {
+      "id": "animation",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Animation",
+      "android": {
+        "name": "animate*AsState / AnimatedVisibility / Transition (Compose); ObjectAnimator (Views)",
+        "url": "https://developer.android.com/develop/ui/compose/animation/introduction"
+      },
+      "ios": {
+        "name": "withAnimation / .animation / matchedGeometryEffect (SwiftUI); UIView.animate",
+        "url": "https://developer.apple.com/documentation/swiftui/animations"
+      },
+      "flutter": {
+        "name": "Implicit animations / AnimationController",
+        "url": "https://docs.flutter.dev/ui/animations"
+      },
+      "react_native": {
+        "name": "Animated / Reanimated (community)",
+        "url": "https://reactnative.dev/docs/animated"
+      },
+      "notes": "SwiftUI animates state changes implicitly when you wrap the mutation in withAnimation; Compose animates specific values you declare. Spring is the default feel on iOS, tween on Android.",
+      "tags": [
+        "animation",
+        "motion"
+      ]
+    },
+    {
+      "id": "custom-drawing",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Custom 2D drawing",
+      "android": {
+        "name": "Canvas / DrawScope (Compose), Canvas (Views)",
+        "url": "https://developer.android.com/develop/ui/compose/graphics/draw/overview"
+      },
+      "ios": {
+        "name": "Canvas (SwiftUI) / Core Graphics",
+        "url": "https://developer.apple.com/documentation/swiftui/canvas"
+      },
+      "flutter": {
+        "name": "CustomPainter",
+        "url": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html"
+      },
+      "react_native": {
+        "name": "react-native-skia / SVG (community)",
+        "url": "https://shopify.github.io/react-native-skia/"
+      },
+      "notes": "Both give an immediate-mode drawing context. In SwiftUI Canvas content is not accessible to VoiceOver, so add labels; Compose Canvas needs semantics too.",
+      "tags": [
+        "graphics",
+        "canvas"
+      ]
+    },
+    {
+      "id": "haptics",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Haptic feedback",
+      "android": {
+        "name": "HapticFeedback / View.performHapticFeedback / Vibrator",
+        "url": "https://developer.android.com/develop/ui/views/haptics"
+      },
+      "ios": {
+        "name": "UIFeedbackGenerator / sensoryFeedback (SwiftUI)",
+        "url": "https://developer.apple.com/documentation/uikit/uifeedbackgenerator"
+      },
+      "flutter": {
+        "name": "HapticFeedback",
+        "url": "https://api.flutter.dev/flutter/services/HapticFeedback-class.html"
+      },
+      "react_native": {
+        "name": "Vibration",
+        "url": "https://reactnative.dev/docs/vibration"
+      },
+      "notes": "iOS offers a small set of semantic haptic types (impact, selection, notification) tied to the Taptic Engine; Android hardware varies widely, and you should use predefined haptic constants over raw durations.",
+      "tags": [
+        "haptics"
+      ]
+    },
+    {
+      "id": "drag-drop",
+      "kind": "concept",
+      "category": "ui-components",
+      "title": "Drag and drop",
+      "android": {
+        "name": "dragAndDropSource / dragAndDropTarget (Compose)",
+        "url": "https://developer.android.com/develop/ui/compose/touch-input/user-interactions/drag-and-drop"
+      },
+      "ios": {
+        "name": "draggable / dropDestination (SwiftUI)",
+        "url": "https://developer.apple.com/documentation/swiftui/drag-and-drop"
+      },
+      "flutter": {
+        "name": "Draggable / DragTarget",
+        "url": "https://api.flutter.dev/flutter/widgets/Draggable-class.html"
+      },
+      "react_native": null,
+      "notes": "Both support cross-app drag on tablets and desktop-class windows. iOS uses Transferable types; Android uses ClipData. Neither is a good choice for in-list reordering, which has dedicated APIs.",
+      "tags": [
+        "drag",
+        "interaction"
+      ]
+    },
+    {
+      "id": "view-model",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Screen-level state holder",
+      "android": {
+        "name": "ViewModel (Jetpack)",
+        "url": "https://developer.android.com/topic/libraries/architecture/viewmodel"
+      },
+      "ios": {
+        "name": "@Observable class (Observation) / ObservableObject",
+        "url": "https://developer.apple.com/documentation/observation"
+      },
+      "flutter": {
+        "name": "ChangeNotifier / Cubit (bloc) / Riverpod Notifier",
+        "url": "https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html"
+      },
+      "react_native": {
+        "name": "Custom hook / Zustand / Redux store",
+        "url": "https://react.dev/reference/react/hooks"
+      },
+      "notes": "Android's ViewModel survives configuration change and is scoped to a back stack entry; an @Observable class has no built-in scope or survival and lives as long as the view that owns it with @State. Prefer @Observable over ObservableObject on iOS 17+; it tracks per-property reads, so fewer redundant redraws.",
+      "tags": [
+        "state",
+        "architecture",
+        "observation"
+      ]
+    },
+    {
+      "id": "local-ui-state",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Local mutable UI state",
+      "android": {
+        "name": "remember { mutableStateOf() } / rememberSaveable",
+        "url": "https://developer.android.com/develop/ui/compose/state"
+      },
+      "ios": {
+        "name": "@State / @Binding / @Bindable",
+        "url": "https://developer.apple.com/documentation/swiftui/state"
+      },
+      "flutter": {
+        "name": "StatefulWidget + setState",
+        "url": "https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html"
+      },
+      "react_native": {
+        "name": "useState",
+        "url": "https://react.dev/reference/react/useState"
+      },
+      "notes": "Compose state is held by the composition slot table and lost if the composable leaves the tree; SwiftUI @State is tied to view identity, which resets if you change a view's identity or position. rememberSaveable has no real SwiftUI analogue except @SceneStorage.",
+      "tags": [
+        "state",
+        "ui"
+      ]
+    },
+    {
+      "id": "reactive-streams",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Observable streams / reactive data",
+      "android": {
+        "name": "StateFlow / SharedFlow / Flow (also LiveData)",
+        "url": "https://developer.android.com/kotlin/flow/stateflow-and-sharedflow"
+      },
+      "ios": {
+        "name": "AsyncSequence / AsyncStream, Combine publishers",
+        "url": "https://developer.apple.com/documentation/swift/asyncsequence"
+      },
+      "flutter": {
+        "name": "Stream / ValueNotifier",
+        "url": "https://api.flutter.dev/flutter/dart-async/Stream-class.html"
+      },
+      "react_native": null,
+      "notes": "Flow maps closely to AsyncSequence for new code; Combine is the older reactive library in Apple's ecosystem and is being superseded in practice by async/await and Observation. LiveData has no direct Swift equivalent. Collect flows with a lifecycle-aware operator on Android (collectAsStateWithLifecycle).",
+      "tags": [
+        "streams",
+        "reactive",
+        "flow",
+        "combine"
+      ]
+    },
+    {
+      "id": "async-await",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Async code",
+      "android": {
+        "name": "Kotlin coroutines (suspend)",
+        "url": "https://developer.android.com/kotlin/coroutines"
+      },
+      "ios": {
+        "name": "Swift Concurrency (async/await, Task, actors)",
+        "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/"
+      },
+      "flutter": {
+        "name": "Future / async / await",
+        "url": "https://api.flutter.dev/flutter/dart-async/Future-class.html"
+      },
+      "react_native": {
+        "name": "Promise / async / await",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+      },
+      "notes": "Both are structured and cancellation is cooperative: a cancelled coroutine only stops at a suspension point, and a cancelled Task only stops if the code checks Task.isCancelled or calls a cancellable API. Dart and JS are single-threaded event loops, so there is no actor or dispatcher choice.",
+      "tags": [
+        "async",
+        "concurrency"
+      ]
+    },
+    {
+      "id": "structured-scope",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Structured concurrency scope",
+      "android": {
+        "name": "CoroutineScope / viewModelScope / lifecycleScope",
+        "url": "https://developer.android.com/topic/libraries/architecture/coroutines"
+      },
+      "ios": {
+        "name": "Task, TaskGroup, SwiftUI .task modifier",
+        "url": "https://developer.apple.com/documentation/swift/task"
+      },
+      "flutter": {
+        "name": "Isolate / compute() for CPU work",
+        "url": "https://api.flutter.dev/flutter/dart-isolate/Isolate-class.html"
+      },
+      "react_native": null,
+      "notes": "viewModelScope cancels when the ViewModel clears; SwiftUI .task cancels when the view disappears. An unstructured Task { } or Task.detached has no automatic cancellation and loses actor context, which parallels GlobalScope.launch.",
+      "tags": [
+        "async",
+        "scope",
+        "cancellation"
+      ]
+    },
+    {
+      "id": "main-thread",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Main thread and thread hopping",
+      "android": {
+        "name": "Dispatchers.Main / Handler(Looper.getMainLooper()) / runOnUiThread",
+        "url": "https://developer.android.com/reference/android/os/Handler"
+      },
+      "ios": {
+        "name": "@MainActor / DispatchQueue.main",
+        "url": "https://developer.apple.com/documentation/swift/mainactor"
+      },
+      "flutter": {
+        "name": "Dart event loop (single UI isolate)",
+        "url": "https://docs.flutter.dev/perf/isolates"
+      },
+      "react_native": {
+        "name": "JS thread / UI thread bridging (InteractionManager, TurboModules)",
+        "url": "https://reactnative.dev/docs/performance"
+      },
+      "notes": "@MainActor is checked by the compiler in Swift 6 language mode, while Android only fails at runtime (CalledFromWrongThreadException). Background work in Android uses Dispatchers.IO/Default; in Swift it uses non-isolated async functions or an actor.",
+      "tags": [
+        "threading",
+        "main-thread"
+      ]
+    },
+    {
+      "id": "legacy-dispatch",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Thread pools and queues",
+      "android": {
+        "name": "Executor / HandlerThread / Dispatchers.IO",
+        "url": "https://developer.android.com/kotlin/coroutines"
+      },
+      "ios": {
+        "name": "Grand Central Dispatch (DispatchQueue)",
+        "url": "https://developer.apple.com/documentation/dispatch/dispatchqueue"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "GCD queues are serial or concurrent and prioritized by quality of service; Android thread pools are explicit executors. New iOS code should favor Swift Concurrency; DispatchQueue still appears around older libraries and notification callbacks.",
+      "tags": [
+        "threading",
+        "gcd"
+      ]
+    },
+    {
+      "id": "networking",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "HTTP networking",
+      "android": {
+        "name": "OkHttp / Retrofit / Ktor client (HttpURLConnection built-in)",
+        "url": "https://github.com/square/okhttp"
+      },
+      "ios": {
+        "name": "URLSession",
+        "url": "https://developer.apple.com/documentation/foundation/urlsession"
+      },
+      "flutter": {
+        "name": "package:http / dio",
+        "url": "https://pub.dev/packages/http"
+      },
+      "react_native": {
+        "name": "fetch (built-in) / axios",
+        "url": "https://reactnative.dev/docs/network"
+      },
+      "notes": "iOS has a capable first-party client and most apps do not add a networking library; Android apps almost always add OkHttp or Ktor. App Transport Security (iOS) and network security config (Android) both block cleartext HTTP by default, and iOS requires an exception key in Info.plist to opt out.",
+      "tags": [
+        "network",
+        "http"
+      ]
+    },
+    {
+      "id": "json-serialization",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "JSON encoding / decoding",
+      "android": {
+        "name": "kotlinx.serialization / Moshi / Gson",
+        "url": "https://kotlinlang.org/docs/serialization.html"
+      },
+      "ios": {
+        "name": "Codable (JSONEncoder / JSONDecoder)",
+        "url": "https://developer.apple.com/documentation/swift/codable"
+      },
+      "flutter": {
+        "name": "json_serializable / dart:convert",
+        "url": "https://docs.flutter.dev/data-and-backend/serialization/json"
+      },
+      "react_native": {
+        "name": "JSON.parse (built-in)",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"
+      },
+      "notes": "Codable is built into the language with compiler-synthesized conformance, so it needs no plugin. kotlinx.serialization needs a Gradle compiler plugin and an annotation per class. A missing key for a non-optional property throws on both unless you declare a default value (Kotlin) or an optional/custom init(from:) (Swift).",
+      "tags": [
+        "json",
+        "serialization"
+      ]
+    },
+    {
+      "id": "connectivity",
+      "kind": "concept",
+      "category": "state-concurrency",
+      "title": "Network reachability",
+      "android": {
+        "name": "ConnectivityManager.NetworkCallback",
+        "url": "https://developer.android.com/training/monitoring-device-state/connectivity-status-type"
+      },
+      "ios": {
+        "name": "NWPathMonitor (Network framework)",
+        "url": "https://developer.apple.com/documentation/network/nwpathmonitor"
+      },
+      "flutter": {
+        "name": "connectivity_plus",
+        "url": "https://pub.dev/packages/connectivity_plus"
+      },
+      "react_native": {
+        "name": "@react-native-community/netinfo",
+        "url": "https://github.com/react-native-netinfo/react-native-netinfo"
+      },
+      "notes": "Neither platform's reachability reports guarantee a request will succeed, so treat it as a hint and handle request errors. On iOS also check isConstrained and isExpensive for Low Data Mode and cellular.",
+      "tags": [
+        "network",
+        "connectivity"
+      ]
+    },
+    {
+      "id": "key-value",
+      "kind": "concept",
+      "category": "data-storage",
+      "title": "Small key-value storage",
+      "android": {
+        "name": "SharedPreferences / Jetpack DataStore",
+        "url": "https://developer.android.com/topic/libraries/architecture/datastore"
+      },
+      "ios": {
+        "name": "UserDefaults / @AppStorage",
+        "url": "https://developer.apple.com/documentation/foundation/userdefaults"
+      },
+      "flutter": {
+        "name": "shared_preferences",
+        "url": "https://pub.dev/packages/shared_preferences"
+      },
+      "react_native": {
+        "name": "AsyncStorage (community)",
+        "url": "https://github.com/react-native-async-storage/async-storage"
+      },
+      "notes": "Neither is encrypted, so keep tokens and personal data out; use Keystore/Keychain. SharedPreferences is synchronous and can block the main thread; DataStore is asynchronous. UserDefaults is also used to expose settings to App Groups and MDM.",
+      "tags": [
+        "storage",
+        "preferences"
+      ]
+    },
+    {
+      "id": "database",
+      "kind": "concept",
+      "category": "data-storage",
+      "title": "On-device database / object persistence",
+      "android": {
+        "name": "Room (over SQLite)",
+        "url": "https://developer.android.com/training/data-storage/room"
+      },
+      "ios": {
+        "name": "SwiftData (modern) / Core Data",
+        "url": "https://developer.apple.com/documentation/swiftdata"
+      },
+      "flutter": {
+        "name": "drift / sqflite",
+        "url": "https://pub.dev/packages/drift"
+      },
+      "react_native": {
+        "name": "expo-sqlite / WatermelonDB",
+        "url": "https://docs.expo.dev/versions/latest/sdk/sqlite/"
+      },
+      "notes": "Room is a thin, SQL-first layer over SQLite with compile-time query checks; SwiftData and Core Data are object graphs persisted via model macros/entities, not SQL. SwiftData (built on Core Data) uses @Model classes and @Query; plan migrations explicitly because both need a versioned schema.",
+      "tags": [
+        "database",
+        "persistence",
+        "swiftdata",
+        "core-data"
+      ]
+    },
+    {
+      "id": "file-storage",
+      "kind": "concept",
+      "category": "data-storage",
+      "title": "App sandbox files",
+      "android": {
+        "name": "Context.filesDir / cacheDir (app-specific storage)",
+        "url": "https://developer.android.com/training/data-storage/app-specific"
+      },
+      "ios": {
+        "name": "FileManager: Documents / Library / Caches",
+        "url": "https://developer.apple.com/documentation/foundation/filemanager"
+      },
+      "flutter": {
+        "name": "path_provider",
+        "url": "https://pub.dev/packages/path_provider"
+      },
+      "react_native": {
+        "name": "expo-file-system (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/filesystem/"
+      },
+      "notes": "Both give each app a private sandbox. On iOS the Caches directory can be purged by the system, and only Documents/Library are backed up by default (set isExcludedFromBackup for the rest). Absolute paths change between launches on iOS, so store relative paths.",
+      "tags": [
+        "files",
+        "storage"
+      ]
+    },
+    {
+      "id": "file-picker",
+      "kind": "concept",
+      "category": "data-storage",
+      "title": "User-chosen files",
+      "android": {
+        "name": "Storage Access Framework (ACTION_OPEN_DOCUMENT)",
+        "url": "https://developer.android.com/training/data-storage/shared/documents-files"
+      },
+      "ios": {
+        "name": "UIDocumentPickerViewController / fileImporter",
+        "url": "https://developer.apple.com/documentation/uikit/uidocumentpickerviewcontroller"
+      },
+      "flutter": {
+        "name": "file_picker",
+        "url": "https://pub.dev/packages/file_picker"
+      },
+      "react_native": {
+        "name": "expo-document-picker (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/document-picker/"
+      },
+      "notes": "Both return scoped access to the user's file, not a path. On iOS you must call startAccessingSecurityScopedResource on out-of-sandbox files, and on Android persist permission with takePersistableUriPermission to reopen later.",
+      "tags": [
+        "files",
+        "picker"
+      ]
+    },
+    {
+      "id": "cloud-sync",
+      "kind": "concept",
+      "category": "data-storage",
+      "title": "Cloud backup & sync",
+      "android": {
+        "name": "Auto Backup / Block Store",
+        "url": "https://developer.android.com/identity/data/autobackup"
+      },
+      "ios": {
+        "name": "iCloud: CloudKit / NSUbiquitousKeyValueStore",
+        "url": "https://developer.apple.com/documentation/cloudkit"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android Auto Backup restores app files to a new device but is not a sync mechanism. CloudKit is a full sync backend (SwiftData can sync through it); the Android analogue for cross-device sync is your own server or Firebase.",
+      "tags": [
+        "backup",
+        "sync",
+        "cloud"
+      ]
+    },
+    {
+      "id": "services",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "Long-lived background component",
+      "android": {
+        "name": "Service / foreground service",
+        "url": "https://developer.android.com/develop/background-work/services/foreground-services"
+      },
+      "ios": {
+        "name": "Background modes (audio, location, VoIP, etc.) in Capabilities",
+        "url": "https://developer.apple.com/documentation/xcode/configuring-background-execution-modes"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android lets you run a foreground service with a visible notification and, since Android 14, a declared foreground-service type. iOS has no general-purpose service: a backgrounded app is suspended unless it uses a specific background mode, and misuse gets rejected in App Review.",
+      "tags": [
+        "service",
+        "background"
+      ]
+    },
+    {
+      "id": "deferrable-work",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "Deferrable / guaranteed background work",
+      "android": {
+        "name": "WorkManager",
+        "url": "https://developer.android.com/topic/libraries/architecture/workmanager"
+      },
+      "ios": {
+        "name": "BGTaskScheduler (BGAppRefreshTask, BGProcessingTask)",
+        "url": "https://developer.apple.com/documentation/backgroundtasks/bgtaskscheduler"
+      },
+      "flutter": {
+        "name": "workmanager (package, wraps both)",
+        "url": "https://pub.dev/packages/workmanager"
+      },
+      "react_native": {
+        "name": "expo-background-task (Expo) / react-native-background-fetch",
+        "url": "https://docs.expo.dev/versions/latest/sdk/background-task/"
+      },
+      "notes": "WorkManager runs when constraints are met and survives reboots; BGTaskScheduler merely requests a time window and iOS decides if and when to run it, so you cannot rely on a task running at all. Never design iOS work that must happen on a schedule; use push notifications to wake the app instead.",
+      "tags": [
+        "work",
+        "scheduling",
+        "background"
+      ]
+    },
+    {
+      "id": "in-app-broadcast",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "In-process event broadcast",
+      "android": {
+        "name": "LocalBroadcastManager (deprecated) / SharedFlow event bus",
+        "url": "https://developer.android.com/develop/background-work/background-tasks/broadcasts"
+      },
+      "ios": {
+        "name": "NotificationCenter",
+        "url": "https://developer.apple.com/documentation/foundation/notificationcenter"
+      },
+      "flutter": {
+        "name": "Stream / EventBus",
+        "url": "https://api.flutter.dev/flutter/dart-async/Stream-class.html"
+      },
+      "react_native": null,
+      "notes": "NotificationCenter is an in-process pub/sub (and also carries system events like keyboard shown), not an IPC mechanism. For in-app events on Android prefer a Flow or callbacks; do not use global broadcasts.",
+      "tags": [
+        "events",
+        "pubsub"
+      ]
+    },
+    {
+      "id": "system-broadcasts",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "System event broadcasts",
+      "android": {
+        "name": "BroadcastReceiver (manifest or context-registered)",
+        "url": "https://developer.android.com/develop/background-work/background-tasks/broadcasts"
+      },
+      "ios": {
+        "name": "No direct equivalent: individual notifications (UIApplication.didBecomeActive, etc.) or specific framework callbacks",
+        "url": "https://developer.apple.com/documentation/foundation/notificationcenter"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android broadcasts cover boot, locale, battery, connectivity and cross-app messages, and most implicit ones are no longer deliverable to manifest receivers. iOS instead gives one API per event (e.g. NWPathMonitor, UIDevice battery notifications), and apps generally cannot react to boot.",
+      "tags": [
+        "broadcast",
+        "receiver",
+        "no-direct-equivalent"
+      ]
+    },
+    {
+      "id": "alarms",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "Time-based alarms / reminders",
+      "android": {
+        "name": "AlarmManager (exact alarms need permission)",
+        "url": "https://developer.android.com/develop/background-work/services/alarms"
+      },
+      "ios": {
+        "name": "UNCalendarNotificationTrigger / AlarmKit",
+        "url": "https://developer.apple.com/documentation/usernotifications/uncalendarnotificationtrigger"
+      },
+      "flutter": {
+        "name": "flutter_local_notifications scheduling",
+        "url": "https://pub.dev/packages/flutter_local_notifications"
+      },
+      "react_native": {
+        "name": "expo-notifications scheduling (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/notifications/"
+      },
+      "notes": "On Android 12+ exact alarms require SCHEDULE_EXACT_ALARM or USE_EXACT_ALARM and are policy-restricted. iOS cannot run code at a scheduled time; it can only deliver a local notification (or an AlarmKit alarm on recent iOS versions). Do not expect to execute app logic on the trigger.",
+      "tags": [
+        "alarm",
+        "scheduling"
+      ]
+    },
+    {
+      "id": "push-notifications",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "Remote push",
+      "android": {
+        "name": "Firebase Cloud Messaging (FCM)",
+        "url": "https://firebase.google.com/docs/cloud-messaging/android/client"
+      },
+      "ios": {
+        "name": "Apple Push Notification service (APNs)",
+        "url": "https://developer.apple.com/documentation/usernotifications/registering-your-app-with-apns"
+      },
+      "flutter": {
+        "name": "firebase_messaging",
+        "url": "https://pub.dev/packages/firebase_messaging"
+      },
+      "react_native": {
+        "name": "expo-notifications / @react-native-firebase/messaging",
+        "url": "https://docs.expo.dev/versions/latest/sdk/notifications/"
+      },
+      "notes": "FCM delivers high-priority data messages that start your app code, but iOS silent pushes are throttled and not guaranteed. FCM on iOS is only a wrapper over APNs, so you still need APNs credentials. The Android 13+ POST_NOTIFICATIONS and iOS user authorization are both runtime prompts.",
+      "tags": [
+        "push",
+        "notifications"
+      ]
+    },
+    {
+      "id": "background-transfer",
+      "kind": "concept",
+      "category": "background-work",
+      "title": "Background upload / download",
+      "android": {
+        "name": "WorkManager + DownloadManager",
+        "url": "https://developer.android.com/reference/android/app/DownloadManager"
+      },
+      "ios": {
+        "name": "URLSession background configuration",
+        "url": "https://developer.apple.com/documentation/foundation/downloading-files-in-the-background"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "An iOS background URLSession is handled by a system daemon, so transfers continue after your app is killed and you are relaunched on completion. Android needs WorkManager (or a foreground service) to keep the process alive for the transfer.",
+      "tags": [
+        "download",
+        "upload",
+        "background"
+      ]
+    },
+    {
+      "id": "runtime-permissions",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Runtime permissions",
+      "android": {
+        "name": "Runtime permissions (ActivityResultContracts.RequestPermission)",
+        "url": "https://developer.android.com/training/permissions/requesting"
+      },
+      "ios": {
+        "name": "Usage description keys in Info.plist + per-framework authorization requests",
+        "url": "https://developer.apple.com/documentation/uikit/protecting-the-user-s-privacy"
+      },
+      "flutter": {
+        "name": "permission_handler",
+        "url": "https://pub.dev/packages/permission_handler"
+      },
+      "react_native": {
+        "name": "PermissionsAndroid (Android only); expo modules request per feature",
+        "url": "https://reactnative.dev/docs/permissionsandroid"
+      },
+      "notes": "Android asks through one request API and can show a rationale; after two denials it stops prompting. iOS asks only once per permission via the relevant framework (CLLocationManager, AVCaptureDevice...), and later changes must be made in Settings. Do not pre-prompt in a way that burns your single iOS request.",
+      "tags": [
+        "permissions",
+        "privacy"
+      ]
+    },
+    {
+      "id": "secure-storage",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Hardware-backed secret storage",
+      "android": {
+        "name": "Android Keystore",
+        "url": "https://developer.android.com/privacy-and-security/keystore"
+      },
+      "ios": {
+        "name": "Keychain Services",
+        "url": "https://developer.apple.com/documentation/security/keychain-services"
+      },
+      "flutter": {
+        "name": "flutter_secure_storage",
+        "url": "https://pub.dev/packages/flutter_secure_storage"
+      },
+      "react_native": {
+        "name": "expo-secure-store (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/securestore/"
+      },
+      "notes": "Keystore stores keys (not arbitrary secrets), so you encrypt data with a key it holds; Keychain stores secrets directly and can survive app reinstall and sync via iCloud Keychain. Keychain items surviving reinstall is a gotcha for login state.",
+      "tags": [
+        "security",
+        "keystore",
+        "keychain"
+      ]
+    },
+    {
+      "id": "biometrics",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Biometric authentication",
+      "android": {
+        "name": "BiometricPrompt (androidx.biometric)",
+        "url": "https://developer.android.com/identity/sign-in/biometric-auth"
+      },
+      "ios": {
+        "name": "LocalAuthentication (LAContext)",
+        "url": "https://developer.apple.com/documentation/localauthentication"
+      },
+      "flutter": {
+        "name": "local_auth",
+        "url": "https://pub.dev/packages/local_auth"
+      },
+      "react_native": {
+        "name": "expo-local-authentication (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/local-authentication/"
+      },
+      "notes": "BiometricPrompt lets you require BIOMETRIC_STRONG, which is what you need to unlock a Keystore key through a CryptoObject; LAContext gives only a yes/no unless you bind the secret to a Keychain access control. For real security, tie the credential itself to biometric success, not just a boolean flag in your code. iOS needs NSFaceIDUsageDescription in Info.plist.",
+      "tags": [
+        "biometric",
+        "security",
+        "auth"
+      ]
+    },
+    {
+      "id": "passkeys",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Passkeys / credential manager",
+      "android": {
+        "name": "Credential Manager API",
+        "url": "https://developer.android.com/identity/sign-in/credential-manager"
+      },
+      "ios": {
+        "name": "AuthenticationServices passkeys (ASAuthorizationController)",
+        "url": "https://developer.apple.com/documentation/authenticationservices/supporting-passkeys"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both use the platform FIDO2/WebAuthn implementation tied to the user's cloud keychain. The relying-party association file differs (assetlinks.json vs apple-app-site-association webcredentials).",
+      "tags": [
+        "auth",
+        "passkeys"
+      ]
+    },
+    {
+      "id": "transport-security",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Cleartext & TLS policy",
+      "android": {
+        "name": "Network Security Configuration",
+        "url": "https://developer.android.com/privacy-and-security/security-config"
+      },
+      "ios": {
+        "name": "App Transport Security (NSAppTransportSecurity)",
+        "url": "https://developer.apple.com/documentation/bundleresources/information-property-list/nsapptransportsecurity"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both block plain HTTP by default for modern targets. Certificate pinning is declared in XML on Android but requires code or a library on iOS (pin via URLSession delegate or NSPinnedDomains).",
+      "tags": [
+        "tls",
+        "security"
+      ]
+    },
+    {
+      "id": "app-integrity",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "App attestation / integrity",
+      "android": {
+        "name": "Play Integrity API",
+        "url": "https://developer.android.com/google/play/integrity"
+      },
+      "ios": {
+        "name": "App Attest (DeviceCheck)",
+        "url": "https://developer.apple.com/documentation/devicecheck/establishing-your-app-s-integrity"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both let your server check that a request came from a genuine app on a genuine device. Verdict semantics and the amount of device-level signal differ, so you cannot port server logic directly.",
+      "tags": [
+        "integrity",
+        "security"
+      ]
+    },
+    {
+      "id": "privacy-disclosure",
+      "kind": "concept",
+      "category": "permissions-security",
+      "title": "Store privacy disclosures",
+      "android": {
+        "name": "Play Data safety section",
+        "url": "https://support.google.com/googleplay/android-developer/answer/10787469"
+      },
+      "ios": {
+        "name": "Privacy manifest (PrivacyInfo.xcprivacy) + App Privacy labels",
+        "url": "https://developer.apple.com/documentation/bundleresources/privacy-manifest-files"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Apple requires a privacy manifest declaring required-reason API use and tracking domains, and SDKs ship their own. Play requires a form in the Console. Missing or incorrect declarations cause rejections, so audit third-party SDKs on both.",
+      "tags": [
+        "privacy",
+        "store",
+        "compliance"
+      ]
+    },
+    {
+      "id": "local-notifications",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Posting a notification",
+      "android": {
+        "name": "NotificationCompat.Builder + NotificationManagerCompat",
+        "url": "https://developer.android.com/develop/ui/views/notifications"
+      },
+      "ios": {
+        "name": "UNUserNotificationCenter + UNNotificationRequest",
+        "url": "https://developer.apple.com/documentation/usernotifications/unusernotificationcenter"
+      },
+      "flutter": {
+        "name": "flutter_local_notifications",
+        "url": "https://pub.dev/packages/flutter_local_notifications"
+      },
+      "react_native": {
+        "name": "expo-notifications (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/notifications/"
+      },
+      "notes": "iOS shows foreground notifications only if you implement willPresent; Android shows them regardless. Android 13+ requires the POST_NOTIFICATIONS runtime permission; iOS always requires authorization.",
+      "tags": [
+        "notifications"
+      ]
+    },
+    {
+      "id": "notification-channels",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Notification categories / grouping",
+      "android": {
+        "name": "Notification channels and groups",
+        "url": "https://developer.android.com/develop/ui/views/notifications/channels"
+      },
+      "ios": {
+        "name": "UNNotificationCategory + threadIdentifier; Focus/interruption levels",
+        "url": "https://developer.apple.com/documentation/usernotifications/declaring-your-actionable-notification-types"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "On Android 8+ users control importance, sound and vibration per channel, and you cannot change a channel after creation without reinstall. iOS has no per-channel user settings; categories define action buttons, and the user configures delivery per app (plus Focus filters).",
+      "tags": [
+        "notifications",
+        "channels"
+      ]
+    },
+    {
+      "id": "content-provider",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Sharing app data with other apps",
+      "android": {
+        "name": "ContentProvider / FileProvider",
+        "url": "https://developer.android.com/guide/topics/providers/content-providers"
+      },
+      "ios": {
+        "name": "No direct equivalent: App Groups, File Provider extension, shared Keychain access groups",
+        "url": "https://developer.apple.com/documentation/fileprovider"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android exposes data through a URI-based query API to any permitted app. iOS exposes data only to the same developer's apps via App Groups, or to the Files app through a File Provider extension; there is no general cross-app database access.",
+      "tags": [
+        "ipc",
+        "sharing",
+        "no-direct-equivalent"
+      ]
+    },
+    {
+      "id": "share-sheet",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Share / send to other apps",
+      "android": {
+        "name": "Intent.ACTION_SEND + createChooser; Sharesheet",
+        "url": "https://developer.android.com/training/sharing/send"
+      },
+      "ios": {
+        "name": "ShareLink / UIActivityViewController; Share extension to receive",
+        "url": "https://developer.apple.com/documentation/swiftui/sharelink"
+      },
+      "flutter": {
+        "name": "share_plus",
+        "url": "https://pub.dev/packages/share_plus"
+      },
+      "react_native": {
+        "name": "Share",
+        "url": "https://reactnative.dev/docs/share"
+      },
+      "notes": "Sending is comparable. Receiving shared content differs: Android uses intent filters on an Activity, while iOS requires a separate Share Extension target with its own limited memory and no direct access to your main app's process.",
+      "tags": [
+        "share",
+        "intent",
+        "extension"
+      ]
+    },
+    {
+      "id": "shortcuts",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "App shortcuts",
+      "android": {
+        "name": "ShortcutManager (static, dynamic, pinned shortcuts)",
+        "url": "https://developer.android.com/develop/ui/views/launch/shortcuts"
+      },
+      "ios": {
+        "name": "Home Screen Quick Actions (UIApplicationShortcutItem) / App Shortcuts (App Intents)",
+        "url": "https://developer.apple.com/documentation/uikit/uiapplicationshortcutitem"
+      },
+      "flutter": {
+        "name": "quick_actions",
+        "url": "https://pub.dev/packages/quick_actions"
+      },
+      "react_native": null,
+      "notes": "Android shortcuts appear on long-press and can be pinned to the home screen. iOS offers long-press Quick Actions (limited count) and App Shortcuts that surface in Siri, Spotlight and the Shortcuts app via App Intents.",
+      "tags": [
+        "shortcuts"
+      ]
+    },
+    {
+      "id": "assistant-actions",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Exposing app actions to assistants and system search",
+      "android": {
+        "name": "AppFunctions (androidx.appfunctions)",
+        "url": "https://developer.android.com/ai/appfunctions"
+      },
+      "ios": {
+        "name": "App Intents / AppEntity / Spotlight indexing",
+        "url": "https://developer.apple.com/documentation/appintents"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both let you declare typed actions the OS (and AI assistants) can run without opening the UI. The two APIs are conceptually close but not source-compatible and AppFunctions is newer and still evolving, so check the current release notes. Siri/Shortcuts integration on iOS goes through App Intents, not the old SiriKit for most cases.",
+      "tags": [
+        "intents",
+        "assistant",
+        "ai"
+      ]
+    },
+    {
+      "id": "home-widgets",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Home screen widgets",
+      "android": {
+        "name": "Jetpack Glance / App Widgets (RemoteViews)",
+        "url": "https://developer.android.com/develop/ui/compose/glance"
+      },
+      "ios": {
+        "name": "WidgetKit (SwiftUI timelines)",
+        "url": "https://developer.apple.com/documentation/widgetkit"
+      },
+      "flutter": {
+        "name": "home_widget (package, native widgets still written natively)",
+        "url": "https://pub.dev/packages/home_widget"
+      },
+      "react_native": null,
+      "notes": "A WidgetKit widget is a timeline of snapshots the system renders, not a live view, and updates are budgeted. Android widgets (RemoteViews/Glance) can update on broadcasts and WorkManager. Neither can be written in cross-platform UI frameworks directly; Flutter and RN apps still write native widgets.",
+      "tags": [
+        "widget",
+        "home-screen"
+      ]
+    },
+    {
+      "id": "live-activities",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Ongoing / live status surface",
+      "android": {
+        "name": "Live updates notifications (Android 16+ progress-centric)",
+        "url": "https://developer.android.com/about/versions/16/features/progress-centric-notifications"
+      },
+      "ios": {
+        "name": "Live Activities (ActivityKit, Dynamic Island)",
+        "url": "https://developer.apple.com/documentation/activitykit"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "These are comparable in purpose, not API-compatible. Live Activities are started from the app (or push), shown on Lock Screen and Dynamic Island, and have a time limit; Android 16 live updates are special notifications. For earlier Android versions, use an ongoing notification.",
+      "tags": [
+        "live",
+        "notification"
+      ]
+    },
+    {
+      "id": "wearables",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Smartwatch app",
+      "android": {
+        "name": "Wear OS (Compose for Wear OS)",
+        "url": "https://developer.android.com/training/wearables"
+      },
+      "ios": {
+        "name": "watchOS (SwiftUI)",
+        "url": "https://developer.apple.com/documentation/watchos-apps"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Wear OS apps are Android apps for a different form factor with their own Compose for Wear OS UI toolkit. watchOS apps are SwiftUI apps distributed alongside the iOS app, and communication between watch and phone uses WatchConnectivity vs the Wearable Data Layer.",
+      "tags": [
+        "wear",
+        "watch"
+      ]
+    },
+    {
+      "id": "in-app-purchases",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "In-app purchases & subscriptions",
+      "android": {
+        "name": "Google Play Billing Library",
+        "url": "https://developer.android.com/google/play/billing"
+      },
+      "ios": {
+        "name": "StoreKit 2",
+        "url": "https://developer.apple.com/documentation/storekit"
+      },
+      "flutter": {
+        "name": "in_app_purchase",
+        "url": "https://pub.dev/packages/in_app_purchase"
+      },
+      "react_native": {
+        "name": "react-native-iap / RevenueCat SDK (third party)",
+        "url": "https://github.com/dooboolab-community/react-native-iap"
+      },
+      "notes": "StoreKit 2 is async/await-based with signed transactions you can verify on device; Play Billing is callback/flow-based and needs server-side purchase acknowledgement within 3 days. Policies on external payment links differ by region and change often, so check current store rules.",
+      "tags": [
+        "billing",
+        "iap",
+        "monetization"
+      ]
+    },
+    {
+      "id": "instant-apps",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Try-before-install experiences",
+      "android": {
+        "name": "Google Play Instant",
+        "url": "https://developer.android.com/topic/google-play-instant"
+      },
+      "ios": {
+        "name": "App Clips",
+        "url": "https://developer.apple.com/documentation/appclip"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both run a small slice of your app without a full install. App Clips have tight size limits and launch from codes, links and NFC; Google has announced that Play Instant is being deprecated, so verify its current status before building on it.",
+      "tags": [
+        "instant",
+        "clip"
+      ]
+    },
+    {
+      "id": "in-app-browser",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "In-app browser",
+      "android": {
+        "name": "Custom Tabs (androidx.browser)",
+        "url": "https://developer.android.com/develop/ui/views/layout/webapps/overview-of-android-custom-tabs"
+      },
+      "ios": {
+        "name": "SFSafariViewController / ASWebAuthenticationSession",
+        "url": "https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller"
+      },
+      "flutter": {
+        "name": "url_launcher (mode: inAppBrowserView)",
+        "url": "https://pub.dev/packages/url_launcher"
+      },
+      "react_native": {
+        "name": "expo-web-browser (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/webbrowser/"
+      },
+      "notes": "Use these (not WebView) for OAuth, because they share cookies and password autofill with the user's browser. On iOS use ASWebAuthenticationSession for sign-in flows.",
+      "tags": [
+        "browser",
+        "oauth"
+      ]
+    },
+    {
+      "id": "clipboard",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Clipboard",
+      "android": {
+        "name": "ClipboardManager",
+        "url": "https://developer.android.com/develop/ui/views/touch-and-input/copy-paste"
+      },
+      "ios": {
+        "name": "UIPasteboard",
+        "url": "https://developer.apple.com/documentation/uikit/uipasteboard"
+      },
+      "flutter": {
+        "name": "Clipboard",
+        "url": "https://api.flutter.dev/flutter/services/Clipboard-class.html"
+      },
+      "react_native": null,
+      "notes": "Both platforms notify the user when an app reads the clipboard (a toast on Android 12+, a banner on iOS 14+). iOS 16+ also gates programmatic paste behind a user prompt unless you use PasteButton.",
+      "tags": [
+        "clipboard",
+        "privacy"
+      ]
+    },
+    {
+      "id": "contacts",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "Contacts access",
+      "android": {
+        "name": "ContactsContract (READ_CONTACTS)",
+        "url": "https://developer.android.com/guide/topics/providers/contacts-provider"
+      },
+      "ios": {
+        "name": "Contacts framework / ContactsUI picker",
+        "url": "https://developer.apple.com/documentation/contacts"
+      },
+      "flutter": {
+        "name": "flutter_contacts (community)",
+        "url": "https://pub.dev/packages/flutter_contacts"
+      },
+      "react_native": null,
+      "notes": "Prefer a system picker (ACTION_PICK contacts on Android, CNContactPickerViewController on iOS) which needs no permission. iOS 18 adds limited contact access.",
+      "tags": [
+        "contacts",
+        "privacy"
+      ]
+    },
+    {
+      "id": "car-integration",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "In-car integration",
+      "android": {
+        "name": "Android Auto / Android Automotive OS",
+        "url": "https://developer.android.com/training/cars"
+      },
+      "ios": {
+        "name": "CarPlay",
+        "url": "https://developer.apple.com/carplay/"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both are template-based and restricted to specific app categories (navigation, media, messaging and so on), and need extra approval or entitlements. Neither lets you draw arbitrary UI.",
+      "tags": [
+        "car",
+        "auto"
+      ]
+    },
+    {
+      "id": "quick-controls",
+      "kind": "concept",
+      "category": "system-integration",
+      "title": "System quick controls",
+      "android": {
+        "name": "Quick Settings Tiles (TileService)",
+        "url": "https://developer.android.com/develop/ui/views/quicksettings-tiles"
+      },
+      "ios": {
+        "name": "Control Center controls (WidgetKit controls)",
+        "url": "https://developer.apple.com/documentation/widgetkit/creating-controls-to-perform-actions-across-the-system"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Both let your app add a button to the system panel. iOS controls are built with WidgetKit and App Intents (iOS 18+); Android tiles are services the user adds manually.",
+      "tags": [
+        "controls",
+        "tiles"
+      ]
+    },
+    {
+      "id": "camera",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Camera capture",
+      "android": {
+        "name": "CameraX",
+        "url": "https://developer.android.com/media/camera/camerax"
+      },
+      "ios": {
+        "name": "AVFoundation (AVCaptureSession)",
+        "url": "https://developer.apple.com/documentation/avfoundation/capture-setup"
+      },
+      "flutter": {
+        "name": "camera",
+        "url": "https://pub.dev/packages/camera"
+      },
+      "react_native": {
+        "name": "expo-camera / react-native-vision-camera (Expo/community)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/camera/"
+      },
+      "notes": "CameraX is a lifecycle-aware use-case API that hides device quirks; AVCaptureSession is lower level, and you wire inputs, outputs and preview layers yourself. If you only need a photo, launch the system camera or picker, which requires no permission.",
+      "tags": [
+        "camera",
+        "media"
+      ]
+    },
+    {
+      "id": "photo-picker",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Picking photos / videos",
+      "android": {
+        "name": "Photo Picker (PickVisualMedia)",
+        "url": "https://developer.android.com/training/data-storage/shared/photopicker"
+      },
+      "ios": {
+        "name": "PhotosPicker (PhotosUI)",
+        "url": "https://developer.apple.com/documentation/photosui/photospicker"
+      },
+      "flutter": {
+        "name": "image_picker",
+        "url": "https://pub.dev/packages/image_picker"
+      },
+      "react_native": {
+        "name": "expo-image-picker (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/imagepicker/"
+      },
+      "notes": "Both run out-of-process and return only selected items with no library permission needed. This is the privacy-friendly default on both platforms.",
+      "tags": [
+        "photos",
+        "picker",
+        "privacy"
+      ]
+    },
+    {
+      "id": "location",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Location",
+      "android": {
+        "name": "Fused Location Provider (Play Services) / LocationManager",
+        "url": "https://developer.android.com/develop/sensors-and-location/location"
+      },
+      "ios": {
+        "name": "Core Location (CLLocationManager)",
+        "url": "https://developer.apple.com/documentation/corelocation"
+      },
+      "flutter": {
+        "name": "geolocator",
+        "url": "https://pub.dev/packages/geolocator"
+      },
+      "react_native": {
+        "name": "expo-location (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/location/"
+      },
+      "notes": "Android's fused provider needs Google Play Services; the platform LocationManager works without it. Approximate vs precise location is user-selectable on both, and background location needs separate permissions and review on both platforms.",
+      "tags": [
+        "location",
+        "gps"
+      ]
+    },
+    {
+      "id": "maps",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Map view",
+      "android": {
+        "name": "Maps SDK for Android / Maps Compose",
+        "url": "https://developers.google.com/maps/documentation/android-sdk/overview"
+      },
+      "ios": {
+        "name": "MapKit (Map in SwiftUI)",
+        "url": "https://developer.apple.com/documentation/mapkit"
+      },
+      "flutter": {
+        "name": "google_maps_flutter",
+        "url": "https://pub.dev/packages/google_maps_flutter"
+      },
+      "react_native": {
+        "name": "react-native-maps (community)",
+        "url": "https://github.com/react-native-maps/react-native-maps"
+      },
+      "notes": "MapKit is free and built in; Google Maps needs an API key and billing. Look and data differ, so features such as POI categories and place IDs are not portable.",
+      "tags": [
+        "maps"
+      ]
+    },
+    {
+      "id": "motion-sensors",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Accelerometer, gyroscope & motion",
+      "android": {
+        "name": "SensorManager / SensorEventListener",
+        "url": "https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview"
+      },
+      "ios": {
+        "name": "Core Motion (CMMotionManager)",
+        "url": "https://developer.apple.com/documentation/coremotion"
+      },
+      "flutter": {
+        "name": "sensors_plus",
+        "url": "https://pub.dev/packages/sensors_plus"
+      },
+      "react_native": {
+        "name": "expo-sensors (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/sensors/"
+      },
+      "notes": "Core Motion provides fused device-motion data (attitude, gravity) directly; on Android you combine raw sensors or use TYPE_ROTATION_VECTOR. Android 12+ caps sensor rates unless HIGH_SAMPLING_RATE_SENSORS is declared.",
+      "tags": [
+        "sensors",
+        "motion"
+      ]
+    },
+    {
+      "id": "media-playback",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Audio/video playback",
+      "android": {
+        "name": "Media3 (ExoPlayer, MediaSession)",
+        "url": "https://developer.android.com/media/media3"
+      },
+      "ios": {
+        "name": "AVPlayer / AVKit VideoPlayer",
+        "url": "https://developer.apple.com/documentation/avfoundation/avplayer"
+      },
+      "flutter": {
+        "name": "video_player",
+        "url": "https://pub.dev/packages/video_player"
+      },
+      "react_native": {
+        "name": "expo-video (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/video/"
+      },
+      "notes": "Background playback needs a MediaSessionService with a foreground notification on Android; on iOS you enable the audio background mode and configure the audio session. Both expose lock-screen controls through a session object (MediaSession / MPNowPlayingInfoCenter).",
+      "tags": [
+        "media",
+        "audio",
+        "video"
+      ]
+    },
+    {
+      "id": "audio-focus",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Audio interruptions / focus",
+      "android": {
+        "name": "AudioFocus (AudioManager)",
+        "url": "https://developer.android.com/media/optimize/audio-focus"
+      },
+      "ios": {
+        "name": "AVAudioSession categories and interruptions",
+        "url": "https://developer.apple.com/documentation/avfaudio/avaudiosession"
+      },
+      "flutter": {
+        "name": "audio_session",
+        "url": "https://pub.dev/packages/audio_session"
+      },
+      "react_native": null,
+      "notes": "Android uses a cooperative focus request/abandon model; iOS sets a session category and handles interruption notifications. Getting mixing and ducking behavior right takes platform-specific tests.",
+      "tags": [
+        "audio",
+        "session"
+      ]
+    },
+    {
+      "id": "bluetooth-le",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Bluetooth Low Energy",
+      "android": {
+        "name": "android.bluetooth.le / BluetoothGatt",
+        "url": "https://developer.android.com/develop/connectivity/bluetooth/ble/ble-overview"
+      },
+      "ios": {
+        "name": "Core Bluetooth",
+        "url": "https://developer.apple.com/documentation/corebluetooth"
+      },
+      "flutter": {
+        "name": "flutter_blue_plus (community)",
+        "url": "https://pub.dev/packages/flutter_blue_plus"
+      },
+      "react_native": {
+        "name": "react-native-ble-plx (community)",
+        "url": "https://github.com/dotintent/react-native-ble-plx"
+      },
+      "notes": "iOS hides device MAC addresses (identifiers are per-app UUIDs), while Android exposes them. Permissions differ: Android 12+ uses BLUETOOTH_SCAN/CONNECT, iOS uses a usage-description key.",
+      "tags": [
+        "bluetooth",
+        "ble"
+      ]
+    },
+    {
+      "id": "nfc",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "NFC",
+      "android": {
+        "name": "android.nfc (reader mode, HCE)",
+        "url": "https://developer.android.com/develop/connectivity/nfc"
+      },
+      "ios": {
+        "name": "Core NFC",
+        "url": "https://developer.apple.com/documentation/corenfc"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "iOS supports tag reading and limited card emulation in specific regions and with entitlements; Android supports reader mode, peer tag types and Host Card Emulation. Writing and card emulation are much more limited on iOS.",
+      "tags": [
+        "nfc"
+      ]
+    },
+    {
+      "id": "speech-synthesis",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Text to speech",
+      "android": {
+        "name": "TextToSpeech",
+        "url": "https://developer.android.com/reference/android/speech/tts/TextToSpeech"
+      },
+      "ios": {
+        "name": "AVSpeechSynthesizer",
+        "url": "https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer"
+      },
+      "flutter": {
+        "name": "flutter_tts",
+        "url": "https://pub.dev/packages/flutter_tts"
+      },
+      "react_native": {
+        "name": "expo-speech (Expo)",
+        "url": "https://docs.expo.dev/versions/latest/sdk/speech/"
+      },
+      "notes": "Available voices and languages depend on the engine and user-installed voice data on both, so test missing-voice fallback.",
+      "tags": [
+        "tts",
+        "speech"
+      ]
+    },
+    {
+      "id": "speech-recognition",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Speech to text",
+      "android": {
+        "name": "SpeechRecognizer / RecognizerIntent",
+        "url": "https://developer.android.com/reference/android/speech/SpeechRecognizer"
+      },
+      "ios": {
+        "name": "Speech framework (SpeechAnalyzer / SFSpeechRecognizer)",
+        "url": "https://developer.apple.com/documentation/speech"
+      },
+      "flutter": {
+        "name": "speech_to_text (community)",
+        "url": "https://pub.dev/packages/speech_to_text"
+      },
+      "react_native": null,
+      "notes": "On-device availability depends on language and OS version on both. iOS requires both speech-recognition and microphone usage strings; confirm on-device vs server processing before making privacy claims.",
+      "tags": [
+        "stt",
+        "speech"
+      ]
+    },
+    {
+      "id": "on-device-ml",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "On-device ML",
+      "android": {
+        "name": "ML Kit / LiteRT",
+        "url": "https://developers.google.com/ml-kit"
+      },
+      "ios": {
+        "name": "Core ML / Vision",
+        "url": "https://developer.apple.com/documentation/coreml"
+      },
+      "flutter": {
+        "name": "google_mlkit_* packages (community)",
+        "url": "https://pub.dev/packages/google_mlkit_commons"
+      },
+      "react_native": null,
+      "notes": "Model formats are not interchangeable: LiteRT uses .tflite, Core ML uses .mlmodel/.mlpackage (convert with coremltools). ML Kit also ships a cross-platform API for iOS, which makes it a possible shared layer.",
+      "tags": [
+        "ml",
+        "ai"
+      ]
+    },
+    {
+      "id": "barcode-scanning",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Barcode / document scanning",
+      "android": {
+        "name": "ML Kit Barcode Scanning / Code Scanner",
+        "url": "https://developers.google.com/ml-kit/vision/barcode-scanning"
+      },
+      "ios": {
+        "name": "VisionKit DataScannerViewController",
+        "url": "https://developer.apple.com/documentation/visionkit/datascannerviewcontroller"
+      },
+      "flutter": {
+        "name": "mobile_scanner (community)",
+        "url": "https://pub.dev/packages/mobile_scanner"
+      },
+      "react_native": null,
+      "notes": "Google's Code Scanner needs no camera permission; DataScannerViewController needs the camera and a supported device (A12+ with iOS 16+). ML Kit also supports iOS.",
+      "tags": [
+        "scanner",
+        "camera"
+      ]
+    },
+    {
+      "id": "health-data",
+      "kind": "concept",
+      "category": "media-sensors",
+      "title": "Health & fitness data",
+      "android": {
+        "name": "Health Connect",
+        "url": "https://developer.android.com/health-and-fitness/health-connect"
+      },
+      "ios": {
+        "name": "HealthKit",
+        "url": "https://developer.apple.com/documentation/healthkit"
+      },
+      "flutter": {
+        "name": "health (community)",
+        "url": "https://pub.dev/packages/health"
+      },
+      "react_native": null,
+      "notes": "Both are user-permissioned, per-data-type stores. HealthKit's read-permission state is intentionally hidden from your app so you cannot tell denial from no data. Health Connect is a separate app/module on older Android versions.",
+      "tags": [
+        "health",
+        "privacy"
+      ]
+    },
+    {
+      "id": "store-console",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Store management console",
+      "android": {
+        "name": "Google Play Console",
+        "url": "https://developer.android.com/distribute/console"
+      },
+      "ios": {
+        "name": "App Store Connect",
+        "url": "https://developer.apple.com/app-store-connect/"
+      },
+      "flutter": {
+        "name": "Same stores (Flutter builds standard APK/AAB/IPA)",
+        "url": "https://docs.flutter.dev/deployment/android"
+      },
+      "react_native": {
+        "name": "Same stores (RN builds standard AAB/IPA)",
+        "url": "https://reactnative.dev/docs/publishing-to-app-store"
+      },
+      "notes": "Play Console review is usually automated and faster for updates, though new developer accounts face testing requirements; App Store review is by humans against the App Review Guidelines. Plan metadata, screenshots and compliance forms on both before the release date.",
+      "tags": [
+        "store",
+        "release"
+      ]
+    },
+    {
+      "id": "signing",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "App signing",
+      "android": {
+        "name": "Upload key + Play App Signing (keystore, .jks)",
+        "url": "https://developer.android.com/studio/publish/app-signing"
+      },
+      "ios": {
+        "name": "Certificates + provisioning profiles + automatic signing",
+        "url": "https://developer.apple.com/support/certificates/"
+      },
+      "flutter": {
+        "name": "Same, configured in key.properties / Xcode",
+        "url": "https://docs.flutter.dev/deployment/android#sign-the-app"
+      },
+      "react_native": {
+        "name": "Same, configured in gradle.properties / Xcode",
+        "url": "https://reactnative.dev/docs/signed-apk-android"
+      },
+      "notes": "With Play App Signing Google holds the app signing key and you hold a resettable upload key; losing an old self-managed key was historically fatal. Apple signing ties a certificate, an App ID and a provisioning profile together and expires yearly, so let Xcode manage signing unless CI needs manual profiles.",
+      "tags": [
+        "signing",
+        "release"
+      ]
+    },
+    {
+      "id": "package-format",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Distributable package format",
+      "android": {
+        "name": "AAB (store) / APK (sideload)",
+        "url": "https://developer.android.com/guide/app-bundle"
+      },
+      "ios": {
+        "name": "IPA (archive exported from Xcode)",
+        "url": "https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases"
+      },
+      "flutter": {
+        "name": "flutter build appbundle / ipa",
+        "url": "https://docs.flutter.dev/deployment/android"
+      },
+      "react_native": {
+        "name": "Gradle bundleRelease / xcodebuild archive",
+        "url": "https://reactnative.dev/docs/publishing-to-app-store"
+      },
+      "notes": "Play requires AAB for new apps and generates device-specific APKs. The App Store re-signs and slices the IPA for devices (app thinning). Sideloading is straightforward on Android and restricted on iOS (TestFlight, ad hoc, enterprise, or regional alternative marketplaces).",
+      "tags": [
+        "aab",
+        "apk",
+        "ipa"
+      ]
+    },
+    {
+      "id": "app-size",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "App size optimization",
+      "android": {
+        "name": "R8 shrinking + resource shrinking + App Bundle splits",
+        "url": "https://developer.android.com/build/shrink-code"
+      },
+      "ios": {
+        "name": "App thinning (slicing, on-demand resources) + Strip Swift Symbols",
+        "url": "https://developer.apple.com/documentation/xcode/reducing-your-app-s-size"
+      },
+      "flutter": {
+        "name": "Obfuscation / --split-debug-info",
+        "url": "https://docs.flutter.dev/deployment/obfuscate"
+      },
+      "react_native": {
+        "name": "Hermes bytecode + ProGuard/R8 on Android",
+        "url": "https://reactnative.dev/docs/hermes"
+      },
+      "notes": "iOS bitcode is gone (removed in Xcode 14), so app thinning no longer includes it. On Android, R8 renames and removes code and needs keep rules for reflection; upload the mapping file so crash stack traces can be de-obfuscated.",
+      "tags": [
+        "size",
+        "r8",
+        "proguard"
+      ]
+    },
+    {
+      "id": "beta-testing",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Beta distribution",
+      "android": {
+        "name": "Play Console testing tracks (internal/closed/open)",
+        "url": "https://support.google.com/googleplay/android-developer/answer/9845334"
+      },
+      "ios": {
+        "name": "TestFlight",
+        "url": "https://developer.apple.com/testflight/"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Play internal tracks update within minutes and need no review; TestFlight external testers require Beta App Review for the first build of each version. New personal Play developer accounts have to meet a closed-testing requirement before production, so check current rules.",
+      "tags": [
+        "beta",
+        "testing",
+        "release"
+      ]
+    },
+    {
+      "id": "staged-rollout",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Staged / phased release",
+      "android": {
+        "name": "Staged rollout (Play Console)",
+        "url": "https://support.google.com/googleplay/android-developer/answer/6346149"
+      },
+      "ios": {
+        "name": "Phased release for automatic updates (App Store Connect)",
+        "url": "https://developer.apple.com/help/app-store-connect/update-your-app/release-a-version-update-in-phases/"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Play lets you pick any percentage and halt or raise it; Apple's phased release follows a fixed 7-day schedule and does not apply to users who update manually. Neither lets you roll back a version, so ship fixes forward.",
+      "tags": [
+        "rollout",
+        "release"
+      ]
+    },
+    {
+      "id": "store-policy",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Store review policy",
+      "android": {
+        "name": "Google Play Developer Policy Center",
+        "url": "https://play.google.com/about/developer-content-policy/"
+      },
+      "ios": {
+        "name": "App Review Guidelines",
+        "url": "https://developer.apple.com/app-store/review/guidelines/"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "The policies differ in details such as payments, login with third-party providers, permissions justification and AI-generated content disclosure. Read both before designing monetization or account-deletion flows.",
+      "tags": [
+        "policy",
+        "review"
+      ]
+    },
+    {
+      "id": "distribution-ci-cd",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Release automation",
+      "android": {
+        "name": "Fastlane / Gradle Play Publisher / Play Developer API",
+        "url": "https://docs.fastlane.tools/"
+      },
+      "ios": {
+        "name": "Fastlane / Xcode Cloud / App Store Connect API",
+        "url": "https://developer.apple.com/documentation/xcode/xcode-cloud"
+      },
+      "flutter": {
+        "name": "Flutter CD docs (Fastlane/Codemagic)",
+        "url": "https://docs.flutter.dev/deployment/cd"
+      },
+      "react_native": {
+        "name": "EAS Build and EAS Submit (Expo)",
+        "url": "https://docs.expo.dev/build/introduction/"
+      },
+      "notes": "Fastlane works for both platforms. Xcode Cloud is Apple-only and integrates with TestFlight, while Android has no first-party hosted CI so teams use GitHub Actions, Bitrise or similar. iOS CI needs macOS runners and certificate handling.",
+      "tags": [
+        "ci",
+        "automation"
+      ]
+    },
+    {
+      "id": "crash-reporting",
+      "kind": "tooling",
+      "category": "distribution",
+      "title": "Production crash and ANR/hang reports",
+      "android": {
+        "name": "Android vitals (Play Console), Crashlytics",
+        "url": "https://developer.android.com/topic/performance/vitals"
+      },
+      "ios": {
+        "name": "Xcode Organizer + MetricKit",
+        "url": "https://developer.apple.com/documentation/metrickit"
+      },
+      "flutter": {
+        "name": "firebase_crashlytics",
+        "url": "https://pub.dev/packages/firebase_crashlytics"
+      },
+      "react_native": {
+        "name": "@react-native-firebase/crashlytics / Sentry",
+        "url": "https://sentry.io/for/react-native/"
+      },
+      "notes": "Both stores aggregate crash and responsiveness data from opted-in users, with fewer details than a third-party SDK. Upload dSYMs for iOS and R8 mappings for Android, otherwise stack traces are unreadable.",
+      "tags": [
+        "crash",
+        "monitoring"
+      ]
+    },
+    {
+      "id": "ide",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Official IDE",
+      "android": {
+        "name": "Android Studio (IntelliJ-based)",
+        "url": "https://developer.android.com/studio"
+      },
+      "ios": {
+        "name": "Xcode",
+        "url": "https://developer.apple.com/xcode/"
+      },
+      "flutter": {
+        "name": "Android Studio or VS Code with Flutter plugin",
+        "url": "https://docs.flutter.dev/tools/android-studio"
+      },
+      "react_native": {
+        "name": "VS Code, Android Studio, Xcode",
+        "url": "https://reactnative.dev/docs/set-up-your-environment"
+      },
+      "notes": "Xcode is macOS-only and required for any iOS build, including from Flutter or React Native. Android Studio runs on macOS, Windows and Linux. Xcode updates are tied to OS and SDK versions that the App Store requires.",
+      "tags": [
+        "ide",
+        "setup"
+      ]
+    },
+    {
+      "id": "emulator-simulator",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Virtual devices",
+      "android": {
+        "name": "Android Emulator (AVDs)",
+        "url": "https://developer.android.com/studio/run/emulator"
+      },
+      "ios": {
+        "name": "iOS Simulator",
+        "url": "https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device"
+      },
+      "flutter": {
+        "name": "flutter run -d <device>",
+        "url": "https://docs.flutter.dev/reference/flutter-cli"
+      },
+      "react_native": {
+        "name": "npx react-native run-android / run-ios",
+        "url": "https://reactnative.dev/docs/running-on-device"
+      },
+      "notes": "The Simulator runs your app as a macOS-native build (x86_64 or arm64), while the Android Emulator virtualizes a full device. The iOS Simulator lacks camera, Bluetooth and push, among other hardware; test those on a device.",
+      "tags": [
+        "emulator",
+        "simulator"
+      ]
+    },
+    {
+      "id": "device-cli",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Command-line device tooling",
+      "android": {
+        "name": "adb (Android Debug Bridge)",
+        "url": "https://developer.android.com/tools/adb"
+      },
+      "ios": {
+        "name": "xcrun simctl / devicectl",
+        "url": "https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "adb covers install, shell, logcat, port forwarding and screen recording on any connected device. simctl manages simulators, and devicectl (Xcode 15+) manages physical devices; there is no single iOS tool equal to adb shell.",
+      "tags": [
+        "cli",
+        "debug"
+      ]
+    },
+    {
+      "id": "ui-preview",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Live UI previews",
+      "android": {
+        "name": "Compose @Preview (Android Studio)",
+        "url": "https://developer.android.com/develop/ui/compose/tooling/previews"
+      },
+      "ios": {
+        "name": "SwiftUI Previews (#Preview macro)",
+        "url": "https://developer.apple.com/documentation/swiftui/previews-in-xcode"
+      },
+      "flutter": {
+        "name": "Hot reload + Widget Previewer",
+        "url": "https://docs.flutter.dev/tools/hot-reload"
+      },
+      "react_native": {
+        "name": "Fast Refresh",
+        "url": "https://reactnative.dev/docs/fast-refresh"
+      },
+      "notes": "Previews render isolated composables or views without running the app. Both can break on views that depend on injected state or live services, so supply fake data.",
+      "tags": [
+        "preview",
+        "ui"
+      ]
+    },
+    {
+      "id": "hot-reload",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Apply code changes without restart",
+      "android": {
+        "name": "Apply Changes / Live Edit",
+        "url": "https://developer.android.com/studio/run#apply-changes"
+      },
+      "ios": {
+        "name": "Previews (no equivalent hot reload for full app run)",
+        "url": "https://developer.apple.com/documentation/swiftui/previews-in-xcode"
+      },
+      "flutter": {
+        "name": "Hot reload",
+        "url": "https://docs.flutter.dev/tools/hot-reload"
+      },
+      "react_native": {
+        "name": "Fast Refresh",
+        "url": "https://reactnative.dev/docs/fast-refresh"
+      },
+      "notes": "Flutter and React Native hot reload keep state across edits, which native iOS cannot do for a running app. Android Apply Changes has limits (structural changes need a restart).",
+      "tags": [
+        "dx",
+        "iteration"
+      ]
+    },
+    {
+      "id": "view-inspector",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "UI hierarchy inspector",
+      "android": {
+        "name": "Layout Inspector",
+        "url": "https://developer.android.com/studio/debug/layout-inspector"
+      },
+      "ios": {
+        "name": "Xcode View Debugger",
+        "url": "https://developer.apple.com/documentation/xcode/debugging"
+      },
+      "flutter": {
+        "name": "Flutter DevTools Widget Inspector",
+        "url": "https://docs.flutter.dev/tools/devtools/inspector"
+      },
+      "react_native": {
+        "name": "React Native DevTools (Components)",
+        "url": "https://reactnative.dev/docs/react-native-devtools"
+      },
+      "notes": "Layout Inspector reads live Compose semantics and recomposition counts; the View Debugger gives a 3D exploded view. Release builds usually cannot be inspected on either.",
+      "tags": [
+        "debug",
+        "ui"
+      ]
+    },
+    {
+      "id": "logging",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Logging & console",
+      "android": {
+        "name": "Logcat (android.util.Log, Timber)",
+        "url": "https://developer.android.com/studio/debug/logcat"
+      },
+      "ios": {
+        "name": "Xcode console + Console.app (os.Logger)",
+        "url": "https://developer.apple.com/documentation/os/logger"
+      },
+      "flutter": {
+        "name": "debugPrint / dart:developer log",
+        "url": "https://docs.flutter.dev/testing/code-debugging"
+      },
+      "react_native": {
+        "name": "console.log (Metro / DevTools)",
+        "url": "https://reactnative.dev/docs/debugging"
+      },
+      "notes": "os.Logger redacts dynamic strings as <private> in non-debugger sessions unless you mark them public. Android Logcat shows all process logs, including other apps' in debug builds, so never log secrets.",
+      "tags": [
+        "logging",
+        "debug"
+      ]
+    },
+    {
+      "id": "debugger",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "Debugger",
+      "android": {
+        "name": "Android Studio debugger (JDWP, LLDB for native)",
+        "url": "https://developer.android.com/studio/debug"
+      },
+      "ios": {
+        "name": "Xcode with LLDB",
+        "url": "https://developer.apple.com/documentation/xcode/debugging"
+      },
+      "flutter": {
+        "name": "Dart DevTools debugger",
+        "url": "https://docs.flutter.dev/tools/devtools"
+      },
+      "react_native": {
+        "name": "Hermes debugger via React Native DevTools",
+        "url": "https://reactnative.dev/docs/debugging"
+      },
+      "notes": "Both support breakpoints, conditions and expression evaluation. Xcode's debugger is LLDB for everything, while Android Studio attaches a JVM debugger plus an optional native one.",
+      "tags": [
+        "debug"
+      ]
+    },
+    {
+      "id": "sdk-management",
+      "kind": "tooling",
+      "category": "tooling-ide",
+      "title": "SDK / platform version management",
+      "android": {
+        "name": "SDK Manager (compileSdk, targetSdk, minSdk)",
+        "url": "https://developer.android.com/tools/sdkmanager"
+      },
+      "ios": {
+        "name": "Xcode versions + deployment target + downloadable simulator runtimes",
+        "url": "https://developer.apple.com/documentation/xcode/downloading-and-installing-additional-xcode-components"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android separates compileSdk, targetSdk and minSdk, and the Play Store enforces a minimum targetSdk each year. iOS has a deployment target plus the SDK from the Xcode version used, and App Store Connect requires recent Xcode builds.",
+      "tags": [
+        "sdk",
+        "versions"
+      ]
+    },
+    {
+      "id": "build-system",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Build system",
+      "android": {
+        "name": "Gradle (Android Gradle Plugin, Kotlin DSL)",
+        "url": "https://developer.android.com/build"
+      },
+      "ios": {
+        "name": "Xcode build system (xcodebuild) + project.pbxproj",
+        "url": "https://developer.apple.com/library/archive/technotes/tn2339/_index.html"
+      },
+      "flutter": {
+        "name": "flutter build (delegates to Gradle and Xcode)",
+        "url": "https://docs.flutter.dev/deployment/android"
+      },
+      "react_native": {
+        "name": "Metro bundler + Gradle/Xcode",
+        "url": "https://reactnative.dev/docs/metro"
+      },
+      "notes": "Gradle scripts are code and easy to diff; pbxproj is a generated-looking file prone to merge conflicts (tools such as XcodeGen or Tuist help; Swift packages avoid this). Cold builds on both are slow, so use caching.",
+      "tags": [
+        "build",
+        "gradle",
+        "xcode"
+      ]
+    },
+    {
+      "id": "dependency-manager",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Dependency / package management",
+      "android": {
+        "name": "Gradle + Maven Central / Google Maven (version catalogs)",
+        "url": "https://developer.android.com/build/migrate-to-catalogs"
+      },
+      "ios": {
+        "name": "Swift Package Manager (also CocoaPods, Carthage)",
+        "url": "https://www.swift.org/package-manager/"
+      },
+      "flutter": {
+        "name": "pub (pubspec.yaml)",
+        "url": "https://docs.flutter.dev/packages-and-plugins/using-packages"
+      },
+      "react_native": {
+        "name": "npm/yarn/pnpm + autolinking",
+        "url": "https://reactnative.dev/docs/linking-libraries-ios"
+      },
+      "notes": "SPM is first-party and integrated in Xcode and the CLI. CocoaPods is in maintenance mode (its maintainers have announced the trunk becoming read-only, so check current status); many older libraries and React Native / Flutter native plugins still use it. Never hard-code versions in docs; check each library's release page.",
+      "tags": [
+        "dependencies",
+        "spm",
+        "gradle",
+        "cocoapods"
+      ]
+    },
+    {
+      "id": "build-variants",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Environments & build variants",
+      "android": {
+        "name": "Build types + product flavors",
+        "url": "https://developer.android.com/build/build-variants"
+      },
+      "ios": {
+        "name": "Schemes + build configurations + .xcconfig",
+        "url": "https://developer.apple.com/documentation/xcode/customizing-the-build-schemes-for-a-project"
+      },
+      "flutter": {
+        "name": "Flavors / --dart-define",
+        "url": "https://docs.flutter.dev/deployment/flavors"
+      },
+      "react_native": {
+        "name": "Expo app config / react-native-config",
+        "url": "https://docs.expo.dev/workflow/configuration/"
+      },
+      "notes": "Android variants combine build types with flavors into a matrix, and iOS achieves the same with schemes and configurations. Keep secrets out of both; BuildConfig fields and Info.plist values are readable from the shipped binary.",
+      "tags": [
+        "flavors",
+        "environments"
+      ]
+    },
+    {
+      "id": "code-shrinking",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Code shrinking and obfuscation",
+      "android": {
+        "name": "R8 / ProGuard rules",
+        "url": "https://developer.android.com/build/shrink-code"
+      },
+      "ios": {
+        "name": "Link-time optimization, Strip Swift Symbols (no renaming obfuscator by default)",
+        "url": "https://developer.apple.com/documentation/xcode/reducing-your-app-s-size"
+      },
+      "flutter": {
+        "name": "--obfuscate flag",
+        "url": "https://docs.flutter.dev/deployment/obfuscate"
+      },
+      "react_native": {
+        "name": "Hermes bytecode (not obfuscation)",
+        "url": "https://reactnative.dev/docs/hermes"
+      },
+      "notes": "R8 runs on release builds once minification is enabled and breaks reflection-based code without keep rules; iOS has no equal rename-by-default step, so Swift symbols stay in the binary unless stripped. Neither is a security boundary.",
+      "tags": [
+        "r8",
+        "obfuscation"
+      ]
+    },
+    {
+      "id": "language",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Primary language",
+      "android": {
+        "name": "Kotlin (also Java)",
+        "url": "https://kotlinlang.org/docs/home.html"
+      },
+      "ios": {
+        "name": "Swift (also Objective-C)",
+        "url": "https://docs.swift.org/swift-book/"
+      },
+      "flutter": {
+        "name": "Dart",
+        "url": "https://dart.dev/language"
+      },
+      "react_native": {
+        "name": "TypeScript / JavaScript",
+        "url": "https://reactnative.dev/docs/typescript"
+      },
+      "notes": "Kotlin and Swift are close in syntax: null safety (? vs Optionals), data classes vs structs, sealed classes vs enums with associated values, extension functions, and structured concurrency. Swift structs are value types with copy semantics; Kotlin classes are reference types.",
+      "tags": [
+        "language",
+        "kotlin",
+        "swift"
+      ]
+    },
+    {
+      "id": "code-generation",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Compile-time code generation",
+      "android": {
+        "name": "KSP / annotation processing (kapt)",
+        "url": "https://kotlinlang.org/docs/ksp-overview.html"
+      },
+      "ios": {
+        "name": "Swift macros",
+        "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros/"
+      },
+      "flutter": {
+        "name": "build_runner",
+        "url": "https://pub.dev/packages/build_runner"
+      },
+      "react_native": null,
+      "notes": "KSP is a compiler plugin that generates source from annotations; Swift macros expand in place in the compiler and are visible via Expand Macro. @Observable, @Model and #Preview are macros. Prefer KSP over kapt for Room and Hilt in new code.",
+      "tags": [
+        "codegen",
+        "macros",
+        "ksp"
+      ]
+    },
+    {
+      "id": "modularization",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Multi-module projects",
+      "android": {
+        "name": "Gradle modules (feature/core modules)",
+        "url": "https://developer.android.com/topic/modularization"
+      },
+      "ios": {
+        "name": "Local Swift packages / frameworks",
+        "url": "https://developer.apple.com/documentation/xcode/organizing-your-code-with-local-packages"
+      },
+      "flutter": {
+        "name": "Melos / local packages",
+        "url": "https://github.com/invertase/melos"
+      },
+      "react_native": null,
+      "notes": "Both improve build times and enforce boundaries. Swift packages default to internal access, so cross-module APIs need explicit `public`, while Kotlin modules need `api` vs `implementation` decisions in Gradle.",
+      "tags": [
+        "modules",
+        "architecture"
+      ]
+    },
+    {
+      "id": "cross-platform-sharing",
+      "kind": "tooling",
+      "category": "tooling-build",
+      "title": "Sharing code between platforms",
+      "android": {
+        "name": "Kotlin Multiplatform (KMP) / Compose Multiplatform",
+        "url": "https://kotlinlang.org/docs/multiplatform/get-started.html"
+      },
+      "ios": {
+        "name": "Consume a Kotlin Multiplatform shared framework from Swift",
+        "url": "https://kotlinlang.org/docs/multiplatform/get-started.html"
+      },
+      "flutter": {
+        "name": "Dart (whole app)",
+        "url": "https://docs.flutter.dev/"
+      },
+      "react_native": {
+        "name": "TypeScript (whole app)",
+        "url": "https://reactnative.dev/docs/getting-started"
+      },
+      "notes": "KMP shares business logic while keeping native UI, and can also share Compose UI. A Kotlin module is exposed to iOS as a framework, so Swift sees Kotlin types with some naming differences (for example coroutines and generics need adaptation).",
+      "tags": [
+        "kmp",
+        "sharing"
+      ]
+    },
+    {
+      "id": "unit-testing",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Unit test framework",
+      "android": {
+        "name": "JUnit (+ MockK/Mockito, Turbine)",
+        "url": "https://developer.android.com/training/testing/local-tests"
+      },
+      "ios": {
+        "name": "Swift Testing (@Test) / XCTest",
+        "url": "https://developer.apple.com/documentation/testing"
+      },
+      "flutter": {
+        "name": "flutter_test",
+        "url": "https://docs.flutter.dev/testing/overview"
+      },
+      "react_native": {
+        "name": "Jest",
+        "url": "https://reactnative.dev/docs/testing-overview"
+      },
+      "notes": "Swift Testing (macros, #expect, parameterized tests) is the modern choice and coexists with XCTest, which is still required for UI and performance tests. JUnit runs on the JVM without a device unless you need Android classes.",
+      "tags": [
+        "testing",
+        "unit"
+      ]
+    },
+    {
+      "id": "ui-testing",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "UI / instrumented testing",
+      "android": {
+        "name": "Espresso / Compose UI testing",
+        "url": "https://developer.android.com/develop/ui/compose/testing"
+      },
+      "ios": {
+        "name": "XCUITest",
+        "url": "https://developer.apple.com/documentation/xctest/user_interface_tests"
+      },
+      "flutter": {
+        "name": "integration_test / widget tests",
+        "url": "https://docs.flutter.dev/testing/integration-tests"
+      },
+      "react_native": {
+        "name": "Detox / Maestro (community)",
+        "url": "https://wix.github.io/Detox/"
+      },
+      "notes": "XCUITest drives the app as a separate process through accessibility, so identifiers matter (accessibilityIdentifier). Compose tests run in-process against semantics and synchronize with recomposition automatically.",
+      "tags": [
+        "testing",
+        "ui",
+        "e2e"
+      ]
+    },
+    {
+      "id": "device-farm",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Real-device testing in the cloud",
+      "android": {
+        "name": "Firebase Test Lab",
+        "url": "https://firebase.google.com/docs/test-lab"
+      },
+      "ios": {
+        "name": "Xcode Cloud (tests) / Firebase Test Lab (iOS)",
+        "url": "https://developer.apple.com/documentation/xcode/xcode-cloud"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Firebase Test Lab supports both Android and iOS devices. Xcode Cloud runs on Apple-managed simulators and is not a device farm; third-party farms (BrowserStack, AWS Device Farm) cover both platforms.",
+      "tags": [
+        "testing",
+        "cloud"
+      ]
+    },
+    {
+      "id": "profiler",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Performance profiler",
+      "android": {
+        "name": "Android Studio Profiler / Perfetto",
+        "url": "https://developer.android.com/studio/profile"
+      },
+      "ios": {
+        "name": "Instruments",
+        "url": "https://developer.apple.com/xcode/features/"
+      },
+      "flutter": {
+        "name": "Flutter DevTools Performance / Memory",
+        "url": "https://docs.flutter.dev/tools/devtools"
+      },
+      "react_native": {
+        "name": "React DevTools Profiler / Perfetto / Xcode Instruments",
+        "url": "https://reactnative.dev/docs/profiling"
+      },
+      "notes": "Instruments is a separate app with templates (Time Profiler, Allocations, Leaks, SwiftUI) that records through Xcode; Android Studio Profiler is built in and Perfetto gives system-wide traces. Profile release builds on a physical device for both.",
+      "tags": [
+        "profiling",
+        "performance"
+      ]
+    },
+    {
+      "id": "startup-benchmarks",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Performance regression tests",
+      "android": {
+        "name": "Macrobenchmark + Baseline Profiles",
+        "url": "https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview"
+      },
+      "ios": {
+        "name": "XCTest performance metrics (XCTMetric, measure)",
+        "url": "https://developer.apple.com/documentation/xctest/xctmetric"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Macrobenchmark measures startup and frame timing on a real device and generates Baseline Profiles, which precompile hot code paths. XCTest metrics measure launch, CPU and memory inside Xcode and Xcode Cloud.",
+      "tags": [
+        "benchmark",
+        "startup"
+      ]
+    },
+    {
+      "id": "memory-leaks",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Memory leak detection",
+      "android": {
+        "name": "LeakCanary / Profiler heap dump",
+        "url": "https://square.github.io/leakcanary/"
+      },
+      "ios": {
+        "name": "Xcode Memory Graph Debugger / Instruments Leaks",
+        "url": "https://developer.apple.com/documentation/xcode/gathering-information-about-memory-use"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "Android leaks typically come from long-lived references to Activities or Contexts; iOS leaks come from retain cycles under ARC (closures capturing self strongly). Use [weak self] where closures outlive the owner.",
+      "tags": [
+        "memory",
+        "leaks"
+      ]
+    },
+    {
+      "id": "linting",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Static analysis / lint",
+      "android": {
+        "name": "Android Lint, detekt, ktlint",
+        "url": "https://developer.android.com/studio/write/lint"
+      },
+      "ios": {
+        "name": "SwiftLint, SwiftFormat",
+        "url": "https://github.com/realm/SwiftLint"
+      },
+      "flutter": {
+        "name": "flutter analyze (dart analyzer + lints)",
+        "url": "https://dart.dev/tools/linter-rules"
+      },
+      "react_native": {
+        "name": "ESLint + TypeScript",
+        "url": "https://eslint.org/docs/latest/"
+      },
+      "notes": "Android Lint ships with Android Studio and the build and checks platform-specific problems (API levels, permissions). SwiftLint is third-party; Swift's compiler has built-in strict-concurrency checks, and Xcode ships its own static analyzer.",
+      "tags": [
+        "lint",
+        "quality"
+      ]
+    },
+    {
+      "id": "thread-checks",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Runtime misuse detection",
+      "android": {
+        "name": "StrictMode",
+        "url": "https://developer.android.com/reference/android/os/StrictMode"
+      },
+      "ios": {
+        "name": "Main Thread Checker + Thread Sanitizer",
+        "url": "https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early"
+      },
+      "flutter": null,
+      "react_native": null,
+      "notes": "StrictMode flags disk and network access on the main thread, leaked closeables and cleartext traffic, and is usually enabled in debug builds only. Xcode's diagnostics are scheme options that you turn on per run.",
+      "tags": [
+        "debug",
+        "threading"
+      ]
+    },
+    {
+      "id": "a11y-testing",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Accessibility testing tools",
+      "android": {
+        "name": "Accessibility Scanner / Compose semantic tests / Espresso a11y checks",
+        "url": "https://support.google.com/accessibility/android/answer/6376570"
+      },
+      "ios": {
+        "name": "Accessibility Inspector (Xcode) / performAccessibilityAudit",
+        "url": "https://developer.apple.com/documentation/accessibility/accessibility-inspector"
+      },
+      "flutter": {
+        "name": "Flutter accessibility guideline tests",
+        "url": "https://docs.flutter.dev/ui/accessibility"
+      },
+      "react_native": {
+        "name": "AccessibilityInfo + manual screen reader testing",
+        "url": "https://reactnative.dev/docs/accessibility"
+      },
+      "notes": "Automated scanners catch missing labels and low contrast but not reading order or usability, so also test with TalkBack and VoiceOver.",
+      "tags": [
+        "accessibility",
+        "testing"
+      ]
+    },
+    {
+      "id": "snapshot-testing",
+      "kind": "tooling",
+      "category": "tooling-quality",
+      "title": "Screenshot / snapshot testing",
+      "android": {
+        "name": "Paparazzi / Roborazzi / Compose Preview Screenshot Testing",
+        "url": "https://github.com/cashapp/paparazzi"
+      },
+      "ios": {
+        "name": "swift-snapshot-testing",
+        "url": "https://github.com/pointfreeco/swift-snapshot-testing"
+      },
+      "flutter": {
+        "name": "golden tests (matchesGoldenFile)",
+        "url": "https://docs.flutter.dev/testing/overview"
+      },
+      "react_native": null,
+      "notes": "Rendering differs across OS versions and machines, so pin the simulator or JVM renderer and re-record on toolchain updates. Golden files can balloon repository size.",
+      "tags": [
+        "testing",
+        "snapshot",
+        "ui"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-root="../" data-page="libraries">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Libraries Across Android, iOS, Flutter and React Native | AI Similarity</title>
+  <meta name="description" content="Using a library on Android and need the iOS, Flutter or React Native counterpart? Look up UI and dependency libraries side by side, with the install line to copy.">
+  <meta property="og:title" content="Mobile libraries across Android, iOS, Flutter and React Native">
+  <meta property="og:description" content="Find the iOS, Flutter or React Native counterpart of an Android library, with the dependency line to paste.">
+  <meta property="og:type" content="website">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-92KXYXDDWD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-92KXYXDDWD');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="libraries.css">
+  <script defer src="../assets/js/shell.js"></script>
+  <script defer src="libraries.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <header class="page-head">
+      <h1>Libraries, <span class="gradient-text">side by side</span></h1>
+      <p>Using a library on one platform? Find what teams use for the same job on Android, iOS, Flutter and React Native, and copy the dependency line.</p>
+    </header>
+
+    <section class="lib-tools" aria-label="Search and filters">
+      <label class="search">
+        <span class="sr-only">Search libraries by name, package id, job, tag or description</span>
+        <input data-search id="q" type="search" placeholder="Search any library, e.g. Retrofit or image loading" autocomplete="off" spellcheck="false">
+      </label>
+
+      <div class="lib-seg" role="group" aria-label="Library type" id="tabs">
+        <button type="button" class="lib-seg-btn" data-tab="all" aria-pressed="true">All <span class="count"></span></button>
+        <button type="button" class="lib-seg-btn" data-tab="ui" aria-pressed="false">UI component libraries <span class="count"></span></button>
+        <button type="button" class="lib-seg-btn" data-tab="deps" aria-pressed="false">Dependencies <span class="count"></span></button>
+      </div>
+
+      <div class="lib-translate" role="group" aria-label="Translate between platforms">
+        <button type="button" class="chip" id="tr-toggle" aria-pressed="false">Translate</button>
+        <label class="lib-sel"><span>From</span><select id="from"></select></label>
+        <button type="button" class="icon-btn" id="swap" aria-label="Swap From and To platforms" title="Swap">&#8644;</button>
+        <label class="lib-sel"><span>To</span><select id="to"></select></label>
+        <span class="small muted lib-tr-hint" id="tr-hint">Shows libraries that have a From entry, next to their To counterpart.</span>
+      </div>
+
+      <div class="chips" id="cats" role="group" aria-label="Filter by category"></div>
+
+      <div class="lib-status-row">
+        <p class="result-count" id="count" role="status" aria-live="polite" aria-atomic="true"></p>
+        <button type="button" class="btn" id="copy-link">Copy link</button>
+      </div>
+    </section>
+
+    <details class="lib-how card">
+      <summary>How to read this page</summary>
+      <ul>
+        <li>Each entry is one job (for example image loading). It lists the library commonly used for that job on each platform, with a link to its official page.</li>
+        <li>The install line is shown without a version: a Gradle <code>group:artifact</code>, a Swift Package Manager repository URL, an <code>npm i</code> package, a <code>flutter pub add</code> package or a NuGet id. Check the library's own page for the current version and setup steps.</li>
+        <li>The <em>Compose</em>, <em>Views</em>, <em>SwiftUI</em> and <em>UIKit</em> tags show which UI toolkit a library targets. Entries without a tag are not tied to one toolkit.</li>
+        <li><em>Built in</em> notes name what the platform already provides, so you may not need a library.</li>
+        <li><em>Deprecated</em> and <em>Archived</em> badges reflect the status recorded when the data was last updated. Libraries listed side by side do the same job but are not drop-in API replacements.</li>
+        <li><em>Translate</em> shows a two-column table: pick the platform you know in <em>From</em> and the one you are moving to in <em>To</em>.</li>
+      </ul>
+      <p class="small muted" id="meta-line"></p>
+    </details>
+
+    <span class="sr-only" id="announce" role="status" aria-live="polite"></span>
+    <div id="notice"></div>
+    <section id="results" class="lib-results" aria-label="Results" aria-busy="true"><p class="muted">Loading libraries&hellip;</p></section>
+    <div class="lib-more"><button type="button" class="btn" id="more" hidden>Show more</button></div>
+    <noscript><p class="empty-state">This page needs JavaScript to load the library data.</p></noscript>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
